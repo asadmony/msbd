@@ -1,0 +1,17 @@
+@extends('welcome.layouts.welcomeMaster')
+
+@push('css') 
+{{-- <link href="{{asset('css/user.css')}}" rel="stylesheet" /> --}}
+<link href="{{asset('css/userProfile.css')}}" rel="stylesheet" />
+@endpush
+
+@section('content')
+<?php $me = Auth::user(); ?>
+@include('user.parts.myPhotoUpload')
+
+@endsection
+
+@push('js') 
+
+<script src="{{asset('js/userProfile.min.js')}}"></script>
+@endpush
