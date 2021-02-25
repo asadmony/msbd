@@ -33,7 +33,6 @@ swdw
 @else
 
 <div class="w3-white">
-
     @include('welcome.parts.welcome')
 </div>
 

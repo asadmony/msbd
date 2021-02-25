@@ -1,7 +1,12 @@
+
+<div class="output-edu-work">
+    @includeIf('user.settings.ajax.view.outputEduRecord')
+  </div>
+  
 <form method="post" class="form-user-setting" action="{{route('user.settingEduInfoPost')}}">
     {{csrf_field()}}
 
-    <div class="row">
+    <div class="row w3-border w3-border-purple w3-round pt-2">
     <div class="col-sm-6">
 
 
@@ -11,7 +16,7 @@
     type="text" 
     id="orgName" 
     class="form-control w3-border w3-border-light-gray" 
-    name="orgName"        
+    name="orgName"
     placeholder="Organization Name" 
     style="border-radius: 4px;padding-left: 8px;" 
     />
@@ -52,7 +57,7 @@
 
 <div class="form-group {{ $errors->has('orgType') ? ' has-danger' : '' }}">
         <label for="orgType">Org / Institution Type *</label>
-        <select class="simple-select2 w-100" name="orgType" style="width: 100%;">
+        <select class="form-control simple-select2 w-100" name="orgType" style="width: 100%;">
             <option></option>
             
             <option >High School</option>
@@ -140,7 +145,7 @@
 
 <div class="form-group {{ $errors->has('yearFrom') ? ' has-danger' : '' }}">
         <label for="yearFrom">Year From *</label>
-        <select class="simple-select2 w-100" name="yearFrom" style="width: 100%;">
+        <select class="form-control simple-select2 w-100" name="yearFrom" style="width: 100%;">
             
             
             <option value="">Year From</option>
@@ -157,7 +162,7 @@
 
 <div class="form-group {{ $errors->has('yearTo') ? ' has-danger' : '' }}">
         <label for="yearTo">Year To *</label>
-        <select class="simple-select2 w-100" name="yearTo" style="width: 100%;">
+        <select class="form-control simple-select2 w-100" name="yearTo" style="width: 100%;">
            <option value="">Year To</option>
                
 
@@ -172,7 +177,7 @@
 
 <div class="form-group {{ $errors->has('passedYear') ? ' has-danger' : '' }}">
         <label for="passedYear">Year of Passed *</label>
-        <select class="simple-select2 w-100" name="passedYear" style="width: 100%;">
+        <select class="form-control simple-select2 w-100" name="passedYear" style="width: 100%;">
             <option value="">Passed Year</option>
                
 
@@ -190,15 +195,13 @@
     <br>
 
     <div class="">
+        <button class="btn btn-default border mr-2" type="reset">Reset</button>
         <button type="submit" class="btn btn-primary">Submit</button>
     </div>
-
-
         
 
     </div>
 </div>
-
 
 
 

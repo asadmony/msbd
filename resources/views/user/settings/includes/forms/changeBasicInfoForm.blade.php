@@ -1,11 +1,10 @@
 <form method="post" class="form-user-setting" action="{{route('user.settingBasicInfoPost')}}">
     {{csrf_field()}}
 
-    <div class="row">
+    <div class="row w3-border w3-border-purple w3-round">
         <div class="col-sm-6">
-            <div class="box box-default">
-                <div class="box-body">
-
+            <div class="card card-default">
+                <div class="card-body">
 
                     <div class="form-group {{ $errors->has('full_name') ? ' has-danger' : '' }}">
                         <label for="full_name">Full Name</label>
@@ -14,7 +13,7 @@
                         id="full_name" 
                         class="form-control w3-border w3-border-light-gray" 
                         name="full_name"
-                        value="{{$me->name}}"        
+                        value="{{ $me->name}}"        
                         placeholder="Your Full Name" 
                         style="border-radius: 4px;padding-left: 8px;" 
                         />
@@ -160,7 +159,7 @@
                     <div class="other-area">
                         <div class="form-group {{ $errors->has('country') ? ' has-danger' : '' }}">
                             <label for="country">Country</label>
-                            <select class="simple-select2 w-100 change-with-other" name="country" style="width: 100%;">
+                            <select class="form-control simple-select2 w-100 change-with-other" name="country" style="width: 100%;">
                                 <option></option>
 
                                 <option selected>{{$me->country}}</option>
@@ -193,12 +192,10 @@
 
                     
 
-                    
-
                     <div class="other-area">
                         <div class="form-group {{ $errors->has('profile_created_by') ? ' has-danger' : '' }}">
                             <label for="profile_created_by">Profile created by</label>
-                            <select class="simple-select2 w-100 change-with-other" name="profile_created_by" style="width: 100%;">
+                            <select class="form-control simple-select2 w-100 change-with-other" name="profile_created_by" style="width: 100%;">
                                 <option></option>
 
                                 <option selected>{{$me->profile_created_by}}</option>
@@ -229,8 +226,6 @@
                         @else
                         style="border-radius: 4px;padding-left: 8px; display: none;margin-bottom: 25px;" 
                         @endif
-
-
 
                         />
                     </div>
@@ -302,17 +297,16 @@
 
 
 
-
         </div>
         <div class="col-sm-6">
 
 
-            <div class="box box-default">
-                <div class="box-body">
+            <div class="card card-default">
+                <div class="card-body">
 
                     <div class="form-group {{ $errors->has('marital_status') ? ' has-danger' : '' }}">
                         <label for="marital_status">Marital Status</label>
-                        <select class="simple-select2 w-100" name="marital_status" style="width: 100%;">            
+                        <select class="form-control simple-select2 w-100" name="marital_status" style="width: 100%;">            
                             <option></option> 
                             <option selected>{{$me->marital_status}}</option> 
                             {{-- ID: 9   social order --}}
@@ -327,7 +321,7 @@
 
                     <div class="form-group {{ $errors->has('religion') ? ' has-danger' : '' }}">
                         <label for="religion">Religion/Community</label>
-                        <select class="simple-select2 w-100" name="religion" style="width: 100%;">
+                        <select class="form-control simple-select2 w-100" name="religion" style="width: 100%;">
 
                             <option></option>
 
@@ -343,7 +337,7 @@
 
                     <div class="form-group {{ $errors->has('social_order') ? ' has-danger' : '' }}">
                         <label for="social_order">Caste/Social Order</label>
-                        <select class="simple-select2 w-100" name="social_order" style="width: 100%;">            
+                        <select class="form-control simple-select2 w-100" name="social_order" style="width: 100%;">            
                             <option></option> 
                             <option selected>{{$me->social_order}}</option> 
                             {{-- id:4, title:social_order --}}
@@ -357,7 +351,7 @@
 
                     <div class="form-group {{ $errors->has('height') ? ' has-danger' : '' }}">
                         <label for="height">Height</label>
-                        <select class="simple-select2 w-100" name="height" style="width: 100%;">            
+                        <select class="form-control simple-select2 w-100" name="height" style="width: 100%;">            
                             <option></option> 
                             <option selected>{{$me->height}}</option> 
                             {{-- id:6, title:height --}}
@@ -371,7 +365,7 @@
 
                     <div class="form-group {{ $errors->has('weight') ? ' has-danger' : '' }}">
                         <label for="weight">Weight</label>
-                        <select class="simple-select2 w-100" name="weight" style="width: 100%;">            
+                        <select class="form-control simple-select2 w-100" name="weight" style="width: 100%;">            
                             <option></option> 
                             <option selected>{{$me->weight}}</option> 
                             {{-- id:7, title:weight --}}
@@ -386,7 +380,7 @@
 
                     <div class="form-group {{ $errors->has('gender') ? ' has-danger' : '' }}">
                         <label for="gender">Gender</label>
-                        <select class="simple-select2 w-100" name="gender" style="width: 100%;">            
+                        <select class="form-control simple-select2 w-100" name="gender" style="width: 100%;">            
                             <option></option> 
                             <option selected>{{$me->gender}}</option> 
                             {{-- ID: 1   social order --}}
@@ -400,7 +394,7 @@
 
                     <div class="form-group {{ $errors->has('looking_for') ? ' has-danger' : '' }}">
                         <label for="looking_for">Looking for</label>
-                        <select class="simple-select2 w-100" name="looking_for" style="width: 100%;">            
+                        <select class="form-control simple-select2 w-100" name="looking_for" style="width: 100%;">            
                             <option></option> 
                             <option selected>{{$me->looking_for}}</option> 
                             {{-- ID: 6   social order --}}
@@ -416,7 +410,7 @@
 
                     <div class="form-group {{ $errors->has('skin_color') ? ' has-danger' : '' }}">
                         <label for="skin_color">Skin Color / Complexion</label>
-                        <select class="simple-select2 w-100" name="skin_color" style="width: 100%;">            
+                        <select class="form-control simple-select2 w-100" name="skin_color" style="width: 100%;">            
                             <option></option> 
                             <option selected>{{$me->skin_color}}</option> 
                             {{-- id:8, title:skin_color --}}
@@ -432,11 +426,11 @@
                     <div class="other-area">
                         <div class="form-group {{ $errors->has('education_level') ? ' has-danger' : '' }}">
                             <label for="education_level">Education Level</label>
-                            <select class="simple-select2 w-100 change-with-other" name="education_level" style="width: 100%;">
+                            <select class="form-control simple-select2 w-100 change-with-other" name="education_level" style="width: 100%;">
                                 <option></option>
 
                                 <option selected>{{$me->education_level}}</option>
-                                {{-- ID: 9     education_level --}}
+                                {{-- ID: 9    education_level --}}
                                 @foreach ($userSettingFields[8]->values as $value)
 
                                 @if ($me->education_level != $value->title)
@@ -468,7 +462,7 @@
                     <div class="other-area">
                         <div class="form-group {{ $errors->has('profession') ? ' has-danger' : '' }}">
                             <label for="profession">Profession </label>
-                            <select class="simple-select2 w-100 change-with-other" name="profession" style="width: 100%;">
+                            <select class="form-control simple-select2 w-100 change-with-other" name="profession" style="width: 100%;">
                                 <option></option>
 
                                 <option selected>{{$me->profession}}</option>
@@ -501,12 +495,9 @@
                     </div>
 
 
-
-
-
-
                     <br>
                     <div class="">
+                        <button class="btn btn-default border mr-2 btn-sm" type="reset">Reset</button>
                         <!-- <button type="submit" class="btn btn-primary">Submit</button> -->
                         <button type="submit" class="btn btn-primary btn-sm">Submit</button>
                     </div>

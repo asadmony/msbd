@@ -201,12 +201,7 @@ Matchmaker Service in Bangladesh' }}">
                       {{-- <span class="text-red">Country is required</span> --}}
                       @endif
 </div>
-
-
-
- 
-                      
-
+                    
                                   </div>
 
                                 </div>
@@ -341,8 +336,6 @@ Matchmaker Service in Bangladesh' }}">
     
   </div>
   <div class="col-sm-6">
-
-
     <div class="form-group {{ $errors->has('weight') ? ' has-danger' : '' }}">
                 
         <select class="form-control" required id="weight" name="weight">
@@ -408,7 +401,6 @@ Matchmaker Service in Bangladesh' }}">
         <span class="help-block">
             <strong>{{ $errors->first('religion') }}</strong>
         </span>
-        @else
 
         @endif
     </div>
@@ -889,24 +881,24 @@ style="border-radius: 4px;padding-left: 8px; display: none;margin-bottom: 25px;"
 <div class="other-area">
     <div class="form-group {{ $errors->has('partner_country') ? ' has-danger' : '' }}">
     
-    <select class="form-control change-with-other" id="partner_country" name="partner_country" autocomplete="off">
-    <option value="">Present Country </option>
-    @if (old('partner_country'))
-        <option selected value="{{ old('partner_country') }}">{{ old('partner_country') }}</option>
-    @endif
-    
-     
-    @foreach ($countries as $value)
-      <option>{{ $value->title }}</option>
-    @endforeach
-  </select>
-    @if ($errors->has('partner_country'))
-    <span class="help-block">
-        <strong>{{ $errors->first('partner_country') }}</strong>
-    </span>
-    @else
-    {{-- <span class="help-block">partner_country is required</span> --}}
-    @endif
+      <select class="form-control change-with-other" id="partner_country" name="partner_country" autocomplete="off">
+      <option value="">Present Country </option>
+      @if (old('partner_country'))
+          <option selected value="{{ old('partner_country') }}">{{ old('partner_country') }}</option>
+      @endif
+      
+      
+      @foreach ($countries as $value)
+        <option>{{ $value->title }}</option>
+      @endforeach
+    </select>
+      @if ($errors->has('partner_country'))
+      <span class="help-block">
+          <strong>{{ $errors->first('partner_country') }}</strong>
+      </span>
+      @else
+      {{-- <span class="help-block">partner_country is required</span> --}}
+      @endif
 </div>
 <input  
 type="text" 

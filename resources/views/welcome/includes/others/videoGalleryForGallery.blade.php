@@ -13,8 +13,6 @@
    <div class="box-body box-body-container p-0" style="background-color: #fbfbfb;">
 
 <div class="p-2">
-     
-
 <div class="row">
                 <div class="col-sm-7">
 
@@ -23,7 +21,7 @@
                       <iframe style="width: 100%;height: 400px;" src="{{asset($latestGallery->video_url)}}?rel=0&amp;showinfo=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen=""></iframe>
 
                     <div class="w3-container">
-                      <p class="w3-text-gray">{{str_limit($latestGallery->title,35,'..')}}</p>
+                      <p class="w3-text-gray">{{Str::limit($latestGallery->title,35,'..')}}</p>
                     </div>
                   </a>
 
@@ -40,7 +38,7 @@
 
                         <iframe style="width: 100%;height: 100px;" src="{{asset($gallery->video_url)}}?rel=0&amp;showinfo=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen=""></iframe>
                         <div class="w3-container">
-                      <p class="w3-text-gray">{{str_limit($gallery->title,15,'..')}}</p>
+                      <p class="w3-text-gray">{{Str::limit($gallery->title,15,'..')}}</p>
 
                     </div>
 
@@ -51,7 +49,13 @@
                   </div>
                   @endforeach
 
-                  {{$galleries->links()}}
+                  <div class="row">
+                    <div class="col-sm-12">
+                      <div class="w3-center" style="margin: auto;">
+                        {{$galleries->links()}}
+                      </div>
+                    </div>
+                  </div>
 
 
                 </div>

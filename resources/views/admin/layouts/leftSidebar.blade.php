@@ -122,7 +122,6 @@
 
         @endif
 
-
         @include('common.layouts.leftSidebar')
 
       </ul>

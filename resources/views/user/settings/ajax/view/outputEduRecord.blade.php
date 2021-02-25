@@ -1,6 +1,6 @@
 <strong><i class="fa fa-book margin-r-5"></i>  Education</strong>
 <br/>
-@if($me->educations()->count())
+@if($me->educations()->count() > 0)
 @foreach($me->educations() as $edu)
 <span> <b>{{$edu->passed_degree}} in {{$edu->passed_department.' from '}} <strong>{{$edu->organization_name}}</strong> ({{date('Y', strtotime($edu->year_from)).' - '.date('Y', strtotime($edu->year_to))}}). Passed {{ date('Y', strtotime($edu->passed_year)) }} </b> </span>
 

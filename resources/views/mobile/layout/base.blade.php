@@ -88,12 +88,30 @@
     <div class="screen-wrap">
         @include('mobile.layout.header')
         <main class="app-content">
+            @include('alerts.alerts')
             @yield('body')
         </main>
 
         @include('mobile.layout.footer')
 
     </div>
+
+    @if(!$me->profile)
+    @if (Route::currentRouteName() != 'user.incompleteProfile')
+    @include('user.includes.modal.incompleteProfileModal')
+    @endif
+
+    <script>
+    //     $(document).ready(function(){
+    //     // Show the Modal on load
+
+    //     $("#incompleteProfile").modal({backdrop: "static"});
+    //     $("#incompleteProfile").modal("show");
+
+    // });
+    </script>
+    @endif
+
     <!-- =============== screen-wrap end.// =============== -->
     @include('mobile.layout.right_sidebar')
 
@@ -103,14 +121,15 @@
     <script src="{{asset('js/frontMaster.js')}}"></script>
     <script src="{{asset('js/custom.js')}}"></script>
     <script src="{{asset('js/user.min.js')}}"></script>
-    <script src="{{asset('js/userSetting.min.js')}}"></script>
+    <script src="{{asset('js/userSetting.js')}}"></script>
     <script src="{{asset('js/front.min.js')}}"></script>
     {{-- <script src="{{ asset('https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/js/select2.full.min.js') }}">
     </script> --}}
     <script type="text/javascript">
         $(document).ready(function() {
             // jQuery code
-
+            $("#incompleteProfile").modal({backdrop: "static"});
+        $("#incompleteProfile").modal("show");
         });
         // jquery end
     </script>

@@ -1,17 +1,17 @@
 <form method="post" class="form-user-setting" action="{{route('user.settingFamilyInfoPost')}}">
     {{csrf_field()}}
 
-    <div class="row">
+    <div class="row w3-border w3-border-purple w3-round">
         <div class="col-sm-6">
-            <div class="box box-default">
-                <div class="box-body">
+            <div class="card card-default">
+                <div class="card-body">
 
 
                     <div class="form-group {{ $errors->has('father_name') ? ' has-danger' : '' }}">
                         <label for="father_name">Father's Name *</label>
                         <input  
-                        type="text" 
-                        id="father_name" 
+                        type="text"
+                        id="father_name"
                         class="form-control w3-border w3-border-light-gray" 
                         name="father_name"
                         value="{{$me->familyInfo ? $me->familyInfo->father_name : ''}}"        
@@ -298,8 +298,8 @@
         <div class="col-sm-6">
 
 
-            <div class="box box-default">
-                <div class="box-body">
+            <div class="card card-default">
+                <div class="card-body">
 
                     <div class="form-group {{ $errors->has('family_type') ? ' has-danger' : '' }}">
                         <label for="family_type">Family Type *</label>
@@ -352,7 +352,6 @@
 
                         @endif
                     </div>
-
 
 
                     <div class="form-group {{ $errors->has('name_of_contact_person') ? ' has-danger' : '' }}">
@@ -496,7 +495,7 @@
 
 
                     <br>
-                    <div class="">
+                    <div class="d-flex">
 
                         @if ($me->familyInfo)
                             @if(!$me->familyInfo->can_edit)
@@ -504,7 +503,7 @@
 
                             @endif
                         @endif
-                        <br>
+                        <button class="btn btn-default border mr-2" type="reset">Reset</button>
                         <!-- <button type="submit" class="btn btn-primary">Submit</button> -->
                         <button type="submit" class="btn btn-primary">Submit</button>
 

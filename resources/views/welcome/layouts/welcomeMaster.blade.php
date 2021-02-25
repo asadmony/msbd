@@ -43,6 +43,14 @@
     {!! $websiteParameter->facebook_pixel_code !!}
     @endif
 
+    <link rel="stylesheet" href="{{asset('assets/sweetalert2/dist/sweetalert2.css')}}">
+    <!-- SweetAlert2 -->
+    {{-- <link rel="stylesheet" href="{{ asset('cp/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css') }}"> --}}
+    <script src="{{asset('assets/sweetalert2/dist/sweetalert2.min.js')}}"></script>
+    <!-- SweetAlert2 -->
+    <link rel="stylesheet" href="{{ asset('cp/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css') }}">
+
+
     {{-- <link rel="stylesheet" href="{{ asset('assets/jquery-bg-slide/demo/css/jquery.slide.css') }}" /> --}}
 
 
@@ -152,6 +160,7 @@
 
 
 <body class="{{Auth::check() ? 'profile-page' : 'index-page'}}">
+    @include('alerts.alertSweet')
     {{-- <body class="{{Auth::check() ? 'profile-page' : 'landing'}}"> --}}
     <div id="backtop">&#9650;</div>
 
@@ -207,7 +216,22 @@
     {{-- <script src="{{asset('mk/mk/BS4/assets/js/bootstrap-material-design.js')}}"></script> --}}
     <!--  Plugin for Date Time Picker and Full Calendar Plugin  -->
     {{-- <script src="{{asset('mk/mk/BS4/assets/js/plugins/moment.min.js')}}"></script> --}}
-
+<script>
+    $(function () {
+        if (response.sessionMessage) 
+          {
+            swal({
+            text: response.sessionMessage,
+            title: "Error!",
+            timer: 8000,
+            type: "error",
+            showConfirmButton: true,
+            confirmButtonText: "Close",
+            confirmButtonColor: "#ff0000"
+            });
+          }
+    })
+</script>
     <script src="{{asset('js/frontMaster.js')}}"></script>
 
     <script src="{{asset('https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/js/select2.full.min.js')}}"></script>
@@ -318,7 +342,7 @@ $(document).keydown(function(e){
     </script>
 
     <script src="{{asset('js/user.min.js')}}"></script>
-    <script src="{{asset('js/userSetting.min.js')}}"></script>
+    <script src="{{asset('js/userSetting.js')}}"></script>
     <script src="{{asset('js/front.min.js')}}"></script>
 
 
@@ -349,7 +373,22 @@ $(document).ready(function(){
     @auth
 
     <?php $me = Auth::user(); ?>
-    @if(!$me->hasEducation() or !$me->hasWork() or ! $me->familyInfo)
+    @if(!$me->profile)
+    @if (Route::currentRouteName() != 'user.incompleteProfile' )
+    @include('user.includes.modal.incompleteProfileModal')
+    <script>
+        $(document).ready(function(){
+    // Show the Modal on load
+
+    $("#incompleteProfile").modal({backdrop: "static"});
+    $("#incompleteProfile").modal("show");
+
+    });
+    </script>
+    @endif
+
+@else
+    @if(!$me->hasEducation() or !$me->hasWork() or ! $me->familyInfo )
 
     @include('user.includes.modal.eduWorkModal')
     <script>
@@ -359,12 +398,11 @@ $(document).ready(function(){
     $("#eduWorkModal").modal({backdrop: "static"});
     $("#eduWorkModal").modal("show");
 
-});
+    });
     </script>
-
-
-
     @endif
+
+@endif
 
     @endauth
 

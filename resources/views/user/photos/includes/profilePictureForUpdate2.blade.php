@@ -13,7 +13,7 @@
  
  
 
-    <input type="file" class="form-control float-left" id="photos" name="profile_picture" required>
+    <input type="file" class="border p-1 float-left" id="photos" name="profile_picture" required>
   {{ csrf_field() }}
 
   <br>

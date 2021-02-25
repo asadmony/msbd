@@ -19,6 +19,9 @@
                     <a href="{{ route('page', [$umrsm->id, $umrsm->route_name]) }}"> <i
                             class="far fa-circle w3-text-purple"></i> {{ $umrsm->page_title }}</a>
                     @endforeach
+                    <a class="" href="{{ route('welcome.successStories') }}">
+                       <i class="fa fa-image w3-text-purple"></i> Success Stories
+                    </a>
                 </nav>
             </div>
         </div>

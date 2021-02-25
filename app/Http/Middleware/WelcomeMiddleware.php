@@ -36,34 +36,72 @@ class WelcomeMiddleware
         {
             if (Auth::check()) {
 
-                view()->share('userMobileRightSidebarMenu', Cache::remember('userMobileRightSidebarMenu', 518400, function () {
-                    return Menu::has('pages')
+                // view()->share('userMobileRightSidebarMenu', Cache::remember('userMobileRightSidebarMenu', 518400, function () {
+                //     return Menu::has('pages')
+                //     ->where('menu_title', 'User Mobile Right Sidebar Menu')
+                //     ->with('pages', function($qq){$qq->whereActive(true);})
+                //     ->first();
+                //     // 518400 is one year
+                // }));
+
+                view()->share('userMobileRightSidebarMenu', Menu::has('pages')
                     ->where('menu_title', 'User Mobile Right Sidebar Menu')
-                    ->with('pages')
-                    ->first();
-                    // 518400 is one year
-                }));
+                    ->with('pages', function($qq){$qq->whereActive(true);})
+  
+                    ->first());
 
                 view()->share('userSettingFields', UserSettingField::all());
                 view()->share('userHeaderMenu',  Menu::has('pages')
                     ->where('menu_title', 'User header menu')
-                    ->with('pages')
+                    ->with('pages', function($qq){$qq->whereActive(true);})
+                    ->first());
+                view()->share('management',  Menu::has('pages')
+                    ->where('menu_title', 'Management')
+                    ->with('pages', function($qq){$qq->whereActive(true);})
+                    ->first());
+                view()->share('membership',  Menu::has('pages')
+                    ->where('menu_title', 'Membership Details')
+                    ->with('pages', function($qq){$qq->whereActive(true);})
+                    ->first());
+                view()->share('ownersMsg',  Menu::has('pages')
+                    ->where('menu_title', 'Owners Message')
+                    ->with('pages', function($qq){$qq->whereActive(true);})
+                    ->first());
+                view()->share('contactUs',  Menu::has('pages')
+                    ->where('menu_title', 'Contact Us')
+                    ->with('pages', function($qq){$qq->whereActive(true);})
                     ->first());
                 view()->share('userFooterMenu',  Menu::has('pages')
                     ->where('menu_title', 'User footer menu')
-                    ->with('pages')
+                    ->with('pages', function($qq){$qq->whereActive(true);})
                     ->first());
             }
             else
             {
                 view()->share('welcomeHeaderMenu',  Menu::has('pages')
                     ->where('menu_title', 'Welcome Header Menu')
-                    ->with('pages')
+                    ->with('pages', function($qq){$qq->whereActive(true);})
                     ->first());
 
+                view()->share('management',  Menu::has('pages')
+                    ->where('menu_title', 'Management')
+                    ->with('pages', function($qq){$qq->whereActive(true);})
+                    ->first());
+                view()->share('membership',  Menu::has('pages')
+                    ->where('menu_title', 'Membership Details')
+                    ->with('pages', function($qq){$qq->whereActive(true);})
+                    ->first());
+                view()->share('ownersMsg',  Menu::has('pages')
+                    ->where('menu_title', 'Owners Message')
+                    ->with('pages', function($qq){$qq->whereActive(true);})
+                    ->first());
+                view()->share('contactUs',  Menu::has('pages')
+                    ->where('menu_title', 'Contact Us')
+                    ->with('pages', function($qq){$qq->whereActive(true);})
+                    ->first());
                 view()->share('welcomeFooterMenu', Menu::has('pages')
                     ->where('menu_title', 'Welcome Footer Menu')
-                    ->with('pages')
+                    ->with('pages', function($qq){$qq->whereActive(true);})
                     ->first());
             }
 
@@ -81,7 +119,7 @@ class WelcomeMiddleware
             // view()->share('userHeaderMenu', Cache::remember('userHeaderMenu', 518400, function () {
             //     return Menu::has('pages')
             //     ->where('menu_title', 'User Header Menu')
-            //     ->with('pages')
+            //     ->with('pages', function($qq){$qq->whereActive(true);})
             //     ->first();
             //     // 518400 is one year
             // }));

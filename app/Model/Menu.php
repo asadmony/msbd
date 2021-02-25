@@ -23,4 +23,12 @@ class Menu extends Model
 	{
 		return $this->belongsTo('App\Model\User', 'addedby_id');
 	}
+    public function subMenus()
+    {
+        return $this->hasMany('App\Model\Menu', 'parent_id');
+    }
+    public function parentMenu()
+    {
+        return $this->belongsTo('App\Model\Menu', 'parent_id');
+    }
 }

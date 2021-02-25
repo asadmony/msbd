@@ -37,12 +37,14 @@ class Kernel extends HttpKernel
             \Illuminate\View\Middleware\ShareErrorsFromSession::class,
             \App\Http\Middleware\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
+            // \App\Http\Middleware\ProfileCheckMiddleware::class,
         ],
 
         'api' => [
             'throttle:api',
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
         ],
+        
     ];
 
     /**
@@ -66,5 +68,6 @@ class Kernel extends HttpKernel
         'mediaperson' => \App\Http\Middleware\MediaPersonMiddleware::class,
         'userupdate' => \App\Http\Middleware\UserupdateMiddleware::class,
         'welcome' => \App\Http\Middleware\WelcomeMiddleware::class,
+        'profile.check' => \App\Http\Middleware\ProfileCheckMiddleware::class,
     ];
 }

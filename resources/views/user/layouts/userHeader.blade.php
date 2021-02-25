@@ -22,29 +22,127 @@
                 @if (Browser::isDesktop())
 
                 @if($websiteParameter->contact_mobile)
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                     <a class="nav-link" href="tel:{{ $websiteParameter->contact_mobile }}">
-                        <span class="w3-large">
-                            <i class="material-icons">local_phone</i> {{ $websiteParameter->contact_mobile }}</span>
-                    </a>
-                </li>
+                <span class="w3-large">
+                    <i class="material-icons">local_phone</i> {{ $websiteParameter->contact_mobile }}</span>
+                </a>
+                </li> --}}
                 @endif
 
                 @if(isset($userHeaderMenu))
+                {{-- @if ($userHeaderMenu->subMenus->count() > 0)
+                @foreach($userHeaderMenu->subMenus as $subMenu)
+                <li class="dropdown notifications-menu">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
+                        <i class="fa fa-bell-o"></i>
+                        <span class="label label-warning">{{ $subMenu->menu_title }}</span>
+                </a>
+                <ul class="dropdown-menu">
+                    @foreach($subMenu->pages as $uhmPage)
+                    <li class="header"><a class="nav-link"
+                            href="{{ route('page', [$uhmPage->id, $uhmPage->route_name]) }}">
+                            {{ Str::limit( $uhmPage->page_title , 30,'..') }}
+                        </a></li>
+                    @endforeach
+                </ul>
+                </li>
+                @endforeach
+                @endif --}}
                 @foreach($userHeaderMenu->pages as $uhmPage)
-
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('page', [$uhmPage->id, $uhmPage->route_name]) }}">
-                        {{ Str::limit( $uhmPage->page_title , 10,'..') }}
+                        {{ Str::limit( $uhmPage->page_title , 30,'..') }}
                     </a>
                 </li>
                 @endforeach
                 @endif
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('welcome.ourBranches')}}">
-                        Branches
+                @if (isset($management))
+                <li class="dropdown nav-item">
+                    <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="true">
+                        <span class="w3-text-white">{{ $management->menu_title }}</span>
+                        <div class="ripple-container"></div>
                     </a>
+                    <div class="dropdown-menu dropdown-with-icons">
+                        @foreach($management->pages as $uhmPage)
+                        <a class="dropdown-item" href="{{ route('page', [$uhmPage->id, $uhmPage->route_name]) }}">
+                            {{ Str::limit( $uhmPage->page_title , 30,'..') }}
+                        </a>
+                        @endforeach
+                    </div>
                 </li>
+
+                @endif
+                @if (isset($membership))
+                <li class="dropdown nav-item">
+                    <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="true">
+                        <span class="w3-text-white">{{ $membership->menu_title }}</span>
+                        <div class="ripple-container"></div>
+                    </a>
+                    <div class="dropdown-menu dropdown-with-icons">
+                        @foreach($membership->pages as $uhmPage)
+                        <a class="dropdown-item" href="{{ route('page', [$uhmPage->id, $uhmPage->route_name]) }}">
+                            {{ Str::limit( $uhmPage->page_title , 30,'..') }}
+                        </a>
+                        @endforeach
+                    </div>
+                </li>
+                @endif
+                @if (isset($ownersMsg))
+                <li class="dropdown nav-item">
+                    <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="true">
+                        <span class="w3-text-white">{{ $ownersMsg->menu_title }}</span>
+                        <div class="ripple-container"></div>
+                    </a>
+                    <div class="dropdown-menu dropdown-with-icons">
+                        @foreach($ownersMsg->pages as $uhmPage)
+                        <a class="dropdown-item" href="{{ route('page', [$uhmPage->id, $uhmPage->route_name]) }}">
+                            {{ Str::limit( $uhmPage->page_title , 30,'..') }}
+                        </a>
+                        @if ($loop->iteration == 1)
+                        <a class="dropdown-item" href="{{ route('welcome.successStories') }}">
+                            Success Stories
+                        </a>
+                        {{-- <a class="dropdown-item" href="{{ route('welcome.photoGallery') }}">
+                            Success Stories (Photos)
+                        </a>
+                        <a class="dropdown-item" href="{{ route('welcome.videoGallery') }}">
+                            Success Stories (Videos)
+                        </a> --}}
+                        @endif
+                        @endforeach
+
+                        {{-- <a class="dropdown-item" href="{{ route('welcome.successStories', 'photo') }}">
+                            Success Stories (Photos)
+                        </a> --}}
+                    </div>
+                </li>
+                @endif
+                @if (isset($contactUs))
+                <li class="dropdown nav-item">
+                    <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="true">
+                        <span class="w3-text-white">{{ $contactUs->menu_title }}</span>
+                        <div class="ripple-container"></div>
+                    </a>
+                    <div class="dropdown-menu dropdown-with-icons">
+                        @foreach($contactUs->pages as $uhmPage)
+                        <a class="dropdown-item" href="{{ route('page', [$uhmPage->id, $uhmPage->route_name]) }}">
+                            {{ Str::limit( $uhmPage->page_title , 30,'..') }}
+                        </a>
+                        @if ($loop->first)
+                        <a class="dropdown-item" href="{{ route('welcome.ourBranches')}}">
+                            Branch Office Address
+                        </a>
+                        @endif
+                        @endforeach
+                    </div>
+                </li>
+                @endif
+                {{-- <li class="nav-item">
+                    <a class="nav-link" href="{{ route('welcome.ourBranches')}}">
+                Branches
+                </a>
+                </li> --}}
 
                 <li class="nav-item">
                     {{-- <a class="nav-link" href="{{ route('userMessageDashboard') }}" >

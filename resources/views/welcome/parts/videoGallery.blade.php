@@ -24,10 +24,6 @@
     @include('welcome.includes.others.videoGalleryForGallery')
  
                   
- 
-                    
-
-
 
                     @if (Browser::isDesktop())
                     @else

@@ -6,7 +6,7 @@
                 {{Str::limit($user->name, 16,'..')}}<i
                     class="fa fa-circle {{ $user->isOnline() ? 'w3-text-green' : 'w3-text-light-gray' }} w3-small"></i>
             </p>
-            <p class="title text-truncate w3-small"> {{Str::limit($user->religion, 20)}},</p>
+            <p class="title text-truncate w3-small"> {{Str::limit($user->religion, 20)}}, {{ $user->age() }} yrs</p>
             <p class="title text-truncate w3-small">{{Str::limit($user->gender, 20)}}, {{Str::limit($user->height, 20)}}
             </p>
             <p class="title text-truncate w3-small">{{Str::limit($user->marital_status, 20)}}</p>

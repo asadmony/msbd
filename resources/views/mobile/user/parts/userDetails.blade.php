@@ -1,6 +1,4 @@
-@push('css')
-<link href="{{ asset('msbd/plugins/fancybox/fancybox.min.css') }}" type="text/css" rel="stylesheet">
-@endpush
+
 <div class="container">
     <main class="app-content">
         @include('alerts.alerts')
@@ -14,6 +12,4 @@
         @include('mobile.user.includes.data.dataPartnerMatch')
     </main>
 </div>
-@push('js')
-<script src="{{ asset('msbd/plugins/fancybox/fancybox.min.js') }}" type="text/javascript"></script>
-@endpush
+

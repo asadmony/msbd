@@ -17,7 +17,7 @@
  <div class="row">
    <div class="col-sm-7">
 
-    <input type="file" class="form-control float-left" id="photos" name="photos[]" multiple style="width: 200px;">
+    <input type="file" class="border p-1 float-left" id="photos" name="photos[]" multiple style="width: 200px;">
   {{ csrf_field() }}
 </div>
    <div class="col-sm-5">
@@ -31,7 +31,8 @@
   </div>
 
     
-
+@if ($me->profile)
+    
   <div class="photos-container" style="min-height:500px;">
     <br>
 
@@ -56,6 +57,8 @@
 @endauth
     
   </div>
+
+@endif
     
   </div>
 </div>

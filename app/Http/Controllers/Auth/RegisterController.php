@@ -3,10 +3,17 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Model\Country;
+use App\Model\User;
+use App\Model\UserFamilyInfo;
+use App\Model\UserSettingField;
 use App\Providers\RouteServiceProvider;
-use App\Models\User;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Foundation\Auth\User as AuthUser;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Validator;
 
 class RegisterController extends Controller
@@ -51,8 +58,18 @@ class RegisterController extends Controller
     {
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'email' => [ 'string', 'email', 'max:255', 'unique:users'],
+            'mobile' => [ 'string', 'required', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'education_level' => ['required'],
+            'profession' => ['required'],
+            'monthly_income' => ['required','numeric', 'min:50000'],
+            'father_name' => ['required'],
+            'father_education' => ['required'],
+            'father_occupation' => ['required'],
+            'family_type' => ['required'],
+            'gender' => ['required'],
+            'birth_date' => ['required','date'],
         ]);
     }
 
@@ -64,10 +81,43 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
+            'mobile' => $data['mobile'],
+            'gender' => $data['gender'],
+            'education_level' => $data['education_level'],
+            'profession' => $data['profession'],
+            'profession' => $data['profession'],
+            'dob' => $data['birth_date'],
             'password' => Hash::make($data['password']),
+        ]);
+
+        $userFamily = new UserFamilyInfo;
+        $userFamily->user_id = $user->id;
+        $userFamily->father_name = $data['father_name'];
+        $userFamily->yearly_income = $data['monthly_income'];
+        $userFamily->father_education = $data['father_education'];
+        $userFamily->father_occupation = $data['father_occupation'];
+        $userFamily->family_type = $data['family_type'];
+        $userFamily->save();
+
+        return $user;
+    }
+
+    public function showRegistrationForm()
+    {
+        $countries = Cache::remember('countries', 518400, function () {
+            return Country::select('name as title')->get();
+        });
+
+
+        $userSettingFields = Cache::remember('userSettingFields', 518400, function () {
+            return UserSettingField::all();
+        });
+        return view('auth.register',[
+            'countries' => $countries,
+            'userSettingFields' => $userSettingFields,
         ]);
     }
 }

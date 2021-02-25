@@ -15,6 +15,7 @@
     <link rel="shortcut icon" href="{{ asset('img/favicon.ico') }}" type="image/x-icon">
       <link rel="icon" href="{{ asset('img/favicon.ico') }}" type="image/x-icon">
     @endif
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <title>
         @if ($websiteParameter->title)
         {!! $websiteParameter->title !!}
@@ -31,10 +32,14 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
 	<link rel="stylesheet" href="{{ asset('css/login/css/style.css') }}" type="text/css" media="all" /><!-- Style-CSS -->
     <link rel="stylesheet" type="text/css" href="{{ asset('fonts/fa/css/font-awesome.min.css') }}">
+    
 </head>
 
 <body>
 	@yield('body')
+
+
+    @stack('js')
 </body>
 
 </html>

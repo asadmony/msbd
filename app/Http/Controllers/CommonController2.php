@@ -1347,5 +1347,42 @@ $fi->save();
     //payments end
 
 
+    public function mobileNumbersAll(Request $request)
+    {
+        $request->session()->forget(['lsbm','lsbsm']);
+        $request->session()->put(['lsbm'=>'mobileAndEmail','lsbsm'=>'mobileNumbersAll']);
+        $users = User::latest()->groupBy('mobile')->paginate(100);
+        return view('admin.mobileNumbersAll', ['users'=>$users]);
+        // ->groupBy('mobile')
+    }
+
+    public function emailNumbersAll(Request $request)
+    {
+        $request->session()->forget(['lsbm','lsbsm']);
+        $request->session()->put(['lsbm'=>'mobileAndEmail','lsbsm'=>'emailNumbersAll']);
+        $users = User::latest()->groupBy('email')->paginate(100);
+        return view('admin.emailNumbersAll', ['users'=>$users]);
+    }
+
+    public function emailsAndNumbersAll(Request $request)
+    {
+        $request->session()->forget(['lsbm','lsbsm']);
+        $request->session()->put(['lsbm'=>'mobileAndEmail','lsbsm'=>'emailsAndNumbersAll']);
+        $users = User::latest()->groupBy('email','mobile')->paginate(100);
+        
+        return view('admin.emailsAndNumbersAll', ['users'=>$users]);
+    }
+
+
+    public function registerInfoAll(Request $request)
+    {
+        $request->session()->forget(['lsbm','lsbsm']);
+        $request->session()->put(['lsbm'=>'mobileAndEmail','lsbsm'=>'registerInfo']);
+        $users = User::latest()->groupBy('email','mobile')->paginate(100);
+            
+        return view('admin.userRegistrationInfo', ['users'=>$users]);
+    }
+
+
 
 }

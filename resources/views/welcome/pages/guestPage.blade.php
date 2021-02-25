@@ -57,11 +57,11 @@
 @include('welcome.layouts.guestWelcomeHeaderAlt')
 @endsection
 @section('content')
-<div class="container pt-5 pb-5">
+<div class="container-fluid">
     <div class="row">
-        <div class="col-sm-12">
+        <div class="col-sm-12 p-0 m-0">
 
-            {!! $page->content !!}
+            @include('common.pages.parts.pageBody')
 
         </div>
     </div>

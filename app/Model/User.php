@@ -6,7 +6,6 @@ use DB;
 use Mail;
 use Auth;
 use Carbon\Carbon;
-use App\Model\User;
 use Cp\Chat\Model\Chat;
 use App\Scopes\ActiveScope;
 use Cp\Chat\Model\Chatable;
@@ -29,6 +28,7 @@ class User extends Authenticatable
         'password',
         'updated_at'
     ];
+
 
     /**
      * The attributes that should be hidden for arrays.
@@ -817,6 +817,7 @@ class User extends Authenticatable
             $qq->where('user_second_id', $this->id);
         })
         ->where('users.img_name', '<>', null)
+        ->where('users.profile', true)
         // ->whereHas('userPictures', function ($query) {
         //     $query->where('image_type', 'profilepic');
         //     $query->where('checked', true);
@@ -849,6 +850,7 @@ class User extends Authenticatable
         ->whereDoesntHave('blockss', function($qq){
             $qq->where('user_second_id', $this->id);
         })
+        ->where('users.profile', true)
         ->withTimestamps()
         ->orderBy('pivot_updated_at','desc');
     }
@@ -863,6 +865,7 @@ class User extends Authenticatable
         ->whereDoesntHave('blockss', function($qq){
             $qq->where('user_second_id', $this->id);
         })
+        ->where('users.profile', true)
         ->orderBy('pivot_updated_at','desc');
     }
 
@@ -1646,6 +1649,10 @@ class User extends Authenticatable
         return $this->hasOne('App\Model\UserSearchTerm');
     }
 
+    public function randomProfiles($number = 3)
+    {
+        return $this->inRandomOrder()->where('profile', true)->paginate($number);
+    }
 
     public function latestProfiles()
     {
@@ -1657,13 +1664,17 @@ class User extends Authenticatable
         })
       // ->where('gender', $this->oltGender())
         ->where('gender', $this->looking_for)
+        ->where('gender', '<>' , null)
+        ->where('profile', true)
         // ->whereHas('userPictures', function ($query) {
         //     $query->where('image_type', 'profilepic');
         //     $query->where('checked', true);
         //   })
       ->orderBy('created_at', 'desc')
       ->paginate(24);
-
+      if ($users->count() < 1) {
+          $users = $this->randomProfiles(24);
+      }
       return $users;
     }
 
@@ -1677,13 +1688,17 @@ class User extends Authenticatable
         })
       // ->where('gender', $this->oltGender())
         ->where('gender', $this->looking_for)
+        ->where('gender', '<>' , null)
+        ->where('profile', true)
         // ->whereHas('userPictures', function ($query) {
         //     $query->where('image_type', 'profilepic');
         //     $query->where('checked', true);
         //   })
       ->orderBy('created_at', 'desc')
       ->paginate(3);
-
+      if ($users->count() < 1) {
+        $users = $this->randomProfiles(3);
+        }
       return $users;
     }
 
@@ -2022,7 +2037,7 @@ class User extends Authenticatable
 
         // dd(Auth::user()->searchTerm);
         $searchTerm = $this->searchTerm;
-        if (!$searchTerm->min_age) {
+        if (!isset($searchTerm->min_age)) {
             $minage=$searchTerm->min_age;
         }else{
             $minage=18;
@@ -2044,7 +2059,7 @@ class User extends Authenticatable
             })
         ->where('dob', '<=', $minAgeDate)
         ->where('dob', '>=', $maxAgeDate)
-        ->where('gender', $this->looking_for)
+        ->where('gender', $this->oltGender())
         ->where('img_name', '<>', null)
         // ->where('country', 'like' ,"%".$searchTerm->country."%")
 
@@ -2066,20 +2081,20 @@ class User extends Authenticatable
                 //   });
                 // }
 
-                if ($searchTerm->profession)
-                {
-                    $query->where('profession', $searchTerm->profession);
-                }
+                // if ($searchTerm->profession)
+                // {
+                //     $query->where('profession', $searchTerm->profession);
+                // }
 
-                if($searchTerm->country)
-                {
-                    $query->where('country', $searchTerm->country);
-                }
+                // if($searchTerm->country)
+                // {
+                //     $query->where('country', $searchTerm->country);
+                // }
 
-                if($searchTerm->marital_status)
-                {
-                    $query->where('marital_status', $searchTerm->marital_status);
-                }
+                // if($searchTerm->marital_status)
+                // {
+                //     $query->where('marital_status', $searchTerm->marital_status);
+                // }
                 if($searchTerm->religion)
                 {
                     $query->where('religion', $searchTerm->religion);
@@ -2089,21 +2104,21 @@ class User extends Authenticatable
                 if ($searchTerm->min_height && $searchTerm->max_height)
                 {
 
-                    $minH = UserSettingItem::where('field_id', 6)->where('title', $searchTerm->min_height)->first();
+                    // $minH = UserSettingItem::where('field_id', 6)->where('title', $searchTerm->min_height)->first();
 
-                    $maxH = UserSettingItem::where('field_id', 6)->where('title', $searchTerm->max_height)->first();
+                    // $maxH = UserSettingItem::where('field_id', 6)->where('title', $searchTerm->max_height)->first();
 
-                    if($minH && $maxH)
-                    {
-                        $heights = UserSettingItem::where('field_id', 6)->whereBetween('id', [$minH->id, $maxH->id])->pluck('title');
+                    // if($minH && $maxH)
+                    // {
+                    //     $heights = UserSettingItem::where('field_id', 6)->whereBetween('id', [$minH->id, $maxH->id])->pluck('title');
 
-                        $query->whereIn('height',$heights);
+                    //     $query->whereIn('height',$heights);
 
-                        // foreach ($heights as $height) {
-                        //     $q->orWhere('height', '%'. $height .'%');
-                        // }
+                    //     // foreach ($heights as $height) {
+                    //     //     $q->orWhere('height', '%'. $height .'%');
+                    //     // }
 
-                    }
+                    // }
                 }
             })
 
@@ -2427,4 +2442,11 @@ class User extends Authenticatable
         }
     //mobile end
 
+    // social profile
+    public function identities()
+    {
+        return $this->hasOne('App\Model\SocialIdentity', 'user_id');
+    }
+
+    
 }

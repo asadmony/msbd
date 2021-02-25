@@ -46,7 +46,6 @@ $(function(){
 
       $(".help-block").remove();
 
-
       $.ajax({
         url: url,
         type: type,
@@ -65,12 +64,12 @@ $(function(){
 
         // },
       }).done(function(response){
-
         if(response.success == true)
         {
           $(".success-js-alert").show();
 
-          if (response['output'].length != 0) 
+
+          if (response['output']) 
           {
             $('.output-edu-work').empty().append(response.output);
           }
@@ -94,7 +93,10 @@ $(function(){
             });
           }
         }
-
+        if (response.updated == true) {
+            $('.'+response.edited).empty().append(`<span class="w3-text-green w3-round-large px-1 fa-lg"><i class="fa fa-check-square-o" aria-hidden="true"></i></span>`);
+          
+        }
       }).fail(function(){
         alert('error');
       });

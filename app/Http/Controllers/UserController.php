@@ -8,7 +8,6 @@ use Mail;
 use Cache;
 use Agent;
 use Browser;
-use Validator;
 use Carbon\Carbon;
 use App\Model\User;
 use App\Model\Page;
@@ -32,8 +31,10 @@ use App\Model\UserPersonalInfo;
 use App\Model\UserInfoForOffice;
 use App\Model\MembershipPackage;
 use App\Model\UserPersonalActivity;
+use App\Model\UserSearchTerm;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 use Intervention\Image\ImageManagerStatic as Image;
 
@@ -1158,6 +1159,10 @@ public function settingSearchTermPost(Request $request)
     }
 
     $st = Auth::user()->searchTerm;
+    if (!$st) {
+        $st = new UserSearchTerm;
+        $st->user_id = Auth::user()->id;
+    }
 
     $st->min_age = trim($request->minimum_age) ?: null;
     $st->max_age = trim($request->maximum_age) ?: null;
@@ -1226,6 +1231,8 @@ public function settingSearchTermPost(Request $request)
     {
         return Response()->json([
             'success'=>true,
+            'updated'=>true,
+            'edited'=>'user-preference-updated',
         ]);
     }
 }
@@ -1559,10 +1566,11 @@ public function profilepicChange(Request $request)
 public function profilepicChangePost(Request $request)
 {
     $validation = Validator::make($request->all(),
-        ['profile_picture' => 'required|image|mimes:jpeg,bmp,png,gif|dimensions:min_width=200,min_height=200'
+        ['profile_picture' => 'required|image|mimes:jpeg,bmp,png,gif'
     ]);
     if($validation->fails())
     {
+        // dd($validation);
         return redirect()->back()
         ->withErrors($validation)
         ->withInput()
@@ -1780,7 +1788,6 @@ public function uploadNewPhotos(Request $request)
             $size =$file->getSize();
             $originalName =$file->getClientOriginalName();
             list($originalWidth,$originalHeight) = getimagesize($file);
-
 
 
             $imageNewName = Str::random(8).time().'.'.$ext;
@@ -2231,7 +2238,6 @@ public function settingBasicInfoPost(Request $request)
 
     $validation = Validator::make($request->all(),
     [
-
         'full_name'=> 'required|min:4|max:50',
         // 'username' => 'required|string|min:4|max:20|unique:users,username',
         'email'=> 'required|email|max:30|unique:users,email,'.Auth::id(),
@@ -2261,7 +2267,7 @@ public function settingBasicInfoPost(Request $request)
         {
             return Response()->json(array(
                 'success' => false,
-                'errors' => $validation->errors()->toArray()
+                'errors' => $validation->errors()->toArray(),
             ));
         }
 
@@ -2358,7 +2364,7 @@ public function settingBasicInfoPost(Request $request)
 
     if($request->ajax())
     {
-        return Response()->json(['success' => true]);
+        return Response()->json(['success' => true, 'updated' => true, 'edited' => 'user-basic-updated']);
     }
 
     return back();
@@ -2489,7 +2495,11 @@ $fi->save();
 
     if($request->ajax())
     {
-        return Response()->json(['success' => true]);
+        return Response()->json([
+            'success' => true,
+            'updated' => true,
+            'edited' => 'user-family-updated',
+            ]);
     }
 
     return back();
@@ -2553,6 +2563,8 @@ public function settingEduInfoPost(Request $request)
         {
             return Response()->json([
                 'success'=>true,
+                'updated'=>true,
+                'edited'=>'user-education-updated',
                 'output'=> View('user.settings.ajax.view.outputEduRecord',['me' => $request->user()])
                 ->render()
             ]);
@@ -2623,7 +2635,7 @@ $contactInfo->save();
 
     if($request->ajax())
     {
-        return Response()->json(['success' => true]);
+        return Response()->json(['success' => true, 'updated' => true, 'edited' => 'user-education-updated']);
     }
 
     return back();
@@ -3180,6 +3192,8 @@ public function settingWorkInfoPost(Request $request)
         {
             return Response()->json([
                 'success'=>true,
+                'updated'=>true,
+                'edited'=> 'user-work-updated',
                 'output'=> View('user.settings.ajax.view.outputWorkRecord',['me' => $request->user()])
                 ->render()
             ]);

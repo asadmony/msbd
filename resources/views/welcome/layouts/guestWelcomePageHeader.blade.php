@@ -1,4 +1,4 @@
-<section class="page-header page-header-modern bg-color-light-scale-1 page-header-md">
+<section class="page-header page-header-modern bg-color-light-scale-1 page-header-md mb-0">
     <div class="container">
         <div class="row">
 

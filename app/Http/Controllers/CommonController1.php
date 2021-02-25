@@ -8,9 +8,11 @@ use Str;
 use Validator;
 use App\Model\User;
 use App\Model\Page;
+use App\Model\PageItem;
 use App\Model\Menu;
 use App\Model\Media;
 use App\Model\MenuPage;
+use App\Model\Gallery;
 use App\Model\ImageGallery;
 use App\Model\VideoGallery;
 use Illuminate\Http\Request;
@@ -87,61 +89,200 @@ class CommonController1 extends Controller
     //menu end
 
 
-    //page start
+    // //page start
 
-    public function newPage(Request $request){
+    // public function newPage(Request $request){
 
-        $request->session()->forget(['lsbm','lsbsm']);
-        $request->session()->put(['lsbm'=>'page','lsbsm'=>'newPage']);
-        $menus = Menu::orderBy('menu_title')->get();
-        $mediaAll = Media::latest()->paginate(100);
-        return view('common.pages.newPage', [
-            'menus'=>$menus,
-            'mediaAll'=>$mediaAll
-        ]);
-    }
+    //     $request->session()->forget(['lsbm','lsbsm']);
+    //     $request->session()->put(['lsbm'=>'page','lsbsm'=>'newPage']);
+    //     $menus = Menu::orderBy('menu_title')->get();
+    //     $mediaAll = Media::latest()->paginate(100);
+    //     return view('common.pages.newPage', [
+    //         'menus'=>$menus,
+    //         'mediaAll'=>$mediaAll
+    //     ]);
+    // }
 
-    public function newPagePost(Request $request)
+    // public function newPagePost(Request $request)
+    // {
+    //     // dd($request->all());
+    //     $validation = Validator::make($request->all(),
+    //     [
+    //         'pageTitle' => 'required|max:50|string',
+    //         'page_route' => 'required|max:50|string',
+    //         'details' => 'required|string',
+    //         // 'categoryTitleBn' => 'required|min:2|max:200',
+    //       // 'categoryImage'=> 'required|dimensions:ratio=800/350'
+    //     ]);
+    //     if($validation->fails())
+    //     {
+    //         return redirect()->route('common1.newPage')
+    //         ->withErrors($validation)
+    //         ->withInput()
+    //         ->with('error', 'Something went wrong.');
+    //     }
+
+
+
+
+
+    //     // $image = $request->file('categoryImage');
+    //     // $imageName = time().'.'.$image->getClientOriginalExtension();
+    //     // $destinationPath = public_path('/images');
+    //     // $image->move($destinationPath, $imageName);
+
+    //     // Storage::disk('upload')
+    //     // ->put('category/'.$imageName, File::get($image));
+    //     // $image_url = 'storage/category/'.$imageName;
+
+
+
+    //     $page = new Page;
+    //     $page->page_title = $request->pageTitle;
+    //     $page->title_hide = $request->titleHide ? 1 : 0;
+    //     $page->active = $request->active ? 1 : 0;
+    //     $page->page_type = $request->page_type;
+    //     $page->route_name = $request->page_route ?: null;
+    //     $page->content = $request->details ?: null;
+    //     $page->addedby_id = Auth::id();
+    //     $page->save();
+
+    //     if(isset($request->menus))
+    //     {
+    //         foreach($request->menus as $menu)
+    //         {
+    //             $c = MenuPage::where('menu_id',$menu)
+    //             ->where('page_id',$page->id)
+    //             ->first();
+    //             if(!$c)
+    //             {
+    //                $c = new MenuPage;
+    //                $c->menu_id = $menu;
+    //                $c->page_id = $page->id;
+    //                $c->addedby_id = Auth::id();
+    //                $c->save();
+    //             }
+    //         }
+    //     }
+
+    //     Cache::flush();
+
+
+    //     return back()->with('success', 'New Page Created Successfully!');
+    // }
+
+    // public function allPages()
+    // {
+    // 	$request = request();
+    // 	$request->session()->forget(['lsbm','lsbsm']);
+    //     $request->session()->put(['lsbm'=>'page','lsbsm'=>'allPages']);
+    //     $pages = Page::orderby('id','desc')->get();
+
+    //     return view('common.pages.allPages',['pages'=>$pages]);
+    // }
+
+
+    // public function editPage($page, Request $request){
+    //     $page = Page::where('id', $page)->first();
+    //     $menus = Menu::orderBy('menu_title')->get();
+    //     $mediaAll = Media::latest()->paginate(100);
+
+    //     return view('common.pages.editPage',[
+    //         'page'=>$page,
+    //         'menus'=>$menus,
+    //         'mediaAll'=>$mediaAll
+    //     ]);
+    // }
+
+    // public function editPagePost(Page $page, Request $request){
+
+
+    //     $validation = Validator::make($request->all(),
+    //     [
+    //         'page_title' => 'required|max:50|string',
+    //         'route_name' => 'required|max:50|string',
+    //         'content' => 'required|string',
+    //     ]);
+    //     if($validation->fails())
+    //     {
+    //         return redirect()->route('common1.editPage',['page'=>$page])
+    //         ->withErrors($validation)
+    //         ->withInput()
+    //         ->with('error', 'Something went wrong.');
+    //     }
+
+    //     $page->menus()->detach();
+    //     if(isset($request->menus))
+    //     {
+    //         foreach($request->menus as $menu)
+    //         {
+    //             $c = MenuPage::where('menu_id',$menu)->where('page_id',$page->id)->first();
+    //             if(!$c)
+    //             {
+    //                $c = new MenuPage;
+    //                $c->menu_id = $menu;
+    //                $c->page_id = $page->id;
+    //                $c->addedby_id = Auth::id();
+    //                $c->save();
+    //             }
+    //         }
+    //     }
+
+    //     $page->page_title = $request->page_title;
+    //     $page->title_hide = $request->titleHide ? 1 : 0;
+    //     $page->route_name = $request->route_name ?: null;
+    //     $page->content = $request->content ?: null;
+    //     $page->page_type = $request->page_type;
+    //     $page->active = $request->active ? 1 : 0;
+    //     $page->editedby_id = Auth::id();
+    //     $page->save();
+
+    //     Cache::flush();
+
+    //     return redirect()
+    //     ->route('common1.editPage',['page'=>$page])
+    //     ->with('success', 'Page Successfully Edited!');
+    // }
+
+    // public function deletePage($page, Request $request)
+    // {
+    //     if(Auth::user()->isAdmin())
+    //     {
+    //         $page = Page::where('id',$page)->delete();
+    //     }
+
+    //     Cache::flush();
+
+    //     return redirect()->route('common1.allPages');
+    // }
+
+
+
+//pages
+
+
+    public function pageAddNewPost(Request $request)
     {
         // dd($request->all());
         $validation = Validator::make($request->all(),
         [
-            'pageTitle' => 'required|max:50|string',
-            'page_route' => 'required|max:50|string',
-            'details' => 'required|string',
-            // 'categoryTitleBn' => 'required|min:2|max:200',
-          // 'categoryImage'=> 'required|dimensions:ratio=800/350'
+            'page_title' => 'required|max:50|string',
+            'route_name' => 'required|max:50|string',
         ]);
         if($validation->fails())
         {
-            return redirect()->route('common1.newPage')
-            ->withErrors($validation)
+            return back()->withErrors($validation)
             ->withInput()
             ->with('error', 'Something went wrong.');
         }
 
 
-
-
-
-        // $image = $request->file('categoryImage');
-        // $imageName = time().'.'.$image->getClientOriginalExtension();
-        // $destinationPath = public_path('/images');
-        // $image->move($destinationPath, $imageName);
-
-        // Storage::disk('upload')
-        // ->put('category/'.$imageName, File::get($image));
-        // $image_url = 'storage/category/'.$imageName;
-
-
-
         $page = new Page;
-        $page->page_title = $request->pageTitle;
-        $page->title_hide = $request->titleHide ? 1 : 0;
+        $page->page_title = $request->page_title;
+        $page->title_hide = $request->title_hide ? 1 : 0;
         $page->active = $request->active ? 1 : 0;
-        $page->page_type = $request->page_type;
-        $page->route_name = $request->page_route ?: null;
-        $page->content = $request->details ?: null;
+        // $page->list_in_menu = $request->list_in_menu ? 1 : 0;
+        $page->route_name = $request->route_name ? Str::snake(strtolower($request->route_name), $delimiter = '_') : null;
         $page->addedby_id = Auth::id();
         $page->save();
 
@@ -162,55 +303,56 @@ class CommonController1 extends Controller
                 }
             }
         }
-
-        Cache::flush();
-
-
         return back()->with('success', 'New Page Created Successfully!');
     }
 
-    public function allPages()
+    public function pagesAll(Request $request)
     {
-    	$request = request();
-    	$request->session()->forget(['lsbm','lsbsm']);
-        $request->session()->put(['lsbm'=>'page','lsbsm'=>'allPages']);
-        $pages = Page::orderby('id','desc')->get();
+        $r = request();
+        $r->session()->forget(['lsbm','lsbsm']);
+        $r->session()->put(['lsbm'=>'page','lsbsm'=>'allPages']);
 
-        return view('common.pages.allPages',['pages'=>$pages]);
-    }
-
-
-    public function editPage($page, Request $request){
-        $page = Page::where('id', $page)->first();
+        $pages = Page::paginate(50);
         $menus = Menu::orderBy('menu_title')->get();
-        $mediaAll = Media::latest()->paginate(100);
-
-        return view('common.pages.editPage',[
-            'page'=>$page,
-            'menus'=>$menus,
-            'mediaAll'=>$mediaAll
+        return view('common.pages.pagesAll', [
+            'pages'=> $pages,
+            'menus'=> $menus,
         ]);
     }
 
-    public function editPagePost(Page $page, Request $request){
+    public function pageEdit(Request $request, Page $page)
+    {
+        $r = request();
+        $r->session()->forget(['lsbm','lsbsm']);
+        $r->session()->put(['lsbm'=>'page','lsbsm'=>'allPages']);
+        $menus = Menu::orderBy('menu_title')->get();
+        return view('common.pages.pageEdit', ['page'=> $page,'menus'=> $menus,]);
+    }
 
-
+    public function pageEditPost(Request $request, Page $page)
+    {
         $validation = Validator::make($request->all(),
         [
             'page_title' => 'required|max:50|string',
             'route_name' => 'required|max:50|string',
-            'content' => 'required|string',
         ]);
         if($validation->fails())
         {
-            return redirect()->route('common1.editPage',['page'=>$page])
-            ->withErrors($validation)
+            return back()->withErrors($validation)
             ->withInput()
             ->with('error', 'Something went wrong.');
         }
 
+        $page->page_title = $request->page_title;
+        $page->title_hide = $request->title_hide ? 1 : 0;
+        $page->active = $request->active ? 1 : 0;
+        // $page->list_in_menu = $request->list_in_menu ? 1 : 0;
+        $page->route_name = $request->route_name ? Str::snake(strtolower($request->route_name), $delimiter = '_'): null;
+        $page->editedby_id = Auth::id();
+        $page->save();
+
         $page->menus()->detach();
-        if(count($request->menus))
+        if(isset($request->menus))
         {
             foreach($request->menus as $menu)
             {
@@ -226,34 +368,116 @@ class CommonController1 extends Controller
             }
         }
 
-        $page->page_title = $request->page_title;
-        $page->title_hide = $request->titleHide ? 1 : 0;
-        $page->route_name = $request->route_name ?: null;
-        $page->content = $request->content ?: null;
-        $page->page_type = $request->page_type;
-        $page->active = $request->active ? 1 : 0;
-        $page->editedby_id = Auth::id();
-        $page->save();
-
-        Cache::flush();
-
-        return redirect()
-        ->route('common1.editPage',['page'=>$page])
-        ->with('success', 'Page Successfully Edited!');
+        return back()->with('success', 'Page Updated Successfully!');
     }
 
-    public function deletePage($page, Request $request)
+    public function pageDelete(Request $request, Page $page)
     {
-        if(Auth::user()->isAdmin())
+        $page->items()->delete();
+        $page->delete();
+
+        return back()->with('success', 'Page Deleted Successfully');
+    }
+
+    public function pageItems(Request $request, Page $page)
+    {
+        $mediaAll = Media::latest()->paginate(200);
+        return view('common.pages.pageItems', [
+            'page'=> $page,
+            'mediaAll' => $mediaAll
+        ]);
+    }
+
+
+    public function pageItemAddPost(Request $request, Page $page)
+    {
+        $validation = Validator::make($request->all(),
+        [
+            'title' => 'required|max:50|string',
+            'description' => 'required|max:60000|string',
+        ]);
+        if($validation->fails())
         {
-            $page = Page::where('id',$page)->delete();
+            return back()->withErrors($validation)
+            ->withInput()
+            ->with('error', 'Something went wrong.');
         }
 
-        Cache::flush();
+        $item = new PageItem;
+        $item->page_id = $page->id;
+        $item->title = $request->title ?: null;
+        $item->content = $request->description ?: null;
+        $item->editor = $request->editor ? 1 : 0;
+        $item->active = $request->active ? 1 : 0;
+        $item->addedby_id = Auth::id();
+        $item->save();
 
-        return redirect()->route('common1.allPages');
+
+        return back()->with('success', 'Page Item Created Successfully!');
     }
 
+    public function pageItemDelete(Request $request, PageItem $item)
+    {
+        $page = $item->page;
+        $item->delete();
+
+        return redirect()->route('common1.pageItems', $page)->with('success', 'Part of the Page Deleted Successfully');
+    }
+
+    public function pageItemEditEditor(Request $request, PageItem $item)
+    {
+        if($item->editor)
+        {
+            $item->editor = false;
+        }
+        else
+        {
+            $item->editor = true;
+        }
+        $item->save();
+
+        return back();
+    }
+
+    public function pageItemEdit(Request $request, PageItem $item)
+    {
+        $mediaAll = Media::latest()->paginate(200);
+        return view('common.pages.pageItemEdit', [
+            'it'=> $item,
+            'page' => $item->page,
+            'mediaAll' => $mediaAll
+        ]);
+    }
+
+    public function pageItemUpdate(Request $request, PageItem $item)
+    {
+        $validation = Validator::make($request->all(),
+        [
+            'title' => 'required|max:50|string',
+            'description' => 'required|max:60000|string',
+        ]);
+        if($validation->fails())
+        {
+            return back()->withErrors($validation)
+            ->withInput()
+            ->with('error', 'Something went wrong.');
+        }
+
+        $item->title = $request->title ?: null;
+        $item->content = $request->description ?: null;
+        $item->editor = $request->editor ? 1 : 0;
+        $item->active = $request->active ? 1 : 0;
+
+        $item->editedby_id = Auth::id();
+
+        $item->save();
+
+
+        return back()->with('success', 'Page Item Updated Successfully!');
+    }
+
+
+//pages
 
     //page end
 
@@ -435,7 +659,7 @@ class CommonController1 extends Controller
         $validation = Validator::make($request->all(),
         [
           'title'=> 'max:255',
-          'description'=>'max:255',
+        //   'description'=>'max:255',
           // 'date'=>'required'
         ]);
         if($validation->fails())
@@ -506,7 +730,7 @@ class CommonController1 extends Controller
         $validation = Validator::make($request->all(),
         [
           'title'=> 'max:255',
-          'description'=>'max:255',
+        //   'description'=>'max:255',
         ]);
         if($validation->fails())
         {
@@ -651,7 +875,79 @@ class CommonController1 extends Controller
 
 
     //video gallery //vdo gallery
+    
+    //image gallery
+    public function imageGalleriesAll(Request $request)
+    {
+        $request->session()->forget(['lsbm','lsbsm']);
+        $request->session()->put(['lsbm'=>'imageGallery','lsbsm'=>'imageGalleriesAll']);
+
+        $galleries = Gallery::latest()->paginate(100);
+
+        return view('common.gallery.imageGalleriesAll', ['galleries'=>$galleries]);
+    }
+
+    public function galleryImageAddNew(Request $request)
+    {
+        $validation = Validator::make($request->all(),
+        [
+            'images'=> 'required',
+            'title'=> 'string|max:200',
+        ]);
+    if($validation->fails())
+    {
+        return back()
+        ->withErrors($validation)
+        ->withInput()
+        ->with('error', 'Please, Try again');
+    }
+
+    $extensions = collect(['png','jpg','jpeg', 'bmp']);
+    if($request->hasFile('images'))
+    {
+        foreach($request->file('images') as $t)
+        {
+            if(!$extensions->contains(strtolower($t->getClientOriginalExtension())))
+            {
+                return back()->with('error', 'Please, Upload png or jpg files.');
+            }                    
+        }
+        foreach($request->file('images') as $file)
+        {
+            // $originalName = $file->getClientOriginalName();
+            $ext = strtolower($file->getClientOriginalExtension());
+            $fileNewName = Str::random(8).time().'.'.$ext;
+            $mime = $file->getClientMimeType();
+
+            Storage::disk('upload')
+            ->put('gallery/'.$fileNewName, File::get($file));
+
+            $gallery = new Gallery;
+            $gallery->image_title = $request->image_title;
+            $gallery->image_name = $fileNewName;
+            $gallery->addedby_id = Auth::id();
+            $gallery->save();
+
+            Cache::flush();
+        }
+
+        return back()->with('success','Gallery Images Successfully Uploaded.');
+    }
+    }
 
 
+    public function galleryImageDelete(Gallery $gallery, Request $request)
+    {
+        if($gallery)
+        {
+            Storage::disk('upload')->delete('gallery/'.$gallery->image_name);
+            $gallery->delete();
+        }
+        return back()->with('success', 'Gallery image successfully deleted.');
+        
+    }
+
+
+    //image gallery
 
 }

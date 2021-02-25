@@ -23,6 +23,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->string('password_temp')->nullable();
             $table->boolean('active')->default(1);
+            $table->boolean('profile')->nullable()->default(0);
             $table->char('gender', 10)->nullable(); //male female other
 
             $table->string('country')->nullable();

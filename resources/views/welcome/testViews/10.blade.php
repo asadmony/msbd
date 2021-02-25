@@ -84,11 +84,103 @@
         <div class="profile-content">
             <div class="container" style="min-height: 500px;">
 
-                <br>
-            <h1>My Home Page</h1>
- 
-
-            </div>
+            <br>
+            <style>
+                .featured-box-primary{
+                    background: #FFF;
+                    box-sizing: border-box;
+                    border-bottom: 1px solid #DFDFDF;
+                    border-left: 1px solid #ECECEC;
+                    border-radius: 8px;
+                    border-right: 1px solid #ECECEC;
+                    box-shadow: 0 2px 4px 0px rgb(0 0 0 / 5%);
+                    margin-bottom: 20px;
+                    margin-left: auto;
+                    margin-right: auto;
+                    margin-top: 20px;
+                    min-height: 100px;
+                    position: relative;
+                    text-align: center;
+                    z-index: 1;
+                }
+            </style>
+            {{-- test --}}
+            <div class="col-md-6">
+                        <div class="w3-card w3-round" style="margin-bottom:20px; min-height: 593px;">
+                            <div class="card-body p-lg-2">
+                                <div class="row">
+                                    <div class="col-md-6 col-6 pr-0">
+                                        <div class="card w3-round mb-3 mt-0" style="background: #673003;">
+                                            <div class="card-body">
+                                                <div class="w3-text-medium w3-center">
+                                                    <p style="color: gold; font-weight: bold;">ASAD GATE<br>
+                                                        <span style="color: white;">01720504504 </span> <br>
+                                                        <span style="color: white;">01633036062</span>
+                                                    </p>
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-6">
+                                        <div class="card w3-round mb-3 mt-0" style="background: #673003; min-height: 92%;">
+                                            <div class="card-body">
+                                                <div class="w3-text-medium w3-center">
+                                                    <p style="color: gold; font-weight: bold;">GULSHAN<br>
+                                                        <span style="color: white;">01777118606 </span> <br>
+                                                        <span style="color: white;">01907550361</span>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6 col-6">
+                                        <div class="card w3-round mb-3" style="background: #673003;">
+                                            <div class="card-body">
+                                                <div class="w3-text-medium w3-center" >
+                                                    <p style="color: gold; font-weight: bold;">UTTARA<br>
+                                                        <span style="color: white;">01705761333 </span> <br>
+                                                        <span style="color: white;">01776687989</span>
+                                                    </p>
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-6">
+                                        <div class="card w3-round mb-0" style="background: #673003;">
+                                            <div class="card-body">
+                                                <div class="w3-text-medium w3-center">
+                                                    <p style="color: gold; font-weight: bold;">KAKRAIL<br>
+                                                        <span style="color: white;">01780414897 </span> <br>
+                                                        <span style="color: white;">01319378112</span>
+                                                    </p>
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6 col-6">
+                                        <div class="card w3-round mb-0" style="background: #673003;">
+                                            <div class="card-body">
+                                                <div class="w3-text-medium w3-center">
+                                                    <p style="color: gold; font-weight: bold;">CHATTOGRAM<br>
+                                                        <span style="color: white;">01617014140 </span> <br>
+                                                        <span style="color: white;">01617013455</span>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            {{-- ./test --}}
         </div>
     </div>
     

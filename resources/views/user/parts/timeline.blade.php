@@ -7,7 +7,7 @@
             <div class="row">
                 <div class="col-sm-3">
 
-@if (Browser::isDesktop())
+@if (Browser::isDesktop() && auth()->user()->profile == true)
 @include('user.includes.others.myLeftMenu')
 @endif
 
@@ -44,11 +44,11 @@
 
     <div class="row">
     <div class="col-sm-9">
-            @include('user.includes.cards.userProgressCard')
-            @include('user.includes.timeline.newProfiles')
-            @include('user.includes.timeline.myVisitors')
-            @include('user.includes.timeline.myMatch')
-            @include('user.includes.timeline.myFavourites')
+      @include('user.includes.cards.userProgressCard')
+      @include('user.includes.timeline.newProfiles')
+      @include('user.includes.timeline.myVisitors')
+      @include('user.includes.timeline.myMatch')
+      @include('user.includes.timeline.myFavourites')
     </div>
     <div class="col-sm-3">
 

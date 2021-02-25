@@ -17,9 +17,11 @@ class CreateUserFamilyInfosTable extends Migration
             $table->increments('id');
             $table->integer('user_id')->unsigned();
             $table->string('father_name')->nullable();#ok
+            $table->string('father_education')->nullable();#ok
             $table->string('father_occupation')->nullable();#ok
             $table->string('mother_name')->nullable();#ok
             $table->string('mother_occupation')->nullable();#ok
+            $table->string('family_class')->nullable();#ok
             $table->string('number_of_brother')->nullable();#ok
             $table->string('how_many_brother_married')->nullable();#ok
             $table->string('number_of_sister')->nullable();#ok

@@ -10,4 +10,8 @@ class Page extends Model
 	{
 		return $this->belongsToMany('App\Model\Menu', 'menu_pages', 'page_id', 'menu_id');
 	}
+    public function items()
+    {
+        return $this->hasMany('App\Model\PageItem', 'page_id');
+    }
 }

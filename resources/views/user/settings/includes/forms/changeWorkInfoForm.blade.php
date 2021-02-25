@@ -1,13 +1,16 @@
+<div class="output-edu-work">
+    @includeIf('user.settings.ajax.view.outputWorkRecord')
+</div>
 <form method="post" class="form-user-setting" action="{{route('user.settingWorkInfoPost')}}">
     {{csrf_field()}}
 
-    <div class="row">
+    <div class="row w3-border w3-border-purple w3-round">
     <div class="col-sm-6">
 
 
         <div class="form-group {{ $errors->has('companyName') ? ' has-danger' : '' }}">
     <label for="companyName">Company Name *</label>
-    <input  
+    <input 
     type="text" 
     id="companyName" 
     class="form-control w3-border w3-border-light-gray" 
@@ -123,6 +126,7 @@
     <br>
 
     <div class="">
+        <button class="btn btn-default border mr-2" type="reset">Reset</button>
         <button type="submit" class="btn btn-primary">Submit</button>
     </div>
 

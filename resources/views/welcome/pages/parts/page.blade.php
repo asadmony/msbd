@@ -1,4 +1,3 @@
-
 <div class="main main-raiseds " style="z-index: 400;">
     <div class="section section-basic" style="min-height: 900px;">
 
@@ -7,7 +6,7 @@
             <div class="row">
                 <div class="col-sm-3">
 
-                    @if (Browser::isDesktop())
+                    @if (Browser::isDesktop()  && auth()->user()->profile == true)
 
                     @auth
                     @include('user.includes.others.myLeftMenu')
@@ -25,11 +24,11 @@
 
                     <div align="center">
 
-</div>
+                    </div>
 
-                  
 
-@include('welcome.pages.includes.pagePart')
+
+                    @include('welcome.pages.includes.pagePart')
 
 
 
@@ -38,11 +37,11 @@
                     @include('welcome.includes.others.hotLineImage')
                     @include('welcome.includes.others.ourWebsiteVisitors')
                     <div class="w3-card-2">
-                    <div class="box box-widget">         
-                    <div class="box-body">
-                    @include('welcome.includes.others.fbPageArea')
-                    </div>
-                    </div>
+                        <div class="box box-widget">
+                            <div class="box-body">
+                                @include('welcome.includes.others.fbPageArea')
+                            </div>
+                        </div>
                     </div>
                     @endif
 

@@ -20,15 +20,43 @@ Route::get('/', [
     'uses' =>'WelcomeController@welcome',
     'as' => 'welcome.welcome'
 ]);
+Route::get('/incomplete-profile', [
+    'uses' =>'WelcomeController@incompleteProfile',
+    'as' => 'user.incompleteProfile'
+]);
+// Route::post('/incomplete-profile', [
+//     'uses' =>'WelcomeController@createProfile',
+//     'as' => 'user.createProfile'
+// ]);
+Route::post('/incomplete-profile', [
+    'uses' =>'WelcomeController@createProfilePost',
+    'as' => 'user.createProfilePost'
+]);
+
+Route::get('login/{provider}', 
+    'Auth\LoginController@redirectToProvider')->name('socialLogin');
+
+Route::get('login/{provider}/callback',
+    'Auth\LoginController@handleProviderCallback');
 
 Route::get('/home2', [
     'uses' =>'WelcomeController@welcome2',
     'as' => 'welcome.welcome2'
 ]);
 
+Route::post('/contact/information',[
+    'uses' => 'WelcomeController@contactAdmin',
+    'as' => 'welcome.contactAdmin',
+]);
+
 Route::get('/our-branches', [
     'uses' =>'WelcomeController@ourBranches',
     'as' => 'welcome.ourBranches'
+]);
+
+Route::get('/our-success-stories', [
+    'uses' =>'WelcomeController@successStories',
+    'as' => 'welcome.successStories'
 ]);
 
 
@@ -72,14 +100,14 @@ Route::get('password/reset/{token}', [
 ]);
 
 
-// Route::get('register', [
-//     'uses' =>'Auth\RegisterController@showRegistrationForm',
-//     'as' => 'register'
-// ]);
+Route::get('register', [
+    'uses' =>'Auth\RegisterController@showRegistrationForm',
+    'as' => 'register'
+]);
 
-// Route::post('register', [
-//     'uses' =>'Auth\RegisterController@register',
-// ]);
+Route::post('register', [
+    'uses' =>'Auth\RegisterController@register',
+]);
 
 
 Route::any('signup', [
@@ -116,6 +144,12 @@ Route::get('/{username}', [
 ])->middleware('auth');
 
 //gallery //vdo gallery
+//
+Route::get('photo/gallery', [
+    'uses' =>'WelcomeController@photoGallery',
+    'as' => 'welcome.photoGallery'
+]);
+
 Route::get('image/gallery/{gallery}', [
 'uses' =>'WelcomeController@gallery',
 'as' => 'welcome.gallery'
@@ -372,7 +406,7 @@ Route::group(['middleware' => ['auth','role:admin'] ,'prefix' => 'admin'], funct
 
 
 #common start //common
-Route::group(['middleware' => ['auth','role:common'] ,'prefix' => 'authority'], function () {
+Route::group(['middleware' => ['auth','role:common','profile.check'] ,'prefix' => 'authority'], function () {
 
     Route::get('dashboard', [
     'uses' =>'CommonController1@dashboard',
@@ -402,38 +436,98 @@ Route::group(['middleware' => ['auth','role:common'] ,'prefix' => 'authority'], 
     'as' => 'common1.menuDelete'
     ]);
 
-    Route::get('new/page', [
-    'uses' =>'CommonController1@newPage',
-    'as' => 'common1.newPage'
-    ]);
+    // Route::get('new/page', [
+    // 'uses' =>'CommonController1@newPage',
+    // 'as' => 'common1.newPage'
+    // ]);
 
-    Route::post('new/page/post', [
-    'uses' =>'CommonController1@newPagePost',
-    'as' => 'common1.newPagePost'
-    ]);
+    // Route::post('new/page/post', [
+    // 'uses' =>'CommonController1@newPagePost',
+    // 'as' => 'common1.newPagePost'
+    // ]);
 
-    Route::get('all/pages', [
-    'uses' =>'CommonController1@allPages',
+    // Route::get('all/pages', [
+    // 'uses' =>'CommonController1@allPages',
+    // 'as' => 'common1.allPages'
+    // ]);
+
+
+    // Route::get('edit/page/{page}', [
+    // 'uses' =>'CommonController1@editPage',
+    // 'as' => 'common1.editPage'
+    // ]);
+
+    // Route::post('edit/page/post/{page}', [
+    // 'uses' =>'CommonController1@editPagePost',
+    // 'as' => 'common1.editPagePost'
+    // ]);
+
+    // Route::any('delete/page/{page}', [
+    // 'uses' =>'CommonController1@deletePage',
+    // 'as' => 'common1.deletePage'
+    // ]);
+
+
+    //pages
+    Route::get('/pages/all', [
+    'uses' =>'CommonController1@pagesAll',
     'as' => 'common1.allPages'
     ]);
 
-
-    Route::get('edit/page/{page}', [
-    'uses' =>'CommonController1@editPage',
-    'as' => 'common1.editPage'
+    Route::post('/page/add/new/post', [
+    'uses' =>'CommonController1@pageAddNewPost',
+    'as' => 'common1.pageAddNewPost'
     ]);
 
-    Route::post('edit/page/post/{page}', [
-    'uses' =>'CommonController1@editPagePost',
-    'as' => 'common1.editPagePost'
+    Route::get('page/edit/{page}', [
+    'uses' =>'CommonController1@pageEdit',
+    'as' => 'common1.pageEdit'
     ]);
 
-    Route::any('delete/page/{page}', [
-    'uses' =>'CommonController1@deletePage',
-    'as' => 'common1.deletePage'
+    Route::post('page/edit/post/{page}', [
+    'uses' =>'CommonController1@pageEditPost',
+    'as' => 'common1.pageEditPost'
+    ]);
+
+    Route::get('page/delete/{page}', [
+    'uses' =>'CommonController1@pageDelete',
+    'as' => 'common1.pageDelete'
+    ]);
+
+    Route::get('page/items/{page}', [
+    'uses' =>'CommonController1@pageItems',
+    'as' => 'common1.pageItems'
     ]);
 
 
+    Route::post('page-item/add/post/{page}', [
+    'uses' =>'CommonController1@pageItemAddPost',
+    'as' => 'common1.pageItemAddPost'
+    ]);
+
+    Route::get('page-item/delete/{item}', [
+    'uses' =>'CommonController1@pageItemDelete',
+    'as' => 'common1.pageItemDelete'
+    ]);
+
+
+    Route::get('page-item/edit/{item}', [
+    'uses' =>'CommonController1@pageItemEdit',
+    'as' => 'common1.pageItemEdit'
+    ]);
+
+    Route::post('page-item/update/post/{item}', [
+    'uses' =>'CommonController1@pageItemUpdate',
+    'as' => 'common1.pageItemUpdate'
+    ]);
+
+    Route::get('page-item/edit-editor/{item}', [
+    'uses' =>'CommonController1@pageItemEditEditor',
+    'as' => 'common1.pageItemEditEditor'
+    ]);
+
+
+    //pages
 
     //page
 
@@ -453,6 +547,26 @@ Route::group(['middleware' => ['auth','role:common'] ,'prefix' => 'authority'], 
     'as' => 'common1.mediaDelete'
     ]);
     //media
+    //
+    //
+    
+
+     //image gallery
+    Route::get('image/galleries/all', [
+    'uses' =>'CommonController1@imageGalleriesAll',
+    'as' => 'common1.imageGalleriesAll'
+    ]);
+
+    Route::post('gallery/image/add/new', [
+    'uses' =>'CommonController1@galleryImageAddNew',
+    'as' => 'common1.galleryImageAddNew'
+    ]);
+
+    Route::get('gallery/image/delete/{gallery}', [
+    'uses' =>'CommonController1@galleryImageDelete',
+    'as' => 'common1.galleryImageDelete'
+    ]);
+    //image gallery
 
 
     //img gallery //image gallery
@@ -562,6 +676,27 @@ Route::group(['middleware' => ['auth','role:common'] ,'prefix' => 'authority'], 
     Route::get('users/group/{type}', [
     'uses' =>'CommonController2@usersGroup',
     'as' => 'common2.usersGroup'
+    ]);
+
+    //mobile & email number for 3rd party sale
+    Route::get('mobile/numbers/all', [
+        'uses' =>'CommonController2@mobileNumbersAll',
+        'as' => 'admin.mobileNumbersAll'
+    ]);
+    
+    Route::get('email/numbers/all', [
+        'uses' =>'CommonController2@emailNumbersAll',
+        'as' => 'admin.emailNumbersAll'
+    ]);
+
+    Route::get('email/mobile/numbers/all', [
+        'uses' =>'CommonController2@emailsAndNumbersAll',
+        'as' => 'admin.emailsAndNumbersAll'
+    ]);
+
+    Route::get('user/registration-info/all', [
+        'uses' =>'CommonController2@registerInfoAll',
+        'as' => 'admin.registerInfoAll'
     ]);
 
 

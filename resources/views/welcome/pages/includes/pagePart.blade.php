@@ -22,7 +22,7 @@
                 @endif
 
                 <div class="page-content" style="min-height: 500px;">
-                    {!! $page->content !!}
+                    @include('common.pages.parts.pageBody')
                 </div>
             </div>
 

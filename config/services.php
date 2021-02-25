@@ -29,5 +29,17 @@ return [
         'secret' => env('AWS_SECRET_ACCESS_KEY'),
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
-
+    'facebook' => [
+        'client_id' => '832762797572685',
+        'client_secret' => '7b8211c466b3d988870efc0c265e7510',
+        // 'redirect' => 'https://www.impress.express/login/facebook/callback',
+        // 'client_id' => socialLogin()->fb_app_id,
+        // 'client_secret' => socialLogin()->fb_app_secret,
+        'redirect' => env('FACEBOOK_REDIRECT_URI'),
+    ],
+    'google' => [
+        // 'client_id' => socialLogin()->google_client_id,
+        // 'client_secret' => socialLogin()->google_client_secret,
+        'redirect' => env('GOOGLE_CALLBACK_URL'),
+    ],
 ];

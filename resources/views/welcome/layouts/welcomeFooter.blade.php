@@ -7,14 +7,6 @@
                             alt="{{env('APP_NAME_BIG')}}"></p>
                 </div>
                 <div class="py-1">
-                    <i class="fab fa-whatsapp text-4 p-relative text-white"></i>
-                    <a class="text-white pl-2" href="tel: 01720504504"> 01720504504</a>
-                </div>
-                <div class="py-1">
-                    <i class="far fa-envelope text-4 p-relative text-white"></i>
-                    <a class="text-white pl-2" href="mailto:marriagebd2012@gmail.com">marriagebd2012@gmail.com</a>
-                </div>
-                <div class="py-1">
                     {{-- <i class="fas fa-map-marker-alt text-4 p-relative text-white"></i> --}}
                     <span class="text-4 p-relative text-white">
                         {!! $websiteParameter->footer_address !!}
