@@ -331,10 +331,296 @@ class="dropdown-item"><i class="fa fa-phone fa-rotate-90 mr-2"></i>
 					<div class=" ">
                     <div class=" featured-box featured-box-primary text-left mt-0">
                     <div class="box-content text-center">
-                        <h4 class="color-primary font-weight-semibold text-4 text-uppercase mb-3">Marriage Solution
+                        {{-- <h4 class="color-primary font-weight-semibold text-4 text-uppercase mb-3">Marriage Solution
                             BD</h4>
-                        <hr>
-                        <form action="/" id="frmSignUp" method="post" class="pb-3 needs-validation">
+                        <hr> --}}
+
+                        <ul class="nav nav-tabs " id="myTab" role="tablist">
+                            <li class="nav-item ">
+                              <a class="nav-link w3-text-grey  active" id="home-tab" data-toggle="tab" href="#login" role="tab" aria-controls="home" aria-selected="true">Login</a>
+                            </li>
+                            <li class="nav-item">
+                              <a class="nav-link w3-text-grey " id="profile-tab" data-toggle="tab" href="#register" role="tab" aria-controls="profile" aria-selected="false">Register</a>
+                            </li>
+                          </ul>
+                          <div class="tab-content" id="myTabContent">
+                            <div class="tab-pane fade show active" id="login" role="tabpanel" aria-labelledby="home-tab">
+                                <form action="{{ route('login') }}" method="post" class="signin-form">
+                                    @csrf
+                                    <div class="form-input- input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="basic-addon1"><span class="fa fa-envelope" aria-hidden="true"></span>
+                                        </div>
+                                        <input class="form-control" id="email" type="email" name="email"
+                                            class="{{ $errors->has('email') ? ' is-invalid' : '' }}"
+                                            placeholder="{{ __('E-Mail Address') }}" value="{{ old('email') }}" required autofocus />
+                                    </div>
+                                    @if ($errors->has('email'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong class="w3-text-red">{{ $errors->first('email') }}</strong>
+                                    </span>
+                                    @endif
+                                    <div class="form-input input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="basic-addon1"><span class="fa fa-key" aria-hidden="true"></span>
+                                        </div>
+                                        <input class="form-control" id="password" type="password" name="password"
+                                            class="{{ $errors->has('password') ? ' is-invalid' : '' }}"
+                                            placeholder="{{ __('Password') }}" required />
+                                    </div>
+                                    @if ($errors->has('password'))
+                                    <span class="invalid-feedback w3-text-red" role="alert">
+                                        <strong class="w3-text-red">{{ $errors->first('password') }}</strong>
+                                    </span>
+                                    @endif
+                                    <input type="hidden" name="remember" value="on">
+                                    <div class="login-remember d-grid">
+                                        {{-- <label class="check-remaind">
+                                            <input class="form-check-input" type="checkbox" name="remember" id="remember"
+                                                {{ old('remember') ? 'checked' : '' }}>
+                                            <span class="checkmark"></span>
+                                            <p class="remember">Remember me</p>
+                                        </label> --}}
+                                        
+                                        <button class="btn btn-default border" type="reset">Reset</button>
+                                        <button class="btn btn-primary theme-button">{{ __('Login') }}</button>
+                                    </div>
+                                    <div class="new-signup">
+                                        <a href="{{ route('password.request') }}"
+                                            class="signuplink">
+                                            {{ __('Forgot Your Password?') }}
+                                        </a>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="tab-pane fade" id="register" role="tabpanel" aria-labelledby="profile-tab">
+                                <form method="POST" action="{{ route('register') }}">
+                                    @csrf
+                                    <div class="form-group row mt-3">
+                                        {{-- <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label> --}}
+                                        <div class="col-md-12">
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text" id="basic-addon1"><span class="fa fa-user" aria-hidden="true"></span>
+                                            </div>
+                                            <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" placeholder="Full Name" autofocus>
+                
+                                            @error('name')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                        
+                                    </div>
+                                    
+                                    <div class="form-group row">
+                                        <div class="input-group col-md-12">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text" id="basic-addon1"><i class="fa fa-graduation-cap"></i>
+                                            </div>
+                                            <select name="education_level" id="education_level" class="form-control">
+                                            <option >Select Education</option>
+                                            @foreach ($userSettingFields[8]->values as $value)
+                                            <option>{{ $value->title }}</option>
+                                            @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+                
+                                    <div class="form-group row">
+                                        <div class="col-md-6  mb-3 mb-md-0">
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text" id="basic-addon1"><i class="fa fa-briefcase"></i>
+                                                </div>
+                                                <select name="profession" id="profession" class="form-control">
+                                                <option >Select Occupation</option>
+                                                @foreach ($userSettingFields[9]->values as $value)
+                                                    <option>{{ $value->title }}</option>
+                                                @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text" id="basic-addon1">
+                                                        {{-- &#2547; --}}
+                                                        <i class="far fa-money-bill-alt"></i>
+                                                </div>
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text bg-white" id="basic-addon1">
+                                                        &#2547;
+                                                        {{-- <i class="fa fa-money"></i> --}}
+                                                </div>
+                                                <input type="number" step="0.5" min="50000" name="monthly_income" id="monthly_income" class="form-control" placeholder="Monthly Income (min. 50000)" required>
+                                                <span  style="display: none;">Tips: Income should be more than &#2547;50000 </span>
+                                            </div>
+                                            <small id="monthly_income_tips" style="display: none;">Tips: Income should be more than &#2547;50000</small>
+                                        </div>
+                                    </div>
+                
+                                    <div class="form-group row">
+                                        <div class="input-group col-md-6 mb-3 mb-md-0">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text" id="basic-addon1"><i class="fa fa-users"></i>
+                                            </div>
+                                            <input type="text" name="father_name" class="form-control" placeholder="Father's Name">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="input-group ">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text" id="basic-addon1"><i class="fa fa-users"></i>
+                                                </div>
+                                                <input type="text" class="form-control" name="father_education" placeholder="Father's Education Background">
+                                            </div>
+                
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <div class="input-group col-md-6 mb-3 mb-md-0">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text" id="basic-addon1"><i class="fa fa-users"></i>
+                                            </div>
+                                            <select class="form-control" name="father_occupation" id="father_occupation">
+                                                <option selected disabled>Select Father's Occupation</option>
+                                                @foreach ($userSettingFields[11]->values as $value)
+                                                    <option>{{ $value->title }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text" id="basic-addon1"><i class="fa fa-edit "></i>
+                                                </div>
+                                                <select name="family_type" id="" class="form-control">
+                                                <option selected disabled>Select Family Class</option>
+                                                @foreach ($userSettingFields[13]->values as $value)
+                                                    <option>{{ $value->title }}</option>
+                                                @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                
+                                    <div class="form-group row">
+                                        <div class="input-group col-md-6  p-0 ">
+                                            <div class="form-group label-floating {{ $errors->has('gender') ? ' has-error' : '' }}">
+                                                <div class="input-group">
+                                                    <div class="col-md-7"><label class="control-label">Gender <small>(Required)</small> </label>
+                                                    </div>
+                                                    <div class="col-md-5 p-0">
+                                                        <select required class="form-control" style="min-width: 130px;"  id="gender" name="gender">
+                                                                    
+                                                            @if(old('gender'))
+                                                            <option selected>{{old('gender')}}</option>
+                                                            @else 
+                                                            <option value="" selected disabled>Select Gender</option>
+                                                            @endif
+                                                            {{-- id:1, title:gender --}}
+                                                            @foreach ($userSettingFields[0]->values as $value)
+                                                              <option>{{ $value->title }}</option>
+                                                            @endforeach
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                @if ($errors->has('gender'))
+                                                    <span class="text-red">
+                                                        <strong>{{ $errors->first('gender') }}</strong>
+                                                    </span>
+                                                    @else
+                                                    {{-- <span class="text-red">Country is required</span> --}}
+                                                    @endif
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text" id="basic-addon1"><i class="fa fa-birthday-cake"></i>
+                                                </div>
+                                                <input type="date" name="birth_date" class="form-control" placeholder="Birthdate">
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                
+                                    
+                                    <div class="form-group row">
+                                        {{-- <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label> --}}
+                                        
+                                        <div class="input-group col-md-12">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text" id="basic-addon1"><span class="fa fa-envelope" aria-hidden="true"></span>
+                                            </div>
+                                            <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" placeholder="E-mail Address" required autocomplete="email">
+                
+                                            @error('email')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>
+                                    </div>
+                
+                                    <div class="form-group row">
+                                        {{-- <label for="mobile" class="col-md-4 col-form-label text-md-right">{{ __('Mobile') }}</label> --}}
+                                        <div class="input-group col-md-12">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text" id="basic-addon1"><span class="fa fa-phone" aria-hidden="true"></span>
+                                            </div>
+                                            <input id="text" type="mobile" class="form-control @error('mobile') is-invalid @enderror" name="mobile" value="{{ old('mobile') }}" required placeholder="Mobile number" autocomplete="mobile">
+                
+                                            @error('mobile')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        {{-- <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label> --}}
+                
+                                        <div class="input-group col-md-12">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text" id="basic-addon1"><span class="fa fa-key" aria-hidden="true"></span>
+                                            </div>
+                                            <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" placeholder="Password" name="password" required autocomplete="new-password">
+                
+                                            @error('password')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>
+                                    </div>
+                
+                                    <div class="form-group row">
+                                        {{-- <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label> --}}
+                
+                                        <div class="input-group col-md-12">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text" id="basic-addon1"><span class="fa fa-lock" aria-hidden="true"></span>
+                                            </div>
+                                            <input id="password-confirm" type="password" class="form-control" placeholder="Confirm Password" name="password_confirmation" required autocomplete="new-password">
+                                        </div>
+                                    </div>
+                
+                                    <div class="form-group row mb-0">
+                                        <div class="input-group col-md-12 offset-md-4">
+                                            <button class="btn btn-default border mr-2" type="reset">Reset</button>
+                                            <button type="submit" class="btn btn-primary">
+                                                {{ __('Register') }}
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                          </div>
+
+                        {{-- <form action="/" id="frmSignUp" method="post" class="pb-3 needs-validation">
                             <div class="form-row">
                                 <div class="form-group col-lg-6">
                                     <input type="text" value="" data-msg-required="Please enter your name."
@@ -349,7 +635,7 @@ class="dropdown-item"><i class="fa fa-phone fa-rotate-90 mr-2"></i>
                             </div>
                             <div class="form-row">
                                 <div class="form-group col">
-                                    {{-- <label class="font-weight-bold text-dark text-2">Country</label> --}}
+                                    <label class="font-weight-bold text-dark text-2">Country</label>
                                     <select class="form-control">
                                         <option value="" selected disabled>Seeking Alliance for</option>
                                         <option value="">Self</option>
@@ -362,7 +648,7 @@ class="dropdown-item"><i class="fa fa-phone fa-rotate-90 mr-2"></i>
                             </div>
                             <div class="form-row">
                                 <div class="form-group col">
-                                    {{-- <label class="font-weight-bold text-dark text-2">E-mail Address</label> --}}
+                                    <label class="font-weight-bold text-dark text-2">E-mail Address</label>
                                     <input type="text" value="" placeholder="email address"
                                         class="form-control form-control-lg" required>
                                 </div>
@@ -382,12 +668,11 @@ class="dropdown-item"><i class="fa fa-phone fa-rotate-90 mr-2"></i>
                                 <button class="btn btn-default btn-lg" type="reset">Reset</button>
                                 <button class="btn btn-primary btn-lg" type="submit">Submit</button>
                             </div>
-                        </form>
+                        </form> --}}
                     </div>
                 </div>
             </div>
         </div>
-
     </div>
 </div>
 </div>
@@ -475,7 +760,6 @@ class="dropdown-item"><i class="fa fa-phone fa-rotate-90 mr-2"></i>
                                 </div> 
                             </div>
                         </div>
-                        
                     </div>
                 </div>
             </div>

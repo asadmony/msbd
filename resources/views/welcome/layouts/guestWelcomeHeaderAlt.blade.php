@@ -1,3 +1,17 @@
+@push('css')
+    <style>
+        /* #mainNav > li  :hover{
+            transform: skew(-20deg);
+            border-radius: 0;
+        }
+        #mainNav > li > a :hover{
+            transform: skew(0deg) !important;
+        }
+        #mainNav > li > ul :hover{
+            transform: skew(0deg);
+        } */
+    </style>
+@endpush
 <div id="intro" class="">
     <header id="header" class="header-narrow header-below-slider"
         data-plugin-options="{'stickyEnabled': true, 'stickyEnableOnBoxed': true, 'stickyEnableOnMobile': true, 'stickyStartAtElement': '#header', 'stickySetTop': '0', 'stickyChangeLogo': false}">
@@ -169,12 +183,12 @@
 
 
 
-                                            <li class="dropdown">
+                                            <li class="dropdown d-md-none">
                                                 <a class="dropdown-item" href="{{ route('login') }}">
                                                     Login
                                                 </a>
                                             </li>
-                                            <li class="dropdown">
+                                            <li class="dropdown d-md-none">
                                                 <a class="dropdown-item" href="{{ route('register') }}">
                                                     Register
                                                 </a>
