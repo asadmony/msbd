@@ -526,7 +526,7 @@ class="dropdown-item"><i class="fa fa-phone fa-rotate-90 mr-2"></i>
                     <div class="col-md-2 div col-sm-3 col-xs-6 col-6 border" style="background-color: #673003; margin: auto; height: 100px; color: white;" >
                         <div class="w3-text-medium pt-2">
                             <span style="color: gold; font-weight: bold;"> UTTARA</span> <br>
-                            01705761333 <br>
+                            01791266153 <br>
                             01776687989
                         </div>
                     </div>

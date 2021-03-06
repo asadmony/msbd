@@ -881,7 +881,7 @@ public function changeUsername(Request $request)
             'new_username'=> 'required|string|min:4|confirmed|unique:users,username,'.Auth::id(),
             'password'=> 'required|string|min:6'
         ]);
-
+    
     if($validation->fails())
     {
         if($request->ajax())
@@ -1641,6 +1641,184 @@ public function profilepicChangePost(Request $request)
   return back()->with('success', 'Your Profile Picture Successfully Uploaded. Please wait for verify.');
 }
 
+public function createProfileUploadPhotos(Request $request)
+{
+    $validation = Validator::make($request->all(),
+        ['profile_picture' => 'required|image|mimes:jpeg,bmp,png,gif',
+        'photo_1' => 'required|image|mimes:jpeg,bmp,png,gif',
+        'photo_2' => 'required|image|mimes:jpeg,bmp,png,gif',
+        'photo_3' => 'required|image|mimes:jpeg,bmp,png,gif',
+    ]);
+    if($validation->fails())
+    {
+        // dd($validation);
+        return redirect()->back()
+        ->withErrors($validation)
+        ->withInput()
+        ->with('error', 'image must be at least 200px width and 200px height and image will be aquare sized image.');
+    }
+
+    if($request->hasFile('profile_picture'))
+    {
+        $cp = $request->file('profile_picture');
+
+        $extension = strtolower($cp->getClientOriginalExtension());
+        $mime = $cp->getClientMimeType();
+        $size =$cp->getSize();
+
+        $randomFileName = $request->user()->id.'_pp_'.date('Y_m_d_his').'_'.rand(11111111,99999999).'.'.$extension;
+
+        list($originalWidth,$originalHeight) = getimagesize($cp);
+
+            $image = Image::make($cp)
+            // ->crop($cw, $ch, $x, $y)
+            // ->resize(160, 160)
+            ->save(public_path().'/storage/users/pp/'.$randomFileName, 90);
+            // $watermark = Image::make(public_path('/img/tmm5.png'));
+            // $image->insert($watermark);
+            // $image->save();
+            $originalWidth = $image->width();
+            $originalHeight = $image->height();
+            $image->destroy();
+        // }
+
+        $cp = $request->user()->userPictures()
+        ->create([]);
+        $cp->autoload = true;
+        $cp->image_type = 'profilepic';
+        $cp->image_name = $randomFileName;
+        $cp->image_mime = $mime;
+        $cp->image_ext = $extension;
+        $cp->image_width = $originalWidth;
+        $cp->image_height = $originalHeight;
+        $cp->image_size = $size;
+        $cp->image_alt = env('APP_NAME_BIG');
+
+        // if(servTru())
+        // { $cp->save(); } else{}
+        $cp->save();
+
+        $user = $request->user();
+        $user->img_name = null;
+        $user->save();
+
+
+        $oldRow = $request->user()->userPictures()
+        ->whereImageType('profilepic')->whereAutoload(true)
+        ->orderBy('id','desc')->offset(1)->first();
+        if(!empty($oldRow))
+        {
+            $oldRow->autoload = false;
+            $oldRow->editedby_id = Auth::user()->id;
+            $oldRow->save();
+        }
+
+
+        if($request->hasFile('photo_1'))
+        {
+            $file = $request->photo_1;
+            $ext = $file->getClientOriginalExtension();
+            $mime = $file->getClientMimeType();
+            $size =$file->getSize();
+            $originalName =$file->getClientOriginalName();
+            list($originalWidth,$originalHeight) = getimagesize($file);
+
+            $imageNewName = Str::random(8).time().'.'.$ext;
+
+            Storage::disk('upload')
+            ->put('users/photos/'.$imageNewName, File::get($file));
+
+            $image_new_url = 'storage/users/photos/'.$imageNewName;
+
+            $cp = $request->user()->userPhotos()
+            ->create([
+                'autoload' =>false,
+                'img_type' => $request->type == 'private' ? 'private' : 'public',
+                'addedby_id' => Auth::id()
+            ]);
+
+            $cp->img_name = $imageNewName;
+            $cp->img_original_name = $originalName;
+            $cp->img_url = $image_new_url;
+            $cp->img_size = $size;
+            $cp->img_width = $originalWidth;
+            $cp->img_height = $originalHeight;
+            $cp->img_ext = $ext;
+            $cp->img_mime = $mime;
+            $cp->save();
+        }
+        if($request->hasFile('photo_2'))
+        {
+            $file = $request->photo_2;
+            $ext = $file->getClientOriginalExtension();
+            $mime = $file->getClientMimeType();
+            $size =$file->getSize();
+            $originalName =$file->getClientOriginalName();
+            list($originalWidth,$originalHeight) = getimagesize($file);
+
+            $imageNewName = Str::random(8).time().'.'.$ext;
+
+            Storage::disk('upload')
+            ->put('users/photos/'.$imageNewName, File::get($file));
+
+            $image_new_url = 'storage/users/photos/'.$imageNewName;
+
+            $cp = $request->user()->userPhotos()
+            ->create([
+                'autoload' =>false,
+                'img_type' => $request->type == 'private' ? 'private' : 'public',
+                'addedby_id' => Auth::id()
+            ]);
+
+            $cp->img_name = $imageNewName;
+            $cp->img_original_name = $originalName;
+            $cp->img_url = $image_new_url;
+            $cp->img_size = $size;
+            $cp->img_width = $originalWidth;
+            $cp->img_height = $originalHeight;
+            $cp->img_ext = $ext;
+            $cp->img_mime = $mime;
+            $cp->save();
+
+        }
+        if($request->hasFile('photo_3'))
+        {
+            $file = $request->photo_3;
+            $ext = $file->getClientOriginalExtension();
+            $mime = $file->getClientMimeType();
+            $size =$file->getSize();
+            $originalName =$file->getClientOriginalName();
+            list($originalWidth,$originalHeight) = getimagesize($file);
+
+            $imageNewName = Str::random(8).time().'.'.$ext;
+
+            Storage::disk('upload')
+            ->put('users/photos/'.$imageNewName, File::get($file));
+
+            $image_new_url = 'storage/users/photos/'.$imageNewName;
+
+            $cp = $request->user()->userPhotos()
+            ->create([
+                'autoload' =>false,
+                'img_type' => $request->type == 'private' ? 'private' : 'public',
+                'addedby_id' => Auth::id()
+            ]);
+
+            $cp->img_name = $imageNewName;
+            $cp->img_original_name = $originalName;
+            $cp->img_url = $image_new_url;
+            $cp->img_size = $size;
+            $cp->img_width = $originalWidth;
+            $cp->img_height = $originalHeight;
+            $cp->img_ext = $ext;
+            $cp->img_mime = $mime;
+            $cp->save();
+
+        }
+    }
+    return back()->with('success', 'Your Photos Successfully Uploaded.');
+}
+
 public function makeFavourite(User $user, Request $request)
 {
     if (Auth::user()->isMyFavourite($user)) {
@@ -1781,14 +1959,11 @@ public function uploadNewPhotos(Request $request)
     {
         foreach($request->photos as $file)
         {
-
-
             $ext = $file->getClientOriginalExtension();
             $mime = $file->getClientMimeType();
             $size =$file->getSize();
             $originalName =$file->getClientOriginalName();
             list($originalWidth,$originalHeight) = getimagesize($file);
-
 
             $imageNewName = Str::random(8).time().'.'.$ext;
 
@@ -1797,17 +1972,12 @@ public function uploadNewPhotos(Request $request)
 
             $image_new_url = 'storage/users/photos/'.$imageNewName;
 
-
             $cp = $request->user()->userPhotos()
             ->create([
                 'autoload' =>false,
                 'img_type' => $request->type == 'private' ? 'private' : 'public',
                 'addedby_id' => Auth::id()
             ]);
-
-
-
-
 
             $cp->img_name = $imageNewName;
             $cp->img_original_name = $originalName;

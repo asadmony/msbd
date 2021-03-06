@@ -1070,6 +1070,11 @@ Route::group(['middleware' => ['auth', 'welcome'], 'prefix' => 'mypanel'], funct
         'uses' =>'UserController@uploadNewPhotos',
         'as' => 'user.uploadNewPhotos',
     ]);
+    Route::post('create-profile/upload/photos/', [
+        //private, public
+        'uses' =>'UserController@createProfileUploadPhotos',
+        'as' => 'user.createProfileUploadPhotos',
+    ]);
 
     Route::get('photo/delete/{photo}', [
         //private, public

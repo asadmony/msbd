@@ -6,7 +6,6 @@
     <div>
         @if(($page->route_name == 'help_and_customer_support') and ($item->title == 'form_address'))
  
-        
         <div class="container">
             <div class="row">
                 <div class="col-sm-6">

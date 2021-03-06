@@ -103,11 +103,6 @@
                     @include('user.settings.includes.forms.changeWorkInfoForm')
                 </div>
             </div>
-            <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
-                <div class="my-2">
-                    @include('user.searches.includes.forms.uploadPhotos')
-                </div>
-            </div>
             <div class="tab-pane fade" id="familyInfo" role="tabpanel" aria-labelledby="contact-tab">
                 <div class="my-2">
                     @include('user.settings.includes.forms.changeFamilyInfoForm')
@@ -120,7 +115,8 @@
             </div>
             <div class="tab-pane fade" id="photo" role="tabpanel" aria-labelledby="contact-tab">
                <div class="my-2">
-                @include('user.searches.includes.forms.uploadPhotos')
+                {{-- @include('user.searches.includes.forms.uploadPhotos') --}}
+                @include('user.parts.createProfileUpload')
                </div>
             </div>
         </div>
