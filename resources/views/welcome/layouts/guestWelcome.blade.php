@@ -145,6 +145,10 @@ Matchmaker Service in Bangladesh
 @endsection
 @section('content')
 
+
+
+
+
 <div class="slider-container rev_slider_wrapper" style="height: 100vh;">
     <div id="revolutionSlider" class="slider rev_slider" data-version="5.4.8" data-plugin-revolution-slider
         data-plugin-options="{'sliderLayout': 'fullscreen', 'fullScreenOffsetContainer': '', 'fullScreenOffset': '0', 'responsiveLevels': [4096,1200,992,500]}">

@@ -4,7 +4,7 @@
 
 
             <div class="col-md-8 order-2 order-md-1 align-self-center p-static">
-                <h1 class="text-dark"><strong>{{ $page->page_title }}</strong></h1>
+                <h1 class="text-dark" style="font-family: cursive;"><strong>{{ $page->page_title ?? '' }}</strong></h1>
             </div>
 
             <div class="col-md-4 order-1 order-md-2 align-self-center">

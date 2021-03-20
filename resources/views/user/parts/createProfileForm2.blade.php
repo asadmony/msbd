@@ -7,6 +7,27 @@
         width: 100%;
     }
 }
+.incNav{
+    color: black !important;
+    text-emphasis: bold !important;
+    padding: 1rem 10px;
+    width: 100%;
+}
+
+.p-tab{
+    display: block;
+    color: blueviolet !important;
+}
+.nav-link.active:after {
+    content: "";
+    bottom: 0px;
+    position: absolute;
+    bottom: -15px;
+    left: 38% !important;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-top: 15px solid #b2b2b2;
+}
 </style>
 @endpush
 <div class="row">
@@ -15,71 +36,71 @@
         {{-- @include('alerts.alerts') --}}
 
         <ul class="nav nav-tabs d-flex" id="myTab" role="tablist">
-            <li class="nav-item rounded border-top border-left border-right w3-blue" role="presentation">
-              <a  class="nav-link active" id="home-tab" data-toggle="tab" href="#basic" role="tab" aria-controls="home" aria-selected="true">Edit Basic Info 
+            <li class="nav-item rounded border-top border-left border-right w3-grey" role="presentation">
+                <a  class="nav-link active " id="home-tab" data-toggle="tab" href="#basic" role="tab" aria-controls="home" aria-selected="true"  style="color: black !important; font-weight: bold !important; padding: 20px 10px !important;">Edit Basic Info 
                   <span class="user-basic-updated">
-                @if ($me->profile == false && isset($me->country))
-                    <span class="w3-text-lime- w3-round-large px-1 fa-lg">
-                        <i class="fa fa-check-square-o" aria-hidden="true"></i>
-                    </span>
-                @endif
-            </span>
-            </a>
-            </li>
-            <li class="nav-item rounded border-top border-left border-right w3-blue" role="presentation">
-              <a class="nav-link" id="profile-tab" data-toggle="tab" href="#education" role="tab" aria-controls="profile" aria-selected="false">
-                  Update Education
-                  <span class="user-education-updated">
-                    @if ($me->profile == false && $me->userEducationRecord->count() > 0)
-                        <span class="w3-text-lime- w3-round-large px-1 fa-lg">
+                    @if ($me->profile == false && isset($me->country))
+                        <span class="w3-text-green w3-round-large px-1 fa-lg">
                             <i class="fa fa-check-square-o" aria-hidden="true"></i>
                         </span>
                     @endif
                 </span>
                 </a>
             </li>
-            <li class="nav-item rounded border-top border-left border-right w3-blue" role="presentation">
-              <a class="nav-link" id="contact-tab" data-toggle="tab" href="#profession" role="tab" aria-controls="contact" aria-selected="false">
+            <li class="nav-item rounded border-top border-left border-right w3-grey" role="presentation">
+              <a class="nav-link " id="profile-tab" data-toggle="tab" href="#education" role="tab" aria-controls="profile" aria-selected="false" style="color: black !important; font-weight: bold !important; padding: 20px 10px !important;">
+                  Update Education
+                  <span class="user-education-updated">
+                    @if ($me->profile == false && $me->userEducationRecord->count() > 0)
+                        <span class="w3-text-deep-orange w3-round-large px-1 fa-lg">
+                            <i class="fa fa-check-square-o" aria-hidden="true"></i>
+                        </span>
+                    @endif
+                </span>
+                </a>
+            </li>
+            <li class="nav-item rounded border-top border-left border-right w3-grey" role="presentation">
+              <a class="nav-link" id="contact-tab" data-toggle="tab" href="#profession" role="tab" aria-controls="contact" aria-selected="false" style="color: black !important; font-weight: bold !important; padding: 20px 10px !important;">
                   Update Work Info
                   <span class="user-work-updated">
                     @if ($me->profile == false && $me->userWorkingRecord->count() > 0)
-                        <span class="w3-text-lime- w3-round-large px-1 fa-lg">
+                        <span class="w3-text-deep-orange w3-round-large px-1 fa-lg">
                             <i class="fa fa-check-square-o" aria-hidden="true"></i>
                         </span>
                     @endif
                     </span>
               </a>
             </li>
-            <li class="nav-item rounded border-top border-left border-right w3-blue" role="presentation">
-              <a class="nav-link" id="contact-tab" data-toggle="tab" href="#familyInfo" role="tab" aria-controls="contact" aria-selected="false">
+            <li class="nav-item rounded border-top border-left border-right w3-grey" role="presentation">
+              <a class="nav-link" id="contact-tab" data-toggle="tab" href="#familyInfo" role="tab" aria-controls="contact" aria-selected="false" style="color: black !important; font-weight: bold !important; padding: 20px 10px !important;">
                 Update Family Info
                 <span class="user-family-updated">
                     @if ($me->profile == false && isset($me->familyInfo->mother_occupation))
-                        <span class="w3-text-lime- w3-round-large px-1 fa-lg">
+                        <span class="w3-text-deep-orange w3-round-large px-1 fa-lg">
                             <i class="fa fa-check-square-o" aria-hidden="true"></i>
                         </span>
                     @endif
                 </span>
               </a>
             </li>
-            <li class="nav-item rounded border-top border-left border-right w3-blue" role="presentation">
-              <a class="nav-link" id="contact-tab" data-toggle="tab" href="#prefer_settings" role="tab" aria-controls="contact" aria-selected="false">
+            <li class="nav-item rounded border-top border-left border-right w3-grey" role="presentation">
+              <a class="nav-link" id="contact-tab" data-toggle="tab" href="#prefer_settings" role="tab" aria-controls="contact" aria-selected="false" style="color: black !important; font-weight: bold !important; padding: 20px 10px !important;">
                 Preference Setting
                 <span class="user-preference-updated">
                     @if ($me->profile == false && isset($me->searchTerm->min_age))
-                        <span class="w3-text-lime- w3-round-large px-1 fa-lg">
+                        <span class="w3-text-deep-orange w3-round-large px-1 fa-lg">
                             <i class="fa fa-check-square-o" aria-hidden="true"></i>
                         </span>
                     @endif
                 </span>
               </a>
             </li>
-            <li class="nav-item rounded border-top border-left border-right w3-blue" role="presentation">
-              <a class="nav-link" id="contact-tab" data-toggle="tab" href="#photo" role="tab" aria-controls="contact" aria-selected="false">
+            <li class="nav-item rounded border-top border-left border-right w3-grey" role="presentation">
+              <a class="nav-link " id="contact-tab" data-toggle="tab" href="#photo" role="tab" aria-controls="contact" aria-selected="false" style="color: black !important; font-weight: bold !important; padding: 20px 10px !important;">
                   Upload photo
                 <span class="user-photo-uploaded">
                     @if ($me->profile == false && $me->userProfilePics()->count() > 0 && $me->userPhotos()->count() > 2)
-                        <span class="w3-text-lime- w3-round-large px-1 fa-lg">
+                        <span class="w3-text-deep-orange w3-round-large px-1 fa-lg">
                             <i class="fa fa-check-square-o" aria-hidden="true"></i>
                         </span>
                     @endif
@@ -87,7 +108,7 @@
               </a>
             </li>
         </ul>
-        <div class="tab-content" id="myTabContent">
+        <div class="tab-content pt-4" id="myTabContent">
             <div class="tab-pane fade show active" id="basic" role="tabpanel" aria-labelledby="home-tab">
                 <div class="my-2">
                     @include('user.settings.includes.forms.changeBasicInfoForm')

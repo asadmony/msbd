@@ -2,6 +2,7 @@
 
 namespace App\Model;
 
+use App\TeamMember;
 use Illuminate\Database\Eloquent\Model;
 
 class Branch extends Model
@@ -16,6 +17,23 @@ class Branch extends Model
 			return true;
 		}
 		return false;
+	}
+
+	public function teamMembers()
+	{
+		return $this->hasMany(TeamMember::class, 'branch_id');
+	}
+	public function marketingTeamMembers()
+	{
+		return $this->teamMembers()->where('active', 1)->where('team_name', 'Marketing Team')->get();
+	}
+	public function serviceTeamMembers()
+	{
+		return $this->teamMembers()->where('active', 1)->where('team_name', 'Service Team')->get();
+	}
+	public function itTeamMembers()
+	{
+		return $this->teamMembers()->where('active', 1)->where('team_name', 'IT Team')->get();
 	}
 
 }

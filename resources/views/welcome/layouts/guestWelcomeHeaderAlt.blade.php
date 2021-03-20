@@ -1,14 +1,26 @@
 @push('css')
     <style>
-        /* #mainNav > li  :hover{
-            transform: skew(-20deg);
-            border-radius: 0;
+        nav > .nav-pills > li > a  {
+            border-radius: 0px !important;
         }
-        #mainNav > li > a :hover{
-            transform: skew(0deg) !important;
+        /* #mainNav:hover nav > .nav-pills > li > a  {
+            transform: skew(-20deg);
+            border-radius: 0px !important;
+        } */
+        #mainNav > li:hover{
+            transform: skew(-20deg) !important;
+        }
+        /* #mainNav > li :hover{
+            transform: skew(-20deg);
+            border-radius: 0px !important;
+        }
+         #mainNav > li > a :hover{
+            transform: skew(-20deg) !important;
+            border-radius: 0px !important;
         }
         #mainNav > li > ul :hover{
-            transform: skew(0deg);
+            transform: skew(0deg) !important;
+            border-radius: 0px !important;
         } */
     </style>
 @endpush
@@ -50,7 +62,7 @@
                                             @foreach ($welcomeHeaderMenu->subMenus as $subMenus)
                                             <li class="dropdown"> <a class="dropdown-item dropdown-toggle" href="#">
                                                     {{ $subMenus->menu_title }} <i class="fas fa-chevron-down"></i></a>
-                                            <ul class="dropdown-menu">
+                                            <ul class="dropdown-menu"  style="transform: skew(20deg) !important; margin-left: 10px !important;">
 
                                                 @foreach ($subMenus->pages as $whm)
                                                 <li> <a class="dropdown-item"
@@ -77,7 +89,7 @@
                                                     {{ $management->menu_title }} &nbsp <i
                                                         class="fa fa-caret-down d-none d-md-block">
                                                     </i></a>
-                                                <ul class="dropdown-menu">
+                                                <ul class="dropdown-menu"  style="transform: skew(20deg) !important; margin-left: 10px !important;">
 
                                                     @foreach ($management->pages as $whm)
                                                     <li> <a class="dropdown-item w3-hover-purple"
@@ -86,6 +98,11 @@
                                                         </a>
                                                     </li>
                                                     @endforeach
+                                                    {{-- <li> <a class="dropdown-item w3-hover-purple"
+                                                        href="{{ route('welcome.teamMembers') }}">
+                                                        Management Team
+                                                    </a>
+                                                    </li> --}}
                                                 </ul>
                                             </li>
                                             @endif
@@ -93,7 +110,7 @@
                                             <li class="dropdown"> <a class="dropdown-item dropdown-toggle" href="#">
                                                     {{ $membership->menu_title }} &nbsp <i
                                                         class="fa fa-caret-down d-none d-md-block"></i></a>
-                                                <ul class="dropdown-menu">
+                                                <ul class="dropdown-menu" style="transform: skew(20deg) !important; margin-left: 10px !important;">
 
                                                     @foreach ($membership->pages as $whm)
                                                     <li> <a class="dropdown-item w3-hover-purple"
@@ -109,7 +126,7 @@
                                             <li class="dropdown"> <a class="dropdown-item dropdown-toggle" href="#">
                                                     {{ $ownersMsg->menu_title }} &nbsp <i
                                                         class="fa fa-caret-down d-none d-md-block"></i></a>
-                                                <ul class="dropdown-menu">
+                                                <ul class="dropdown-menu" style="transform: skew(20deg) !important; margin-left: 10px !important;">
 
                                                     @foreach ($ownersMsg->pages as $whm)
                                                     <li> <a class="dropdown-item w3-hover-purple"
@@ -122,6 +139,12 @@
                                                         <a class="dropdown-item w3-hover-purple"
                                                         href="{{ route('welcome.successStories') }}">
                                                         Success Stories
+                                                        </a>
+                                                    </li>
+                                                    <li> 
+                                                        <a class="dropdown-item w3-hover-purple"
+                                                        href="{{ route('welcome.teamMembers') }}">
+                                                        Employee Stories
                                                         </a>
                                                     </li>
                                                     {{-- <li> 
@@ -152,7 +175,7 @@
                                             <li class="dropdown"> <a class="dropdown-item dropdown-toggle" href="#">
                                                     {{ $contactUs->menu_title }} &nbsp <i
                                                         class="fa fa-caret-down d-none d-md-block"></i></a>
-                                                <ul class="dropdown-menu">
+                                                <ul class="dropdown-menu"  style="transform: skew(20deg) !important; margin-left: 10px !important;">
                                                     @foreach ($contactUs->pages as $whm)
                                                     
                                                     <li> <a class="dropdown-item w3-hover-purple"

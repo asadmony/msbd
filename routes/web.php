@@ -20,6 +20,14 @@ Route::get('/', [
     'uses' =>'WelcomeController@welcome',
     'as' => 'welcome.welcome'
 ]);
+Route::get('/our-team-members',[
+    'uses' => 'WelcomeController@teamMembers',
+    'as' => 'welcome.teamMembers',
+]);
+Route::get('/branch/{branch}/team-members',[
+    'uses' => 'WelcomeController@branchTeamMembers',
+    'as' => 'welcome.branchTeamMembers',
+]);
 Route::get('/incomplete-profile', [
     'uses' =>'WelcomeController@incompleteProfile',
     'as' => 'user.incompleteProfile'
@@ -48,6 +56,7 @@ Route::post('/contact/information',[
     'uses' => 'WelcomeController@contactAdmin',
     'as' => 'welcome.contactAdmin',
 ]);
+
 
 Route::get('/our-branches', [
     'uses' =>'WelcomeController@ourBranches',
@@ -217,7 +226,22 @@ Route::group(['middleware' => ['auth','role:admin'] ,'prefix' => 'admin'], funct
     'as' => 'admin.websiteParameterUpdate'
     ]);
 
-
+    Route::get('team/members', [
+    'uses' =>'TeamMemberController@teamMemberList',
+    'as' => 'admin.teamMemberList'
+    ]);
+    Route::get('team/member/{member?}/edit', [
+    'uses' =>'TeamMemberController@teamMemberEdit',
+    'as' => 'admin.teamMember.edit'
+    ]);
+    Route::post('team/save-member/{teamMember?}', [
+    'uses' =>'TeamMemberController@teamMemberSave',
+    'as' => 'admin.teamMember.save'
+    ]);
+    Route::delete('team/member/{teamMember}/delete', [
+    'uses' =>'TeamMemberController@teamMemberDelete',
+    'as' => 'admin.teamMember.delete'
+    ]);
     Route::get('user/setting/list', [
     'uses' =>'AdminController@userSettingList',
     'as' => 'admin.userSettingList'
@@ -412,6 +436,24 @@ Route::group(['middleware' => ['auth','role:common','profile.check'] ,'prefix' =
     'uses' =>'CommonController1@dashboard',
     'as' => 'common1.dashboard'
     ]);
+
+    // Blogs
+    //menu & page
+
+    Route::get('new/post', [
+        'uses' =>'CommonController1@newPost',
+        'as' => 'common1.newPost'
+        ]);
+    
+    Route::post('new/blog/post', [
+        'uses' =>'CommonController1@newBlogPost',
+        'as' => 'common1.newBlogPost'
+        ]);
+    
+    Route::get('all/posts', [
+        'uses' =>'CommonController1@allPosts',
+        'as' => 'common1.allPosts'
+        ]);
 
 
     //menu & page

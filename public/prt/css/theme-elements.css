@@ -8690,7 +8690,7 @@ body.page-transition-active {
 	opacity: 0 !important;
 }
 
-/*
+/* 
 Image 360┬║ Viewer
 Credits: Codyhouse (https://codyhouse.co/gem/360-degrees-product-viewer)
 */
@@ -9943,14 +9943,14 @@ html .scroll-to-top {
 	transition: opacity 0.3s;
 	background: #404040;
 	border-radius: 4px 4px 0 0;
-	bottom: 30px;
+	bottom: 0;
 	color: #FFF;
 	display: block;
 	height: 9px;
 	opacity: 0;
 	padding: 10px 10px 35px;
 	position: fixed;
-	right: 100px;
+	right: 10px;
 	text-align: center;
 	text-decoration: none;
 	min-width: 50px;

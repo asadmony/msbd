@@ -17,6 +17,7 @@ use App\Model\VideoGallery;
 use App\Mail\InformationSend;
 use Illuminate\Http\Request;
 use App\Model\UserSettingField;
+use App\TeamMember;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Cache;
@@ -635,6 +636,56 @@ $userSettingFields = Cache::remember('userSettingFields', 518400, function () {
 
       return back()->with('success','Your Information Submitted Successfully.');
     }
+
+    public function teamMembers(TeamMember $teamMember)
+    {
+      $branches = Branch::all();
+      $ceos = $teamMember->where('active', 1)->where('team_name', 'CEO')->get();
+      $marketingTeam = $teamMember->where('active', 1)->where('team_name', 'Marketing Team')->get();
+      $serviceTeam = $teamMember->where('active', 1)->where('team_name', 'Service Team')->get();
+      $itTeam = $teamMember->where('active', 1)->where('team_name', 'IT Team')->get();
+      if (auth()->check()) {
+        return view($this->device.'welcome.teammembers',[
+          'branches'=> $branches,
+          'ceos'=> $ceos,
+          'marketingTeam'=> $marketingTeam,
+          'serviceTeam'=> $serviceTeam,
+          'itTeam'=> $itTeam,
+        ]);
+      }
+      return view('welcome.guestTemmembers',[
+        'ceos'=> $ceos,
+        'branches'=> $branches,
+        'marketingTeam'=> $marketingTeam,
+        'serviceTeam'=> $serviceTeam,
+        'itTeam'=> $itTeam,
+      ]);
+    }
+    public function branchTeamMembers(Branch $branch, TeamMember $teamMember)
+    {
+      $ceos = $teamMember->where('active', 1)->where('team_name', 'CEO')->get();
+      $marketingTeam = $branch->marketingTeamMembers();
+      $serviceTeam = $branch->serviceTeamMembers();
+      $itTeam = $branch->itTeamMembers();
+      if (auth()->check()) {
+        return view($this->device.'welcome.branchTeammembers',[
+          'branch'=> $branch,
+          'ceos'=> $ceos,
+          'marketingTeam'=> $marketingTeam,
+          'serviceTeam'=> $serviceTeam,
+          'itTeam'=> $itTeam,
+        ]);
+      }
+      return view('welcome.guestBranchTemmembers',[
+        'branch'=> $branch,
+        'ceos'=> $ceos,
+        'marketingTeam'=> $marketingTeam,
+        'serviceTeam'=> $serviceTeam,
+        'itTeam'=> $itTeam,
+      ]);
+    }
+
+
 
 
 }

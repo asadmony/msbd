@@ -24,7 +24,6 @@
 @section('content')
 @auth
 <?php $me = Auth::user(); ?>
-swdw
 @include('user.parts.timeline')
 
 {{-- modal is outside of .main .main-raised class --}}

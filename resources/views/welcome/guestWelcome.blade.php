@@ -190,6 +190,7 @@ Matchmaker Service in Bangladesh
 @endsection
 @section('content')
 
+
 <div class="slider-container rev_slider_wrapper" style="height: 100vh;">
     <div id="revolutionSlider" class="slider rev_slider" data-version="5.4.8" data-plugin-revolution-slider
         data-plugin-options="{'sliderLayout': 'fullscreen', 'fullScreenOffsetContainer': '', 'fullScreenOffset': '0', 'responsiveLevels': [4096,1200,992,500]}">
@@ -322,10 +323,10 @@ class="dropdown-item"><i class="fa fa-phone fa-rotate-90 mr-2"></i>
 <div class="container-fluid py-5 w-100"
     style=" background:url({{ asset('img/form-bg.jpg')  }}) ; background-repeat: no-repeat; background-size: cover;">
     <div class="row justify-content-center">
-        <div class="col-md-6 mx-md-auto">
+        <div class="col-md-4 mx-md-auto">
             {{-- <img class="rounded w-100" style="opacity: 0.8" src="{{ asset('img/mrg.jpg') }}" alt=""> --}}
         </div>
-        <div class="col-md-6 pt-5 mx-md-auto">
+        <div class="col-lg-8 pt-5 mx-md-auto">
             <div class="col-lg-12 order-1 order-lg-2">
                 <div class=" row justify-content-md-center">
 					<div class=" ">
@@ -854,4 +855,19 @@ class="dropdown-item"><i class="fa fa-phone fa-rotate-90 mr-2"></i>
     $(document).ready(function(){
   });
 </script>
+{{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> --}}
+    <script>
+        // $(document).ready(function () {
+        //     $("#monthly_income").focus(function () {
+        //         $("monthly_income_tips").css("display", "inline").fadeOut(2000);
+        //     })
+
+        // })
+        $(document).ready(function(){
+              $("#monthly_income").focus(function(){
+                $("#monthly_income_tips").css("display", "inline")
+                // .fadeOut(5000);
+              });
+            });
+    </script>
 @endpush

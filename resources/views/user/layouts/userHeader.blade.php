@@ -69,6 +69,9 @@
                             {{ Str::limit( $uhmPage->page_title , 30,'..') }}
                         </a>
                         @endforeach
+                        {{-- <a class="dropdown-item" href="{{ route('welcome.teamMembers') }}">
+                            Management Team
+                        </a> --}}
                     </div>
                 </li>
 
@@ -102,6 +105,9 @@
                         @if ($loop->iteration == 1)
                         <a class="dropdown-item" href="{{ route('welcome.successStories') }}">
                             Success Stories
+                        </a>
+                        <a class="dropdown-item" href="{{ route('welcome.teamMembers') }}">
+                            Employee Stories
                         </a>
                         {{-- <a class="dropdown-item" href="{{ route('welcome.photoGallery') }}">
                             Success Stories (Photos)

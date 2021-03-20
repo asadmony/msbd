@@ -56,7 +56,31 @@
 
     </ul>
 </li>
+<li class=" treeview{{ session('lsbm') == 'blog' ? ' active ' : '' }}">
+    <a href="#">
+        <i class="fa fa-podcast"></i> <span>Blog</span>
+        <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+        </span>
+    </a>
+    <ul class="treeview-menu">
 
+        <li class="{{ session('lsbsm') == 'newPost' ? ' active ' : '' }}"><a href="{{route('common1.newPost')}}"><i
+                    class="fa fa-circle-o"></i> New Post </a></li>
+
+        <li class="{{ session('lsbsm') == 'allPosts' ? ' active ' : '' }}"><a href="{{route('common1.allPosts')}}"><i
+                    class="fa fa-circle-o"></i> All Posts </a></li>
+
+    </ul>
+</li>
+<li class=" -treeview{{ session('lsbm') == 'teamMembers' ? ' active ' : '' }}">
+    <a href="{{ route('admin.teamMemberList') }}">
+        <i class="fa fa-users"></i> <span>Team Members</span>
+        <span class="pull-right-container">
+            {{-- <i class="fa fa-angle-left pull-right"></i> --}}
+        </span>
+    </a>
+</li>
 @endif
 
 @if ($me->isAdmin() || $me->hasRoleItem('gallery'))

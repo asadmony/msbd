@@ -82,8 +82,6 @@
 
 		<link rel="stylesheet" href="{{asset('css/welcome.css')}}">
 
-		
-
 
 		<!-- Head Libs -->
 		<script src="{{asset('prt/vendor/modernizr/modernizr.min.js')}}"></script>
