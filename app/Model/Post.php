@@ -3,7 +3,7 @@
 namespace App\Model;
 
 use Illuminate\Database\Eloquent\Model;
-
+use Illuminate\Support\Str;
 class Post extends Model
 {
     public function addedBy(){
@@ -45,12 +45,10 @@ class Post extends Model
 
 	public function slug()
 	{
-		$generator = new SlugGenerator;
+		// $generator = new SlugGenerator;
 
-		return $generator->generate($this->title);
-
-		
-
+		// return $generator->generate($this->title);
+		return Str::slug($this->title);
 
 	}
 

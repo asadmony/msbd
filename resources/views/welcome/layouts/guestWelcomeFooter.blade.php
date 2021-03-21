@@ -29,6 +29,8 @@
                                 href="{{ route('page', [$wfm->id, $wfm->route_name]) }}"> {{$wfm->page_title}}</a></li>
                         @endforeach
                         @endif
+                        <li><i class="fas fa-angle-right top-8 text-white"></i> <a class="link-hover-style-1 text-white"
+                            href="{{ route('blog') }}"> Blog</a></li>
                     </ul>
                 </div>
             </div>

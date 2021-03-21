@@ -29,6 +29,9 @@
                                     class="fas fa-angle-right top-8 text-white"></i> {{$ufmPage->page_title}}</a></li>
                         @endforeach
                         @endif
+                        <li class=""> <a class="py-1 ink-hover-style-1 text-white"
+                            href="{{ route('blog') }}"> <i
+                                class="fas fa-angle-right top-8 text-white"></i> Blog</a></li>
                     </ul>
                 </div>
             </div>

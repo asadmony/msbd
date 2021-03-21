@@ -151,9 +151,9 @@
                 </li> --}}
 
                 <li class="nav-item">
-                    {{-- <a class="nav-link" href="{{ route('userMessageDashboard') }}" >
-                    <i class="material-icons">contact_phone</i> Message
-                    </a> --}}
+                    <a class="nav-link" href="{{ route('blog') }}" >
+                     Blog
+                    </a>
                 </li>
 
 

@@ -217,6 +217,12 @@
                                                 </a>
                                             </li>
                                             @endauth
+                                            
+                                            <li class="">
+                                                <a class="" href="{{ route('blog') }}">
+                                                    Blog
+                                                </a>
+                                            </li>
                                         </ul>
                                     </nav>
                                 </div>
