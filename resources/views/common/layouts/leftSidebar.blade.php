@@ -56,6 +56,8 @@
 
     </ul>
 </li>
+
+
 <li class=" treeview{{ session('lsbm') == 'blog' ? ' active ' : '' }}">
     <a href="#">
         <i class="fa fa-podcast"></i> <span>Blog</span>
@@ -65,14 +67,26 @@
     </a>
     <ul class="treeview-menu">
 
-        <li class="{{ session('lsbsm') == 'newPost' ? ' active ' : '' }}"><a href="{{route('common1.newPost')}}"><i
+        {{-- <li class="{{ session('lsbsm') == 'newPost' ? ' active ' : '' }}"><a href="{{route('common1.newPost')}}"><i
                     class="fa fa-circle-o"></i> New Post </a></li>
 
         <li class="{{ session('lsbsm') == 'allPosts' ? ' active ' : '' }}"><a href="{{route('common1.allPosts')}}"><i
-                    class="fa fa-circle-o"></i> All Posts </a></li>
+                    class="fa fa-circle-o"></i> All Posts </a></li> --}}
+
+        <li class="{{ session('lsbsm') == 'categoryAddNew' ? ' active ' : '' }}"><a href="{{route('commonblog.categoryAddNew')}}"><i class="fa fa-circle-o"></i> Add New Category </a></li>
+ 
+            <li class="{{ session('lsbsm') == 'categoriesAll' ? 'active' : '' }}"><a class="changed-menu" href="{{route('commonblog.categoriesAll')}}"><i class="fa fa-circle-o"></i> All Categories</a></li>
+
+            <li class="{{ session('lsbsm') == 'postAddNew' ? ' active ' : '' }}"><a href="{{route('commonblog.postAddNew')}}"><i class="fa fa-circle-o"></i> Add New Post </a></li>
+
+            <li class="{{ session('lsbsm') == 'postsAll' ? ' active ' : '' }}"><a href="{{route('commonblog.postsAll')}}"><i class="fa fa-circle-o"></i> Posts All </a></li>
+
+  
 
     </ul>
 </li>
+
+
 <li class=" -treeview{{ session('lsbm') == 'teamMembers' ? ' active ' : '' }}">
     <a href="{{ route('admin.teamMemberList') }}">
         <i class="fa fa-users"></i> <span>Team Members</span>

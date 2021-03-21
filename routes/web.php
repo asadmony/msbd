@@ -16,6 +16,26 @@ use App\Http\Controllers\MemberController;
 |
 */
 
+
+//blog
+
+Route::get('blog', [
+    'uses' => 'WelcomeBlogController@blog',
+    'as' => 'blog' 
+]);
+
+Route::get('blog/{post}/{title?}', [
+    'uses' => 'WelcomeBlogController@blogPostDetails',
+    'as' => 'blogPostDetails' 
+]);
+
+Route::get('select/tags/or/add/new', [
+'uses' =>'WelcomeBlogController@selectTagsOrAddNew',
+'as' => 'welcome.selectTagsOrAddNew'
+]);
+
+//blog
+
 Route::get('/', [
     'uses' =>'WelcomeController@welcome',
     'as' => 'welcome.welcome'
@@ -291,10 +311,10 @@ Route::group(['middleware' => ['auth','role:admin'] ,'prefix' => 'admin'], funct
         'as' => 'admin.selectNewRole',
         'uses' => 'AdminController@selectNewRole'
     ]);
-    Route::post('admin/add/new/post', [
-    'uses' =>'AdminController@adminAddNewPost',
-    'as' => 'admin.adminAddNewPost'
-    ]);
+    // Route::post('admin/add/new/post', [
+    // 'uses' =>'AdminController@adminAddNewPost',
+    // 'as' => 'admin.adminAddNewPost'
+    // ]);
 
     Route::post('admin/delete/{role}', [
     'uses' =>'AdminController@adminDelete',
@@ -440,20 +460,20 @@ Route::group(['middleware' => ['auth','role:common','profile.check'] ,'prefix' =
     // Blogs
     //menu & page
 
-    Route::get('new/post', [
-        'uses' =>'CommonController1@newPost',
-        'as' => 'common1.newPost'
-        ]);
+    // Route::get('new/post', [
+    //     'uses' =>'CommonController1@newPost',
+    //     'as' => 'common1.newPost'
+    //     ]);
     
-    Route::post('new/blog/post', [
-        'uses' =>'CommonController1@newBlogPost',
-        'as' => 'common1.newBlogPost'
-        ]);
+    // Route::post('new/blog/post', [
+    //     'uses' =>'CommonController1@newBlogPost',
+    //     'as' => 'common1.newBlogPost'
+    //     ]);
     
-    Route::get('all/posts', [
-        'uses' =>'CommonController1@allPosts',
-        'as' => 'common1.allPosts'
-        ]);
+    // Route::get('all/posts', [
+    //     'uses' =>'CommonController1@allPosts',
+    //     'as' => 'common1.allPosts'
+    //     ]);
 
 
     //menu & page
@@ -894,6 +914,82 @@ Route::group(['middleware' => ['auth','role:common','profile.check'] ,'prefix' =
     ]);
 
     //media person
+    //
+    
+
+    //blog start
+
+    //category
+    Route::get('categories/all', [
+    'uses' =>'CommonBlogController@categoriesAll',
+    'as' => 'commonblog.categoriesAll'
+    ]);
+
+    Route::get('category/add/new', [
+    'uses' =>'CommonBlogController@categoryAddNew',
+    'as' => 'commonblog.categoryAddNew'
+    ]);
+
+    Route::post('category/add/new/post', [
+    'uses' =>'CommonBlogController@categoryAddNewPost',
+    'as' => 'commonblog.categoryAddNewPost'
+    ]);
+
+    Route::any('category/edit/{cat}', [
+    'uses' =>'CommonBlogController@categoryEdit',
+    'as' => 'commonblog.categoryEdit'
+    ]);
+
+    Route::any('category/update/{cat}', [
+    'uses' =>'CommonBlogController@categoryUpdate',
+    'as' => 'commonblog.categoryUpdate'
+    ]);
+
+    Route::any('category/delete/{cat}', [
+    'uses' =>'CommonBlogController@categoryDelete',
+    'as' => 'commonblog.categoryDelete'
+    ]);   
+
+    //category
+
+//posts
+    Route::get('/posts/all', [
+    'uses' =>'CommonBlogController@postsAll',
+    'as' => 'commonblog.postsAll'
+    ]);
+
+    Route::get('/post/add/new', [
+    'uses' =>'CommonBlogController@postAddNew',
+    'as' => 'commonblog.postAddNew'
+    ]);
+
+    Route::post('/post/add/new/post', [
+    'uses' =>'CommonBlogController@postAddNewPost',
+    'as' => 'commonblog.postAddNewPost'
+    ]);
+
+    Route::get('/post/edit/{post}', [
+    'uses' =>'CommonBlogController@postEdit',
+    'as' => 'commonblog.postEdit'
+    ]);
+
+    Route::post('/post/update/{post}', [
+    'uses' =>'CommonBlogController@postUpdate',
+    'as' => 'commonblog.postUpdate'
+    ]);
+
+
+    Route::get('/feature/image/delete/{post}', [
+    'uses' =>'CommonBlogController@featureImageDelete',
+    'as' => 'commonblog.featureImageDelete'
+    ]);
+
+    Route::get('post/delete/{post}', [
+    'uses' =>'CommonBlogController@postDelete',
+    'as' => 'commonblog.postDelete'
+    ]);    
+    //posts
+
 });
 
 

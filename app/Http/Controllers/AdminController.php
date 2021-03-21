@@ -92,6 +92,7 @@ class AdminController extends Controller
             ->withInput()
             ->with('error', 'Something Went Worng!');
         }
+        
         $request = request();
         $post = WebsiteParameter::firstOrCreate([]);
 

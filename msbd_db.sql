@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.4
+-- version 4.9.5
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Mar 18, 2021 at 05:06 AM
--- Server version: 5.7.24
--- PHP Version: 7.4.13
+-- Generation Time: Mar 21, 2021 at 10:30 AM
+-- Server version: 10.3.27-MariaDB
+-- PHP Version: 7.3.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -18,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `msbd`
+-- Database: `msbd_db`
 --
 
 -- --------------------------------------------------------
@@ -52,10 +53,10 @@ CREATE TABLE `branches` (
   `country` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `lat` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `lng` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `map` text COLLATE utf8mb4_unicode_ci,
+  `map` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `mobile` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `email` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `addedby_id` int(11) NOT NULL DEFAULT '1',
+  `addedby_id` int(11) NOT NULL DEFAULT 1,
   `editedby_id` int(11) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -66,11 +67,11 @@ CREATE TABLE `branches` (
 --
 
 INSERT INTO `branches` (`id`, `branch_name`, `location`, `address`, `state`, `city`, `post_code`, `country`, `lat`, `lng`, `map`, `mobile`, `email`, `addedby_id`, `editedby_id`, `created_at`, `updated_at`) VALUES
-(1, 'Head Office', 'Marriage Solution BD', 'New Colony Mashjid Complex (2nd & 3rd) floor, Asad Gate (Beside Aarong), Mirpur road, Mohammadpur', 'Dhaka', 'Dhaka', '1207', 'Bangladesh', '23.759102', '90.373406', '<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3651.671187234738!2d90.37121771443627!3d23.759102184585025!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755bf3ca2f0be9f%3A0x1b479106030d72f8!2sMarriage+Solution+Bd.!5e0!3m2!1sen!2sbd!4v1542185034971\" width=\"100%\" height=\"300\" frameborder=\"0\" style=\"border:0\" allowfullscreen></iframe>', '01308311911, 01720504504', 'marriagesolutionbd@gmail.com', 1, 16, '2019-02-05 14:13:22', '2021-01-19 02:25:15'),
-(2, 'Gulshan Branch', 'Gulshan Branch', 'Century Park Tower, House-36, Road-117 (2nd Floor) Suite-1, Gulshan 1', 'Dhaka', 'Dhaka', '1212', 'Bangladesh', '23.785672', '90.418677', '<iframe src=\"https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1825.4736415890425!2d90.4174215!3d23.7848915!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755c7cfdf2daa59%3A0x10af8daf36be062!2sMarriage+Solution+BD+Gulshan+Branch!5e0!3m2!1sen!2sbd!4v1542183152951\" width=\"100%\" height=\"300\" frameborder=\"0\" style=\"border:0\" allowfullscreen></iframe>', '01777118606, 01720504504', 'marriagegb2012@gmail.com', 1, 16, '2019-02-05 14:14:55', '2019-12-07 19:42:18'),
-(3, 'Uttara Branch', 'Uttara Branch', 'Quantum Mustafa Tower, House-18, Level-10, Gaus-Ul-Azam Avenue, (Opposite to Agora), Sector-13, Uttara, Dhaka 1230', 'Dhaka', 'Dhaka', '1230', 'Bangladesh', '23.869665', '90.389682', '<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3648.5624869800404!2d90.38749341443881!3d23.86966498453084!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755c5a4d716e251%3A0x4a08737011bcc979!2sMarriage+Solution+BD+Uttara+Branch!5e0!3m2!1sen!2sbd!4v1542187815083\" width=\"100%\" height=\"300\" frameborder=\"0\" style=\"border:0\" allowfullscreen></iframe>', '01705761333, 01720504504', 'marriageub2012@gmail.com', 1, 16, '2019-02-05 14:17:01', '2019-12-07 19:42:49'),
-(5, 'Kakrail Branch', 'Eastern Commercial Complex, Pioneer Road, Dhaka, Bangladesh', 'Eastern Commercial Complex Room No- 01/06 ( 1st floor ), 73, Kakrail, Ramna', 'Dhaka', 'Dhaka', '1000', 'Bangladesh', '23.7305281', '90.40990420000003', '<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3652.301491552556!2d90.40629021450187!3d23.736625895220385!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755b8f48bffd7c5%3A0x709a3d804583c93a!2sEastern%20Commercial%20Complex.%2073%20Kakrail%2C!5e0!3m2!1sen!2sbd!4v1606942273629!5m2!1sen!2sbd\" width=\"100%\" height=\"300\" frameborder=\"0\" style=\"border:0\" allowfullscreen></iframe>', '01780414897, 01720504504', 'marriagepb2012@gmail.com', 1, 16, '2019-03-12 17:58:13', '2020-12-15 09:47:29'),
-(6, 'Chittagong Branch', '998 CDA Avenue, Chittagong, Bangladesh', '998 CDA Ave, Besides of  Sanmar Ocean City, East Nasirabad', 'Chittagong', 'Chittagont', '4000', 'Bangladesh', '22.3604196', '91.82160010000007', '<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3689.835374755211!2d91.81980841495576!3d22.359844085292664!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30acd9aa379f0829%3A0x2ecab3690341241b!2sMarriage%20Solution%20BD%20Ctg!5e0!3m2!1sen!2sbd!4v1570350696106!5m2!1sen!2sbd\" width=\"100%\" height=\"300\" frameborder=\"0\" style=\"border:0;\" allowfullscreen=\"\"></iframe>', '01617014140', 'marriagebd2012@gmail.com', 1, 16, '2019-10-06 19:36:34', '2019-12-07 19:44:09');
+(1, 'Head Office', 'Marriage Solution BD', 'New Colony Mashjid Complex (2nd & 3rd) floor, Asad Gate (Beside Aarong), Mirpur road, Mohammadpur', 'Dhaka', 'Dhaka', '1207', 'Bangladesh', '23.759102', '90.373406', '<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3651.671187234738!2d90.37121771443627!3d23.759102184585025!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755bf3ca2f0be9f%3A0x1b479106030d72f8!2sMarriage+Solution+Bd.!5e0!3m2!1sen!2sbd!4v1542185034971\" width=\"100%\" height=\"300\" frameborder=\"0\" style=\"border:0\" allowfullscreen></iframe>', '01308311911, 01633036062, 01720504504', 'marriagesolutionbd@gmail.com', 1, 16, '2019-02-05 14:13:22', '2021-02-20 03:06:39'),
+(2, 'Gulshan Branch', 'Gulshan Branch', 'Century Park Tower, House-36, Road-117 (2nd Floor) Suite-1, Gulshan 1', 'Dhaka', 'Dhaka', '1212', 'Bangladesh', '23.785672', '90.418677', '<iframe src=\"https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1825.4736415890425!2d90.4174215!3d23.7848915!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755c7cfdf2daa59%3A0x10af8daf36be062!2sMarriage+Solution+BD+Gulshan+Branch!5e0!3m2!1sen!2sbd!4v1542183152951\" width=\"100%\" height=\"300\" frameborder=\"0\" style=\"border:0\" allowfullscreen></iframe>', '01777118606, 01907550361, 01720504504', 'marriagegb2012@gmail.com', 1, 16, '2019-02-05 14:14:55', '2021-02-20 03:07:51'),
+(3, 'Uttara Branch', 'Uttara Branch', 'Quantum Mustafa Tower, House-18, Level-10, Gaus-Ul-Azam Avenue, (Opposite to Agora), Sector-13, Uttara, Dhaka 1230', 'Dhaka', 'Dhaka', '1230', 'Bangladesh', '23.869665', '90.389682', '<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3648.5624869800404!2d90.38749341443881!3d23.86966498453084!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755c5a4d716e251%3A0x4a08737011bcc979!2sMarriage+Solution+BD+Uttara+Branch!5e0!3m2!1sen!2sbd!4v1542187815083\" width=\"100%\" height=\"300\" frameborder=\"0\" style=\"border:0\" allowfullscreen></iframe>', '01776687989, 01791266153,  01720504504', 'marriageub2012@gmail.com', 1, 16, '2019-02-05 14:17:01', '2021-02-26 23:43:58'),
+(5, 'Kakrail Branch', 'Eastern Commercial Complex, Pioneer Road, Dhaka, Bangladesh', 'Eastern Commercial Complex Room No- 01/06 ( 1st floor ), 73, Kakrail, Ramna', 'Dhaka', 'Dhaka', '1000', 'Bangladesh', '23.7305281', '90.40990420000003', '<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3652.301491552556!2d90.40629021450187!3d23.736625895220385!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755b8f48bffd7c5%3A0x709a3d804583c93a!2sEastern%20Commercial%20Complex.%2073%20Kakrail%2C!5e0!3m2!1sen!2sbd!4v1606942273629!5m2!1sen!2sbd\" width=\"100%\" height=\"300\" frameborder=\"0\" style=\"border:0\" allowfullscreen></iframe>', '01780414897, 01319378112, 01720504504', 'marriagepb2012@gmail.com', 1, 16, '2019-03-12 17:58:13', '2021-02-20 03:08:15'),
+(6, 'Chittagong Branch', '998 CDA Avenue, Chittagong, Bangladesh', '998 CDA Ave, Besides of  Sanmar Ocean City, East Nasirabad', 'Chittagong', 'Chittagont', '4000', 'Bangladesh', '22.3604196', '91.82160010000007', '<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3689.835374755211!2d91.81980841495576!3d22.359844085292664!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30acd9aa379f0829%3A0x2ecab3690341241b!2sMarriage%20Solution%20BD%20Ctg!5e0!3m2!1sen!2sbd!4v1570350696106!5m2!1sen!2sbd\" width=\"100%\" height=\"300\" frameborder=\"0\" style=\"border:0;\" allowfullscreen=\"\"></iframe>', '01617014140, 01617013455, 01720504504', 'marriagebdctg2012@gmail.com', 1, 16, '2019-10-06 19:36:34', '2021-02-20 03:09:51');
 
 -- --------------------------------------------------------
 
@@ -98,6 +99,27 @@ INSERT INTO `branch_users` (`id`, `branch_id`, `user_id`, `addedby_id`, `editedb
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `categories`
+--
+
+CREATE TABLE `categories` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `title` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `categories`
+--
+
+INSERT INTO `categories` (`id`, `title`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(2, 'Cat First', '2021-03-19 03:54:53', '2021-03-19 03:54:53', NULL);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `chatables`
 --
 
@@ -108,9 +130,9 @@ CREATE TABLE `chatables` (
   `chatby_id` int(10) UNSIGNED DEFAULT NULL,
   `chatby_type` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `chat_id` int(10) UNSIGNED DEFAULT NULL,
-  `autoload` tinyint(1) NOT NULL DEFAULT '0',
-  `box` tinyint(1) NOT NULL DEFAULT '0',
-  `leaved` tinyint(1) NOT NULL DEFAULT '0',
+  `autoload` tinyint(1) NOT NULL DEFAULT 0,
+  `box` tinyint(1) NOT NULL DEFAULT 0,
+  `leaved` tinyint(1) NOT NULL DEFAULT 0,
   `status` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'regular',
   `addedby_id` int(10) UNSIGNED DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -136,7 +158,7 @@ INSERT INTO `chatables` (`id`, `chatto_id`, `chatto_type`, `chatby_id`, `chatby_
 CREATE TABLE `chats` (
   `id` int(10) UNSIGNED NOT NULL,
   `addedby_id` int(10) UNSIGNED NOT NULL,
-  `private` tinyint(1) NOT NULL DEFAULT '1',
+  `private` tinyint(1) NOT NULL DEFAULT 1,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -162,7 +184,7 @@ CREATE TABLE `chat_publishes` (
   `chatable_id` int(10) UNSIGNED DEFAULT NULL,
   `publishedby_id` int(10) UNSIGNED DEFAULT NULL,
   `publishedby_type` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `seen` tinyint(1) NOT NULL DEFAULT '0',
+  `seen` tinyint(1) NOT NULL DEFAULT 0,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -199,7 +221,7 @@ CREATE TABLE `countries` (
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `region_code` char(3) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `sub_region_code` char(3) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `eea` tinyint(1) NOT NULL DEFAULT '0',
+  `eea` tinyint(1) NOT NULL DEFAULT 0,
   `calling_code` varchar(3) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `flag` varchar(6) COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -693,7 +715,20 @@ INSERT INTO `galleries` (`id`, `image_title`, `image_name`, `addedby_id`, `creat
 (123, 'Success Stories', 'ujp2hRsR1611391802.jpg', 1, '2021-01-23 02:50:02', '2021-01-23 02:50:02'),
 (124, 'Success Stories', 'brErRFQl1611391802.jpg', 1, '2021-01-23 02:50:02', '2021-01-23 02:50:02'),
 (125, 'Success Stories', 'uZcEnnRh1611391802.jpg', 1, '2021-01-23 02:50:02', '2021-01-23 02:50:02'),
-(126, 'Success Stories', 'PsN92siR1611391802.jpg', 1, '2021-01-23 02:50:02', '2021-01-23 02:50:02');
+(126, 'Success Stories', 'PsN92siR1611391802.jpg', 1, '2021-01-23 02:50:02', '2021-01-23 02:50:02'),
+(128, 'Akij Group of Companies Managing Director\'s Wedding Program-26-02-2021', 'dU6poazN1614499110.jpg', 16, '2021-02-28 01:58:30', '2021-02-28 01:58:30'),
+(129, 'Akij Group of Companies Managing Director\'s Wedding Program-26-02-2021', 'Yx4Gx5gY1614499110.jpg', 16, '2021-02-28 01:58:30', '2021-02-28 01:58:30'),
+(130, 'Akij Group of Companies Managing Director\'s Wedding Program-26-02-2021', 'CKaGcEdw1614499110.jpg', 16, '2021-02-28 01:58:30', '2021-02-28 01:58:30'),
+(131, 'Akij Group of Companies Managing Director\'s Wedding Program-26-02-2021', 'DORJWbn71614499111.jpg', 16, '2021-02-28 01:58:31', '2021-02-28 01:58:31'),
+(135, 'Akij Group of Companies Managing Director\'s Wedding Program-26-02-2021', 'MgGpTeZs1614499111.jpg', 16, '2021-02-28 01:58:31', '2021-02-28 01:58:31'),
+(136, 'Akij Group of Companies Managing Director\'s Wedding Program-26-02-2021', 'S7Qhbfts1614499111.jpg', 16, '2021-02-28 01:58:32', '2021-02-28 01:58:32'),
+(137, 'Akij Group of Companies Managing Director\'s Wedding Program-26-02-2021', 'UvnSo8Lg1614499112.jpg', 16, '2021-02-28 01:58:32', '2021-02-28 01:58:32'),
+(141, 'Akij Group of Companies Managing Director\'s Wedding Program-26-02-2021', 'isN4pLPJ1614499112.jpg', 16, '2021-02-28 01:58:32', '2021-02-28 01:58:32'),
+(142, 'Akij Group of Companies Managing Director\'s Wedding Program-26-02-2021', 'ydqTigQQ1614499112.jpg', 16, '2021-02-28 01:58:32', '2021-02-28 01:58:32'),
+(143, 'Akij Group of Companies Managing Director\'s Wedding Program-26-02-2021', 'GPJQjF0M1614499112.jpg', 16, '2021-02-28 01:58:32', '2021-02-28 01:58:32'),
+(144, 'Akij Group of Companies Managing Director\'s Wedding Program-26-02-2021', 'RnNfoURe1614499112.jpg', 16, '2021-02-28 01:58:33', '2021-02-28 01:58:33'),
+(145, 'Akij Group of Companies Managing Director\'s Wedding Program-26-02-2021', 'ThC4xfqP1614499113.jpg', 16, '2021-02-28 01:58:33', '2021-02-28 01:58:33'),
+(146, 'Akij Group of Companies Managing Director\'s Wedding Program-26-02-2021', 'cIl4sOjy1614499113.jpg', 16, '2021-02-28 01:58:33', '2021-02-28 01:58:33');
 
 -- --------------------------------------------------------
 
@@ -704,7 +739,7 @@ INSERT INTO `galleries` (`id`, `image_title`, `image_name`, `addedby_id`, `creat
 CREATE TABLE `image_galleries` (
   `id` int(10) UNSIGNED NOT NULL,
   `title` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `description` text COLLATE utf8mb4_unicode_ci,
+  `description` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `date` date DEFAULT NULL,
   `publish_status` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'temp',
   `addedby_id` int(10) UNSIGNED DEFAULT NULL,
@@ -1048,8 +1083,24 @@ INSERT INTO `media` (`id`, `file_name`, `file_original_name`, `file_mime`, `file
 (235, 'l8qj21012128.jpg', '20170428_220938.jpg', 'image/jpeg', 'jpg', '3645802', 'image', '4128', '3096', 'storage/media/image/l8qj21012128.jpg', 1, NULL, '2021-01-20 22:22:28', '2021-01-20 22:22:28'),
 (236, '6TWO21012129.jpg', '20170428_223641.jpg', 'image/jpeg', 'jpg', '3942396', 'image', '4128', '3096', 'storage/media/image/6TWO21012129.jpg', 1, NULL, '2021-01-20 22:22:29', '2021-01-20 22:22:29'),
 (237, 'cd5d21012159.jpg', '37106212_2100821236857649_5866551342058700800_n.jpg', 'image/jpeg', 'jpg', '103454', 'image', '1268', '1680', 'storage/media/image/cd5d21012159.jpg', 1, NULL, '2021-01-20 22:25:59', '2021-01-20 22:25:59'),
-(238, 'mVLt21021020.jpg', '57696224.jpg', 'image/jpeg', 'jpg', '45223', 'image', '800', '566', 'storage/media/image/mVLt21021020.jpg', 1, NULL, '2021-02-10 00:32:20', '2021-02-10 00:32:20'),
-(239, 'uLzz21021041.png', '38-380853_silver-wallpaperpng-background-silver.png', 'image/png', 'png', '13870', 'image', '1920', '1080', 'storage/media/image/uLzz21021041.png', 1, NULL, '2021-02-10 00:34:41', '2021-02-10 00:34:41');
+(238, 'aOqW21012321.jpg', 'tCgZ21011626.jpg', 'image/jpeg', 'jpg', '69319', 'image', '961', '259', 'storage/media/image/aOqW21012321.jpg', 1, NULL, '2021-01-23 07:36:21', '2021-01-23 07:36:21'),
+(239, 'wjtu21012427.jpg', 'Picture-2_meeting-good-workplace-relationships-300x278.jpg', 'image/jpeg', 'jpg', '27955', 'image', '300', '278', 'storage/media/image/wjtu21012427.jpg', 1, NULL, '2021-01-24 05:46:27', '2021-01-24 05:46:27'),
+(240, 'V1cE21012428.jpg', 'happymaleemployee-500.jpg', 'image/jpeg', 'jpg', '15664', 'image', '500', '333', 'storage/media/image/V1cE21012428.jpg', 1, NULL, '2021-01-24 05:46:28', '2021-01-24 05:46:28'),
+(241, 'VV6Z21012428.png', 'Corporate-Clients.png', 'image/png', 'png', '461966', 'image', '800', '535', 'storage/media/image/VV6Z21012428.png', 1, NULL, '2021-01-24 05:46:28', '2021-01-24 05:46:28'),
+(242, '8aQK21020140.png', 'bismil.png', 'image/png', 'png', '15616', 'image', '385', '73', 'storage/media/image/8aQK21020140.png', 1, NULL, '2021-02-01 07:01:40', '2021-02-01 07:01:40'),
+(243, 'p12G21020133.png', 'Asset 1.png', 'image/png', 'png', '160653', 'image', '844', '506', 'storage/media/image/p12G21020133.png', 1, NULL, '2021-02-01 07:04:33', '2021-02-01 07:04:33'),
+(244, 'rCJZ21020146.jpg', 'IMG-20210131-WA0000.jpg', 'image/jpeg', 'jpg', '10054', 'image', '729', '364', 'storage/media/image/rCJZ21020146.jpg', 1, NULL, '2021-02-01 07:09:46', '2021-02-01 07:09:46'),
+(245, 'jT2l21020714.jpeg', 'pay-bg.jpeg', 'image/jpeg', 'jpeg', '221502', 'image', '1280', '853', 'storage/media/image/jT2l21020714.jpeg', 1, NULL, '2021-02-07 04:21:14', '2021-02-07 04:21:14'),
+(246, 'MyW521020715.jpg', 'pay-bg.jpg', 'image/jpeg', 'jpg', '50688', 'image', '990', '516', 'storage/media/image/MyW521020715.jpg', 1, NULL, '2021-02-07 04:21:15', '2021-02-07 04:21:15'),
+(247, 'nwaA21021004.png', '38-380853_silver-wallpaperpng-background-silver.png', 'image/png', 'png', '13870', 'image', '1920', '1080', 'storage/media/image/nwaA21021004.png', 1, NULL, '2021-02-10 00:37:04', '2021-02-10 00:37:04'),
+(248, 'aBU721021031.jpg', 'K0m5dI.jpg', 'image/jpeg', 'jpg', '577979', 'image', '1920', '1080', 'storage/media/image/aBU721021031.jpg', 1, NULL, '2021-02-10 00:52:31', '2021-02-10 00:52:31'),
+(249, '9JTV21021044.jpeg', 'WhatsApp Image 2021-02-07 at 2.21.45 PM.jpeg', 'image/jpeg', 'jpeg', '221502', 'image', '1280', '853', 'storage/media/image/9JTV21021044.jpeg', 1, NULL, '2021-02-10 04:29:45', '2021-02-10 04:29:45'),
+(250, 'T5aw21031358.jpg', 'winter-background-with-pastel-color-brushes-leaves_220290-42.jpg', 'image/jpeg', 'jpg', '49945', 'image', '626', '417', 'storage/media/image/T5aw21031358.jpg', 1, NULL, '2021-03-13 03:38:58', '2021-03-13 03:38:58'),
+(251, '2e3x21031358.jpg', 'hand-painted-watercolor-background-with-sky-clouds-shape_24972-1095.jpg', 'image/jpeg', 'jpg', '39083', 'image', '626', '313', 'storage/media/image/2e3x21031358.jpg', 1, NULL, '2021-03-13 03:38:58', '2021-03-13 03:38:58'),
+(252, '07Lz21031358.jpg', 'pngtree-horizontal-vector-halloween-banner-background-with-grunge-border-image_297712.jpg', 'image/jpeg', 'jpg', '67887', 'image', '960', '450', 'storage/media/image/07Lz21031358.jpg', 1, NULL, '2021-03-13 03:38:59', '2021-03-13 03:38:59'),
+(253, 'HLG021031300.jpg', '475788bc11dc678.jpg', 'image/jpeg', 'jpg', '89434', 'image', '960', '300', 'storage/media/image/HLG021031300.jpg', 1, NULL, '2021-03-13 03:51:00', '2021-03-13 03:51:00'),
+(254, 'bew121031300.jpg', '0557a7322b6c277.jpg', 'image/jpeg', 'jpg', '55772', 'image', '960', '450', 'storage/media/image/bew121031300.jpg', 1, NULL, '2021-03-13 03:51:00', '2021-03-13 03:51:00'),
+(255, 'PBDE21031302.jpg', '0ba3d60362c7e6d256cfc1f37156bad9.jpg', 'image/jpeg', 'jpg', '58314', 'image', '1920', '720', 'storage/media/image/PBDE21031302.jpg', 1, NULL, '2021-03-13 03:51:02', '2021-03-13 03:51:02');
 
 -- --------------------------------------------------------
 
@@ -1060,9 +1111,9 @@ INSERT INTO `media` (`id`, `file_name`, `file_original_name`, `file_mime`, `file
 CREATE TABLE `media_people` (
   `id` int(10) UNSIGNED NOT NULL,
   `user_id` int(10) UNSIGNED NOT NULL,
-  `branch_id` int(11) NOT NULL DEFAULT '0',
-  `commission` int(11) NOT NULL DEFAULT '0',
-  `balance` decimal(10,2) NOT NULL DEFAULT '0.00',
+  `branch_id` int(11) NOT NULL DEFAULT 0,
+  `commission` int(11) NOT NULL DEFAULT 0,
+  `balance` decimal(10,2) NOT NULL DEFAULT 0.00,
   `addedby_id` int(10) UNSIGNED NOT NULL,
   `editedby_id` int(10) UNSIGNED DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -1074,7 +1125,7 @@ CREATE TABLE `media_people` (
 --
 
 INSERT INTO `media_people` (`id`, `user_id`, `branch_id`, `commission`, `balance`, `addedby_id`, `editedby_id`, `created_at`, `updated_at`) VALUES
-(2, 1, 0, 20, '0.00', 1, NULL, '2019-02-20 07:16:16', '2019-02-20 07:16:16');
+(2, 1, 0, 20, 0.00, 1, NULL, '2019-02-20 07:16:16', '2019-02-20 07:16:16');
 
 -- --------------------------------------------------------
 
@@ -1115,10 +1166,10 @@ CREATE TABLE `membership_packages` (
   `package_amount` decimal(10,2) DEFAULT NULL,
   `package_currency` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `package_duration` int(10) DEFAULT NULL,
-  `proposal_send_daily_limit` int(10) NOT NULL DEFAULT '0',
-  `proposal_send_total_limit` int(10) NOT NULL DEFAULT '0',
-  `contact_view_limit` int(10) NOT NULL DEFAULT '0',
-  `addedby_id` int(10) UNSIGNED NOT NULL DEFAULT '1',
+  `proposal_send_daily_limit` int(10) NOT NULL DEFAULT 0,
+  `proposal_send_total_limit` int(10) NOT NULL DEFAULT 0,
+  `contact_view_limit` int(10) NOT NULL DEFAULT 0,
+  `addedby_id` int(10) UNSIGNED NOT NULL DEFAULT 1,
   `editedby_id` int(10) UNSIGNED DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -1129,16 +1180,16 @@ CREATE TABLE `membership_packages` (
 --
 
 INSERT INTO `membership_packages` (`id`, `package_title`, `package_description`, `package_type`, `image_name`, `image_original_name`, `package_amount`, `package_currency`, `package_duration`, `proposal_send_daily_limit`, `proposal_send_total_limit`, `contact_view_limit`, `addedby_id`, `editedby_id`, `created_at`, `updated_at`) VALUES
-(1, 'Starter (Bangladesh)', '45 Days Membership for Bangladeshi People', 'Bangladesh', 'STjZLjev1544418189.png', 'starter.png', '6000.00', 'BDT', 45, 4, 40, 5, 1, NULL, '2018-06-03 20:20:27', '2019-04-27 19:02:43'),
-(2, 'Professional (Bangladesh)', 'Three Months Membership for Bangladeshi Peoples', 'Bangladesh', 'nM1xi9En1544418204.png', 'professional.png', '12000.00', 'BDT', 90, 6, 60, 10, 1, NULL, '2018-06-03 20:22:26', '2019-04-27 19:03:34'),
-(3, 'Advanced (Bangladesh)', 'Six Month Membership for Bangladeshi People', 'Bangladesh', 'yYceslxZ1544418215.png', 'advanced.png', '16000.00', 'BDT', 180, 8, 80, 20, 1, NULL, '2018-06-03 20:23:50', '2019-04-27 19:04:27'),
-(4, 'Enterprise (Bangladesh)', 'Nine Months Membership for Bangladeshi People', 'Bangladesh', 'WezIBc5N1544418226.png', 'enterprise.png', '25000.00', 'BDT', 270, 10, 100, 1000, 1, NULL, '2018-06-03 20:24:39', '2019-04-27 19:06:01'),
-(5, 'Starter (Foreign)', '45 Days Membership for Outside Bangladesh', 'Outside Bangladesh', 'PHn0dCjU1544418240.png', 'starter.png', '70.00', 'USD', 45, 4, 40, 5, 1, NULL, '2018-06-03 20:25:41', '2019-04-27 19:03:04'),
-(6, 'Professional (Foreign)', 'Three Months Membership for Outside Bangladesh', 'Outside Bangladesh', '4kN2aREm1544418254.png', 'professional.png', '142.00', 'USD', 90, 6, 60, 10, 1, NULL, '2018-06-03 20:26:56', '2019-04-27 19:03:58'),
-(7, 'Advanced (Foreign)', 'Six Months Membership for Outside Bangladesh', 'Outside Bangladesh', 'FEKCH02Q1544418266.png', 'advanced.png', '189.00', 'USD', 180, 8, 80, 20, 1, NULL, '2018-06-03 20:27:47', '2019-04-27 19:05:15'),
-(8, 'Enterprise (Foreign)', 'One Year Membership for Outside Bangladesh', 'Outside Bangladesh', 'p3wm2mfV1544418280.png', 'enterprise.png', '295.00', 'USD', 270, 10, 100, 1000, 1, NULL, '2018-06-03 20:29:07', '2019-04-27 19:07:19'),
-(9, 'Higher (Bangladesh)', 'One Year Membership for Bangladeshi People', 'Bangladesh', 'Ef6MtQSl1557778810.png', 'heigher.png', '30000.00', 'BDT', 365, 20, 200, 1500, 1, NULL, '2019-01-21 20:00:59', '2019-05-15 18:22:40'),
-(10, 'Higher (Foreign)', 'Higher package for the people of outside Bangladesh', 'Bangladesh', 'PpAareoh1557778834.png', 'heigher.png', '353.00', 'USD', 365, 20, 200, 1500, 1, NULL, '2019-05-14 05:07:37', '2019-05-15 18:23:29');
+(1, 'Starter (Bangladesh)', '45 Days Membership for Bangladeshi People', 'Bangladesh', 'STjZLjev1544418189.png', 'starter.png', 6000.00, 'BDT', 45, 4, 40, 5, 1, NULL, '2018-06-03 20:20:27', '2019-04-27 19:02:43'),
+(2, 'Professional (Bangladesh)', 'Three Months Membership for Bangladeshi Peoples', 'Bangladesh', 'nM1xi9En1544418204.png', 'professional.png', 12000.00, 'BDT', 90, 6, 60, 10, 1, NULL, '2018-06-03 20:22:26', '2019-04-27 19:03:34'),
+(3, 'Advanced (Bangladesh)', 'Six Month Membership for Bangladeshi People', 'Bangladesh', 'yYceslxZ1544418215.png', 'advanced.png', 16000.00, 'BDT', 180, 8, 80, 20, 1, NULL, '2018-06-03 20:23:50', '2019-04-27 19:04:27'),
+(4, 'Enterprise (Bangladesh)', 'Nine Months Membership for Bangladeshi People', 'Bangladesh', 'WezIBc5N1544418226.png', 'enterprise.png', 25000.00, 'BDT', 270, 10, 100, 1000, 1, NULL, '2018-06-03 20:24:39', '2019-04-27 19:06:01'),
+(5, 'Starter (Foreign)', '45 Days Membership for Outside Bangladesh', 'Outside Bangladesh', 'PHn0dCjU1544418240.png', 'starter.png', 70.00, 'USD', 45, 4, 40, 5, 1, NULL, '2018-06-03 20:25:41', '2019-04-27 19:03:04'),
+(6, 'Professional (Foreign)', 'Three Months Membership for Outside Bangladesh', 'Outside Bangladesh', '4kN2aREm1544418254.png', 'professional.png', 142.00, 'USD', 90, 6, 60, 10, 1, NULL, '2018-06-03 20:26:56', '2019-04-27 19:03:58'),
+(7, 'Advanced (Foreign)', 'Six Months Membership for Outside Bangladesh', 'Outside Bangladesh', 'FEKCH02Q1544418266.png', 'advanced.png', 189.00, 'USD', 180, 8, 80, 20, 1, NULL, '2018-06-03 20:27:47', '2019-04-27 19:05:15'),
+(8, 'Enterprise (Foreign)', 'One Year Membership for Outside Bangladesh', 'Outside Bangladesh', 'p3wm2mfV1544418280.png', 'enterprise.png', 295.00, 'USD', 270, 10, 100, 1000, 1, NULL, '2018-06-03 20:29:07', '2019-04-27 19:07:19'),
+(9, 'Higher (Bangladesh)', 'One Year Membership for Bangladeshi People', 'Bangladesh', 'Ef6MtQSl1557778810.png', 'heigher.png', 30000.00, 'BDT', 365, 20, 200, 1500, 1, NULL, '2019-01-21 20:00:59', '2019-05-15 18:22:40'),
+(10, 'Higher (Foreign)', 'Higher package for the people of outside Bangladesh', 'Bangladesh', 'PpAareoh1557778834.png', 'heigher.png', 353.00, 'USD', 365, 20, 200, 1500, 1, NULL, '2019-05-14 05:07:37', '2019-05-15 18:23:29');
 
 -- --------------------------------------------------------
 
@@ -1214,9 +1265,6 @@ INSERT INTO `menu_pages` (`id`, `menu_id`, `page_id`, `addedby_id`, `editedby_id
 (169, 14, 8, 1, NULL, '2021-01-12 00:09:45', '2021-01-12 00:09:45'),
 (170, 9, 8, 1, NULL, '2021-01-12 00:09:45', '2021-01-12 00:09:45'),
 (171, 10, 8, 1, NULL, '2021-01-12 00:09:45', '2021-01-12 00:09:45'),
-(172, 14, 9, 1, NULL, '2021-01-12 00:10:21', '2021-01-12 00:10:21'),
-(173, 9, 9, 1, NULL, '2021-01-12 00:10:21', '2021-01-12 00:10:21'),
-(174, 10, 9, 1, NULL, '2021-01-12 00:10:22', '2021-01-12 00:10:22'),
 (214, 16, 15, 1, NULL, '2021-01-16 02:59:29', '2021-01-16 02:59:29'),
 (215, 16, 12, 1, NULL, '2021-01-16 03:09:43', '2021-01-16 03:09:43'),
 (216, 14, 12, 1, NULL, '2021-01-16 03:09:43', '2021-01-16 03:09:43'),
@@ -1232,8 +1280,6 @@ INSERT INTO `menu_pages` (`id`, `menu_id`, `page_id`, `addedby_id`, `editedby_id
 (260, 9, 18, 1, NULL, '2021-01-16 22:44:45', '2021-01-16 22:44:45'),
 (263, 17, 20, 1, NULL, '2021-01-16 22:45:48', '2021-01-16 22:45:48'),
 (264, 9, 20, 1, NULL, '2021-01-16 22:45:48', '2021-01-16 22:45:48'),
-(265, 17, 19, 1, NULL, '2021-01-16 22:45:50', '2021-01-16 22:45:50'),
-(266, 9, 19, 1, NULL, '2021-01-16 22:45:50', '2021-01-16 22:45:50'),
 (267, 17, 21, 1, NULL, '2021-01-16 22:45:53', '2021-01-16 22:45:53'),
 (268, 9, 21, 1, NULL, '2021-01-16 22:45:53', '2021-01-16 22:45:53'),
 (269, 17, 22, 1, NULL, '2021-01-16 22:45:55', '2021-01-16 22:45:55'),
@@ -1244,22 +1290,34 @@ INSERT INTO `menu_pages` (`id`, `menu_id`, `page_id`, `addedby_id`, `editedby_id
 (277, 9, 25, 1, NULL, '2021-01-16 22:46:33', '2021-01-16 22:46:33'),
 (278, 19, 26, 1, NULL, '2021-01-16 22:46:35', '2021-01-16 22:46:35'),
 (279, 9, 26, 1, NULL, '2021-01-16 22:46:35', '2021-01-16 22:46:35'),
-(280, 19, 27, 1, NULL, '2021-01-16 22:46:38', '2021-01-16 22:46:38'),
-(281, 9, 27, 1, NULL, '2021-01-16 22:46:38', '2021-01-16 22:46:38'),
-(284, 19, 29, 1, NULL, '2021-01-16 22:46:45', '2021-01-16 22:46:45'),
-(285, 9, 29, 1, NULL, '2021-01-16 22:46:45', '2021-01-16 22:46:45'),
 (289, 14, 7, 1, NULL, '2021-01-18 05:10:52', '2021-01-18 05:10:52'),
 (290, 9, 7, 1, NULL, '2021-01-18 05:10:52', '2021-01-18 05:10:52'),
 (291, 10, 7, 1, NULL, '2021-01-18 05:10:52', '2021-01-18 05:10:52'),
 (295, 16, 17, 1, NULL, '2021-01-23 04:05:04', '2021-01-23 04:05:04'),
 (296, 9, 17, 1, NULL, '2021-01-23 04:05:05', '2021-01-23 04:05:05'),
-(297, 19, 30, 1, NULL, '2021-01-24 00:10:13', '2021-01-24 00:10:13'),
-(298, 14, 30, 1, NULL, '2021-01-24 00:10:13', '2021-01-24 00:10:13'),
-(299, 9, 30, 1, NULL, '2021-01-24 00:10:13', '2021-01-24 00:10:13'),
-(300, 10, 30, 1, NULL, '2021-01-24 00:10:13', '2021-01-24 00:10:13'),
-(303, 19, 28, 1, NULL, '2021-02-01 04:28:47', '2021-02-01 04:28:47'),
-(304, 9, 28, 1, NULL, '2021-02-01 04:28:47', '2021-02-01 04:28:47'),
-(305, 16, 31, 1, NULL, '2021-03-07 00:01:30', '2021-03-07 00:01:30');
+(297, 16, 30, 1, NULL, '2021-01-23 06:43:40', '2021-01-23 06:43:40'),
+(298, 9, 30, 1, NULL, '2021-01-23 06:43:40', '2021-01-23 06:43:40'),
+(299, 19, 31, 1, NULL, '2021-01-23 06:46:02', '2021-01-23 06:46:02'),
+(300, 9, 31, 1, NULL, '2021-01-23 06:46:02', '2021-01-23 06:46:02'),
+(306, 19, 33, 1, NULL, '2021-01-23 22:57:49', '2021-01-23 22:57:49'),
+(307, 14, 33, 1, NULL, '2021-01-23 22:57:49', '2021-01-23 22:57:49'),
+(308, 9, 33, 1, NULL, '2021-01-23 22:57:49', '2021-01-23 22:57:49'),
+(309, 10, 33, 1, NULL, '2021-01-23 22:57:49', '2021-01-23 22:57:49'),
+(310, 19, 28, 1, NULL, '2021-01-23 23:01:11', '2021-01-23 23:01:11'),
+(311, 9, 28, 1, NULL, '2021-01-23 23:01:11', '2021-01-23 23:01:11'),
+(312, 19, 29, 1, NULL, '2021-01-23 23:01:30', '2021-01-23 23:01:30'),
+(313, 9, 29, 1, NULL, '2021-01-23 23:01:30', '2021-01-23 23:01:30'),
+(314, 19, 27, 1, NULL, '2021-02-01 00:45:11', '2021-02-01 00:45:11'),
+(315, 9, 27, 1, NULL, '2021-02-01 00:45:12', '2021-02-01 00:45:12'),
+(316, 14, 9, 1, NULL, '2021-02-02 05:18:19', '2021-02-02 05:18:19'),
+(317, 9, 9, 1, NULL, '2021-02-02 05:18:19', '2021-02-02 05:18:19'),
+(318, 10, 9, 1, NULL, '2021-02-02 05:18:20', '2021-02-02 05:18:20'),
+(319, 17, 19, 1, NULL, '2021-02-02 05:19:03', '2021-02-02 05:19:03'),
+(320, 14, 19, 1, NULL, '2021-02-02 05:19:04', '2021-02-02 05:19:04'),
+(321, 9, 19, 1, NULL, '2021-02-02 05:19:04', '2021-02-02 05:19:04'),
+(322, 10, 19, 1, NULL, '2021-02-02 05:19:04', '2021-02-02 05:19:04'),
+(323, 18, 32, 1, NULL, '2021-03-13 03:25:13', '2021-03-13 03:25:13'),
+(324, 9, 32, 1, NULL, '2021-03-13 03:25:14', '2021-03-13 03:25:14');
 
 -- --------------------------------------------------------
 
@@ -1271,7 +1329,7 @@ CREATE TABLE `messages` (
   `id` int(10) UNSIGNED NOT NULL,
   `message_title` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `message_slug` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `message_body` text COLLATE utf8mb4_unicode_ci,
+  `message_body` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `chat_id` int(10) UNSIGNED NOT NULL,
   `addedby_id` int(10) UNSIGNED NOT NULL,
   `editedby_id` int(10) UNSIGNED DEFAULT NULL,
@@ -1354,14 +1412,7 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (38, '2018_11_13_113254_create_image_galleries_table', 8),
 (39, '2018_11_13_113708_create_image_gallery_items_table', 8),
 (40, '2018_11_07_105038_create_media_table', 9),
-(41, '2018_11_21_143316_create_video_galleries_table', 10),
-(42, '2021_02_06_061907_create_social_identities_table', 11),
-(43, '2017_07_20_175009_create_user_education_records_table', 11),
-(44, '2017_07_20_220137_create_user_working_records_table', 11),
-(45, '2018_05_29_003525_create_front_sliders_table', 11),
-(46, '2018_05_30_191242_create_chats_table', 11),
-(47, '2018_05_30_191308_create_messages_table', 11),
-(49, '2021_03_07_070824_create_team_members_table', 12);
+(41, '2018_11_21_143316_create_video_galleries_table', 10);
 
 -- --------------------------------------------------------
 
@@ -1374,10 +1425,10 @@ CREATE TABLE `pages` (
   `page_title` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `page_type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'Full Page',
   `route_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `content` text COLLATE utf8mb4_unicode_ci,
-  `title_hide` tinyint(1) NOT NULL DEFAULT '0',
-  `active` tinyint(1) NOT NULL DEFAULT '1',
-  `list_in_menu` tinyint(1) NOT NULL DEFAULT '1',
+  `content` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `title_hide` tinyint(1) NOT NULL DEFAULT 0,
+  `active` tinyint(1) NOT NULL DEFAULT 1,
+  `list_in_menu` tinyint(1) NOT NULL DEFAULT 1,
   `addedby_id` int(10) UNSIGNED NOT NULL,
   `editedby_id` int(10) UNSIGNED DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -1392,7 +1443,6 @@ INSERT INTO `pages` (`id`, `page_title`, `page_type`, `route_name`, `content`, `
 (6, 'About Us', 'Full Page', 'about', '<div class=\"w3-container\">\r\n<p style=\"text-align: justify; \">\r\n</p><h2 style=\"text-align: center;\">About Us</h2><p style=\"text-align: justify; \">Marriage Solution BD is a top level Bangladeshi wedding organization, and is dedicated to those who are looking for a suitable life partner. We consider it a social responsibility, not just a business. No matter where you are in the world and wherever you are, Marriage Solution BD is your best platform, where you can find highly educated and aristocratic family doctors, BUET (Engineer), O / A Level, PhD, Barrister, Banker, BCS Cadre (Admin), industrialists, citizens, businessmen settled in Dhaka and can get the profile of divorced and elderly couple. Marriage Solution BD is always ready to give you the best quality services and they are sincere and complete cooperative, where you can find a suitable, perfect, ideal life partner for you / your son or daughter. We have a highly educated, talented, smart, skilled, loyal, honest, competent, experienced, humble, compassionate and smart matchmaker team, who are always active in your service. Our first task is to verify the authenticity of each of our biodata. And our first priority is to protect your privacy and keep your personal information safe. Marriage Solution BD is not just a name, it has many years of experience and a successful, trustworthy, elite marriage company. Marriage Solution BD From the very beginning, it has had incredible success with its suitable proposals and it has married thousands of candidates. As a successful marriage company, we have a reputation for providing professional marriage services in Bangladesh. We don’t follow conventional trends, we work in advance and modern touches. Please let us know if you encounter any problems with our services. Our goal is not only to help people meet each other, but also to get married.</p><p style=\"text-align: justify; \"><br></p><h3 style=\"text-align: center;\"><span style=\"color: rgb(0, 0, 255);\">Our Specialty&nbsp;</span></h3><p style=\"text-align: justify; \"><br></p><p style=\"text-align: justify; \">Marriage is an important issue in our society and it is also the most amazing thing about nature. Islam sees marriage as a\r\nmetaphorical union of two souls on the way to paradise. Thus, according to Islam it is considered both a religious\r\nobligation and a social necessity to get married. Marriage Bonding At present, it is very rare to find a suitable marriage\r\nproposal in this busy life without a mediator. And making decisions about marriage is more difficult now a day. Getting a\r\ngood offer is everyone\'s dream. When it comes to marrying their beloved child, parents wonder where they will find the\r\nmost suitable proposal! Marriage Solution BD is an Islamic wedding media which is a reputed, leading, reliable, efficient\r\nand successful matrimonial organization in Dhaka, Marriage Solution BD can benefit you with its best offers. This is a\r\nwell-established organization as a one-way destination for customers in any region. We are not part of the traditional\r\nGhotok tradition of Dhaka; Marriage Solutions BD We are professional, cheerful, talented, enterprising, expert, skilled,\r\nsensitive, loyal and the most modern matchmaker expert, who assures you the best match. We are working as a bridge\r\nbetween the most suitable brides and groom to find a perfect match for their life and we help them in every step of their\r\nmarriage. Your son / daughter who are well educated, elite, well established and much more - perfectly suited for you /\r\nyour family, we have some decent Bangladeshi marriage biodata from respectable families. ‘‘A good proposal makes a\r\ngood match; a good match makes a perfect couple. “Marriage Solution BD is the best match maker in Bangladesh, who\r\nalways keeps the best match for you. We understand the necessity and importance of a perfect match. We strive to\r\nprovide the highest level of service to our clients. The goal is not only to find the right match but also to reduce your efforts\r\nto find the best marriage solution for you. Marriage Solution BD is the best platform where you can choose a suitable,\r\nperfect, ideal best half according to your choice from many Bangladeshi bride / groom profiles.&nbsp;<br></p>\r\n</div>', 0, 1, 1, 1, 1, '2020-12-28 12:53:13', '2021-01-13 06:21:04'),
 (7, 'Contact Us', 'Full Page', 'contact-us', '<div class=\"w3-hover-shadow\">\r\n                    <div class=\"w3-card-2 \">\r\n                        <div class=\"box box-widget\">\r\n                            <div class=\"box-header with-border w3-center pt-2\">\r\n                                <h3 class=\"box-title\"><b style=\"color: rgb(0, 0, 0); background-color: rgb(255, 255, 255);\">Head Office</b></h3>\r\n\r\n                            </div>\r\n                            <div class=\"box-body\">\r\n\r\n                                <iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3651.671187234738!2d90.37121771443627!3d23.759102184585025!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755bf3ca2f0be9f%3A0x1b479106030d72f8!2sMarriage+Solution+Bd.!5e0!3m2!1sen!2sbd!4v1542185034971\" width=\"100%\" height=\"300\" frameborder=\"0\" style=\"border:0\" allowfullscreen=\"\"></iframe>\r\n\r\n                            </div>\r\n                        </div>\r\n                        <div class=\"text-center pt-1 pb-2 px-3\">\r\n                            <div>\r\n                                <p>\r\n                                    </p><address>New Colony Mashjid Complex (2nd &amp; 3rd) floor, Asad Gate (Beside Aarong), Mirpur road, Mohammadpur</address>\r\n                                    <span>Phone: <a href=\"tel:01633036062, 01720504504\">01633036062, 01720504504</a></span>\r\n                                    <br>\r\n                                    <span>Email: <a href=\"mailto:marriagebd2012@gmail.com\">marriagebd2012@gmail.com</a></span>\r\n                                <p></p>\r\n                            </div>\r\n                            <div class=\"box-tools pull-right\">\r\n                                <a class=\"btn btn-sm btn-primary\" href=\"tel:01633036062, 01720504504\" title=\"01633036062, 01720504504, marriagebd2012@gmail.com\">Contact Now</a>\r\n                            </div>\r\n                        </div>\r\n                    </div>\r\n                </div>', 0, 1, 1, 1, 1, '2020-12-28 12:53:45', '2021-01-18 05:10:52'),
 (8, 'Privacy Policy', 'Full Page', 'privacy-policy', '<p>This is privacy policy page.</p>', 0, 1, 1, 1, NULL, '2021-01-12 00:09:45', '2021-01-12 00:09:45'),
-(9, 'Terms and conditions', 'Full Page', 'terms-and-conditions', '<p>This is terms and conditions page</p>', 0, 1, 1, 1, NULL, '2021-01-12 00:10:21', '2021-01-12 00:10:21'),
 (12, 'Company Introduction', 'Full Page', 'company-introduction', '<h2 style=\"text-align: center; \"><span style=\"color: rgb(0, 0, 255);\">Company Introduction</span></h2><p style=\"text-align: justify; \" class=\"p-lg-3\">Marriage Solution BD is the professional and specialist matchmaker organization network, which is known as\r\none of the finest, modern, dynamic, prominent, faithful, and extremely popular Matrimonial Organization in\r\nDhaka for the \'\'elite class\'\'. Our organization was started its journey from 12-12-2012 and has been working\r\nsincerely, confidently and successfully from the last 9 years. The owner of this company has maintained the\r\nreputation through its professionalism, honesty, hard work and prosperity. He is a matchmaking expert, has\r\nbeen working in this field with full dedication and heart. He is also a Counselor &amp; motivational speaker and a\r\ngreat influencer for potential grooms and brides to set their life partner preferences rightly. Marriage Solution BD\r\nis a modern, highly personalized and biggest matchmaking service organization in Bangladesh, run by the most\r\nprofessional, experienced, expert and dedicated matchmaker team. We never compromise on quality to provide\r\nbetter service to our clients.<br></p>', 0, 1, 1, 1, 1, '2021-01-13 06:12:25', '2021-01-13 06:23:34'),
 (16, 'Why Choose Us', 'Full Page', 'why-choose-us', NULL, 0, 1, 1, 1, 1, '2021-01-16 03:11:18', '2021-01-16 22:38:24'),
 (17, 'Our Speciality', 'Full Page', 'our_speciality', NULL, 0, 1, 1, 1, 1, '2021-01-16 03:11:40', '2021-01-23 04:05:02'),
@@ -1404,11 +1454,13 @@ INSERT INTO `pages` (`id`, `page_title`, `page_type`, `route_name`, `content`, `
 (23, 'Founder’s Massage', 'Full Page', 'founder’s_massage', NULL, 0, 1, 1, 1, 1, '2021-01-16 03:13:40', '2021-01-16 22:45:57'),
 (24, 'Our Success Stories', 'Full Page', 'our_success_stories', NULL, 0, 0, 1, 1, 1, '2021-01-16 03:13:55', '2021-01-19 07:13:48'),
 (25, 'Head Office Address', 'Full Page', 'head_office_address', NULL, 0, 1, 1, 1, 1, '2021-01-16 03:14:19', '2021-01-16 03:33:44'),
-(27, 'Contact Numbers', 'Full Page', 'contact_numbers', NULL, 0, 1, 1, 1, 1, '2021-01-16 03:14:40', '2021-01-16 22:46:38'),
-(28, 'WhatsApp Number', 'Full Page', 'whatsapp_number', NULL, 0, 1, 1, 1, 1, '2021-01-16 03:14:56', '2021-02-01 04:28:47'),
-(29, 'Viber Number', 'Full Page', 'viber_number', NULL, 0, 1, 1, 1, 1, '2021-01-16 03:15:24', '2021-01-16 22:46:44'),
-(30, 'Career', 'Full Page', 'career', NULL, 0, 1, 1, 1, NULL, '2021-01-24 00:10:13', '2021-01-24 00:10:13'),
-(31, 'Management Team', 'Full Page', 'management_team', NULL, 0, 1, 1, 1, NULL, '2021-03-07 00:01:30', '2021-03-07 00:01:30');
+(27, 'Contact Numbers', 'Full Page', 'contact_numbers', NULL, 0, 0, 1, 1, 1, '2021-01-16 03:14:40', '2021-02-01 00:45:11'),
+(28, 'WhatsApp Number', 'Full Page', 'whatsapp_number', NULL, 0, 0, 1, 1, 1, '2021-01-16 03:14:56', '2021-01-23 23:01:11'),
+(29, 'Viber Number', 'Full Page', 'viber_number', NULL, 0, 0, 1, 1, 1, '2021-01-16 03:15:24', '2021-01-23 23:01:30'),
+(30, 'Our Service Solution', 'Full Page', 'our_service_solution', NULL, 0, 1, 1, 1, NULL, '2021-01-23 06:43:40', '2021-01-23 06:43:40'),
+(31, 'Help & Customer Support', 'Full Page', 'help_and_customer_support', NULL, 0, 1, 1, 1, NULL, '2021-01-23 06:46:02', '2021-01-23 06:46:02'),
+(32, 'Employee Stories', 'Full Page', 'employee_stories', NULL, 0, 0, 1, 1, 1, '2021-01-23 06:47:33', '2021-03-13 03:25:10'),
+(33, 'Career', 'Full Page', 'career', NULL, 0, 1, 1, 1, 1, '2021-01-23 06:48:02', '2021-01-23 22:57:48');
 
 -- --------------------------------------------------------
 
@@ -1420,7 +1472,7 @@ CREATE TABLE `page_items` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `page_id` bigint(20) UNSIGNED NOT NULL,
   `title` varchar(255) DEFAULT NULL,
-  `content` text,
+  `content` text DEFAULT NULL,
   `editor` tinyint(1) DEFAULT NULL,
   `active` tinyint(1) DEFAULT NULL,
   `addedby_id` int(11) DEFAULT NULL,
@@ -1434,46 +1486,60 @@ CREATE TABLE `page_items` (
 --
 
 INSERT INTO `page_items` (`id`, `page_id`, `title`, `content`, `editor`, `active`, `addedby_id`, `editedby_id`, `created_at`, `updated_at`) VALUES
-(1, 12, 'Part 1', '<div class=\"w3-animate-zoom\"><img src=\"https://marriagesolutionbd.com/storage/media/image/XDV621011814.jpg\" style=\"width: 100%;\"></div>\r\n<div class=\"text-center\"><div class=\"text-center w3-large p-2 w3-text-black\" style=\"background: url(https://marriagesolutionbd.com/img/bg-ribon.jpg) repeat;min-height: 20px;width: 100%;font-weight:bold\">Marriage Solution BD: The Largest Matrimony Organization in Bangladesh</div></div>', 0, 1, 1, 1, '2021-01-16 04:07:18', '2021-01-18 04:52:44'),
-(7, 16, 'Part 1', '<div class=\"w3-animate-right\"><img src=\"https://marriagesolutionbd.com/storage/media/image/XDV621011814.jpg\" style=\"width: 100%;\"></div>\r\n<div class=\"text-center\"><div class=\"text-center w3-large p-2 w3-text-black\" style=\"background: url(https://marriagesolutionbd.com/img/bg-ribon.jpg) repeat;min-height: 20px;width: 100%;font-weight:bold\">Marriage Solution BD: The Largest Matrimony Organization in Bangladesh</div></div>', 0, 1, 1, 1, '2021-01-16 06:19:06', '2021-01-18 05:13:39'),
-(8, 17, 'Part 1', '<div class=\"w3-animate-zoom\"><img src=\"https://marriagesolutionbd.com/storage/media/image/XDV621011814.jpg\" style=\"width: 100%;\"></div>\r\n<div class=\"text-center\"><div class=\"text-center w3-large p-2 w3-text-black\" style=\"background: url(https://marriagesolutionbd.com/img/bg-ribon.jpg) repeat;min-height: 20px;width: 100%;font-weight:bold\">Marriage Solution BD: The Largest Matrimony Organization in Bangladesh</div></div>', 0, 1, 1, 1, '2021-01-16 06:19:59', '2021-01-18 05:13:47'),
-(9, 18, 'Part 1', '<div class=\"w3-animate-left\"><img src=\"https://marriagesolutionbd.com/storage/media/image/XDV621011814.jpg\" style=\"width: 100%;\"></div>\r\n<div class=\"text-center\"><div class=\"text-center w3-large p-2 w3-text-black\" style=\"background: url(https://marriagesolutionbd.com/img/bg-ribon.jpg) repeat;min-height: 20px;width: 100%;font-weight:bold\">Marriage Solution BD: The Largest Matrimony Organization in Bangladesh</div></div>', 0, 1, 1, 1, '2021-01-16 06:21:02', '2021-01-18 05:13:53'),
-(5, 7, 'Part 1', '<div class=\"text-center\"></p><p>    <div class=\"text-center w3-xlarge p-2 w3-text-black\" style=\"background: url(https://marriagesolutionbd.com/img/bg-ribon.jpg) repeat;min-height: 20px;width: 100%;font-weight:bold;\"></p><p>        Marriage Solution BD: The Largest Matrimony Organization in Bangladesh</p><p>    </div></p><p><br></p><p></div>', 0, 1, 1, 1, '2021-01-16 05:20:37', '2021-01-16 05:21:23'),
-(6, 8, 'Part 1', '<div class=\"w3-animate-top\"><img src=\"https://marriagesolutionbd.com/storage/media/image/XDV621011814.jpg\" style=\"width: 100%;\"></div>\r\n<div class=\"text-center\"><div class=\"text-center w3-large p-2 w3-text-black\" style=\"background: url(https://marriagesolutionbd.com/img/bg-ribon.jpg) repeat;min-height: 20px;width: 100%;font-weight:bold\">Marriage Solution BD: The Largest Matrimony Organization in Bangladesh</div></div>', 0, 1, 1, 1, '2021-01-16 05:23:02', '2021-01-18 05:13:08'),
-(10, 9, 'Part 1', '<div class=\"w3-animate-left\"><img src=\"https://marriagesolutionbd.com/storage/media/image/XDV621011814.jpg\" style=\"width: 100%;\"></div>\r\n<div class=\"text-center\"><div class=\"text-center w3-large p-2 w3-text-black\" style=\"background: url(https://marriagesolutionbd.com/img/bg-ribon.jpg) repeat;min-height: 20px;width: 100%;font-weight:bold\">Marriage Solution BD: The Largest Matrimony Organization in Bangladesh</div></div>', 0, 1, 1, 1, '2021-01-16 06:47:07', '2021-01-18 05:13:25'),
-(11, 19, 'Part 1', '<div class=\"w3-animate-right\"><img src=\"https://marriagesolutionbd.com/storage/media/image/XDV621011814.jpg\" style=\"width: 100%;\"></div>\r\n<div class=\"text-center\"><div class=\"text-center w3-large p-2 w3-text-black\" style=\"background: url(https://marriagesolutionbd.com/img/bg-ribon.jpg) repeat;min-height: 20px;width: 100%;font-weight:bold\">Marriage Solution BD: The Largest Matrimony Organization in Bangladesh</div></div>', 0, 1, 1, 1, '2021-01-16 06:49:40', '2021-01-18 05:14:01'),
-(12, 20, 'Part 1', '<div class=\"w3-animate-top\"><img src=\"https://marriagesolutionbd.com/storage/media/image/XDV621011814.jpg\" style=\"width: 100%;\"></div>\r\n<div class=\"text-center\"><div class=\"text-center w3-large p-2 w3-text-black\" style=\"background: url(https://marriagesolutionbd.com/img/bg-ribon.jpg) repeat;min-height: 20px;width: 100%;font-weight:bold\">Marriage Solution BD: The Largest Matrimony Organization in Bangladesh</div></div>', 0, 1, 1, 1, '2021-01-16 06:49:47', '2021-01-18 05:15:15'),
-(13, 21, 'Part 1', '<div class=\"w3-animate-top\"><img src=\"https://marriagesolutionbd.com/storage/media/image/XDV621011814.jpg\" style=\"width: 100%;\"></div>\r\n<div class=\"text-center\"><div class=\"text-center w3-large p-2 w3-text-black\" style=\"background: url(https://marriagesolutionbd.com/img/bg-ribon.jpg) repeat;min-height: 20px;width: 100%;font-weight:bold\">Marriage Solution BD: The Largest Matrimony Organization in Bangladesh</div></div>', 0, 1, 1, 1, '2021-01-16 06:49:50', '2021-01-18 05:15:25'),
-(14, 22, 'Part 1', '<div class=\"w3-animate-zoom\"><img src=\"https://marriagesolutionbd.com/storage/media/image/XDV621011814.jpg\" style=\"width: 100%;\"></div>\r\n<div class=\"text-center\"><div class=\"text-center w3-large p-2 w3-text-black\" style=\"background: url(https://marriagesolutionbd.com/img/bg-ribon.jpg) repeat;min-height: 20px;width: 100%;font-weight:bold\">Marriage Solution BD: The Largest Matrimony Organization in Bangladesh</div></div>', 0, 1, 1, 1, '2021-01-16 06:49:54', '2021-01-18 05:15:33'),
-(15, 24, 'Part 1', '<div class=\"w3-animate-zoom\"><img src=\"https://marriagesolutionbd.com/storage/media/image/XDV621011814.jpg\" style=\"width: 100%;\"></div>\r\n<div class=\"text-center\"><div class=\"text-center w3-large p-2 w3-text-black\" style=\"background: url(https://marriagesolutionbd.com/img/bg-ribon.jpg) repeat;min-height: 20px;width: 100%;font-weight:bold\">Marriage Solution BD: The Largest Matrimony Organization in Bangladesh</div></div>', 0, 1, 1, 1, '2021-01-16 06:50:00', '2021-01-18 05:16:22'),
+(1, 12, 'Part 1', '<div class=\"w3-animate-zoom\"><img src=\"https://marriagesolutionbd.com/storage/media/image/XDV621011814.jpg\" style=\"width: 100%;\"></div>\r\n<div class=\"text-center\"><div class=\"text-center w3-large p-2 w3-text-black\" style=\"background: url(https://marriagesolutionbd.com/img/bg-ribon.jpg) repeat;min-height: 20px;width: 100%;font-weight:bold\">Marriage Solution BD: The Largest Matrimony Organization in Bangladesh</div></div>', 0, 0, 1, 1, '2021-01-16 04:07:18', '2021-03-05 23:59:36'),
+(7, 16, 'Part 1', '<div class=\"w3-animate-right\"><img src=\"https://marriagesolutionbd.com/storage/media/image/XDV621011814.jpg\" style=\"width: 100%;\"></div>\r\n<div class=\"text-center\"><div class=\"text-center w3-large p-2 w3-text-black\" style=\"background: url(https://marriagesolutionbd.com/img/bg-ribon.jpg) repeat;min-height: 20px;width: 100%;font-weight:bold\">Marriage Solution BD: The Largest Matrimony Organization in Bangladesh</div></div>', 0, 0, 1, 1, '2021-01-16 06:19:06', '2021-03-06 00:04:15'),
+(8, 17, 'Part 1', '<div class=\"w3-animate-zoom\"><img src=\"https://marriagesolutionbd.com/storage/media/image/XDV621011814.jpg\" style=\"width: 100%;\"></div>\r\n<div class=\"text-center\"><div class=\"text-center w3-large p-2 w3-text-black\" style=\"background: url(https://marriagesolutionbd.com/img/bg-ribon.jpg) repeat;min-height: 20px;width: 100%;font-weight:bold\">Marriage Solution BD: The Largest Matrimony Organization in Bangladesh</div></div>', 0, 0, 1, 1, '2021-01-16 06:19:59', '2021-03-06 00:04:06'),
+(9, 18, 'Part 1', '<div class=\"w3-animate-left\"><img src=\"https://marriagesolutionbd.com/storage/media/image/XDV621011814.jpg\" style=\"width: 100%;\"></div>\r\n<div class=\"text-center\"><div class=\"text-center w3-large p-2 w3-text-black\" style=\"background: url(https://marriagesolutionbd.com/img/bg-ribon.jpg) repeat;min-height: 20px;width: 100%;font-weight:bold\">Marriage Solution BD: The Largest Matrimony Organization in Bangladesh</div></div>', 0, 0, 1, 1, '2021-01-16 06:21:02', '2021-03-06 00:04:03'),
+(5, 7, 'Part 1', '<div class=\"text-center\"></p><p>    <div class=\"text-center w3-xlarge p-2 w3-text-black\" style=\"background: url(https://marriagesolutionbd.com/img/bg-ribon.jpg) repeat;min-height: 20px;width: 100%;font-weight:bold;\"></p><p>        Marriage Solution BD: The Largest Matrimony Organization in Bangladesh</p><p>    </div></p><p><br></p><p></div>', 0, 0, 1, 1, '2021-01-16 05:20:37', '2021-03-05 23:59:21'),
+(6, 8, 'Part 1', '<div class=\"w3-animate-top\"><img src=\"https://marriagesolutionbd.com/storage/media/image/XDV621011814.jpg\" style=\"width: 100%;\"></div>\r\n<div class=\"text-center\"><div class=\"text-center w3-large p-2 w3-text-black\" style=\"background: url(https://marriagesolutionbd.com/img/bg-ribon.jpg) repeat;min-height: 20px;width: 100%;font-weight:bold\">Marriage Solution BD: The Largest Matrimony Organization in Bangladesh</div></div>', 0, 0, 1, 1, '2021-01-16 05:23:02', '2021-03-05 23:59:36'),
+(11, 19, 'Part 1', '<div class=\"w3-animate-right\"><img src=\"https://marriagesolutionbd.com/storage/media/image/XDV621011814.jpg\" style=\"width: 100%;\"></div>\r\n<div class=\"text-center\"><div class=\"text-center w3-large p-2 w3-text-black\" style=\"background: url(https://marriagesolutionbd.com/img/bg-ribon.jpg) repeat;min-height: 20px;width: 100%;font-weight:bold\">Marriage Solution BD: The Largest Matrimony Organization in Bangladesh</div></div>', 0, 0, 1, 1, '2021-01-16 06:49:40', '2021-03-06 00:03:55'),
+(12, 20, 'Part 1', '<div class=\"w3-animate-top\"><img src=\"https://marriagesolutionbd.com/storage/media/image/XDV621011814.jpg\" style=\"width: 100%;\"></div>\r\n<div class=\"text-center\"><div class=\"text-center w3-large p-2 w3-text-black\" style=\"background: url(https://marriagesolutionbd.com/img/bg-ribon.jpg) repeat;min-height: 20px;width: 100%;font-weight:bold\">Marriage Solution BD: The Largest Matrimony Organization in Bangladesh</div></div>', 0, 0, 1, 1, '2021-01-16 06:49:47', '2021-03-06 00:07:51'),
+(13, 21, 'Part 1', '<div class=\"w3-animate-top\"><img src=\"https://marriagesolutionbd.com/storage/media/image/XDV621011814.jpg\" style=\"width: 100%;\"></div>\r\n<div class=\"text-center\"><div class=\"text-center w3-large p-2 w3-text-black\" style=\"background: url(https://marriagesolutionbd.com/img/bg-ribon.jpg) repeat;min-height: 20px;width: 100%;font-weight:bold\">Marriage Solution BD: The Largest Matrimony Organization in Bangladesh</div></div>', 0, 0, 1, 1, '2021-01-16 06:49:50', '2021-03-06 00:07:06'),
+(14, 22, 'Part 1', '<div class=\"w3-animate-zoom\"><img src=\"https://marriagesolutionbd.com/storage/media/image/XDV621011814.jpg\" style=\"width: 100%;\"></div>\r\n<div class=\"text-center\"><div class=\"text-center w3-large p-2 w3-text-black\" style=\"background: url(https://marriagesolutionbd.com/img/bg-ribon.jpg) repeat;min-height: 20px;width: 100%;font-weight:bold\">Marriage Solution BD: The Largest Matrimony Organization in Bangladesh</div></div>', 0, 0, 1, 1, '2021-01-16 06:49:54', '2021-03-06 00:06:26'),
+(15, 24, 'Part 1', '<div class=\"w3-animate-zoom\"><img src=\"https://marriagesolutionbd.com/storage/media/image/XDV621011814.jpg\" style=\"width: 100%;\"></div>\r\n<div class=\"text-center\"><div class=\"text-center w3-large p-2 w3-text-black\" style=\"background: url(https://marriagesolutionbd.com/img/bg-ribon.jpg) repeat;min-height: 20px;width: 100%;font-weight:bold\">Marriage Solution BD: The Largest Matrimony Organization in Bangladesh</div></div>', 0, 0, 1, 1, '2021-01-16 06:50:00', '2021-03-06 00:06:30'),
 (16, 25, 'Part 1', '<div class=\"w3-animate-top\"><img src=\"https://marriagesolutionbd.com/storage/media/image/XDV621011814.jpg\" style=\"width: 100%;\"></div>\r\n<div class=\"text-center\"><div class=\"text-center w3-large p-2 w3-text-black\" style=\"background: url(https://marriagesolutionbd.com/img/bg-ribon.jpg) repeat;min-height: 20px;width: 100%;font-weight:bold\">Marriage Solution BD: The Largest Matrimony Organization in Bangladesh</div></div>', 0, 1, 1, 1, '2021-01-16 06:50:05', '2021-01-18 05:16:14'),
 (30, 25, 'Part 2', '<div class=\"col-sm-12 py-5\">\r\n        <div class=\"w3-hover-shadow\">\r\n            <div class=\"w3-card-2 \">\r\n                <div class=\"box box-widget\">\r\n                    <div class=\"box-header with-border w3-center pt-2\">\r\n                        <h3 class=\"box-title\"><b>Head Office</b></h3>\r\n\r\n                    </div>\r\n                    <div class=\"box-body\">\r\n\r\n                        <iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3651.671187234738!2d90.37121771443627!3d23.759102184585025!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755bf3ca2f0be9f%3A0x1b479106030d72f8!2sMarriage+Solution+Bd.!5e0!3m2!1sen!2sbd!4v1542185034971\" width=\"100%\" height=\"300\" frameborder=\"0\" style=\"border:0\" allowfullscreen=\"\"></iframe>\r\n\r\n                    </div>\r\n                </div>\r\n                <div class=\"text-center pt-1 pb-2 px-3\">\r\n                    <div>\r\n                        <p>\r\n                            </p><address>New Colony Mashjid Complex (2nd & 3rd) floor, Asad Gate (Beside Aarong), Mirpur road, Mohammadpur</address>\r\n                            <span>Phone: <a href=\"tel:01633036062, 01720504504\">01633036062, 01720504504</a></span>\r\n                            <br>\r\n                            <span>Email: <a href=\"mailto:marriagebd2012@gmail.com\">marriagebd2012@gmail.com</a></span>\r\n                        <p></p>\r\n                    </div>\r\n                    <div class=\"box-tools pull-right\">\r\n                        <a class=\"btn btn-sm btn-primary\" href=\"tel:01633036062, 01720504504\" title=\"01633036062, 01720504504, marriagebd2012@gmail.com\">Contact Now</a>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </div>', 0, 1, 1, 1, '2021-01-16 23:45:34', '2021-01-16 23:49:19'),
-(18, 27, 'Part 1', '<div class=\"w3-animate-bottom\"><img src=\"https://marriagesolutionbd.com/storage/media/image/XDV621011814.jpg\" style=\"width: 100%;\"></div>\r\n<div class=\"text-center\"><div class=\"text-center w3-large p-2 w3-text-black\" style=\"background: url(https://marriagesolutionbd.com/img/bg-ribon.jpg) repeat;min-height: 20px;width: 100%;font-weight:bold\">Marriage Solution BD: The Largest Matrimony Organization in Bangladesh</div></div>', 0, 1, 1, 1, '2021-01-16 06:52:18', '2021-01-18 05:21:02'),
-(19, 28, 'Part 1', '<div class=\"w3-animate-left\"><img src=\"https://marriagesolutionbd.com/storage/media/image/XDV621011814.jpg\" style=\"width: 100%;\"></div>\r\n<div class=\"text-center\"><div class=\"text-center w3-large p-2 w3-text-black\" style=\"background: url(https://marriagesolutionbd.com/img/bg-ribon.jpg) repeat;min-height: 20px;width: 100%;font-weight:bold\">Marriage Solution BD: The Largest Matrimony Organization in Bangladesh</div></div>', 0, 1, 1, 1, '2021-01-16 06:52:22', '2021-01-18 05:15:57'),
-(20, 29, 'Part 1', '<div class=\"w3-animate-right\"><img src=\"https://marriagesolutionbd.com/storage/media/image/XDV621011814.jpg\" style=\"width: 100%;\"></div>\r\n<div class=\"text-center\"><div class=\"text-center w3-large p-2 w3-text-black\" style=\"background: url(https://marriagesolutionbd.com/img/bg-ribon.jpg) repeat;min-height: 20px;width: 100%;font-weight:bold\">Marriage Solution BD: The Largest Matrimony Organization in Bangladesh</div></div>', 0, 1, 1, 1, '2021-01-16 06:52:27', '2021-01-18 05:16:05'),
+(18, 27, 'Part 1', '<div class=\"w3-animate-bottom\"><img src=\"https://marriagesolutionbd.com/storage/media/image/XDV621011814.jpg\" style=\"width: 100%;\"></div>\r\n<div class=\"text-center\"><div class=\"text-center w3-large p-2 w3-text-black\" style=\"background: url(https://marriagesolutionbd.com/img/bg-ribon.jpg) repeat;min-height: 20px;width: 100%;font-weight:bold\">Marriage Solution BD: The Largest Matrimony Organization in Bangladesh</div></div>', 0, 0, 1, 1, '2021-01-16 06:52:18', '2021-03-06 00:08:55'),
+(19, 28, 'Part 1', '<div class=\"w3-animate-left\"><img src=\"https://marriagesolutionbd.com/storage/media/image/XDV621011814.jpg\" style=\"width: 100%;\"></div>\r\n<div class=\"text-center\"><div class=\"text-center w3-large p-2 w3-text-black\" style=\"background: url(https://marriagesolutionbd.com/img/bg-ribon.jpg) repeat;min-height: 20px;width: 100%;font-weight:bold\">Marriage Solution BD: The Largest Matrimony Organization in Bangladesh</div></div>', 0, 0, 1, 1, '2021-01-16 06:52:22', '2021-03-06 00:10:17'),
+(20, 29, 'Part 1', '<div class=\"w3-animate-right\"><img src=\"https://marriagesolutionbd.com/storage/media/image/XDV621011814.jpg\" style=\"width: 100%;\"></div>\r\n<div class=\"text-center\"><div class=\"text-center w3-large p-2 w3-text-black\" style=\"background: url(https://marriagesolutionbd.com/img/bg-ribon.jpg) repeat;min-height: 20px;width: 100%;font-weight:bold\">Marriage Solution BD: The Largest Matrimony Organization in Bangladesh</div></div>', 0, 0, 1, 1, '2021-01-16 06:52:27', '2021-03-06 00:10:44'),
 (21, 12, 'Part 2', '<div class=\"container\">\r\n<br>\r\n<h2 style=\"text-align: center; \"><span style=\"color: rgb(156, 0, 255);\">Company Introduction</span></h2><p>Marriage Solution BD is a service organization. Whose registration is No. 05-85865 and its date of establishment is 12.12.12. Introduce his work with the name of the organization. His work plan on all matters related to marriage and family formation. And for this reason, Marriage Solution BD has been established as a feature in the marriage related services in Bangladesh. The company has so far successfully completed a large number of marriages, as Yuga claims. The organization is working perfectly to build a happy and ideal family after marriage.</p>\r\n</div>', 0, 0, 1, 1, '2021-01-16 07:06:06', '2021-01-17 03:38:14'),
-(22, 6, 'Part 1', '<div class=\"w3-animate-top\"><img src=\"https://marriagesolutionbd.com/storage/media/image/XDV621011814.jpg\" style=\"width: 100%;\"></div>\r\n<div class=\"text-center\"><div class=\"text-center w3-large p-2 w3-text-black\" style=\"background: url(https://marriagesolutionbd.com/img/bg-ribon.jpg) repeat;min-height: 20px;width: 100%;font-weight:bold\">Marriage Solution BD: The Largest Matrimony Organization in Bangladesh</div></div>', 0, 1, 1, 1, '2021-01-16 07:10:27', '2021-01-18 05:11:22'),
+(22, 6, 'Part 1', '<div class=\"w3-animate-top\"><img src=\"https://marriagesolutionbd.com/storage/media/image/XDV621011814.jpg\" style=\"width: 100%;\"></div>\r\n<div class=\"text-center\"><div class=\"text-center w3-large p-2 w3-text-black\" style=\"background: url(https://marriagesolutionbd.com/img/bg-ribon.jpg) repeat;min-height: 20px;width: 100%;font-weight:bold\">Marriage Solution BD: The Largest Matrimony Organization in Bangladesh</div></div>', 0, 0, 1, 1, '2021-01-16 07:10:27', '2021-03-05 23:58:23'),
 (23, 17, 'Part 2', '<div class=\"container\">\r\n<br>\r\n<h2 style=\"text-align: center; \"><span style=\"color: rgb(156, 0, 255);\">Our Specialty</span></h2><p>Marriage Solution BD\'s philosophy is to change attitudes and change misconceptions about marriage media by raising awareness among the people. Changing attitudes will change lives. The company is working with new entrepreneurs and far-reaching plans to reach out to millions of people across the country by setting up branch offices in each divisional city.</p>\r\n</div>', 0, 0, 1, 1, '2021-01-16 07:13:57', '2021-01-18 02:44:33'),
-(24, 22, 'Part 2', '<div class=\"container\">\r\n<br>\r\n<h2 style=\"text-align: center; \"><span style=\"color: rgb(156, 0, 255);\">Our Vision</span></h2><p>Where and how to find a suitable bride / groom? Are the people you associate with experienced in matters as important as marriage in the life of you and your beloved child? Have you been able to properly observe all the religious provisions in your child\'s marriage? In today\'s society, both small families and men and women are keeping pace with the times when they become employed, resulting in a lack of intimacy as well as friendship. As a result, there is a lack of sincerity and lack of time in the sincerity of friends and relatives including parents and guardians in the marriage process. In that case, Marriage Solution BD is working hard to be a part of the family to complete the marriage work with their intellectual knowledge and experience.</p>\r\n</div>', 0, 1, 1, 1, '2021-01-16 07:15:59', '2021-01-16 07:16:33'),
+(24, 22, 'Part 2', '<div class=\"container\">\r\n<br>\r\n<h2 style=\"text-align: center; \"><span style=\"color: rgb(156, 0, 255);\">Our Vision</span></h2><p>Where and how to find a suitable bride / groom? Are the people you associate with experienced in matters as important as marriage in the life of you and your beloved child? Have you been able to properly observe all the religious provisions in your child\'s marriage? In today\'s society, both small families and men and women are keeping pace with the times when they become employed, resulting in a lack of intimacy as well as friendship. As a result, there is a lack of sincerity and lack of time in the sincerity of friends and relatives including parents and guardians in the marriage process. In that case, Marriage Solution BD is working hard to be a part of the family to complete the marriage work with their intellectual knowledge and experience.</p>\r\n</div>', 0, 0, 1, 1, '2021-01-16 07:15:59', '2021-02-07 22:49:19'),
 (25, 18, 'Part 2', '<div class=\"container\">\r\n<br>\r\n<h2 style=\"text-align: center; \"><span style=\"color: rgb(156, 0, 255);\">Our Quality</span></h2><p>Doctor of any profession, engineer, industrialist, banker, employed in a multinational company, living abroad permanently, PhD, BCS cadre, chartered accountant, politician, barrister, government official, unmarried, old, divorced, widow, infertile The journey begins with interest and action. We are committed</p><p>to being your traveling companion through the exchange of cooperation and utmost efforts on the basis of respect. May the Most Praiseworthy Merciful help us.</p>\r\n</div>', 0, 0, 1, 1, '2021-01-16 07:18:58', '2021-01-18 02:58:11'),
 (26, 6, 'Part 2', '<div class=\"container\">\r\n<br>\r\n<h2 align=\"center\" style=\"margin: 15pt 0in 11.25pt; text-align: center; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;\"><span style=\"font-size: 28pt; font-family: Calibri, sans-serif; color: rgb(254, 47, 67);\">About Us<u><o:p></o:p></u></span></h2><p>\r\n\r\n</p><p class=\"MsoNormal\" style=\"text-align:justify\"><span style=\"font-family: Arial, sans-serif; color: rgb(51, 51, 51); background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;\">Marriage Solution BD is a top level Bangladeshi\r\nwedding organization, and is dedicated to those who are looking for a suitable\r\nlife partner. We consider it a social responsibility, not just a business. No\r\nmatter where you are in the world and wherever you are, Marriage Solution BD is\r\nyour best platform, where you can find highly educated and aristocratic family\r\ndoctors, BUET (Engineer), O / A Level, PhD, Barrister, Banker, BCS Cadre (Admin),\r\nindustrialists, citizens, businessmen settled in Dhaka and can get the profile\r\nof divorced and elderly couple. Marriage Solution BD is always ready to give\r\nyou the best quality services and they are sincere and complete cooperative,\r\nwhere you can find a suitable, perfect, ideal life partner for you / your son\r\nor daughter. We have a highly educated, talented, smart, skilled, loyal,\r\nhonest, competent, experienced, humble, compassionate and smart matchmaker\r\nteam, who are always active in your service. Our first task is to verify the\r\nauthenticity of each of our biodata. And our first priority is to protect your\r\nprivacy and keep your personal information safe. Marriage Solution BD is not\r\njust a name, it has many years of experience and a successful, trustworthy,\r\nelite marriage company. Marriage Solution BD From the very beginning, it has\r\nhad incredible success with its suitable proposals and it has married thousands\r\nof candidates. As a successful marriage company, we have a reputation for\r\nproviding professional marriage services in Bangladesh. We don’t follow\r\nconventional trends, we work in advance and modern touches. Please let us know\r\nif you encounter any problems with our services. Our goal is not only to help\r\npeople meet each other, but also to get married.<o:p></o:p></span></p>\r\n</div>', 0, 0, 1, 1, '2021-01-16 07:21:51', '2021-01-18 02:05:31'),
-(27, 23, 'Part 1', '<div class=\"container w3-animate-bottom\">\r\n<br>\r\n<img src=\"https://marriagesolutionbd.com/storage/media/image/tCgZ21011626.jpg\" style=\"width: 100%;\"><br>\r\n</div>', 0, 1, 1, 1, '2021-01-16 07:30:14', '2021-01-18 05:17:34'),
+(27, 23, 'Part 1', '<div class=\"container w3-animate-bottom\">\r\n<br>\r\n<img src=\"https://www.marriagesolutionbd.com/storage/media/image/aOqW21012321.jpg\" style=\"width: 100%;\"><br>\r\n</div>', 0, 1, 1, 1, '2021-01-16 07:30:14', '2021-01-23 07:37:03'),
 (28, 23, 'Part 2', '<div class=\"container w3-animate-bottom\">\r\n<br>\r\nDear customers and well wishers,<p></p><p>Assalamu Alaikum,</p><p>\"Service is good worship, come forward in the service of humanity, you also take part in the great service\"</p><p style=\"text-align: justify; \">Marriage Solution BD has started its ninth year to build a happy and happy family. With its ninth year of journey, organized efforts and initiatives, over time, it has become a symbol of confidence and well-being in national life. Birth, death, marriage is an eternal truth of life, where family and society fail to fulfill their responsibilities, just then \"Marriage Solution BD\" came forward. Marriage Solution BD in the service of humanity is overcoming all adversities and moving towards success on foot. Over time, success is real. A group of dedicated staff of Marriage Solution BD is working with ethics, honesty, transparency and accountability to increase overall / social and humanitarian awareness among the people by changing the misconceptions related to conventional Ghatak practices and marriage media. Marriage Solution BD has been successfully one step ahead in the new year with the goal of service. Through great and good deeds, it has now been established as a haven of trust for millions of people. \"Marriage Solution BD\" has been considered as the best service provider by ensuring silent and relentless work and maximum service through far-reaching thinking and skills. This service will be conducted regularly across the country with initiative, compassion and care. Marriage Solution BD has a team of highly educated, talented, smart, skilled, loyal, honest, competent, experienced, humble, compassionate and smart people who are ready to provide honest mates, matchmaking and marriage counseling and counseling services in the fastest time with exceptional initiative. He is determined. Marriage Solution BD-E is the only exceptional modern up-to-date role model for all types of customer service. Marriage Solution BD always ensures customer service through positive mindset and sincerity, honesty and transparency. Marriage Solution BD is the only organization that works with sincerity in the service of humanity. Customer confidence in Marriage Solutions BD is growing day by day for success and honesty. The main goal of Marriage Solution BD is to continue this service. Marriage Solution BD is a symbol of faith and trust. From a religious point of view, this is an honest and noble deed, so if you are able to get married to your acquaintances, neighbors, friends and colleagues, convey the message of Marriage Solution BD to them. According to every religion, marriage is a sacred process. Join in this full-fledged humanitarian initiative and inspire others. May you and your family be protected in the shadow of God\'s mercy. Marriage Solution BD is always kind to you. I would like to express my sincere gratitude to Absolute Merciful for the success of Marriage Solution BD. Gratitude, respect, love and blessings from the bottom of my heart to all the customers, representatives and well-wishers of Marriage Solution BD.\r\n</p></div>', 0, 1, 1, 1, '2021-01-16 07:32:41', '2021-01-18 05:18:26'),
 (29, 23, 'Part 3', '<div class=\"container\">\r\n<img src=\"https://marriagesolutionbd.com/storage/media/image/begV21011640.jpg\" style=\"width: 270px; float: right;\" class=\"note-float-right\"><br>\r\n</div>', 0, 1, 1, 1, '2021-01-16 07:33:09', '2021-01-16 07:35:04'),
-(31, 16, 'Part 2', '<br>\r\n<h3 class=\"text-center\">Why choose us content will be added soon</h3>', 0, 1, 1, 1, '2021-01-16 23:56:47', '2021-01-16 23:59:21'),
+(31, 16, 'Part 2', '<div class=\"\" style=\"background: #0b0b0b url(/img/back2.png) no-repeat center top; background-size: 100%;\"> <div class=\"prod-ops text-center py-5\" style=\"background: url(/img/bg-boxleft.png) no-repeat left top, url(/img/bg-boxright.png) no-repeat right top, url(/img/bg-boxbottomleft.png) no-repeat left bottom, url(/img/bg-boxbottomright.png) no-repeat right bottom;\"><h2 class=\"m-0 p-0\" style=\"color: gold; font-family: \'Lobster Two\', cursive; font-style: italic; text-transform: capitalize; !important\">Why Choose Us</h2><div style=\"width:100%; height: 30px; background: url(/img/leaf.png) no-repeat center bottom;\"></div> <div class=\"total-single-service-area appear-animation\"  data-appear-animation=\"fadeInLeft\" data-appear-animation-delay=\"400\"> <div class=\"single-services-area\">  <div class=\"service-icon w3-text-white container text-justify px-md-4\">Marriage  Solution  BD -A  service  oriented  organization  identifies  its  work  with  the  name  of  the  organization.  Marriage Solution BD is one of the most trusted marriage services in Bangladesh. Marriage Solutions BD also pays special attention to give 100% privacy to the customer. Your name, location, photo, can be personal.We have a large database of potential brides and grooms from around the world. Marriage Solution BD has been moving forward successfully for over 9 long years. We also verify and sort the profiles of all registered customers through our own manpower.  Marriage  Solutions  BD  is  headquartered  in  Asadgate,  Arang  Sanglagh,  Dhaka.  We  also  have  branches  in Gulshan,  Uttara,  Kakrail  and  Chittagong.  Marriage  Solutions  BD  is  constantly  working  towards the  goal  of  marriage  by providing accurate information while maintaining the personal security of  the customer with responsibility. Therefore, in the current context, marriage solution BD has become the first and main demand and trust of the people.<br><br></div></div> </div></div>', 0, 1, 1, 1, '2021-01-16 23:56:47', '2021-03-03 07:02:24'),
 (32, 8, 'Part 2', '<p>&lt;br&gt;</p><p>&lt;h3 class=\"text-center\"&gt;Privacy policy will be added soon&lt;/h3&gt;</p>', 1, 1, 1, NULL, '2021-01-17 00:00:53', '2021-01-17 00:00:53'),
-(33, 19, 'Part 2', '<br><h3 class=\"text-center\">Privacy Policy will be added soon</h3>', 0, 1, 1, 1, '2021-01-17 00:03:46', '2021-01-17 00:04:16'),
+(33, 19, 'Part 2', '<br>\r\n<div class=\"container w3-green w3-border-purple w3-large text-center\">THE COOPERATION OF PARENTS AND SPOUSES IS DESIRABLE TO PERFORM THE GOOD </div>\r\n<br>\r\n<div class=\"container text-center\">\r\nThank you very much for being our esteemed customer. Marriage Solution BD is always committed to providing advanced services. We sincerely believe that honesty, transparency and accountability are at the core of a respectful and mutually beneficial relationship between Marriage Solutions BD and customers. With that belief in mind, some important terms of Marriage Solution BD are presented below for the convenience of customers to know and understand. \r\n</div>', 0, 1, 1, 1, '2021-01-17 00:03:46', '2021-02-02 05:22:47'),
 (34, 29, 'Part 2', '<br><h3 class=\"text-center\">Viber number will be added soon</h3>', 0, 1, 1, 1, '2021-01-17 00:07:27', '2021-01-17 00:08:59'),
 (35, 24, 'Part 2', '<br><h3 class=\"text-center\">Why choose us content will be added soon</h3>', 0, 1, 1, 1, '2021-01-17 00:10:32', '2021-01-17 00:11:22'),
 (36, 27, 'Part 2', '    <br><h3 class=\"text-center\">Contact number will be added soon</h3>', 0, 1, 1, 1, '2021-01-17 00:13:55', '2021-01-17 00:18:11'),
-(38, 12, 'Part 2 alternative', '<div class=\"w3-animate-bottom\" style=\"background: #0b0b0b url(/img/back2.png) no-repeat center top; background-size: 100%;\"> <div class=\"prod-ops text-center py-5\" style=\"background: url(/img/bg-boxleft.png) no-repeat left top, url(/img/bg-boxright.png) no-repeat  right top, url(/img/bg-boxbottomleft.png) no-repeat  left bottom, url(/img/bg-boxbottomright.png) no-repeat  right bottom;\"><h2 class=\"m-0 p-0\" style=\"color: gold; font-family: \'Lobster Two\', cursive; font-style: italic;\">Company Introduction</h2><div style=\"width:100%; height: 30px; background: url(/img/leaf.png) no-repeat center bottom;\"></div> <div class=\"total-single-service-area\"> <div class=\"single-services-area\">  <div class=\"service-icon w3-text-white container text-justify px-md-4\">Marriage  Solution  BD  is  a  service  organization.  Whose  registration  is  No.  05-85865  and  its  date  of  establishment  is 12.12.12.  Introduce  his  work  with  the  name  of  the  organization.  His  work  plan  on  all  matters  related  to  marriage  and family  formation.  And  for  this  reason,  Marriage  Solution  BD  has  been  established  as  a  feature  in  the  marriage  related services in Bangladesh. The company has so far successfully completed a large number of marriages, as Yuga claims. The organization is working perfectly to builda happy and ideal family after marriage. <br><br></div></div> </div></div>', 0, 1, 1, 1, '2021-01-17 03:37:12', '2021-01-18 05:09:16'),
-(37, 28, 'Part 2', '<div class=\"container\" >\r\n\r\n                <br>\r\n                @if (session(\'status\'))\r\n                    <div class=\"alert alert-success\">\r\n                        {{ session(\'status\') }}\r\n                    </div>\r\n                @endif\r\n                <div class=\"row\">\r\n                    <div class=\"col-md-6\">\r\n                        <div class=\"w3-card w3-round\" style=\"margin-bottom:20px; min-height: 500px;\">\r\n                            <div class=\"card-body\">\r\n                                <div class=\"row\">\r\n                                    <div class=\"col-sm-6\">\r\n                                        <div class=\"card w3-round mb-3 mt-0\" style=\"background: #673003;\">\r\n                                            <div class=\"card-body\">\r\n                                                <div class=\"w3-text-medium w3-center\">\r\n                                                    <p style=\"color: gold; font-weight: bold;\">ASAD GATE <br>\r\n                                                        <span style=\"color: white;\">01720504504 </span> <br>\r\n                                                        <span style=\"color: white;\">01633036062</span>\r\n                                                    </p>\r\n                                                    \r\n                                                </div>\r\n                                            </div>\r\n                                        </div>\r\n                                    </div>\r\n                                    <div class=\"col-sm-6\">\r\n                                        <div class=\"card w3-round mb-3 mt-0\" style=\"background: #673003;\">\r\n                                            <div class=\"card-body\">\r\n                                                <div class=\"w3-text-medium w3-center\">\r\n                                                    <p style=\"color: gold; font-weight: bold;\">GULSHAN<br>\r\n                                                        <span style=\"color: white;\">01777118606 </span> <br>\r\n                                                        <span style=\"color: white;\">01907550361</span>\r\n                                                    </p>\r\n                                                </div>\r\n                                            </div>\r\n                                        </div>\r\n                                    </div>\r\n                                </div>\r\n                                <div class=\"row\">\r\n                                    <div class=\"col-sm-6\">\r\n                                        <div class=\"card w3-round mb-3\" style=\"background: #673003;\">\r\n                                            <div class=\"card-body\">\r\n                                                <div class=\"w3-text-medium w3-center\" >\r\n                                                    <p style=\"color: gold; font-weight: bold;\">UTTARA<br>\r\n                                                        <span style=\"color: white;\">01705761333 </span> <br>\r\n                                                        <span style=\"color: white;\">01776687989</span>\r\n                                                    </p>\r\n                                                    \r\n                                                </div>\r\n                                            </div>\r\n                                        </div>\r\n                                    </div>\r\n                                    <div class=\"col-sm-6\">\r\n                                        <div class=\"card w3-round mb-0\" style=\"background: #673003;\">\r\n                                            <div class=\"card-body\">\r\n                                                <div class=\"w3-text-medium w3-center\">\r\n                                                    <p style=\"color: gold; font-weight: bold;\">KAKRAIL<br>\r\n                                                        <span style=\"color: white;\">01780414897 </span> <br>\r\n                                                        <span style=\"color: white;\">01319378112</span>\r\n                                                    </p>\r\n                                                    \r\n                                                </div>\r\n                                            </div>\r\n                                        </div>\r\n                                    </div>\r\n                                </div>\r\n                                <div class=\"row\">\r\n                                    <div class=\"col-sm-6\">\r\n                                        <div class=\"card w3-round mb-0\" style=\"background: #673003;\">\r\n                                            <div class=\"card-body\">\r\n                                                <div class=\"w3-text-medium w3-center\">\r\n                                                    <p style=\"color: gold; font-weight: bold;\">CHATTOGRAM<br>\r\n                                                        <span style=\"color: white;\">01617014140 </span> <br>\r\n                                                        <span style=\"color: white;\">01617013455</span>\r\n                                                    </p>\r\n                                                </div>\r\n                                            </div>\r\n                                        </div>\r\n                                    </div>\r\n                                </div>\r\n                            </div>\r\n                        </div>\r\n                    </div>\r\n					<div class=\"col-md-6\">\r\n                        <div class=\"row  justify-content-md-center\">\r\n                            <div class=\"col-md-10 offset-md-2\">\r\n                                <div class=\"w3-card w3-round\" style=\"margin-bottom:20px; min-height: 569px;\">\r\n                                    <div class=\"card-body\">\r\n                                        <div class=\"featured-box featured-box-primary text-left mt-0\">\r\n                                            <div class=\"box-content text-center\">\r\n                                                <h4 class=\"color-primary font-weight-semibold text-4 text-uppercase mb-3\">Marriage Solution\r\n                                                    BD</h4>\r\n                                                <hr>\r\n                                                <form action=\"{{ route(\'welcome.contactAdmin\') }}\" id=\"frmSignUp\" method=\"post\" class=\"pb-3 needs-validation\">\r\n                                                    @csrf\r\n                                                    <div class=\"form-row\">\r\n                                                        <div class=\"form-group col-lg-12\">\r\n                                                            <input type=\"text\" value=\"\" data-msg-required=\"Please enter your name.\"\r\n                                                                maxlength=\"100\" class=\"form-control\" name=\"name\" placeholder=\"Name\"\r\n                                                                required>\r\n                                                        </div>\r\n                                                        \r\n                                                    </div>\r\n                                                    <div class=\"form-row\">\r\n                                                        <div class=\"form-group col\">\r\n                                                            \r\n                                                            <select class=\"form-control\" name=\"seeking_for\">\r\n                                                                <option value=\"\" selected disabled>Seeking Alliance for</option>\r\n                                                                <option value=\"self\">Self</option>\r\n                                                                <option value=\"daughter\">Daughter</option>\r\n                                                                <option value=\"son\">Son</option>\r\n                                                                <option value=\"brother\">Brother</option>\r\n                                                                <option value=\"sister\">Sister</option>\r\n                                                            </select>\r\n                                                        </div>\r\n                                                    </div>\r\n                                                    <div class=\"form-row\">\r\n                                                        <div class=\"form-group col\">\r\n                                                            \r\n                                                            <input type=\"text\" value=\"\" name=\"email\" placeholder=\"email address\"\r\n                                                                class=\"form-control form-control-lg\" required>\r\n                                                        </div>\r\n                                                    </div>\r\n                                                    <div class=\"form-row\">\r\n                                                        <div class=\"form-group col\">\r\n                                                            \r\n                                                            <textarea value=\"\" name=\"desc\" rows=\"2\"\r\n                                                            placeholder=\"Write your query description\"\r\n                                                                class=\"form-control form-control-lg\" required></textarea>\r\n                                                        </div>\r\n                                                    </div>\r\n                                                    <div class=\"form-row\">\r\n                                                        <div class=\"form-group col-lg-4\">\r\n                                                            <input type=\"text\" value=\"\" data-msg-required=\"Please enter your name.\"\r\n                                                                maxlength=\"100\" class=\"form-control\" name=\"\" placeholder=\"+880\" required>\r\n                                                        </div>\r\n                                                        <div class=\"form-group col-lg-8\">\r\n                                                            <input type=\"text\" value=\"\" name=\"mobile\" data-msg-required=\"Please enter your email address.\"\r\n                                                                data-msg-email=\"Please enter a valid email address.\" maxlength=\"100\"\r\n                                                                class=\"form-control\" name=\"email\" placeholder=\"phone number\" required>\r\n                                                        </div>\r\n                                                    </div>\r\n                                                    <div class=\"text-center pt-2\">\r\n                                                        <button class=\"btn btn-default btn-lg\" type=\"reset\">Reset</button>\r\n                                                        <button class=\"btn btn-primary btn-lg\" type=\"submit\">Submit</button>\r\n                                                    </div>\r\n                                                </form>\r\n                                            </div>\r\n                                        </div>\r\n                                    </div>\r\n                                </div>\r\n                            </div>\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n                \r\n\r\n            </div>', 0, 1, 1, 1, '2021-01-17 00:16:17', '2021-02-01 03:54:05'),
-(39, 6, 'Part 2 alternative', '<div class=\"\" style=\"background: #0b0b0b url(/img/back2.png) no-repeat center top; background-size: 100%;\"> <div class=\"prod-ops text-center py-5\" style=\"background: url(/img/bg-boxleft.png) no-repeat left top, url(/img/bg-boxright.png) no-repeat right top, url(/img/bg-boxbottomleft.png) no-repeat left bottom, url(/img/bg-boxbottomright.png) no-repeat right bottom;\"><h2 class=\"m-0 p-0\" style=\"color: gold; font-family: \'Lobster Two\', cursive; font-style: italic;\">About Us</h2><div style=\"width:100%; height: 30px; background: url(/img/leaf.png) no-repeat center bottom;\"></div> <div class=\"total-single-service-area\"> <div class=\"single-services-area\">  <div class=\"service-icon w3-text-white container text-justify px-md-4\">Marriage Solution BD is a top level Bangladeshi\r\nwedding organization, and is dedicated to those who are looking for a suitable\r\nlife partner. We consider it a social responsibility, not just a business. No\r\nmatter where you are in the world and wherever you are, Marriage Solution BD is\r\nyour best platform, where you can find highly educated and aristocratic family\r\ndoctors, BUET (Engineer), O / A Level, PhD, Barrister, Banker, BCS Cadre (Admin),\r\nindustrialists, citizens, businessmen settled in Dhaka and can get the profile\r\nof divorced and elderly couple. Marriage Solution BD is always ready to give\r\nyou the best quality services and they are sincere and complete cooperative,\r\nwhere you can find a suitable, perfect, ideal life partner for you / your son\r\nor daughter. We have a highly educated, talented, smart, skilled, loyal,\r\nhonest, competent, experienced, humble, compassionate and smart matchmaker\r\nteam, who are always active in your service. Our first task is to verify the\r\nauthenticity of each of our biodata. And our first priority is to protect your\r\nprivacy and keep your personal information safe. Marriage Solution BD is not\r\njust a name, it has many years of experience and a successful, trustworthy,\r\nelite marriage company. Marriage Solution BD From the very beginning, it has\r\nhad incredible success with its suitable proposals and it has married thousands\r\nof candidates. As a successful marriage company, we have a reputation for\r\nproviding professional marriage services in Bangladesh. We don’t follow\r\nconventional trends, we work in advance and modern touches. Please let us know\r\nif you encounter any problems with our services. Our goal is not only to help\r\npeople meet each other, but also to get married. <br><br></div></div> </div></div>', 0, 1, 1, 1, '2021-01-18 02:14:18', '2021-01-18 02:36:50'),
-(40, 17, 'Part 2 alternative', '<div class=\"\" style=\"background: #0b0b0b url(/img/back2.png) no-repeat center top; background-size: 100%;\"> <div class=\"prod-ops text-center py-5\" style=\"background: url(/img/bg-boxleft.png) no-repeat left top, url(/img/bg-boxright.png) no-repeat right top, url(/img/bg-boxbottomleft.png) no-repeat left bottom, url(/img/bg-boxbottomright.png) no-repeat right bottom;\"><h2 class=\"m-0 p-0\" style=\"color: gold; font-family: \'Lobster Two\', cursive; font-style: italic;\">Our Specialty</h2><div style=\"width:100%; height: 30px; background: url(/img/leaf.png) no-repeat center bottom;\"></div> <div class=\"total-single-service-area\"> <div class=\"single-services-area\">  <div class=\"service-icon w3-text-white container text-justify px-md-4\">Marriage Solution BD\'s philosophy is to change attitudes and change misconceptions about marriage media by raising awareness among the people. Changing attitudes will change lives. The company is working with new entrepreneurs and far-reaching plans to reach out to millions of people across the country by setting up branch offices in each divisional city. <br><br></div></div> </div></div>', 0, 1, 1, 1, '2021-01-18 02:45:31', '2021-01-23 04:03:58'),
-(41, 18, 'Part 2 alternative', '<div class=\"\" style=\"background: #0b0b0b url(/img/back2.png) no-repeat center top; background-size: 100%;\"> <div class=\"prod-ops text-center py-5\" style=\"background: url(/img/bg-boxleft.png) no-repeat left top, url(/img/bg-boxright.png) no-repeat right top, url(/img/bg-boxbottomleft.png) no-repeat left bottom, url(/img/bg-boxbottomright.png) no-repeat right bottom;\"><h2 class=\"m-0 p-0\" style=\"color: gold; font-family: \'Lobster Two\', cursive; font-style: italic;\">Our Quality</h2><div style=\"width:100%; height: 30px; background: url(/img/leaf.png) no-repeat center bottom;\"></div> <div class=\"total-single-service-area\"> <div class=\"single-services-area\">  <div class=\"service-icon w3-text-white container text-justify px-md-4\">Doctor of any profession, engineer, industrialist, banker, employed in a multinational company, living abroad permanently, PhD, BCS cadre, chartered accountant, politician, barrister, government official, unmarried, old, divorced, widow, infertile The journey begins with interest and action. We are committed to being your traveling companion through the exchange of cooperation and utmost efforts on the basis of respect. May the Most Praiseworthy Merciful help us. <br><br></div></div> </div></div>', 0, 1, 1, 1, '2021-01-18 02:57:14', '2021-01-18 02:58:48'),
-(44, 30, 'Part 1', '<div class=\"w3-row w3-border\"> <div class=\"w3-container w3-half w3-red\">  <h2>w3-half</h2>  <p>Our Values\r\nPut Customers First - Caring for and respecting customers is at the core of everything we do. It defines our work and shapes our culture, radiating out to our shareholders and communities.\r\n \r\n\r\nBe the Best - We are relentless in our search for new and better ways of doing things. As a leader in our industry, we constantly raise the bar with our innovation and dedication to our customers.\r\n \r\n\r\nMake Things Easier - Products in our industry aren’t always easy to understand. That’s why we are always looking for simpler ways to connect customers to the best solutions. \r\n \r\n\r\nSucceed Together - We live by a collective commitment to honesty, integrity and diversity. We are open and inclusive, taking and applying the best ideas from every part of our.</p>   <p>On screens smaller than 601 pixels it resizes to 100%.</p></div><div class=\"w3-container w3-rest w3-black\"> <img src=\"http://msbd.test/storage/media/image/mxv620121536.jpg\">   </div></div>', 0, 1, 1, 1, '2021-01-24 00:14:25', '2021-01-24 00:18:23'),
-(45, 20, 'Part 2', '<div class=\"container-fluid py-5\" style=\"background: url(../../img/pay-bg.jpeg)\"><div class=\"w3-card- w3-round-large\"><div class=\"w3-card- text-center py-2 \"><h3 class=\"m-0 py-2 px-3\" style=\"color: gold; font-family: \'Lobster Two\', cursive; font-style: italic; text-transform: capitalize; !important\">Payment Method</h3></div><div class=\"card-body p-lg-3 p-0\"><div class=\"row px-md-5\"><div class=\"col-md-6 mb-2\"><div class=\"card\"  style=\"background: url(../../img/pay-bg.jpg)\"><div class=\"card-body\" ><h4><b>Bank Payment</b></h4><table><tr><th>Bank Name</th><td>:  </td><td>Dutch Bangla Bank Ltd.</td></tr><tr><th>Branch</th><td>:  </td><td>Mohammadpur, Dhaka</td></tr><tr><th>Account No</th><td>:  </td><td>258.110.3970</td></tr></table></div></div>\r\n</div>\r\n<div class=\"col-md-6 mb-2\"><div class=\"card\" style=\"background: url(../../img/pay-bg.jpg)\"><div class=\"card-body\" ><h4><b>Bkash Payment</b></h4><table><tr><th>Bkash Account No.</th><td>:  </td><td>01720504504</td></tr><tr><th></th><td>:  </td><td>01633036062</td></tr><tr><td>   </td></tr></table></div></div>\r\n</div>\r\n</div>\r\n</div></div></div>', 0, 1, 1, 1, '2021-02-06 05:42:31', '2021-02-07 03:44:21'),
-(46, 31, 'Part 1 header', '<div class=\"text-center my-5\">\r\n                <h2 class=\"m-0 p-0\" style=\"color: gold; font-family: \'Lobster Two\', cursive; font-style: italic;\">Help & Customer Support</h2><div style=\"width:100%; height: 30px; background: url(/img/leaf.png) no-repeat center bottom;\"></div> \r\n            </div>', 1, 1, 1, 1, '2021-03-07 00:04:17', '2021-03-07 00:05:02');
+(38, 12, 'Part 2 alternative', '<div class=\"w3-animate-bottom\" style=\"background: #0b0b0b url(/img/back2.png) no-repeat center top; background-size: 100%;\"> <div class=\"prod-ops text-center py-5 appear-animation\" style=\"background: url(/img/bg-boxleft.png) no-repeat left top, url(/img/bg-boxright.png) no-repeat  right top, url(/img/bg-boxbottomleft.png) no-repeat  left bottom, url(/img/bg-boxbottomright.png) no-repeat  right bottom;\" data-appear-animation=\"fadeInUp\" data-appear-animation-delay=\"400\"><h2 class=\"m-0 p-0\" style=\"color: gold; font-family: \'Lobster Two\', cursive; font-style: italic;\">Company Introduction</h2><div style=\"width:100%; height: 30px; background: url(/img/leaf.png) no-repeat center bottom;\"></div> <div class=\"total-single-service-area\"> <div class=\"single-services-area\">  <div class=\"service-icon w3-text-white container text-justify px-md-4\">Marriage  Solution  BD  is  a  service  organization.  Whose  registration  is  No.  05-85865  and  its  date  of  establishment  is 12.12.12.  Introduce  his  work  with  the  name  of  the  organization.  His  work  plan  on  all  matters  related  to  marriage  and family  formation.  And  for  this  reason,  Marriage  Solution  BD  has  been  established  as  a  feature  in  the  marriage  related services in Bangladesh. The company has so far successfully completed a large number of marriages. The organization is working perfectly to build a happy and ideal family after marriage. <br><br></div></div> </div></div>', 0, 1, 1, 1, '2021-01-17 03:37:12', '2021-03-03 06:37:56'),
+(37, 28, 'Part 2', '  <br><h3 class=\"text-center\">Whatsapp number will be added soon</h3>', 0, 1, 1, 1, '2021-01-17 00:16:17', '2021-01-17 00:17:17'),
+(39, 6, 'Part 2 alternative', '<div class=\"\" style=\"background: #0b0b0b url(/img/back2.png) no-repeat center top; background-size: 100%;\"> <div class=\"prod-ops text-center py-5\" style=\"background: url(/img/bg-boxleft.png) no-repeat left top, url(/img/bg-boxright.png) no-repeat right top, url(/img/bg-boxbottomleft.png) no-repeat left bottom, url(/img/bg-boxbottomright.png) no-repeat right bottom;\"><h2 class=\"m-0 p-0\" style=\"color: gold; font-family: \'Lobster Two\', cursive; font-style: italic; text-transform: capitalize; !important\">About Us</h2><div style=\"width:100%; height: 30px; background: url(/img/leaf.png) no-repeat center bottom;\"></div> <div class=\"total-single-service-area appear-animation\"  data-appear-animation=\"fadeInUp\" data-appear-animation-delay=\"400\"> <div class=\"single-services-area\">  <div class=\"service-icon w3-text-white container text-justify px-md-4\">Marriage Solution BD is a top level Bangladeshi\r\nwedding organization, and is dedicated to those who are looking for a suitable\r\nlife partner. We consider it a social responsibility, not just a business. No\r\nmatter where you are in the world and wherever you are, Marriage Solution BD is\r\nyour best platform, where you can find highly educated and aristocratic family\r\ndoctors, BUET (Engineer), O / A Level, PhD, Barrister, Banker, BCS Cadre (Admin),\r\nindustrialists, citizens, businessmen settled in Dhaka and can get the profile\r\nof divorced and elderly couple. Marriage Solution BD is always ready to give\r\nyou the best quality services and they are sincere and complete cooperative,\r\nwhere you can find a suitable, perfect, ideal life partner for you / your son\r\nor daughter. We have a highly educated, talented, smart, skilled, loyal,\r\nhonest, competent, experienced, humble, compassionate and smart matchmaker\r\nteam, who are always active in your service. Our first task is to verify the\r\nauthenticity of each of our biodata. And our first priority is to protect your\r\nprivacy and keep your personal information safe. Marriage Solution BD is not\r\njust a name, it has many years of experience and a successful, trustworthy,\r\nelite marriage company. Marriage Solution BD From the very beginning, it has\r\nhad incredible success with its suitable proposals and it has married thousands\r\nof candidates. As a successful marriage company, we have a reputation for\r\nproviding professional marriage services in Bangladesh. We don’t follow\r\nconventional trends, we work in advance and modern touches. Please let us know\r\nif you encounter any problems with our services. Our goal is not only to help\r\npeople meet each other, but also to get married. <br><br></div></div> </div></div>', 0, 1, 1, 1, '2021-01-18 02:14:18', '2021-03-03 07:00:22'),
+(40, 17, 'Part 2 alternative', '<div class=\"\" style=\"background: #0b0b0b url(/img/back2.png) no-repeat center top; background-size: 100%;\"> <div class=\"prod-ops text-center py-5\" style=\"background: url(/img/bg-boxleft.png) no-repeat left top, url(/img/bg-boxright.png) no-repeat right top, url(/img/bg-boxbottomleft.png) no-repeat left bottom, url(/img/bg-boxbottomright.png) no-repeat right bottom;\"><h2 class=\"m-0 p-0\" style=\"color: gold; font-family: \'Lobster Two\', cursive; font-style: italic;\">Our Specialty</h2><div style=\"width:100%; height: 30px; background: url(/img/leaf.png) no-repeat center bottom;\"></div> <div class=\"total-single-service-area\"> <div class=\"single-services-area appear-animation\"  data-appear-animation=\"fadeInRight\" data-appear-animation-delay=\"400\">  <div class=\"service-icon w3-text-white container text-justify px-md-4\">Marriage Solution BD\'s philosophy is to change attitudes and change misconceptions about marriage media by raising awareness among the people. Changing attitudes will change lives. The company is working with new entrepreneurs and far-reaching plans to reach out to millions of people across the country by setting up branch offices in each divisional city. <br><br></div></div> </div></div>', 0, 1, 1, 1, '2021-01-18 02:45:31', '2021-03-03 07:02:54'),
+(41, 18, 'Part 2 alternative', '<div class=\"\" style=\"background: #0b0b0b url(/img/back2.png) no-repeat center top; background-size: 100%;\"> <div class=\"prod-ops text-center py-5\" style=\"background: url(/img/bg-boxleft.png) no-repeat left top, url(/img/bg-boxright.png) no-repeat right top, url(/img/bg-boxbottomleft.png) no-repeat left bottom, url(/img/bg-boxbottomright.png) no-repeat right bottom;\"><h2 class=\"m-0 p-0\" style=\"color: gold; font-family: \'Lobster Two\', cursive; font-style: italic;\">Our Quality</h2><div style=\"width:100%; height: 30px; background: url(/img/leaf.png) no-repeat center bottom;\"></div> <div class=\"total-single-service-area\"> <div class=\"single-services-area appear-animation\"  data-appear-animation=\"fadeInUp\" data-appear-animation-delay=\"400\">  <div class=\"service-icon w3-text-white container text-justify px-md-4\">Doctor of any profession, engineer, industrialist, banker, employed in a multinational company, living abroad permanently, PhD, BCS cadre, chartered accountant, politician, barrister, government official, unmarried, old, divorced, widow, infertile The journey begins with interest and action. We are committed to being your traveling companion through the exchange of cooperation and utmost efforts on the basis of respect. May the Most Praiseworthy Merciful help us. <br><br></div></div> </div></div>', 0, 1, 1, 1, '2021-01-18 02:57:14', '2021-03-03 07:03:43'),
+(44, 19, 'Part 3', '<br>\r\n<div class=\"w3-xlarge w3-text-green text-center\">\r\nTerms & Condition\r\n</div>\r\n<br>\r\n<div class=\"container\">\r\n<ol>\r\n<li class=\"appear-animation \" data-appear-animation=\"fadeInUp\" data-appear-animation-delay=\"400\"> The service delivery time of Marriage Solution BD is from 10.00 am to 7.00 pm.</li class=\"appear-animation \" data-appear-animation=\"fadeInUp\" data-appear-animation-delay=\"400\">\r\n<li class=\"appear-animation \" data-appear-animation=\"fadeInUp\" data-appear-animation-delay=\"400\"> Without the guardian, the work is not done only under the supervision of the spouse.</li>\r\n<li class=\"appear-animation \" data-appear-animation=\"fadeInLeft\" data-appear-animation-delay=\"400\"> At the time of customer registration, the customer\'s biodata and his / her presentable 3 copies of 4R photo and photocopy of national identity card should be submitted to the office.</li>\r\n<li class=\"appear-animation \" data-appear-animation=\"fadeInLeft\" data-appear-animation-delay=\"400\"> It is forbidden to give any kind of misinformation to each other. You will bear the responsibility for the wrong information. Marriage Solution BD can never be blamed in that case.</li>\r\n<li class=\"appear-animation \" data-appear-animation=\"fadeInRight\" data-appear-animation-delay=\"400\"> The total registration fee has to be paid at the time of registration and the registration fee is non-refundable. If any part of the registration fee is due due to any financial problem of the customer, it has to be paid within maximum 7 days from the date of registration and only one person will be provided service against that registration, service will not be coordinated with any other customer.</li>\r\n<li class=\"appear-animation \" data-appear-animation=\"fadeInRight\" data-appear-animation-delay=\"400\"> Marriage Solution BD will provide a maximum of 1 (one) year service for you after depositing the fee against the said registration.</li>\r\n<li class=\"appear-animation \" data-appear-animation=\"fadeInUp\" data-appear-animation-delay=\"400\"> Cash, bKash, bank account-pay check and payment can be made online. The work of marriage of orphans and helpless people is supported free of cost in Marriage Solution BD.</li>\r\n<li class=\"appear-animation \" data-appear-animation=\"fadeInUp\" data-appear-animation-delay=\"400\"> Customer support is required for the presence of a representative of Marriage Solutions BD at the ceremony.</li>\r\n<li class=\"appear-animation \" data-appear-animation=\"fadeInLeft\" data-appear-animation-delay=\"400\"> It is requested that a representative appointed by the Marriage Solution BD be present at any event / discussion between the two parties from the time of becoming a member of the Marriage Solution BD till the marriage is consummated or to inform the organization of all the information in due course.</li>\r\n<li class=\"appear-animation \" data-appear-animation=\"fadeInLeft\" data-appear-animation-delay=\"400\"> Before finalizing the date and time of the wedding, both parties have to take responsibility for finding out about the bride / groom.</li>\r\n<li class=\"appear-animation \" data-appear-animation=\"fadeInRight\" data-appear-animation-delay=\"400\"> After the couple chooses each other, the parents have to make a decision as soon as possible with the consent of both the parties through sincerity through communication.</li>\r\n<li class=\"appear-animation \" data-appear-animation=\"fadeInRight\" data-appear-animation-delay=\"400\"> If a member is already acquainted with each other after the meeting and arranges the marriage without informing us, then the member must pay all the money due to Marriage Solution BD.</li>\r\n<li class=\"appear-animation \" data-appear-animation=\"fadeInUp\" data-appear-animation-delay=\"400\"> If the marriage is settled by their own efforts or by any other means, the Marriage Solution BD should be informed immediately.</li>\r\n<li class=\"appear-animation \" data-appear-animation=\"fadeInUp\" data-appear-animation-delay=\"400\"> Both the parties will discuss all the issues including debts, finalizing the day and date of Mohrana and will decide on their own responsibility. If needed, Marriage Solution BD will assist you as much as possible.</li>\r\n<li class=\"appear-animation \" data-appear-animation=\"fadeInUp\" data-appear-animation-delay=\"400\"> At the time of customer registration, the account-pay check of marriage fee money has to be submitted in advance. The marriage fee has to be paid as soon as the marriage is final.\r\n<li class=\"appear-animation \" data-appear-animation=\"fadeInUp\" data-appear-animation-delay=\"400\"> Any other expenses or gift items other than the member fee / marriage fee will be at your own risk.</li>\r\n<li class=\"appear-animation \" data-appear-animation=\"fadeInUp\" data-appear-animation-delay=\"400\"> We must try to be present at all the events of the marriage organization such as bug-donation, gaye halud, biye, walima etc. It is the duty of the marriage solution BD to make it a success and we must provide the opportunity for the institutional promotion of the marriage solution BD.</li>\r\n<li class=\"appear-animation \" data-appear-animation=\"fadeInUp\" data-appear-animation-delay=\"400\"> As a proof of the success of the marriage organized through Marriage Solution BD, the customer should not have any objection in promoting the various social media and online sites of the organization such as pictures, videos etc.</li>\r\n<li class=\"appear-animation \" data-appear-animation=\"fadeInUp\" data-appear-animation-delay=\"400\"> The company will continue its activities in accordance with the appropriate rules. No pressure can be exerted on the company to provide services or marriage.</li>\r\n<li class=\"appear-animation \" data-appear-animation=\"fadeInUp\" data-appear-animation-delay=\"400\"> Violation of any of the conditions mentioned will force the Marriage Solution BD to take recourse to the law through its own lawyer. THE COOPERATION OF PARENTS AND SPOUSES IS DESIRABLE TO PERFORM THE GOOD WORK</li>\r\n<li class=\"appear-animation \" data-appear-animation=\"fadeInUp\" data-appear-animation-delay=\"400\">  Birth, death, marriage are in the hands of God Almighty, try us, the decision is yours.  After all our efforts, it is your responsibility to accept whatever the outcome may be. Please refrain from abusing any customer, representatives of the organization. The rest of your life is the best time of your life.</li>\r\n<li class=\"appear-animation \" data-appear-animation=\"fadeInUp\" data-appear-animation-delay=\"400\"> Give your signature voluntarily, consciously, in a healthy mind, without any objection and peacefully reading the terms and conditions, knowing all the issues.</li>\r\n<ol>\r\n</div>', 0, 1, 1, 1, '2021-01-23 07:09:06', '2021-03-03 07:09:35'),
+(45, 19, 'Part 4', '<div class=\"container w3-green w3-border-purple w3-large text-center\">WE ARE ALWAYS STRIVING AND COMMITTED TO PROVIDE SAFE AND SECURE SERVICES.\r\nYOUR COOPERATION IN THIS ENDEAVOR IS HIGHLY DESIRABLE </div><br>', 0, 1, 1, 1, '2021-01-23 07:18:45', '2021-02-02 05:24:01'),
+(46, 30, 'Part 1', '<div class=\"w3-animate-zoom\"><img src=\"https://marriagesolutionbd.com/storage/media/image/XDV621011814.jpg\" style=\"width: 100%;\"></div><div class=\"text-center\"><div class=\"text-center w3-large p-2 w3-text-black\" style=\"background: url(https://marriagesolutionbd.com/img/bg-ribon.jpg) repeat;min-height: 20px;width: 100%;font-weight:bold\">Marriage Solution BD: The Largest Matrimony Organization in Bangladesh</div></div>', 0, 0, 1, 1, '2021-01-23 22:04:19', '2021-03-06 00:09:51'),
+(47, 30, 'Part 2', '<div class=\"\" style=\"background: #0b0b0b url(/img/back2.png); \"> <div class=\"prod-ops text-center py-5\" style=\"background: url(/img/bg-boxleft.png) no-repeat left top, url(/img/bg-boxright.png) no-repeat right top, url(/img/bg-boxbottomleft.png) no-repeat left bottom, url(/img/bg-boxbottomright.png) no-repeat right bottom;\"><h2 class=\"m-0 p-0\" style=\"color: gold; font-family: \'Lobster Two\', cursive; font-style: italic;\">Our Service Solution</h2><div style=\"width:100%; height: 30px; background: url(/img/leaf.png) no-repeat center bottom;\"></div> <div class=\"total-single-service-area \"> <div class=\"single-services-area\">  <div class=\"service-icon w3-text-white- container text-justify px-md-4 text-center\"> <h5 class=\"text-white\">We take the work forward in a few steps to provide accurate and fast service to our customers</h5> \r\n<div class=\"row\">\r\n    <div class=\"col-md-4 mt-5 appear-animation\"  data-appear-animation=\"fadeInLeft\" data-appear-animation-delay=\"400\">\r\n\r\n        <div class=\"w3-card rounded text-center mb-5 h-100 mt-3 \"  style=\"background: url(https://www.marriagesolutionbd.com/storage/media/image/HLG021031300.jpg); background-size: 100%\"><div class=\"h-100\"><div class=\"w3-tag rounded w3-deep-orange w3-card mt-n5\" style=\"margin-top: -4rem;\"><h4 class=\"text-white\" style=\"text-transform: capitalize; !important\">Marketing Department</h4></div><p class=\"p-2 w3-text-white text-justify m-auto\">We have a marketing team that is smart, highly educated, loyal, sincere, brutal, skilled, experienced and clear to provide the right  service to those customers who have a son or daughter to marry but are\r\n            not getting the right medium.</p></div>\r\n</div>\r\n    </div>\r\n    <div class=\"col-md-4 mt-5 appear-animation\"  data-appear-animation=\"fadeInUp\" data-appear-animation-delay=\"100\">\r\n        <div class=\"w3-card rounded text-center mb-5 h-100  mt-3\" style=\"background: url(https://www.marriagesolutionbd.com/storage/media/image/PBDE21031302.jpg); background-size: 100% 100%\"><div class=\"w3-tag rounded w3-orange mt-n5 \" style=\"margin-top: -4rem;\"><h4 class=\"text-white\" style=\"text-transform: capitalize; !important\">Service Department</h4></div><p class=\"text-white p-2 text-justify m-auto\">We have a very large service team for registered customers\r\n            to find the right partner and make the right matchmaking.</p></div>\r\n    </div>\r\n    <div class=\"col-md-4 mt-5\">\r\n        <div class=\"appear-animation w3-card rounded text-center mb-5 h-100 mt-3\"  style=\"background: url(https://www.marriagesolutionbd.com/storage/media/image/bew121031300.jpg); background-size: 100% 100%\"   data-appear-animation=\"fadeInRight\" data-appear-animation-delay=\"100\"><div class=\"w3-tag rounded w3-green mt-n5\" style=\"margin-top: -4rem;\"><h4 class=\"text-white\" style=\"text-transform: capitalize; !important\">IT Department</h4></div><p class=\"text-white p-2 text-justify m-auto\">We also have an experienced IT team to provide the right profile to the registered customers.</p></div>\r\n    </div>\r\n</div>\r\n<br></div></div> </div></div>', 0, 1, 1, 1, '2021-01-23 22:05:14', '2021-03-13 03:57:35'),
+(48, 31, 'Part 1', '<div class=\"w3-animate-zoom\"><img src=\"https://marriagesolutionbd.com/storage/media/image/XDV621011814.jpg\" style=\"width: 100%;\"></div><div class=\"text-center\"><div class=\"text-center w3-large p-2 w3-text-black\" style=\"background: url(https://marriagesolutionbd.com/img/bg-ribon.jpg) repeat;min-height: 20px;width: 100%;font-weight:bold\">Marriage Solution BD: The Largest Matrimony Organization in Bangladesh</div></div><br>\r\n<h2 align=\"center\" style=\"margin: 15pt 0in 11.25pt; text-align: center; color: #9c27b0;\">Help and Customer Support</h2>', 0, 0, 1, 1, '2021-01-23 23:29:58', '2021-03-06 00:10:09'),
+(50, 32, 'Part 1', '<div class=\"w3-animate-zoom\"><img src=\"https://marriagesolutionbd.com/storage/media/image/XDV621011814.jpg\" style=\"width: 100%;\"></div><div class=\"text-center\"><div class=\"text-center w3-large p-2 w3-text-black\" style=\"background: url(https://marriagesolutionbd.com/img/bg-ribon.jpg) repeat;min-height: 20px;width: 100%;font-weight:bold\">Marriage Solution BD: The Largest Matrimony Organization in Bangladesh</div></div><br>', 0, 0, 1, 1, '2021-01-23 23:34:09', '2021-03-06 00:10:13'),
+(51, 32, 'Part 2', '<p><div class=\"container\"><br><h2 style=\"text-align: center; \"><span style=\"color: rgb(156, 0, 255);\">Employee Stories</span></h2><p>This page will be updated soon.</p></div><br></p>', 0, 1, 1, 1, '2021-01-23 23:34:26', '2021-01-23 23:35:15'),
+(52, 33, 'Part 1', '<div class=\"container mt-3\">\r\n<div class=\"w3-row w3-card w3-round mb-3\" style=\"background: rgb(0, 0, 0) url(\'https://www.marriagesolutionbd.com/storage/media/image/VV6Z21012428.png\') no-repeat top right; background-size: auto 100%;\"> \r\n            <div class=\"w3-half w3-mobile w-100 d-sm-none d-md-none d-lg-none\"> \r\n                <img class=\"w-100\" src=\"https://www.marriagesolutionbd.com/storage/media/image/VV6Z21012428.png\" alt=\"\">\r\n            </div>\r\n            <div class=\"w3-container w3-half w3-purple text-justify\"><h2 class=\"text-white p-0 m-0\">Our Values</h2><p class=\"text-white\">\r\n                    Put Customers First - Caring for and respecting customers is at the core of everything we do. It defines our work and shapes our culture, radiating out to our shareholders and communities. <br>\r\n                    \r\n                    Be the Best - We are relentless in our search for new and better ways of doing things. As a leader in our industry, we constantly raise the bar with our innovation and dedication to our customers. <br>\r\n                    \r\n                    Make Things Easier - Products in our industry aren’t always easy to understand. That’s why we are always looking for simpler ways to connect customers to the best solutions.  <br>\r\n                    \r\n                    Succeed Together - We live by a collective commitment to honesty, integrity and diversity. We are open and inclusive, taking and applying the best ideas from every part of our. <br>\r\n                    On screens smaller than 601 pixels it resizes to 100%. <br>\r\n                </p>\r\n            </div>\r\n            \r\n        </div>\r\n</div>', 0, 0, 1, 1, '2021-01-24 05:37:55', '2021-02-16 03:54:36'),
+(53, 33, 'Part 2', '<div class=\"container\">\r\n<div class=\"w3-row w3-card w3-round mb-3\" style=\"background: rgb(0, 0, 0) url(\'https://www.marriagesolutionbd.com/storage/media/image/wjtu21012427.jpg\') no-repeat top left; background-size: 25% 100%;\"> \r\n            <div class=\"w3-mobile d-sm-none d-md-none d-lg-none\"> \r\n                <img class=\"w-100\" src=\"https://www.marriagesolutionbd.com/storage/media/image/wjtu21012427.jpg\"> \r\n            </div>\r\n            <div class=\"w3-container w3-threequarter w3-white w3-right\"> \r\n                <h2 class=\"m-0 p-0\">A great place to work</h2> <p class=\"\">We know that a successful team is made up of happy people. So, we create an environment to support the physical, social and emotional wellbeing of our employees. Our employee Thrive program comprises several initiatives to achieve this vision, including: Diversity and Inclusion Committee; Social Clubs; and Corporate Social Responsibility.</p>\r\n            </div>\r\n        </div>\r\n</div>', 0, 0, 1, 1, '2021-01-24 06:33:48', '2021-02-16 03:54:43'),
+(54, 33, 'Part 3', '<div class=\"container\">\r\n<div class=\"w3-row w3-card w3-round mb-3\" style=\"background: rgb(0, 0, 0) url(\'https://www.marriagesolutionbd.com/storage/media/image/V1cE21012428.jpg\') no-repeat top right; background-size: auto 100%;\"> \r\n            <div class=\"w3-mobile d-sm-none d-md-none d-lg-none\"> \r\n                <img class=\"w-100\" src=\"https://www.marriagesolutionbd.com/storage/media/image/V1cE21012428.jpg\"> \r\n            </div>\r\n            <div class=\"w3-container w3-threequarter w3-white \"> \r\n                <h2 class=\"p-0 m-0\">Join us</h2> \r\n                 <p class=\"\">As the leading Insurance Company in Bangladesh, Marriage Solution BD offers you various opportunities across different roles and domains. We also help you pursue a career that brings growth and satisfaction. <br>\r\nYou can be a part of Marriage Solution BD family in one of the two ways – join us as an employee be a Financial Associate. In either option, you will have a chance to learn from the best in the industry and grow your career.</p>\r\n            </div>\r\n        </div>\r\n</div>', 0, 0, 1, 1, '2021-01-24 06:37:10', '2021-02-16 03:54:52'),
+(69, 31, 'Page Title part', '<div class=\"text-center my-5\">\r\n                <h2 class=\"m-0 p-0\" style=\"color: gold; font-family: \'Lobster Two\', cursive; font-style: italic;\">Help & Customer Support</h2><div style=\"width:100%; height: 30px; background: url(/img/leaf.png) no-repeat center bottom;\"></div> \r\n            </div>', 0, 1, 1, 1, '2021-02-01 23:23:28', '2021-03-06 23:40:33'),
+(65, 33, 'Part 4', '<div class=\"w3-animate-zoom\"><img src=\"https://marriagesolutionbd.com/storage/media/image/XDV621011814.jpg\" style=\"width: 100%;\"></div>\r\n<div class=\"text-center\"><div class=\"text-center w3-large p-2 w3-text-black\" style=\"background: url(https://marriagesolutionbd.com/img/bg-ribon.jpg) repeat;min-height: 20px;width: 100%;font-weight:bold\">Marriage Solution BD: The Largest Matrimony Organization in Bangladesh</div></div>', 0, 1, 1, 1, '2021-02-16 03:56:50', '2021-02-17 00:47:56'),
+(63, 20, 'Part 2', '<div class=\"container-fluid py-5\" style=\"background: url(../../img/pay-bg.jpeg)\"><div class=\"w3-card- w3-round-large\"><div class=\"w3-card- text-center py-2 \"><h2 class=\"m-0 py-2 px-3\" style=\"color: gold; font-family: \'Lobster Two\', cursive; font-style: italic; text-transform: capitalize; !important\"><u>Payment Method</u></h2><div style=\"width:100%; height: 30px; background: url(/img/leaf.png-) no-repeat center bottom;\"></div> </div><div class=\"card-body p-lg-3 p-0\"><div class=\"row px-md-5\"><div class=\"col-md-6 mb-2 appear-animation\"  data-appear-animation=\"fadeInRight\" data-appear-animation-delay=\"400\"><div class=\"w3-card w3-cyan w3-round-medium\"  style=\"background: url() no-repeat; background-size: 100% 100%;\"><div class=\"card-body- p-3\" ><h3><b>Bank Payment</b></h3><table class=\"text-dark table-sm\"><tr class=\"text-dark\"><th>Bank Name</th><td>:</td><td><b>Dutch Bangla Bank Ltd.</b></td></tr><tr><th>Branch</th><td>:</td><td><b>Mohammadpur, Dhaka</b></td></tr><tr><th>Account No</th><td>:</td><td><b>258.110.3970</b></td></tr><tr><th>Online Tracking No.</th><td>:</td><td><b>090263286</b></td></tr></table></div></div>\r\n</div>\r\n<div class=\"col-md-6 mb-2 appear-animation\"  data-appear-animation=\"fadeInLeft\" data-appear-animation-delay=\"400\"><div class=\"w3-card w3-cyan w3-round-medium\" style=\"background: url() no-repeat; background-size: 100% 100%;\"><div class=\"card-body- p-3\" ><h3><b>Bkash Payment</b></h3><table class=\" table-sm\"><tr><th>Bkash Account No.</th><td>: </td><td><b>01720504504</b></td></tr><tr><th></th><td>:</td><td><b>01633036062</b></td></tr><tr><td>   </td></tr><tr><td>   </td></tr></table></div></div>\r\n</div>\r\n</div>\r\n</div></div></div>', 0, 1, 1, 1, '2021-02-06 05:53:55', '2021-03-03 06:58:54');
+INSERT INTO `page_items` (`id`, `page_id`, `title`, `content`, `editor`, `active`, `addedby_id`, `editedby_id`, `created_at`, `updated_at`) VALUES
+(64, 22, 'Part 2 Alt', '<div class=\"\" style=\"background: #0b0b0b url(/img/back2.png) no-repeat center top; background-size: 100%;\"> <div class=\"prod-ops text-center py-5\" style=\"background: url(/img/bg-boxleft.png) no-repeat left top, url(/img/bg-boxright.png) no-repeat right top, url(/img/bg-boxbottomleft.png) no-repeat left bottom, url(/img/bg-boxbottomright.png) no-repeat right bottom;\"><h2 class=\"m-0 p-0\" style=\"color: gold; font-family: \'Lobster Two\', cursive; font-style: italic; text-transform: capitalize; !important\">Our Vision</h2><div style=\"width:100%; height: 30px; background: url(/img/leaf.png) no-repeat center bottom;\"></div> <div class=\"total-single-service-area\"> <div class=\"single-services-area appear-animation\"  data-appear-animation=\"fadeInUp\" data-appear-animation-delay=\"400\">  <div class=\"service-icon w3-text-white container text-justify px-md-4\">Where and how to find a suitable bride / groom? Are the people you associate with experienced in matters as important as marriage in the life of you and your beloved child? Have you been able to properly observe all the religious provisions in your child\'s marriage? In today\'s society, both small families and men and women are keeping pace with the times when they become employed, resulting in a lack of intimacy as well as friendship. As a result, there is a lack of sincerity and lack of time in the sincerity of friends and relatives including parents and guardians in the marriage process. In that case, Marriage Solution BD is working hard to be a part of the family to complete the marriage work with their intellectual knowledge and experience.<br><br></div></div> </div></div>', 0, 1, 1, 1, '2021-02-07 22:46:25', '2021-03-03 07:05:16'),
+(67, 21, 'Part 2', '<div class=\"\" style=\"background: #0b0b0b url(/img/back2.png) no-repeat center top; background-size: 100%;\"> <div class=\"prod-ops text-center py-5\" style=\"background: url(/img/bg-boxleft.png) no-repeat left top, url(/img/bg-boxright.png) no-repeat right top, url(/img/bg-boxbottomleft.png) no-repeat left bottom, url(/img/bg-boxbottomright.png) no-repeat right bottom;\"><h2 class=\"m-0 p-0\" style=\"color: gold; font-family: \'Lobster Two\', cursive; font-style: italic; text-transform: capitalize; !important\">Our Mission</h2><div style=\"width:100%; height: 30px; background: url(/img/leaf.png) no-repeat center bottom;\"></div> <div class=\"total-single-service-area appear-animation\"  data-appear-animation=\"fadeInDown\" data-appear-animation-delay=\"400\"> <div class=\"single-services-area\">  <div class=\"service-icon w3-text-white container text-justify px-md-4\">Marriage  Solution  BD  is  always  engaged  in  human  service.  Where  we  are  determined  to  find  your  preferred  partner through respect, sincerity and co-operation and maximum effort. We are working on a far-reaching plan to be your trust and  we  have  a  large  database  of  potential  and  aristocratic  families  and  brides  around  the  world.  We  also  pay  special attention to your privacy. All the profiles that we have are highly qualified and we provide CV according to the customer\'s demand. The main goal of Marriage Solution BD is to find the right life partner, work for human service and marriage.<br><br></div></div> </div></div></div>', 0, 1, 1, 1, '2021-02-17 03:23:08', '2021-03-03 07:06:45'),
+(66, 33, 'Part 5', '<div class=\"\" style=\"background: #0b0b0b url(/img/back2.png); \"> <div class=\"prod-ops text-center py-5\" style=\"background: url(/img/bg-boxleft.png) no-repeat left top, url(/img/bg-boxright.png) no-repeat right top, url(/img/bg-boxbottomleft.png) no-repeat left bottom, url(/img/bg-boxbottomright.png) no-repeat right bottom;\"><h2 class=\"m-0 p-0\" style=\"color: gold; font-family: \'Lobster Two\', cursive; font-style: italic;\"><u>Career</u></h2><div style=\"width:100%; height: 30px; background: url(/img/leaf.png) no-repeat center bottom;\"></div> <div class=\"total-single-service-area \"> <div class=\"single-services-area\">  <div class=\"service-icon w3-text-white- container text-justify px-md-4 text-center\"> <h5 class=\"text-white\"></h5> \r\n<div class=\"row\">\r\n    <div class=\"col-md-12 mt-5 appear-animation\"  data-appear-animation=\"fadeInLeft\" data-appear-animation-delay=\"400\">\r\n        <div class=\"w3-card rounded text-center mb-5 h-100 mt-3 \" style=\"background: url(https://www.marriagesolutionbd.com/storage/media/image/T5aw21031358.jpg); background-size: 100%;\" ><div class=\"w3-tag rounded w3-brown w3-card mt-n5\" style=\"margin-top: -4rem;\"><h4 class=\"text-white\" style=\"text-transform: capitalize; !important\">Our Values</h4></div><p class=\"p-2 px-5 w3-text-black text-justify\">Put Customers First - Caring for and respecting customers is at the core of everything we do. It defines our work and shapes our culture, radiating out to our shareholders and communities. <br>\r\n                    \r\n                    Be the Best - We are relentless in our search for new and better ways of doing things. As a leader in our industry, we constantly raise the bar with our innovation and dedication to our customers. <br>\r\n                    \r\n                    Make Things Easier - Products in our industry aren’t always easy to understand. That’s why we are always looking for simpler ways to connect customers to the best solutions.  <br>\r\n                    \r\n                    Succeed Together - We live by a collective commitment to honesty, integrity and diversity. We are open and inclusive, taking and applying the best ideas from every part of our. <br>\r\n                    On screens smaller than 601 pixels it resizes to 100%. <br></p></div>\r\n    </div>\r\n    <div class=\"col-md-12 mt-5 appear-animation\"  data-appear-animation=\"fadeInRight\" data-appear-animation-delay=\"400\">\r\n        <div class=\"w3-card  rounded text-center mb-5 h-100  mt-3\"  style=\"background: url(https://www.marriagesolutionbd.com/storage/media/image/07Lz21031358.jpg); background-size: 100%;\"><div class=\"w3-tag rounded  w3-blue-grey mt-n5  w3-card\" style=\"margin-top: -4rem;\"><h4 class=\"text-white\" style=\"text-transform: capitalize; !important\">A great place to work</h4></div><p class=\"text-dark p-5 text-justify\"><span >We know that a successful team is made up of happy people. So, we create an environment to support the physical, social and emotional wellbeing of our employees. Our employee Thrive program comprises several initiatives to achieve this vision, including: Diversity and Inclusion Committee; Social Clubs; and Corporate Social Responsibility.</span></p></div>\r\n    </div>\r\n    <div class=\"col-md-12 mt-5 appear-animation\"  data-appear-animation=\"fadeInUp\" data-appear-animation-delay=\"400\">\r\n        <div class=\"w3-card rounded text-center mb-5 h-100 mt-3\"  style=\"background: url(https://www.marriagesolutionbd.com/storage/media/image/2e3x21031358.jpg); background-size: 100%;\" ><div class=\"w3-tag rounded w3-green  mt-n5  w3-card\" style=\"margin-top: -4rem;\"><h4 class=\"text-white\" style=\"text-transform: capitalize; !important\">Join us</h4></div><p class=\"text-dark p-2 px-5 text-justify\">As the leading Insurance Company in Bangladesh, Marriage Solution BD offers you various opportunities across different roles and domains. We also help you pursue a career that brings growth and satisfaction. <br>\r\nYou can be a part of Marriage Solution BD family in one of the two ways – join us as an employee be a Financial Associate. In either option, you will have a chance to learn from the best in the industry and grow your career.</p></div>\r\n    </div>\r\n</div>\r\n<br></div></div> </div></div></div>', 0, 1, 1, 1, '2021-02-17 00:47:39', '2021-03-13 03:48:32'),
+(68, 31, 'form_address', '<div class=\"card w3-round mt-0 p-4 appear-animation\"  data-appear-animation=\"fadeInDown\" data-appear-animation-delay=\"400\" style=\"background: #673003; font-family: cursive;\"><div class=\"w3-text-medium w3-center\"><p style=\"color: gold; font-weight: bold;\">ASAD GATE<br><span style=\"color: white;\">01720504504 </span> <br><span style=\"color: white;\">01633036062</span></p></div> </div><div class=\"card w3-round mt-0 p-4 appear-animation\"  data-appear-animation=\"fadeInDown\" data-appear-animation-delay=\"400\" style=\"background: #673003;font-family: cursive;\"><div class=\"w3-text-medium w3-center\"><p style=\"color: gold; font-weight: bold;\">GULSHAN<br><span style=\"color: white;\">01777118606 </span> <br><span style=\"color: white;\">01907550361</span></p> </div></div><div class=\"card w3-round mt-0 p-4 appear-animation\"  data-appear-animation=\"fadeInDown\" data-appear-animation-delay=\"400\"  style=\"background: #673003;font-family: cursive;\"><div class=\"w3-text-medium w3-center\" ><p style=\"color: gold; font-weight: bold;\">UTTARA<br><span style=\"color: white;\">01791266153 </span> <br> <span style=\"color: white;\">01776687989</span></p></div></div><div class=\"card w3-round mt-0 p-4 appear-animation\"  data-appear-animation=\"fadeInDown\" data-appear-animation-delay=\"400\"  style=\"background: #673003;font-family: cursive;\"><div class=\"w3-text-medium w3-center\"><p style=\"color: gold; font-weight: bold;\">KAKRAIL<br> <span style=\"color: white;\">01780414897 </span> <br><span style=\"color: white;\">01319378112</span></p></div></div>\r\n                        <div class=\"card w3-round mt-0 p-4 appear-animation\"  data-appear-animation=\"fadeInDown\" data-appear-animation-delay=\"400\"  style=\"background: #673003;font-family: cursive;\">\r\n                                <div class=\"w3-text-medium w3-center\">\r\n                                    <p style=\"color: gold; font-weight: bold;\">CHATTOGRAM<br>\r\n                                        <span style=\"color: white;\">01617014140 </span> <br>\r\n                                        <span style=\"color: white;\">01617013455</span>\r\n                                    </p>\r\n                                </div>\r\n                        </div>', 0, 1, 1, 1, '2021-03-06 23:32:38', '2021-03-06 23:39:15');
 
 -- --------------------------------------------------------
 
@@ -1493,10 +1559,75 @@ CREATE TABLE `password_resets` (
 
 INSERT INTO `password_resets` (`email`, `token`, `created_at`) VALUES
 ('marriagebd2012@gmail.com', '$2y$10$/jIuGPF4chsFIe36C38tm.qsLBHl9hDXxklVd2zwxcJiSvVL.ItJS', '2019-01-07 19:22:46'),
-('masudbdm@gmail.com', '$2y$10$L/Cri78jivzbgIVKxIieo.ydsncBS8RppL.s7lq8yMsvgN0/wNZy2', '2019-02-04 16:57:08'),
 ('sanam_sam06@yahoo.com', '$2y$10$cDl2IMv/ZBROxiScMUx7lODNBxLB0X8YM1EAQnqWA7KEIj17.Q5B6', '2019-10-19 19:17:51'),
 ('emranapon4@gmail.com', '$2y$10$CVRe5Nj0IfLJztb37dcRbetnDiS3yJfnCCm4mZ98syEx3t9TnY1vK', '2019-11-05 16:48:29'),
-('aminulhaqueok@gmail.com', '$2y$10$fC.uM/IIHILKPfeUYd9b7usC9BQYr5K/8HWPq./HLDjbBfZ.v7edq', '2020-03-17 02:32:43');
+('aminulhaqueok@gmail.com', '$2y$10$fC.uM/IIHILKPfeUYd9b7usC9BQYr5K/8HWPq./HLDjbBfZ.v7edq', '2020-03-17 02:32:43'),
+('tanvirectbd@gmail.com', '$2y$10$0p.ZFywamp0Qki5nVffN7u4xK5rdWyudemczcXKgc.lijLMHbpo8m', '2021-01-30 09:11:15'),
+('masudbdm@gmail.com', '$2y$10$O2Prx9jr/rWYj/A8U91h9.Kcuebq82lEoOzgFh8lKNc.m1nwbC7ze', '2021-02-01 04:54:02');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `posts`
+--
+
+CREATE TABLE `posts` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `title` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `description` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `excerpt` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `feature_img_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `feature_img_original_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `feature_img_mime` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `feature_img_ext` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `tags` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `categories` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `meta_title` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `meta_keywords` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `meta_description` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `read` int(11) NOT NULL DEFAULT 0,
+  `date` date DEFAULT NULL,
+  `headline` tinyint(1) NOT NULL DEFAULT 0,
+  `front_slider` tinyint(1) NOT NULL DEFAULT 0,
+  `publish_status` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'temp',
+  `addedby_id` int(10) UNSIGNED DEFAULT NULL,
+  `editedby_id` int(10) UNSIGNED DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `posts`
+--
+
+INSERT INTO `posts` (`id`, `title`, `description`, `excerpt`, `feature_img_name`, `feature_img_original_name`, `feature_img_mime`, `feature_img_ext`, `tags`, `categories`, `meta_title`, `meta_keywords`, `meta_description`, `read`, `date`, `headline`, `front_slider`, `publish_status`, `addedby_id`, `editedby_id`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, 'New Title', '<p>New Desc</p>', 'New Excerpt', '1yEgl02Z1616148710.png', 'Ladies-Lounge_Banner.png', NULL, 'png', 'new, tag', NULL, 'some meta', 'some keyword', 'some desc', 0, NULL, 0, 1, 'published', 1, NULL, '2021-03-19 03:56:16', '2021-03-19 04:11:51', NULL),
+(2, 'New Title', '<p>New Desc</p>', 'New Excerpt', NULL, 'Ladies-Lounge_Banner.png', NULL, 'png', 'new, tag', NULL, 'some meta', 'some keyword', 'some desc', 0, NULL, 0, 1, 'published', 1, NULL, '2021-03-19 04:16:07', '2021-03-19 04:25:04', NULL),
+(4, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, 0, 0, 'temp', 1, NULL, '2021-03-19 04:21:33', '2021-03-19 04:21:33', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `post_categories`
+--
+
+CREATE TABLE `post_categories` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `category_id` int(10) UNSIGNED NOT NULL,
+  `post_id` int(10) UNSIGNED NOT NULL,
+  `addedby_id` int(10) UNSIGNED NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `post_categories`
+--
+
+INSERT INTO `post_categories` (`id`, `category_id`, `post_id`, `addedby_id`, `created_at`, `updated_at`) VALUES
+(1, 2, 1, 1, '2021-03-19 04:11:51', '2021-03-19 04:11:51'),
+(2, 2, 2, 1, '2021-03-19 04:16:07', '2021-03-19 04:16:07');
 
 -- --------------------------------------------------------
 
@@ -1508,7 +1639,7 @@ CREATE TABLE `reports` (
   `id` int(10) UNSIGNED NOT NULL,
   `user_id` int(10) UNSIGNED NOT NULL,
   `user_second_id` int(10) UNSIGNED NOT NULL,
-  `comment` text COLLATE utf8mb4_unicode_ci,
+  `comment` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `status` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'pending',
   `editedby_id` int(10) UNSIGNED DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -1534,6 +1665,27 @@ CREATE TABLE `social_identities` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tags`
+--
+
+CREATE TABLE `tags` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `title` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `tags`
+--
+
+INSERT INTO `tags` (`id`, `title`, `created_at`, `updated_at`) VALUES
+(1, 'new', '2021-03-19 04:09:08', '2021-03-19 04:09:08'),
+(2, 'tag', '2021-03-19 04:09:08', '2021-03-19 04:09:08');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `team_members`
 --
 
@@ -1546,7 +1698,7 @@ CREATE TABLE `team_members` (
   `education` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `mobile` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `active` tinyint(1) NOT NULL DEFAULT '0',
+  `active` tinyint(1) NOT NULL DEFAULT 0,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -1556,8 +1708,25 @@ CREATE TABLE `team_members` (
 --
 
 INSERT INTO `team_members` (`id`, `branch_id`, `team_name`, `name`, `designation`, `education`, `mobile`, `image`, `active`, `created_at`, `updated_at`) VALUES
-(17, 5, 'CEO', 'Juliet Cleveland', 'Perferendis aliqua', 'Omnis quos deserunt', 'Culpa fugit eum cu', 'storage/teammember/lKLBkADM1615612973.jpg', 1, '2021-03-12 23:22:54', '2021-03-12 23:22:54'),
-(18, 5, 'Service Team', 'Devin Boyle', 'Non fuga Aliquid es', 'Sit saepe culpa ea a', 'Rerum id eos verita', NULL, 1, '2021-03-12 23:24:32', '2021-03-12 23:24:32');
+(14, 1, 'Marketing Team', 'Sohagi Parvin', 'Marketing Executive', 'Hon\'s in English', '01308311911', 'storage/teammember/lj5w321P1615183022.jpg', 1, '2021-03-07 06:43:08', '2021-03-08 00:03:15'),
+(15, 3, 'Marketing Team', 'Amena Akter Moon', 'Marketing Executive', 'Hon\'s in Accounting', '01729261854', 'storage/teammember/DIJjdo0T1615183515.jpg', 1, '2021-03-07 06:44:42', '2021-03-14 03:52:48'),
+(16, 2, 'Marketing Team', 'Lamisa Kabir', 'Marketing Executive', 'MBA in Accounting', '01777118606', 'storage/teammember/2WJnlJDP1615182988.jpg', 1, '2021-03-07 06:48:13', '2021-03-08 00:13:07'),
+(17, 2, 'Marketing Team', 'Nasrin Sultana', 'Marketing Executive', 'Masters in Social Welfare', '01907550361', 'storage/teammember/7zJ6ZR2n1615182972.jpeg', 1, '2021-03-07 06:49:09', '2021-03-08 00:12:54'),
+(18, 3, 'Marketing Team', 'Shoma Akter', 'Marketing Executive', 'BBA in Marketing', '01776687989', 'storage/teammember/PaAlwilK1615183496.jpg', 1, '2021-03-07 06:50:07', '2021-03-08 00:09:28'),
+(20, 5, 'Marketing Team', 'Jhorna Begum', 'Marketing Executive', 'Masters in Bangla', '01780414897', 'storage/teammember/hLSGQ97U1615182901.jpg', 1, '2021-03-07 06:52:03', '2021-03-08 00:12:43'),
+(21, 5, 'Marketing Team', 'Jhuma Akter', 'Marketing Executive', 'Masters in Political Science', '01319378112', 'storage/teammember/fsRvzK0A1615182845.jpg', 1, '2021-03-07 06:53:40', '2021-03-08 00:09:49'),
+(22, 6, 'Marketing Team', 'Faisal Bin Abdullah', 'Marketing Executive', 'MBA in HRM', '01617014140', 'storage/teammember/tRYCgncM1615182827.jpeg', 1, '2021-03-07 06:54:36', '2021-03-08 00:09:38'),
+(23, 6, 'Marketing Team', 'Rabeya Sultana Rashme', 'Marketing Executive', 'Hon\'s in English', '01617013455', 'storage/teammember/5lvMER5U1615183739.jpeg', 1, '2021-03-07 06:55:23', '2021-03-08 00:08:59'),
+(24, 1, 'Service Team', 'Pinky Das', 'Customer Support Executive', 'MBA in Accounting', '01970504504', 'storage/teammember/QGCQhb3n1615182799.jpg', 1, '2021-03-07 07:05:50', '2021-03-08 00:15:16'),
+(25, 1, 'Service Team', 'Afsana Rahman Kona', 'Customer Support Executive', 'Diploma in L. Medicine', '01992433328', 'storage/teammember/5AMiWMVq1615186310.jpeg', 1, '2021-03-07 07:06:58', '2021-03-10 23:24:53'),
+(26, 1, 'Service Team', 'Nahida Emu', 'Customer Support Executive', 'BSc in Computer Science', '01631915342', 'storage/teammember/89W3sMSd1615183401.jpg', 1, '2021-03-07 07:07:42', '2021-03-08 00:03:21'),
+(27, 1, 'Service Team', 'Lazina Kabir', 'Customer Support Executive', 'BBA in Finance', '01995585233', 'storage/teammember/cqlOooYc1615183951.jpg', 1, '2021-03-07 07:08:28', '2021-03-08 00:12:31'),
+(28, 1, 'Service Team', 'Halima Rehmi', 'Customer Support Executive', 'BSc in EEE', '01729261876', 'storage/teammember/He3MoDtL1615183371.jpg', 1, '2021-03-07 07:09:20', '2021-03-08 00:02:51'),
+(29, 1, 'IT Team', 'Md Aminul Islam Amin', 'IT Executive Officer', 'Diploma in CS', '01720504504', 'storage/teammember/3CyO5Rci1615182339.jpg', 1, '2021-03-07 07:13:22', '2021-03-08 00:20:05'),
+(30, 1, 'IT Team', 'Prince Baroi Tonmoy', 'IT Executive Officer', 'BSc in CSE', '01720504504', 'storage/teammember/EWBwmE0Q1615182668.jpeg', 1, '2021-03-07 07:15:13', '2021-03-08 00:22:37'),
+(31, 1, 'IT Team', 'Masud Parvej Bappi', 'R & D Officer', 'Hon\'s in LLM, LLB', '01720504504', 'storage/teammember/6gyO3A0a1615786190.png', 1, '2021-03-07 07:16:56', '2021-03-14 23:31:27'),
+(33, 2, 'Marketing Team', 'Zubaida Gulshanara Zinia', 'Marketing Executive', 'Bsc Msc In Foor & Nutrition', '01705761333', 'storage/teammember/EPjzJKjG1615435619.jpg', 1, '2021-03-10 22:06:59', '2021-03-10 22:06:59'),
+(35, 1, 'CEO', 'Shakawat Hossain Shuvo', 'Managing Director & CEO', '02-48117797', '01720504504', 'storage/teammember/iD2JisHT1615619228.jpg', 1, '2021-03-13 01:07:08', '2021-03-13 02:08:35');
 
 -- --------------------------------------------------------
 
@@ -1573,8 +1742,8 @@ CREATE TABLE `users` (
   `email` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `password_temp` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `active` tinyint(1) NOT NULL DEFAULT '1',
-  `profile` tinyint(1) DEFAULT '0',
+  `active` tinyint(1) NOT NULL DEFAULT 1,
+  `profile` tinyint(1) DEFAULT 0,
   `gender` char(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `country` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `country_other` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -1601,13 +1770,13 @@ CREATE TABLE `users` (
   `file_ext` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `user_type` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'online',
   `dob` date DEFAULT NULL,
-  `check_count` int(11) NOT NULL DEFAULT '0',
-  `edit_count` int(11) NOT NULL DEFAULT '0',
+  `check_count` int(11) NOT NULL DEFAULT 0,
+  `edit_count` int(11) NOT NULL DEFAULT 0,
   `mobile_verified_at` timestamp NULL DEFAULT NULL,
   `email_verified_at` timestamp NULL DEFAULT NULL,
-  `addedby_id` int(10) UNSIGNED NOT NULL DEFAULT '1',
+  `addedby_id` int(10) UNSIGNED NOT NULL DEFAULT 1,
   `editedby_id` int(10) UNSIGNED DEFAULT NULL,
-  `package` int(11) NOT NULL DEFAULT '0',
+  `package` int(11) NOT NULL DEFAULT 0,
   `expired_at` timestamp NULL DEFAULT NULL,
   `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -1621,7 +1790,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `mobile`, `username`, `email`, `password`, `password_temp`, `active`, `profile`, `gender`, `country`, `country_other`, `location`, `state`, `city`, `post_code`, `lat`, `lng`, `profile_created_by`, `religion`, `social_order`, `skin_color`, `education_level`, `education_level_other`, `profession`, `profession_other`, `marital_status`, `height`, `weight`, `looking_for`, `img_name`, `file_name`, `file_ext`, `user_type`, `dob`, `check_count`, `edit_count`, `mobile_verified_at`, `email_verified_at`, `addedby_id`, `editedby_id`, `package`, `expired_at`, `remember_token`, `created_at`, `updated_at`, `loggedin_at`, `deleted_at`) VALUES
-(1, 'Masud Hasan', '01820368485', '1', 'masudbdm@gmail.com', '$2y$10$ZbiqTTvarezJzeWSP7QJoOQkTGmhME1byvatVO1oUplaTjrcZYGOW', NULL, 1, 1, 'Male', 'Congo', NULL, 'Nawabpur Ujani Barura Kachua Chandpur Road, Nowabpur, Bangladesh', 'Comilla', 'Comilla', '3510', '23.4039366', '90.92648859999997', 'Sister', 'No Religion', NULL, 'Ten', 'Department of Management Studies', NULL, 'BCS (Taxation): Assistant Commissioner of Taxes', NULL, 'Widowed', '4 Feet 10 Inch', '20 KG', 'Female', '1_pp_2020_12_07_065924_70108577.gif', NULL, NULL, 'online', '2010-06-18', 0, 3, NULL, NULL, 1, 1, 4, '2021-11-04 01:37:14', 'KQc5wjM3UTog0cpDLSE3vSrez1rZKhvoP0XQkaqdPnciUyeRNJGjw1vPhvVr', '2018-10-27 18:55:46', '2021-03-15 22:32:24', NULL, NULL),
+(1, 'Masud Hasan', '01820368485', '1', 'masudbdm@gmail.com', '$2y$10$ZbiqTTvarezJzeWSP7QJoOQkTGmhME1byvatVO1oUplaTjrcZYGOW', NULL, 1, 1, 'Male', 'Bangladesh', NULL, 'Nawabpur Ujani Barura Kachua Chandpur Road, Nowabpur, Bangladesh', 'Comilla', 'Comilla', '3510', '23.4039366', '90.92648859999997', 'Self', 'Muslim', '', 'White', 'HSC', NULL, 'Doctor', NULL, 'Never Married', '5 Feet 4 Inch', '55 KG', 'Female', '1_pp_2020_12_07_065924_70108577.gif', NULL, NULL, 'online', '1983-01-19', 0, 8, NULL, NULL, 1, 1, 1, '2020-02-24 06:00:00', '8nkLqVSOYsl0iXzfs4lW9GwmjCOqDrND96GsPHIB4XSPUxoG54AGeNS4X7i2', '2018-10-27 18:55:46', '2021-03-13 02:34:41', NULL, NULL),
 (2, 'Salam Ahmed', '01678039822', '2', 'salambdm@gmail.com', '$2y$10$xjvPj/6ZSxfO1Wu.3ZBiG.54imGBV637H.lm61.T4cIusbDLDii36', '967703', 1, 1, 'Male', 'Bangladesh', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Self', 'Salafi', NULL, 'Fair', 'High School Pass', NULL, 'Doctor', NULL, 'Never Married', '5 Feet 2 Inch', '32 KG', 'Female', '2_pp_2021_01_07_060909_60456967.jpg', NULL, NULL, 'online', '1983-01-19', 0, 0, NULL, NULL, 1, 1, 0, NULL, 'IKPVJ5clogEsGDIkHjbOndkPRET1dBnaLUIi8dwO2mEbMayo5z8llEOKzYHl', '2018-11-06 10:38:59', '2021-01-07 00:09:13', NULL, NULL),
 (3, 'Masud', '01715995997', '3', 'istore.masud@gmail.com', '$2y$10$uswun7xZPEegc/Ja6.eJDOQVgNUCKyNPcUUY3LeE52GL5enfgARDu', '736493', 1, 1, 'Male', 'Bangladesh', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Self', 'Just Muslim', NULL, 'Fair', 'HSC', NULL, 'Doctor', NULL, 'Never Married', '5 Feet 4 Inch', '37 KG', 'Female', '3_pp_2021_01_07_060946_53484227.png', NULL, NULL, 'online', '1984-01-19', 0, 0, NULL, NULL, 1, 1, 0, NULL, NULL, '2018-11-06 10:42:34', '2021-01-07 00:09:47', NULL, NULL),
 (4, 'Mamun', '01922215642', '4', 'mamunbdm@gmail.com', '$2y$10$GTVgAguMmhZjTtex2aJ.kOqfTH1TTEu41fV9qzw6YbrzGuC.wPFne', '732481', 1, 1, 'Male', 'Bangladesh', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Self', 'Just Muslim', NULL, 'Fair', 'HSC', NULL, 'Doctor', NULL, 'Never Married', '5 Feet 4 Inch', '37 KG', 'Female', '4_pp_2021_01_07_061014_20846847.jpeg', NULL, NULL, 'online', '1984-01-19', 0, 0, NULL, NULL, 1, 1, 0, NULL, NULL, '2018-11-06 10:45:08', '2021-01-07 00:10:17', NULL, NULL),
@@ -1636,7 +1805,7 @@ INSERT INTO `users` (`id`, `name`, `mobile`, `username`, `email`, `password`, `p
 (13, 'Tania', '01556321212', '13', 'tania@gmail.com', '$2y$10$hmAvaMaNXh82PCS5os0hLuLb5gjzILy4.RC4swJbIlR8RZ9sI6/.6', '623591', 1, 1, 'Female', 'Bangladesh', NULL, 'Dhaka, Bangladesh', NULL, NULL, NULL, '23.810332', '90.41251809999994', 'Self', 'Just Muslim', NULL, 'Fair', 'HSC', NULL, 'Doctor', NULL, 'Never Married', '5 Feet 1 Inch', '55 KG', 'Male', '13_pp_2021_01_07_061510_73730674.jpg', NULL, NULL, 'online', '2000-01-18', 0, 0, NULL, NULL, 1, NULL, 0, NULL, NULL, '2018-11-13 05:41:35', '2021-01-07 00:15:10', NULL, NULL),
 (14, 'Toufiq Halim', '01813640428', '14', 'Toufiq.Halim1994@gmail.com', '$2y$10$Th.SCnxOovDFVaUYFOA1nu44fkv288fATKochRFPQ/Ryud365DteW', '644725', 1, 1, 'Male', 'Bangladesh', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Self', 'Muslim', NULL, 'White', 'Other', 'Advance Diploma', 'Other', 'Computer Engineer', 'Never Married', '5 Feet 5 Inch', '70 KG', 'Female', '14_pp_2021_01_07_061528_15956301.jpg', NULL, NULL, 'online', '1994-02-20', 0, 0, NULL, NULL, 1, NULL, 0, NULL, NULL, '2018-12-03 15:45:28', '2021-01-07 00:15:30', NULL, NULL),
 (15, 'Jahidul Islam Sharif', '01785474520', '15', 'jisharif3655@gmail.com', '$2y$10$y070tCHUr3dcVbH61KworukXe8gDPxQgKaLQvG6NZCsALpIb7Xa9O', '171452', 1, 1, 'Male', 'Bangladesh', NULL, 'Rangpur, Bangladesh', NULL, NULL, NULL, '25.7438916', '89.27522699999997', 'Self', 'Muslim', NULL, 'Fair', 'Other', 'Computer Science & Engineering', 'Engineer', NULL, 'Never Married', '5 Feet 5 Inch', '62 KG', 'Female', '15_pp_2021_01_07_061557_96603324.jpg', NULL, NULL, 'online', '1998-10-03', 0, 0, NULL, NULL, 1, NULL, 0, NULL, '4hhwjc5ZoPlFe2FB8JIxWdYPQtBNSbxJiCY5deGjFl2H1Om26OJcbexVcZWl', '2018-12-04 18:36:22', '2021-01-07 00:15:58', NULL, NULL),
-(16, 'Marriage Solution Bd', '01633036062', '16', 'marriagesolutionbd@gmail.com', '$2y$10$Y5WUqHJ8DbD5wU0sSj73gununxDQjhXlazQ3XA/ysdp4kGyI/Loaa', '111111', 1, 1, 'Male', 'Bangladesh', NULL, 'Mirpur Rd, Dhaka 1205, Bangladesh', '', '', '', '23.7604606', '90.37266769999997', 'Parent', 'Muslim', '', 'Fair', 'Other', 'Graduation', 'Engineer', NULL, 'Never Married', '5 Feet 6 Inch', '70 KG', 'Female', '16_pp_2020_12_07_065729_94154334.gif', NULL, NULL, 'online', '1979-04-04', 1, 1, NULL, NULL, 1, 16, 1, '2019-05-25 05:00:00', 'WS07PnFHa1bsq6PtxIlgbgfZ0x64w8UWqRDAYtRbEynMc7qXuC7xbHo1zgB3', '2018-12-05 16:39:58', '2021-01-20 23:51:31', NULL, NULL),
+(16, 'Marriage Solution Bd', '01633036062', '16', 'marriagesolutionbd@gmail.com', '$2y$10$Y5WUqHJ8DbD5wU0sSj73gununxDQjhXlazQ3XA/ysdp4kGyI/Loaa', '111111', 1, 1, 'Male', 'Bangladesh', NULL, 'Mirpur Rd, Dhaka 1205, Bangladesh', '', '', '', '23.7604606', '90.37266769999997', 'Parent', 'Muslim', '', 'Fair', 'Other', 'Graduation', 'Engineer', NULL, 'Never Married', '5 Feet 6 Inch', '70 KG', 'Female', '16_pp_2020_12_07_065729_94154334.gif', NULL, NULL, 'online', '1979-04-04', 1, 1, NULL, NULL, 1, 16, 1, '2019-05-25 05:00:00', 'wn6s8FYqKLFICx4J32L4QM5mpHwBdL9OPT67dGWzthy3VjgYx7tRL4EBGmK1', '2018-12-05 16:39:58', '2021-03-16 23:21:12', NULL, NULL),
 (17, 'reza', '01770592904', '17', 'mreza8766@gmail.com', '$2y$10$kQK9Y.HZ9NZcPOsnE9WgPOKOib1qfmuj1nFoojXL8D1PLe97Ig7Z6', '696284', 1, 1, 'Male', 'Bangladesh', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Self', 'Muslim', NULL, 'Off-white', ' Department of Mathematics', NULL, 'Other', '', 'Never Married', '5 Feet 4 Inch', '61 KG', 'Female', '17_pp_2021_01_07_061616_12594523.png', NULL, NULL, 'online', '1989-03-31', 0, 0, NULL, NULL, 1, NULL, 0, NULL, '3iid5fQ2juijefsfhgiwuoLEODdJgHZGt1WpKLUVWS8xDDMoslisqHlGDqNZ', '2018-12-10 02:02:11', '2021-01-07 00:16:19', NULL, NULL),
 (18, 'Tanvir Rahman', '+8801762642929', '18', 'taanvirr87@gmail.com', '$2y$10$NEKUPX26iQD9TWzupmgwmOcgJMrJR1l9UvZZYo4AIqs7ysMisJSmG', '523678', 1, 1, 'Male', 'United States', NULL, 'Florida, USA', '', '', '', '27.6648274', '-81.51575350000002', 'Self', 'Muslim', '', 'Off-white', 'Department of Management Studies', NULL, 'Businessmen', NULL, 'Legally Separated', '5 Feet 10 Inch', '73 KG', 'Female', '18_pp_2021_01_07_061644_55552437.jpeg', NULL, NULL, 'online', '1987-05-25', 1, 1, NULL, NULL, 1, 1, 0, NULL, NULL, '2018-12-16 12:32:39', '2021-01-07 00:16:44', NULL, NULL),
 (19, 'Ariyan Rahman Akash', '01712319281', '19', 'ariyan98jrn@gmail.com', '$2y$10$DOx3xxWGmRONrBH.nOwbw.NIKvlAs5VbfitVPHI7a2yyU81CCvmTm', '441322', 1, 1, 'Male', 'Bangladesh', NULL, 'Narayanganj, Bangladesh', '', '', '', '23.642196', '90.49079510000001', 'Self', 'Muslim', '', 'Fair', 'Department of Journalism and Mass Communication', NULL, 'Running Student', NULL, 'Never Married', '5 Feet 3 Inch', '52 KG', 'Female', '19_pp_2021_01_07_061712_21599092.jpeg', NULL, NULL, 'online', '1995-04-23', 0, 1, NULL, NULL, 1, 1, 0, NULL, NULL, '2018-12-19 18:26:57', '2021-01-07 00:17:13', NULL, NULL),
@@ -1704,9 +1873,9 @@ INSERT INTO `users` (`id`, `name`, `mobile`, `username`, `email`, `password`, `p
 (81, 'md din islam noyon', '01768350592', '81', 'mdprincefarabi@yahoo.com', '$2y$10$r6yHEv5YSX90iJofi.7dk.O4vxjJVCqM7FwZsunotlbu4cT/LKx.q', '965153', 1, 1, 'Male', 'Bangladesh', NULL, 'Motijheel, Dhaka, Bangladesh', NULL, NULL, NULL, '23.7329724', '90.41723100000002', 'Friend', 'Muslim', NULL, 'Drak', 'Higher Secondary Certificate', NULL, 'Businessmen', NULL, 'Never Married', '5 Feet 9 Inch', '72 KG', 'Female', '81_pp_2021_01_07_071527_97349504.jpeg', NULL, NULL, 'online', '1995-10-17', 0, 1, NULL, NULL, 1, NULL, 0, NULL, NULL, '2019-05-09 02:28:06', '2021-01-07 01:15:28', NULL, NULL),
 (82, 'Md. Nur Alam', '01724253911', '82', 'nuralam@tdsml.net', '$2y$10$XfrD7C4mDfYvPY4bJtTYXe4fLgSmCHuLIUuxkHmhQ0..9/TD7thH.', '313678', 1, 1, 'Male', 'Bangladesh', NULL, 'Dhaka, Bangladesh', NULL, NULL, NULL, '23.810332', '90.41251809999994', 'Self', 'Muslim', NULL, 'Bright', 'Department of Finance', NULL, 'Citizen', NULL, 'Legally Separated', '5 Feet 5 Inch', '60 KG', 'Female', '82_pp_2021_01_07_071547_76983855.png', NULL, NULL, 'online', '1982-10-15', 0, 1, NULL, NULL, 1, NULL, 0, NULL, 'BWOruczBOjNvl1FaxCDx8IK7ilbZNf8ICuZVvBdOv03jcrpfeApkkymNRXJj', '2019-05-11 21:07:30', '2021-01-07 01:15:47', NULL, NULL),
 (83, 'TAHMUR', '01518367267', '83', 'nayeemjzs14@gmail.com', '$2y$10$BhqBrShJbtbquMjFxLtlrupEkypr0m4n0jWldXG5FVioXdQTFlxv2', '883161', 1, 1, 'Male', 'Bangladesh', NULL, 'Banasree, Dhaka, Bangladesh', NULL, NULL, NULL, '23.7619353', '90.43314099999998', 'Self', 'Muslim', NULL, 'Drak', 'Department of Sociology', NULL, 'Running Student', NULL, 'Never Married', '5 Feet 3 Inch', '60 KG', 'Female', '83_pp_2021_01_07_071614_97597719.jpg', NULL, NULL, 'online', '1991-11-21', 0, 1, NULL, NULL, 1, NULL, 0, NULL, NULL, '2019-05-13 00:49:53', '2021-01-07 01:16:16', NULL, NULL),
-(84, 'Mousumi Akther', '01715284958', '84', 'atmmhassan@gmail.com', '$2y$10$WncckWtqFj2HUvsZrNYZce9iljCqKKC8aWueM.VnarlHBP1dfPx7q', '775060', 1, 1, 'Female', 'Bangladesh', NULL, 'Dhaka, Bangladesh', NULL, NULL, NULL, '23.810332', '90.41251809999994', 'Brother', 'Muslim', NULL, 'Bright', 'Department of Sociology', NULL, 'Citizen', NULL, 'Divorced', '5 Feet 4 Inch', '58 KG', 'Male', '84_pp_2021_01_07_071633_79773270.jpg', NULL, NULL, 'online', '1987-01-01', 0, 1, NULL, NULL, 1, NULL, 0, NULL, NULL, '2019-05-18 07:51:52', '2021-01-07 01:16:34', NULL, NULL);
+(84, 'Mousumi Akther', '01715284958', '84', 'atmmhassan@gmail.com', '$2y$10$WncckWtqFj2HUvsZrNYZce9iljCqKKC8aWueM.VnarlHBP1dfPx7q', '775060', 1, 1, 'Female', 'Bangladesh', NULL, 'Dhaka, Bangladesh', NULL, NULL, NULL, '23.810332', '90.41251809999994', 'Brother', 'Muslim', NULL, 'Bright', 'Department of Sociology', NULL, 'Citizen', NULL, 'Divorced', '5 Feet 4 Inch', '58 KG', 'Male', '84_pp_2021_01_07_071633_79773270.jpg', NULL, NULL, 'online', '1987-01-01', 0, 1, NULL, NULL, 1, NULL, 0, NULL, NULL, '2019-05-18 07:51:52', '2021-01-07 01:16:34', NULL, NULL),
+(85, 'Israt Jahan', '01796236102', '85', 'ayatislam332@gmail.com', '$2y$10$kc.9jG6am8C73o/qz3Bp..gWt04WQLtBdtDK7wXx5t1/X7qUD3ADC', '733080', 1, 1, 'Female', 'Bangladesh', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Self', 'Muslim', NULL, 'Bright', 'Master of Business Administration', NULL, 'Running Student', NULL, 'Divorced', '5 Feet 4 Inch', '50 KG', 'Male', '85_pp_2021_01_07_071649_52601717.jpg', NULL, NULL, 'online', '1994-12-31', 0, 1, NULL, NULL, 1, NULL, 0, NULL, NULL, '2019-05-24 02:44:58', '2021-01-07 01:16:50', NULL, NULL);
 INSERT INTO `users` (`id`, `name`, `mobile`, `username`, `email`, `password`, `password_temp`, `active`, `profile`, `gender`, `country`, `country_other`, `location`, `state`, `city`, `post_code`, `lat`, `lng`, `profile_created_by`, `religion`, `social_order`, `skin_color`, `education_level`, `education_level_other`, `profession`, `profession_other`, `marital_status`, `height`, `weight`, `looking_for`, `img_name`, `file_name`, `file_ext`, `user_type`, `dob`, `check_count`, `edit_count`, `mobile_verified_at`, `email_verified_at`, `addedby_id`, `editedby_id`, `package`, `expired_at`, `remember_token`, `created_at`, `updated_at`, `loggedin_at`, `deleted_at`) VALUES
-(85, 'Israt Jahan', '01796236102', '85', 'ayatislam332@gmail.com', '$2y$10$kc.9jG6am8C73o/qz3Bp..gWt04WQLtBdtDK7wXx5t1/X7qUD3ADC', '733080', 1, 1, 'Female', 'Bangladesh', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Self', 'Muslim', NULL, 'Bright', 'Master of Business Administration', NULL, 'Running Student', NULL, 'Divorced', '5 Feet 4 Inch', '50 KG', 'Male', '85_pp_2021_01_07_071649_52601717.jpg', NULL, NULL, 'online', '1994-12-31', 0, 1, NULL, NULL, 1, NULL, 0, NULL, NULL, '2019-05-24 02:44:58', '2021-01-07 01:16:50', NULL, NULL),
 (86, 'Md Ishtiaque Sultan', '0183844896', '86', 'amitsultan018@gmail.com', '$2y$10$QLeQAAjeJibCysCYMLp8z.6pSNj0u4nrMSB04JudFxXdh3aVoifLO', '289779', 1, 1, 'Male', 'Bangladesh', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Self', 'Muslim', NULL, 'Fair', 'Department of Accounting & Information Systems', NULL, 'Industrialists', NULL, 'Divorced', '5 Feet 11 Inch', '77 KG', 'Female', '86_pp_2021_01_07_071713_46520511.png', NULL, NULL, 'online', '1987-01-16', 0, 1, NULL, NULL, 1, NULL, 0, NULL, NULL, '2019-05-26 03:09:41', '2021-01-07 01:17:13', NULL, NULL),
 (87, 'Later', '01711186973', '87', 'youmnaali63@gmail.com', '$2y$10$Hn.VS.xor38bBhzJzm.yce9UUfTCULbapVB1EyCMdp0F37qFnxJ9y', '376561', 1, 1, 'Female', 'Bangladesh', NULL, 'Dhaka, Bangladesh', NULL, NULL, NULL, '23.810332', '90.41251809999994', 'Guardian', 'Muslim', NULL, 'Brown', 'Master of Science', NULL, 'Lecturer', NULL, 'Never Married', '5 Feet 3 Inch', '75 KG', 'Male', '87_pp_2021_01_07_071753_27015601.jpg', NULL, NULL, 'online', '1989-02-01', 0, 1, NULL, NULL, 1, NULL, 0, NULL, NULL, '2019-06-09 21:53:57', '2021-01-07 01:17:53', NULL, NULL),
 (88, 'Mahabubul Morshed', '01670414888', '88', 'mahabub.morshed29@gmail.com', '$2y$10$VnCE0GbhxuDtxIMuS5MECOX5eEzn0Isyyx8nStRwk0vDdlSdJo46S', '754628', 1, 1, 'Male', 'Bangladesh', NULL, 'Chittagong, Bangladesh', NULL, NULL, NULL, '22.356851', '91.78318190000005', 'Self', 'Muslim', NULL, 'Brown', 'Master of Accountancy', NULL, 'Businessmen', NULL, 'Divorced', '5 Feet 10 Inch', '65 KG', 'Female', '88_pp_2021_01_07_071808_24609996.png', NULL, NULL, 'online', '1986-06-29', 0, 1, NULL, NULL, 1, NULL, 0, NULL, NULL, '2019-06-10 08:08:22', '2021-01-07 01:18:08', NULL, NULL),
@@ -1789,9 +1958,9 @@ INSERT INTO `users` (`id`, `name`, `mobile`, `username`, `email`, `password`, `p
 (165, 'Adnan Mahadi', '01303282627', '165', 'adnanmahadi43@gmail.com', '$2y$10$2C6Fl6ACNTJ.X8y/n6JxmOhcnCb/riqyEOtsVXuRIpsuykS/LeAGm', '633808', 1, 1, 'Male', 'Bangladesh', NULL, 'Rangpur, Bangladesh', NULL, NULL, NULL, '25.7438916', '89.27522699999997', 'Brother', 'Muslim', NULL, 'Brown', 'M.Sc Department of Software Engineering', NULL, 'Engineer', NULL, 'Divorced', '5 Feet 9 Inch', '75 KG', 'Female', '165_pp_2021_01_07_094735_41757746.jpg', NULL, NULL, 'online', '1987-08-21', 0, 1, NULL, NULL, 1, NULL, 0, NULL, NULL, '2020-01-04 19:49:53', '2021-01-07 03:47:36', NULL, NULL),
 (166, 'Tazu', '01713729651', '166', 'smmarizu@gmail.com', '$2y$10$gARzpEqsZ7WnRNa53luMtOIupvY9kZHyyTZqXaPBQpWaakrACunfG', '836439', 1, 1, 'Male', 'China', NULL, 'Zhenjiang, Jiangsu, China', NULL, NULL, NULL, '32.187849', '119.425836', 'Brother', 'Muslim', NULL, 'Drak', 'Department of Nutrition and Food Engineering', NULL, 'Engineer', NULL, 'Never Married', '5 Feet 8 Inch', '90 KG', 'Female', '166_pp_2021_01_07_094847_92676331.jpeg', NULL, NULL, 'online', '1986-03-28', 0, 1, NULL, NULL, 1, NULL, 0, NULL, 'ji6PL9phhOs523JRq95WFviWCCRarPyetm9RNE706QVj54if0gxZy8JTmaUA', '2020-01-06 21:54:51', '2021-01-07 03:48:50', NULL, NULL),
 (167, 'Kibria', '01732873594', '167', 'kibria@gmail.com', '$2y$10$In78EzFpaZfN0PDmXG/zBuNbQJWcb8P8ltM.Vt9BGz8Ao7PxCZWky', '589472', 1, 1, 'Male', 'Bangladesh', NULL, 'Dhaka, Bangladesh', NULL, NULL, NULL, '23.810332', '90.41251809999994', 'Self', 'Muslim', NULL, 'Fair', 'Department of Software Engineering', NULL, 'Engineer', NULL, 'Never Married', '5 Feet 2 Inch', '55 KG', 'Female', '167_pp_2021_01_07_094926_97382728.png', NULL, NULL, 'online', '1992-06-15', 0, 1, NULL, NULL, 1, NULL, 0, NULL, NULL, '2020-01-08 07:36:03', '2021-01-07 03:49:27', NULL, NULL),
-(168, 'Mahadi', '01715158415', '168', 'mhmahadi1110217@gmail.com', '$2y$10$4Sm017n/Kf3ymb6WFsdlPeZn8fPCsLF3mmKlcIAQd5EPjPIeyjP32', '773730', 1, 1, 'Male', 'Bangladesh', NULL, 'Dhaka, Bangladesh', NULL, NULL, NULL, '23.810332', '90.4125181', 'Self', 'Muslim', NULL, 'Brown', 'Department of Finance', NULL, 'Businessmen', NULL, 'Never Married', '5 Feet 7 Inch', '62 KG', 'Female', '168_pp_2021_01_07_094954_95981982.jpg', NULL, NULL, 'online', '1992-10-22', 0, 1, NULL, NULL, 1, NULL, 0, NULL, NULL, '2020-01-10 11:50:07', '2021-01-07 03:49:57', NULL, NULL);
+(168, 'Mahadi', '01715158415', '168', 'mhmahadi1110217@gmail.com', '$2y$10$4Sm017n/Kf3ymb6WFsdlPeZn8fPCsLF3mmKlcIAQd5EPjPIeyjP32', '773730', 1, 1, 'Male', 'Bangladesh', NULL, 'Dhaka, Bangladesh', NULL, NULL, NULL, '23.810332', '90.4125181', 'Self', 'Muslim', NULL, 'Brown', 'Department of Finance', NULL, 'Businessmen', NULL, 'Never Married', '5 Feet 7 Inch', '62 KG', 'Female', '168_pp_2021_01_07_094954_95981982.jpg', NULL, NULL, 'online', '1992-10-22', 0, 1, NULL, NULL, 1, NULL, 0, NULL, NULL, '2020-01-10 11:50:07', '2021-01-07 03:49:57', NULL, NULL),
+(169, 'momin miah', '01726360646', '169', 'miah25977@gmail.com', '$2y$10$C.1h0Oj1eVwlVLkN/oTWiO5eugLIH1iTPNVp0yD5qP1QViITLe/Ze', '914078', 1, 1, 'Female', 'Bangladesh', NULL, 'Tangail, Bangladesh', NULL, NULL, NULL, '24.2513451', '89.9167104', 'Self', 'Muslim', NULL, 'Fair', 'Higher Secondary Certificate', NULL, 'Businessmen', NULL, 'Never Married', '5 Feet 11 Inch', '79 KG', 'Male', '169_pp_2021_01_07_095029_90768597.png', NULL, NULL, 'online', '1988-01-08', 0, 1, NULL, NULL, 1, NULL, 0, NULL, NULL, '2020-01-10 18:16:18', '2021-01-07 03:50:30', NULL, NULL);
 INSERT INTO `users` (`id`, `name`, `mobile`, `username`, `email`, `password`, `password_temp`, `active`, `profile`, `gender`, `country`, `country_other`, `location`, `state`, `city`, `post_code`, `lat`, `lng`, `profile_created_by`, `religion`, `social_order`, `skin_color`, `education_level`, `education_level_other`, `profession`, `profession_other`, `marital_status`, `height`, `weight`, `looking_for`, `img_name`, `file_name`, `file_ext`, `user_type`, `dob`, `check_count`, `edit_count`, `mobile_verified_at`, `email_verified_at`, `addedby_id`, `editedby_id`, `package`, `expired_at`, `remember_token`, `created_at`, `updated_at`, `loggedin_at`, `deleted_at`) VALUES
-(169, 'momin miah', '01726360646', '169', 'miah25977@gmail.com', '$2y$10$C.1h0Oj1eVwlVLkN/oTWiO5eugLIH1iTPNVp0yD5qP1QViITLe/Ze', '914078', 1, 1, 'Female', 'Bangladesh', NULL, 'Tangail, Bangladesh', NULL, NULL, NULL, '24.2513451', '89.9167104', 'Self', 'Muslim', NULL, 'Fair', 'Higher Secondary Certificate', NULL, 'Businessmen', NULL, 'Never Married', '5 Feet 11 Inch', '79 KG', 'Male', '169_pp_2021_01_07_095029_90768597.png', NULL, NULL, 'online', '1988-01-08', 0, 1, NULL, NULL, 1, NULL, 0, NULL, NULL, '2020-01-10 18:16:18', '2021-01-07 03:50:30', NULL, NULL),
 (170, 'Rahim Ahmed', '+14077108748‬', '170', 'nithrowaway1@gmail.com', '$2y$10$UTaBDLQpHVgy6/Tg0LppHupK2ugeOWL6f3.T2xyaFxgH0gfNBGtbG', '428028', 1, 1, 'Male', 'United States', NULL, 'New York, NY, USA', NULL, NULL, NULL, '40.7127753', '-74.0059728', 'Self', 'Muslim', NULL, 'Fair', 'Electrical and Electronic Engineering', NULL, 'Professor', NULL, 'Never Married', '5 Feet 11 Inch', '75 KG', 'Female', '170_pp_2021_01_07_095046_86359266.jpg', NULL, NULL, 'online', '1990-05-05', 0, 1, NULL, NULL, 1, NULL, 0, NULL, NULL, '2020-01-11 07:37:42', '2021-01-07 03:50:47', NULL, NULL),
 (171, 'N.I Shahin', '01714410723', '171', 'nishahin88@gmail.com', '$2y$10$ht0CRaPz5i8cIpLyxv.LROuqI/hFw2p4nXUQnEnzCLsXARx2do31C', '163302', 1, 1, 'Male', 'Bangladesh', NULL, 'Merul Badda, Dhaka 1212, Bangladesh', NULL, NULL, NULL, '23.7723767', '90.42253360000001', 'Self', 'Muslim', NULL, 'Brown', 'Department of History of Art', NULL, 'Businessmen', NULL, 'Never Married', '5 Feet 9 Inch', '70 KG', 'Female', '171_pp_2021_01_07_095139_27781237.jpg', NULL, NULL, 'online', '1988-01-03', 0, 1, NULL, NULL, 1, NULL, 0, NULL, NULL, '2020-01-16 22:40:11', '2021-01-07 03:51:40', NULL, NULL),
 (172, 'Mohammad Farhan', '01910-177210', '172', 'tasnimtabassum90@gmail.com', '$2y$10$xIFQ36Le3POIv15gUrWMH.cKRR9XSKpehKZe4Dv9Qqw213cIi8UPS', '671461', 1, 1, 'Male', 'Bangladesh', NULL, 'Dhaka, Bangladesh', NULL, NULL, NULL, '23.810332', '90.4125181', 'Self', 'Muslim', NULL, 'Fair', 'Department of Mechanical Engineering (ME)', NULL, 'Bangladesh Army', NULL, 'Never Married', '5 Feet 11 Inch', '65 KG', 'Female', '172_pp_2021_01_07_095200_46309695.jpg', NULL, NULL, 'online', '1994-12-10', 0, 1, NULL, NULL, 1, NULL, 0, NULL, 'E3uFlO9ixQzQ3snX8sbPgSzeN1KNnxxEhYUtKF7wv5w2jLekfeeCiq9BZZAe', '2020-01-17 18:21:23', '2021-01-07 03:52:01', NULL, NULL),
@@ -1873,7 +2042,7 @@ INSERT INTO `users` (`id`, `name`, `mobile`, `username`, `email`, `password`, `p
 (248, 'Munir Hosen', '01916436053', '248', 'munirhosen90@gmail.com', '$2y$10$myroWrE2AUlBS7FBmYcrjOi3qTqspVZ.j5H7XX0txQ0xm21/XeFJe', '777858', 1, 1, 'Male', 'Bangladesh', NULL, 'Narayanganj, Bangladesh', NULL, NULL, NULL, '23.6237764', '90.50004039999999', 'Self', 'Muslim', NULL, 'Brown', 'Master of Accountancy', NULL, 'Industrialists', NULL, 'Widowed', '5 Feet 4 Inch', '70 KG', 'Female', NULL, NULL, NULL, 'online', '1986-10-07', 0, 1, NULL, NULL, 1, NULL, 0, NULL, NULL, '2020-12-05 03:15:03', '2020-12-05 03:41:00', NULL, NULL),
 (249, 'Later', '01966577436', '249', 'overtoonwindow@gmail.com', '$2y$10$.K41WI6RLuHKa88uNigi4OgzvK7oCju80M9i9Rhr33yL9r8ILQGIW', '845852', 1, 1, 'Male', 'Bangladesh', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Self', 'Muslim', NULL, 'Fair', 'Master of Arts in Liberal Studies', NULL, 'Businessmen', NULL, 'Never Married', '5 Feet 8 Inch', '60 KG', 'Female', NULL, NULL, NULL, 'online', '1990-03-04', 0, 1, NULL, NULL, 1, NULL, 0, NULL, 'KIwp9S0iYBIV0z8otuUg6rRimNioeAmiXQOYDEsLPL53UzajE3Tb2x2YxUvr', '2020-12-06 19:55:10', '2020-12-22 19:48:30', NULL, NULL),
 (250, 'Md Rifat hossain', '01633004687', '250', 'rehanabeugum@gmail.com', '$2y$10$To5b1UOAkIri35tM4zxjs.tItCZCD1SqMutrVdKx5zkFS/KnzxA26', '939351', 1, 1, 'Male', 'Bangladesh', NULL, 'Narayanganj Sadar Upazila, Bangladesh', NULL, NULL, NULL, '23.6315743', '90.4974359', 'Self', 'Muslim', NULL, 'Bright', 'Higher Secondary Certificate', NULL, 'Industrialists', NULL, 'Never Married', '5 Feet 10 Inch', '55 KG', 'Female', NULL, NULL, NULL, 'online', '1999-03-27', 0, 1, NULL, NULL, 1, NULL, 0, NULL, NULL, '2020-12-07 07:23:24', '2020-12-07 07:36:54', NULL, NULL),
-(251, 'Noman', '01835280131', '251', 'cascadelamp@gmail.com', '$2y$10$fhUJ.stHXi.SHMKYfLmtQOzQ.r9rB4Uyw9hW.eI3NQGqDCmf6JDzK', '858600', 1, 1, 'Male', 'Bangladesh', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Self', 'Muslim', NULL, 'Brown', 'Computer science Engineering', NULL, 'Engineer', NULL, 'Never Married', '5 Feet 6 Inch', '70 KG', 'Female', '251_pp_2020_12_07_065510_32208423.gif', NULL, NULL, 'online', '1996-12-30', 0, 1, NULL, NULL, 1, NULL, 0, NULL, NULL, '2020-12-07 12:30:47', '2020-12-07 12:57:30', NULL, NULL),
+(251, 'Noman', '01835280131', '251', 'cascadelamp@gmail.com', '$2y$10$fhUJ.stHXi.SHMKYfLmtQOzQ.r9rB4Uyw9hW.eI3NQGqDCmf6JDzK', '858600', 1, 1, 'Male', 'Bangladesh', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Self', 'Muslim', NULL, 'Brown', 'Computer science Engineering', NULL, 'Engineer', NULL, 'Never Married', '5 Feet 6 Inch', '70 KG', 'Female', '251_pp_2020_12_07_065510_32208423.gif', NULL, NULL, 'online', '1996-12-30', 0, 1, NULL, NULL, 1, NULL, 0, NULL, 'OTA1oimVPa9OOTyuShQvctVA2yiBeDIAvR2g3YeCRGoAqJl37cahXhudNvoc', '2020-12-07 12:30:47', '2021-02-17 00:40:52', NULL, NULL),
 (252, 'Affan Ahmed', '01630851453', '252', 'affsha2722@gmail.com', '$2y$10$1lGryUOZdYCS8eJ0ZzvTlOqUtC3rDjGfPnGK8n.fhGPi/10XF7QSy', '907717', 1, 1, 'Male', 'Bangladesh', NULL, 'Nikunja 2, Dhaka, Bangladesh', NULL, NULL, NULL, '23.8318836', '90.4178201', 'Self', 'Muslim', NULL, 'Fair', 'Higher Secondary Certificate', NULL, 'Businessmen', NULL, 'Never Married', '5 Feet 4 Inch', '74 KG', 'Female', '252_pp_2021_01_10_045249_63635596.jpg', NULL, NULL, 'online', '1996-12-27', 0, 1, NULL, NULL, 1, 1, 0, NULL, NULL, '2020-12-08 06:25:38', '2021-01-09 22:52:49', NULL, NULL);
 INSERT INTO `users` (`id`, `name`, `mobile`, `username`, `email`, `password`, `password_temp`, `active`, `profile`, `gender`, `country`, `country_other`, `location`, `state`, `city`, `post_code`, `lat`, `lng`, `profile_created_by`, `religion`, `social_order`, `skin_color`, `education_level`, `education_level_other`, `profession`, `profession_other`, `marital_status`, `height`, `weight`, `looking_for`, `img_name`, `file_name`, `file_ext`, `user_type`, `dob`, `check_count`, `edit_count`, `mobile_verified_at`, `email_verified_at`, `addedby_id`, `editedby_id`, `package`, `expired_at`, `remember_token`, `created_at`, `updated_at`, `loggedin_at`, `deleted_at`) VALUES
 (253, 'Ronovir Evan', '01995101640', '253', 'ronovir795@gmail.com', '$2y$10$S2kUIWRtgqd4wB6xrADcIOJSFtR4izfTykB29E6em6SGPcng8Qu2e', '693934', 1, 1, 'Male', 'Bangladesh', NULL, 'Mohammadpur, Dhaka, Bangladesh', NULL, NULL, NULL, '23.766008', '90.3585875', 'Self', 'Muslim', NULL, 'Fair', 'Higher Secondary Certificate', NULL, 'Male Police officer', NULL, 'Never Married', '5 Feet 8 Inch', '64 KG', 'Female', NULL, NULL, NULL, 'online', '1996-09-16', 0, 1, NULL, NULL, 1, NULL, 0, NULL, NULL, '2020-12-10 11:49:30', '2020-12-10 11:49:30', NULL, NULL),
@@ -1893,41 +2062,59 @@ INSERT INTO `users` (`id`, `name`, `mobile`, `username`, `email`, `password`, `p
 (267, 'Amjad Hossain', '+19024003614', '267', 'nzu36743@cuoly.com', '$2y$10$WVRwjcD73yyWFuwXU6GyWeXo1ZsRRPFwJAARZFfFOIYw3B2f0jb.K', '805668', 1, 1, 'Male', 'Canada', NULL, 'Canada', NULL, NULL, NULL, '56.130366', '-106.346771', 'Self', 'Muslim', NULL, 'Bright', 'Department of Mechanical Engineering (ME)', NULL, 'Engineer', NULL, 'Never Married', '5 Feet 5 Inch', '60 KG', 'Female', '267_pp_2021_01_07_102515_68022938.jpg', NULL, NULL, 'online', '1993-04-05', 0, 1, NULL, NULL, 1, NULL, 0, NULL, NULL, '2021-01-05 00:21:44', '2021-01-07 04:25:15', NULL, NULL),
 (268, 'Amjad Hossain', '01784322683', '268', 'amjad.vicar@gmail.com', '$2y$10$mZY3IMwdMVJVRnxGnR4FZegZs1NAM56Y2U.kkB/YeCY2BxNcqkJ8C', '805456', 1, 1, 'Male', 'Bangladesh', NULL, 'Chattogram, Bangladesh', NULL, NULL, NULL, '22.356851', '91.7831819', 'Self', 'Muslim', NULL, 'Bright', 'Department of Mechanical Engineering (ME)', NULL, 'Engineer', NULL, 'Never Married', '5 Feet 5 Inch', '60 KG', 'Female', '268_pp_2021_01_07_102555_45648106.jpg', NULL, NULL, 'online', '1993-04-05', 0, 1, NULL, NULL, 1, NULL, 0, NULL, NULL, '2021-01-05 00:26:10', '2021-01-07 04:25:57', NULL, NULL),
 (269, 'KAZI MASUD AL BARI', '01799986603', '269', 'kazi124@gmail.com', '$2y$10$w5U2CvIjy0pThJJKZoVY.upboKfnPZTSVtckW59nVBPyzXJEpcOIO', '683870', 1, 1, 'Male', 'Bangladesh', NULL, 'Gulshan 2, Dhaka 1212, Bangladesh', NULL, NULL, NULL, '23.7947536', '90.41430849999999', 'Self', 'Muslim', NULL, 'Drak', 'Master of Business Administration', NULL, 'Citizen', NULL, 'Never Married', '5 Feet 6 Inch', '75 KG', 'Female', '269_pp_2021_01_07_102508_77829399.jpeg', NULL, NULL, 'online', '1988-08-30', 0, 1, NULL, NULL, 1, NULL, 0, NULL, NULL, '2021-01-05 03:18:05', '2021-01-07 04:25:10', NULL, NULL),
-(270, 'Mehedi', '01312284181', '270', 'chefmehedihasan@gmail.com', '$2y$10$wzWomzD2ArYaOlYJ5t.2JOqOUtxZUFHFo7RQPlJvcCAIfKCo8gaE6', '945860', 1, 1, 'Male', 'Bangladesh', NULL, 'Faridpur District, Bangladesh', NULL, NULL, NULL, '23.5423919', '89.6308921', 'Self', 'Muslim', NULL, 'Fair', 'Department of Tourism and Hospitality Management', NULL, 'Running Student', NULL, 'Never Married', '5 Feet 2 Inch', '60 KG', 'Female', '270_pp_2021_01_07_102400_10781009.png', NULL, NULL, 'online', '1999-11-17', 0, 1, NULL, NULL, 1, NULL, 0, NULL, NULL, '2021-01-07 04:00:21', '2021-01-07 04:24:00', NULL, NULL),
+(270, 'Mehedi', '01312284181', '270', 'chefmehedihasan@gmail.com', '$2y$10$MITUp3LE5IkM1ngU.4iI4uPdJA.xeJwF4pE.1JoSkUn2jDKNvEemm', '945860', 1, 1, 'Male', 'Bangladesh', NULL, 'Faridpur District, Bangladesh', NULL, NULL, NULL, '23.5423919', '89.6308921', 'Self', 'Muslim', NULL, 'Fair', 'Department of Tourism and Hospitality Management', NULL, 'Running Student', NULL, 'Never Married', '5 Feet 2 Inch', '60 KG', 'Female', '270_pp_2021_01_07_102400_10781009.png', NULL, NULL, 'online', '1999-11-17', 0, 1, NULL, NULL, 1, NULL, 0, NULL, 'AD2WubFCgObboXKvBMod6l4uloAlW0qkhhHxUG5gkLqhdCQnPsaSCc8ZDfCh', '2021-01-07 04:00:21', '2021-02-27 10:11:09', NULL, NULL),
 (271, 'S M Raihan Uddin', '01770389107', '271', 'raihan757@gmail.com', '$2y$10$3zWHN/fOVpga8EiUlG3WJuYa912VQu.Ijzd6X/fUdcAwFTe1B1/6m', '579178', 1, 1, 'Male', 'Bangladesh', NULL, 'Mohammadpur, Dhaka, Bangladesh', NULL, 'Dhaka', '1207', '23.766008', '90.3585875', 'Self', 'Muslim', NULL, 'Fair', 'Department of Law', NULL, 'Citizen', NULL, 'Never Married', '5 Feet 6 Inch', '65 KG', 'Female', NULL, NULL, NULL, 'online', '1988-01-01', 0, 2, NULL, NULL, 1, 271, 0, NULL, NULL, '2021-01-08 05:17:32', '2021-01-11 02:18:53', NULL, NULL),
 (272, 'MD. Sobuj Sheikh', '01752904936', '272', 'ocl.sobuj@gmail.com', '$2y$10$3B3rEIlxUChqs.TyzI7eLO5Wfvsj/xmJ91BsvzbQQbTpt84F/u8yi', '509147', 1, 1, 'Male', 'Bangladesh', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Self', 'Muslim', NULL, 'Fair', 'Higher Secondary Certificate', NULL, 'Running Student', NULL, 'Never Married', '5 Feet 6 Inch', '50 KG', 'Female', NULL, NULL, NULL, 'online', '1997-04-01', 0, 1, NULL, NULL, 1, NULL, 0, NULL, 'o6m4n0xmRP8MMFNZHH2VZHHSzBefyQzDKvtjFab9grBLJSjGJNS5NGJH6zgp', '2021-01-09 01:13:53', '2021-01-09 01:16:28', NULL, NULL),
 (273, 'ABDULLAH AL NOMAN', '+8801912222462', '273', 'AlNomanOfficial69@gmail.com', '$2y$10$F93jkWYf88WDrVFiZ7jH8ewz/P0xVQN41YAciHvtTUYuacJZONWpS', '558454', 1, 1, 'Male', 'Bangladesh', NULL, 'Uttara, Dhaka, Bangladesh', NULL, NULL, NULL, '23.8758547', '90.3795438', 'Self', 'Muslim', NULL, 'Ten', 'Alim', NULL, 'Running Student', NULL, 'Never Married', '5 Feet 3 Inch', '64 KG', 'Female', NULL, NULL, NULL, 'online', '2002-01-01', 0, 1, NULL, NULL, 1, NULL, 0, NULL, NULL, '2021-01-09 05:38:48', '2021-01-09 05:38:48', NULL, NULL),
 (274, 'Sk. Hashibur Rahman', '01756433433', '274', 'sk.hashibur.rahman@gmail.com', '$2y$10$QBXfDHkik1hNLTz3kvm4Au/SSzxZ/Bl7qp4B4cPUNNsmI9mkVsTFO', '756960', 1, 1, 'Male', 'Bangladesh', NULL, 'Satkhira Sadar Upazila, Bangladesh', NULL, NULL, NULL, '22.7361633', '89.0370477', 'Self', 'Muslim', NULL, 'Fair', 'Master of Laws', NULL, 'Citizen', NULL, 'Divorced', '5 Feet 7 Inch', '91 KG', 'Female', NULL, NULL, NULL, 'online', '1991-08-06', 0, 1, NULL, NULL, 1, NULL, 0, NULL, NULL, '2021-01-10 06:31:38', '2021-01-10 06:31:38', NULL, NULL),
-(275, 'Sumaiya Rahman', '01914436436', '275', 'rukyamoni@gmail.com', '$2y$10$NvAl1ij8g0QzyVLsYH6bw.nDbs5O1YUpNlZRj7FCr7pejl2M.TT0S', '136665', 1, 1, 'Female', 'Bangladesh', NULL, 'Dhaka, Bangladesh', NULL, NULL, NULL, '23.810332', '90.4125181', 'Self', 'Muslim', NULL, 'Fair', 'M.Sc in Management Information System', NULL, 'Running Student', NULL, 'Never Married', '5 Feet 5 Inch', '57 KG', 'Male', NULL, NULL, NULL, 'online', '1995-01-10', 0, 10, NULL, NULL, 1, 275, 0, NULL, 'gn9Nq7EHdccmhkOaKFYlLS0cDZbDhjuAJJZGwswV1zvOyvAEzhyje8eLM1Mi', '2021-01-12 23:55:40', '2021-01-23 03:49:03', NULL, NULL),
+(275, 'Sumaiya Rahman', '01914436436', '275', 'rukyamoni@gmail.com', '$2y$10$NvAl1ij8g0QzyVLsYH6bw.nDbs5O1YUpNlZRj7FCr7pejl2M.TT0S', '136665', 1, 1, 'Female', 'Bangladesh', NULL, 'Dhaka, Bangladesh', NULL, NULL, NULL, '23.810332', '90.4125181', 'Self', 'Muslim', NULL, 'Fair', 'M.Sc in Management Information System', NULL, 'Running Student', NULL, 'Never Married', '5 Feet 5 Inch', '57 KG', 'Male', NULL, NULL, NULL, 'online', '1995-01-10', 0, 10, NULL, NULL, 1, 275, 0, NULL, 'gn9Nq7EHdccmhkOaKFYlLS0cDZbDhjuAJJZGwswV1zvOyvAEzhyje8eLM1Mi', '2021-01-12 23:55:40', '2021-03-18 14:51:56', NULL, NULL),
 (276, 'Ishat Salsabil', '01622071707', '276', 'ishatsilvi.ewu@gmail.com', '$2y$10$M8fDuzkipIdAX.HO4cAwjelKdxvdO9InYpEuQUv5uunhHY/TMZ05u', '864959', 1, 1, 'Female', 'Bangladesh', NULL, 'Dhaka, Bangladesh', NULL, NULL, NULL, '23.810332', '90.4125181', 'Self', 'Muslim', NULL, 'Brown', 'M.sc Department of Computer Science & Engineering', NULL, 'Running Student', NULL, 'Never Married', '5 Feet', '55 KG', 'Male', '276_pp_2021_01_17_092159_45425896.jpg', NULL, NULL, 'online', '1996-01-06', 0, 3, NULL, NULL, 1, 16, 0, NULL, NULL, '2021-01-14 11:34:39', '2021-01-17 03:22:00', NULL, NULL),
 (277, 'Rajesh Kumar Prince', '01408984227', '277', 'rajeshkumarprince882@gmail.com', '$2y$10$ZeTiolL87gpOmArOrHs5fu2dXrpQvr6JNfm5HtdKon5bZd3iQbKxy', '561427', 1, 1, 'Male', 'Bangladesh', NULL, 'Cumilla, Bangladesh', NULL, NULL, NULL, '23.4606574', '91.1809065', 'Self', 'No Religion', NULL, 'Fair', 'Higher Secondary Certificate', NULL, 'Running Student', NULL, 'Never Married', '5 Feet 3 Inch', '49 KG', 'Female', NULL, NULL, NULL, 'online', '1999-09-09', 0, 1, NULL, NULL, 1, NULL, 0, NULL, 'onju3odOleEGBmX4TbrEHMeyf80T6GfpMki7HSBriMmqnPCEBeppxUKORSZP', '2021-01-15 21:30:19', '2021-01-15 22:30:46', NULL, NULL),
-(278, 'abc', NULL, NULL, 'abcd@abc.com', '$2y$10$LrFjbZdanfktIcMj5TdlYO2eMhYFJgwykG4ihcXgpU3eldJkqOY06', NULL, 1, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'online', NULL, 0, 0, NULL, NULL, 1, NULL, 0, NULL, NULL, '2021-02-02 02:58:49', '2021-02-02 03:07:36', NULL, NULL),
-(279, 'Aurora Shelton', NULL, NULL, 'dudytinat@mailinator.com', '$2y$10$1wvmsF0gAyM0bwbpeK26PeqlhPckLeOX5sG3CVPVFq6W5eVlCaPdy', NULL, 1, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'online', NULL, 0, 0, NULL, NULL, 1, NULL, 0, NULL, NULL, '2021-02-02 03:13:32', '2021-02-02 03:23:37', NULL, NULL),
-(280, 'Test user', NULL, NULL, 'user6@user.com', '$2y$10$Y0ayhuvU5JFJEMU8qgIfV.788FLBYw4bGg2Jw64HrHwGlf3qAymwq', NULL, 1, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'online', NULL, 0, 0, NULL, NULL, 1, NULL, 0, NULL, 'kVNcYmRGIeMPnC4Mdgy29jpaGrSzz7Jq9mgODtEYh07HNQaC1sytCQ2nJcGs', '2021-02-02 05:14:33', '2021-02-03 05:45:36', NULL, NULL),
-(281, 'MD. Noman', '874646541651', '281', 'user@user.com', '$2y$10$RJigzI5E.KaNFqVOEWR58.mRZ9VmfsMCY9KNgqJebFHlPu3cxB3sK', NULL, 1, 1, 'Male', 'Bangladesh', NULL, 'Dhaka, Bangladesh', NULL, 'Dhaka', '1219', '23.810332', '90.4125181', 'Parent', 'Other', 'Just Muslim', 'Fair', 'Electrical and Electronic Engineering', NULL, 'Citizen', NULL, 'Legally Separated', '5 Feet 4 Inch', '22 KG', 'Female', NULL, NULL, NULL, 'online', '1995-12-12', 0, 23, NULL, NULL, 1, 281, 0, NULL, '3B17yqj1gyraSEvK8lszTT1xhpCw1dvg1cb9Je2rCgNVduOS25oA08YGHKA3', '2021-02-03 05:05:05', '2021-02-13 23:09:46', NULL, NULL),
-(282, 'User', NULL, '282', 'user2@user.com', '$2y$10$BP9joT.83rfqSESlj8i5YeYIFY07xr1SSBZGkJ6uFByHgXbUvmsGW', NULL, 1, 1, 'Male', 'Algeria', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Self', 'Muslim', NULL, 'Bright', 'Electrical and Electronic Engineering', NULL, 'Male Police officer', NULL, 'Divorced', '4 Feet 5 Inch', '20 KG', 'Female', NULL, NULL, NULL, 'online', '1995-12-01', 0, 1, NULL, NULL, 1, NULL, 0, NULL, 'al0HF6100Wvefs2QpFdpdrPZuuPBpOU5ep6p5qCJmwp2R1wrLjR1AtiZUhID', '2021-02-03 05:46:27', '2021-02-03 07:01:46', NULL, NULL),
-(283, 'Derek Kent', 'Asperiores aut deser', NULL, 'syhyfuwasa@mailinator.com', '$2y$10$81lm7qJ8lUrinKOK6XxQg.SKKVlleBk9UXM7c6OTz6KYAfHal7Kmm', NULL, 1, 1, 'Female', 'French Southern Territories', NULL, NULL, 'Distinctio Magnam e', 'Aliquip voluptatibus', 'Et dolore sit harum', NULL, NULL, 'Sister', 'No Religion', 'Salafi', 'Bright', 'Department of Educational Psychology', NULL, 'BCS (Customs & Excise): Assistant Commissioner of customs', NULL, 'Divorced', '4 Feet 2 Inch', '20 KG', 'Female', NULL, NULL, NULL, 'online', '1986-12-28', 0, 1, NULL, NULL, 1, 283, 0, NULL, NULL, '2021-02-07 22:57:04', '2021-02-08 00:53:00', NULL, NULL),
-(284, 'Mohammad Rowland', NULL, NULL, 'quzapulamu@mailinator.com', '$2y$10$N9.IWA/wR2tOaCb.TAQEYOHze61czRTEoMsry0uL1tpOKZbBZPxWC', NULL, 1, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'online', NULL, 0, 0, NULL, NULL, 1, NULL, 0, NULL, NULL, '2021-02-08 00:59:02', '2021-02-08 01:00:06', NULL, NULL),
-(285, 'Amanda Moon', 'Aut ut exercitation', NULL, 'zejyz@mailinator.com', '$2y$10$MZXiN9lE9l6FBcAYHMUXr.lw7RfQAne.bxDf.nqfahe1rV6S0daSq', NULL, 1, 1, 'Male', 'Cyprus', NULL, NULL, 'Iste dolor est non', 'Qui nemo consequatur', 'Natus culpa nulla ex', NULL, NULL, 'Self', 'Christian', 'Khatri', 'Brown', 'Master of Liberal Arts', NULL, 'Professor', NULL, 'Legally Separated', '4 Feet', '106 KG', 'Male', NULL, NULL, NULL, 'online', '1979-05-27', 0, 1, NULL, NULL, 1, 285, 0, NULL, NULL, '2021-02-08 01:00:21', '2021-02-08 01:16:13', NULL, NULL),
-(286, 'Blossom Dale', 'Voluptas culpa simil', NULL, 'vutubugaxa@mailinator.com', '$2y$10$8InIwGZ8W85HAP9Zz4kWTed0vRCds9l9hCEM5TlO6RdAznnzgRH6W', NULL, 1, 1, 'Female', 'South Africa', NULL, NULL, 'Dolore perspiciatis', 'Nulla illum et cons', 'Asperiores quia sint', NULL, NULL, 'Self', 'Hindu', 'Khatri', 'Ten', 'Department of Philosophy', NULL, 'Bangladesh Army', NULL, 'Never Married', '6 Feet 8 Inch', '39 KG', 'Female', NULL, NULL, NULL, 'online', '1970-08-18', 0, 1, NULL, NULL, 1, 286, 0, NULL, 'GXOPSYmf1jrFbqLkZQlRuwvpTHhzQE7xje9SpTBtwF7LAZcnLm92lxXPr9cw', '2021-02-08 01:24:16', '2021-02-08 01:37:57', NULL, NULL),
-(287, 'Aurelia Hammond', 'Quo est deleniti dol', NULL, 'rolyty@mailinator.com', '$2y$10$6YSBHOISpFPdSrYgmPAvfeIV6gbwKvDyuq57OGiPx.Mt1kg0XTPxy', NULL, 1, 1, 'Female', 'Falkland Islands (Malvinas)', NULL, NULL, 'Blanditiis excepteur', 'Dolores eum assumend', 'Deserunt quae deseru', NULL, NULL, 'Parent', 'No Religion', 'Catholic', 'Bright', 'Department of Biomedical Engineering (BME)', NULL, 'BCS (Information): Information Officer / Equivalent Posts', NULL, 'Widowed', '6 Feet 7 Inch', '23 KG', 'Male', '287_pp_2021_02_08_111238_37312901.png', NULL, NULL, 'online', '1992-01-22', 0, 2, NULL, NULL, 1, 287, 0, NULL, NULL, '2021-02-08 02:03:56', '2021-02-08 05:14:02', NULL, NULL),
-(288, 'Hanae Daugherty', 'Deleniti totam tempo', NULL, 'gobokori@mailinator.com', '$2y$10$l666dI7pfbHa1bLpsCemreB1j0TPvPfM5xvd65eTKkmCNXWhXtIaK', NULL, 1, 1, 'Male', 'Ethiopia', NULL, NULL, 'Quo laborum ut vel v', 'Aut iste fugit pari', 'Non exercitation max', NULL, NULL, 'Sister', 'Buddhist', 'Ahle Hadith', 'Fair', 'Master of Science in Taxation', NULL, 'Ministry of Health (Bangladesh)', NULL, 'Legally Separated', '5 Feet 10 Inch', '39 KG', 'Female', NULL, NULL, NULL, 'online', '1984-01-23', 0, 1, NULL, NULL, 1, 288, 0, NULL, NULL, '2021-02-08 05:15:25', '2021-02-08 05:16:35', NULL, NULL),
-(289, 'Whoopi Britt', 'Ut sunt animi aspe', NULL, 'siwy@mailinator.com', '$2y$10$AfNl8m93vvB5nhJtrlRpJeDJHoevsEpkK/vw6sDSOcElTb/sLnumW', NULL, 1, 0, 'Male', 'Lesotho', NULL, NULL, 'Non amet qui ut com', 'Libero temporibus ut', 'Harum qui quas disti', NULL, NULL, 'Brother', 'No Religion', 'Brahmin', 'Brown', 'Department of Disaster Science and Management Department of Meteorology', NULL, 'Ministry of Secondary Education(Bangladesh)', NULL, 'Legally Separated', '6 Feet 4 Inch', '101 KG', 'Female', NULL, NULL, NULL, 'online', '1986-01-25', 0, 1, NULL, NULL, 1, 289, 0, NULL, NULL, '2021-02-08 05:22:57', '2021-02-08 05:23:08', NULL, NULL),
-(290, 'Denton Goodman', 'Est aute consectetur', NULL, 'tijucy@mailinator.com', '$2y$10$Iua7jyy/WdVuzgcxHM16gOdn77CuqB67tqHD8RAMNyeKAXDl04R5m', NULL, 1, 1, 'Male', 'Moldova, Republic of', NULL, NULL, 'Omnis dignissimos si', 'Quis mollitia ad fac', 'Ut veniam doloribus', NULL, NULL, 'Self', 'Hindu', 'Hanafi', 'Brown', 'Master of European Law', NULL, 'Citizen', NULL, 'Widowed', '4 Feet 5 Inch', '74 KG', 'Male', NULL, NULL, NULL, 'online', '1976-03-08', 0, 1, NULL, NULL, 1, 290, 0, NULL, NULL, '2021-02-08 05:31:34', '2021-02-08 05:36:54', NULL, NULL),
-(291, 'Graham Albert', NULL, NULL, 'ziqyr@mailinator.com', '$2y$10$ztTs3oz1TGXdFhqLIWtlyuejgMHx6UwUgUGOQUfXvSvwPxQHVrlw.', NULL, 1, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'online', NULL, 0, 0, NULL, NULL, 1, NULL, 0, NULL, NULL, '2021-02-08 05:38:28', '2021-02-08 05:39:07', NULL, NULL),
-(292, 'Vance Sexton', NULL, NULL, 'pifu@mailinator.com', '$2y$10$kubTH5TfmFD5WyuyreTQNOGdrkpcOFRlenIZmOELHLw7ax4vQaSmK', NULL, 1, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'online', NULL, 0, 0, NULL, NULL, 1, NULL, 0, NULL, NULL, '2021-02-08 05:39:30', '2021-02-08 05:44:29', NULL, NULL),
-(293, 'Devin Gay', NULL, NULL, 'miru@mailinator.com', '$2y$10$2kXLyI4uVCIEviFD3dqlbOaufHSrt8DohsAjoflJJk3eKdFo9td2G', NULL, 1, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'online', NULL, 0, 0, NULL, NULL, 1, NULL, 0, NULL, NULL, '2021-02-09 23:03:14', '2021-02-09 23:12:04', NULL, NULL),
-(294, 'Hammett House', NULL, NULL, 'weratimi@mailinator.com', '$2y$10$pfWY/QXrUqZ8qgZ2Do7PhuXGYSr27Yx.fOdZPgOfDcS3Kwj5611C.', NULL, 1, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'online', NULL, 0, 0, NULL, NULL, 1, NULL, 0, NULL, NULL, '2021-02-09 23:14:26', '2021-02-09 23:31:36', NULL, NULL),
-(295, 'Herman Pate', NULL, NULL, 'havajur@mailinator.com', '$2y$10$XHLqnvV3rtyue0ZUaDLDK.IJ2aRcqW2ykc2eY6mZUoJzR7XvoRRQu', NULL, 1, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'online', NULL, 0, 0, NULL, NULL, 1, NULL, 0, NULL, NULL, '2021-02-13 03:21:59', '2021-02-13 03:22:02', NULL, NULL),
-(296, 'Priscilla Valentine', NULL, NULL, 'kuca@mailinator.com', '$2y$10$ofJiTKKXLB2tLfOyt1vdsOU.W5dE.DURiYME/cSqPJck3SnvVHERW', NULL, 1, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'online', NULL, 0, 0, NULL, NULL, 1, NULL, 0, NULL, NULL, '2021-02-15 02:06:40', '2021-02-15 02:07:05', NULL, NULL),
-(297, 'Sarah Soto', 'Lorem ullam quaerat', NULL, 'qogag@mailinator.com', '$2y$10$ci/kymNsVxLrqqQSIzR4w.06HygRB4yyj.B7hElT0QvxyiNyQyg2.', NULL, 1, 0, 'Female', 'Ethiopia', NULL, NULL, 'Aut itaque qui eos', 'Fugiat dicta similiq', 'Laborum illo ut ad s', NULL, NULL, 'Friend', 'Buddhist', 'Catholic', 'Brown', 'Master of Commerce', NULL, 'Engineer', NULL, 'Widowed', '6 Feet 5 Inch', '87 KG', 'Male', NULL, NULL, NULL, 'online', '1989-07-11', 0, 1, NULL, NULL, 1, 297, 0, NULL, NULL, '2021-02-15 02:21:44', '2021-02-15 04:23:57', NULL, NULL),
-(298, 'Kenneth Weaver', 'Explicabo Ut quis d', NULL, 'quraj@mailinator.com', '$2y$10$.AbpfWQFVEvPjK5nkk1XauNrqtWUT/URadU6owQze/r78lirGBjZq', NULL, 1, 0, 'Male', 'Saint Pierre and Miquelon', NULL, NULL, 'Asperiores quidem se', 'Ea lorem pariatur E', 'Culpa iusto exercita', NULL, NULL, 'Self', 'Buddhist', 'Roman Catholic', 'Bright', 'Master of Finance', NULL, 'Ministry of Education (Bangladesh)', NULL, 'Anulled', '4 Feet 7 Inch', '63 KG', 'Male', NULL, NULL, NULL, 'online', '2007-03-06', 0, 1, NULL, NULL, 1, 298, 0, NULL, NULL, '2021-02-15 05:40:07', '2021-02-15 06:35:05', NULL, NULL),
-(299, 'Willow Cox', NULL, NULL, 'fuwur@mailinator.com', '$2y$10$ni8n2cpYbE.i76JuLWVUZuQ02E8mo8tZ2YrBDEee2KhJczmkMJUfa', NULL, 1, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'online', NULL, 0, 0, NULL, NULL, 1, NULL, 0, NULL, NULL, '2021-02-26 23:05:12', '2021-02-26 23:05:19', NULL, NULL),
-(300, 'Buffy Lambert', NULL, NULL, 'mazisikuw@mailinator.com', '$2y$10$ragXNPkjepvcaA1VI0wn.e7e/8.Oc3u7iPzxx3OMacC4bQTg.ScvK', NULL, 1, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'online', NULL, 0, 0, NULL, NULL, 1, NULL, 0, NULL, NULL, '2021-02-27 00:12:08', '2021-02-27 01:43:33', NULL, NULL),
-(301, 'Ignatius Jennings', NULL, NULL, 'tevyky@mailinator.com', '$2y$10$saOhbixyR5myU4Qr0d3vd.x1tf3q5ee3rbs5tvhk6vOg/KVwUCGhK', NULL, 1, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'online', NULL, 0, 0, NULL, NULL, 1, NULL, 0, NULL, NULL, '2021-03-07 23:00:17', '2021-03-07 23:18:30', NULL, NULL),
-(302, 'Shana Dotson', NULL, NULL, 'pehafy@mailinator.com', '$2y$10$oPKhbBU2v6krNCHz/UGxUO/PlQywFrs/p47AgBco.FOOZUI4YcX5.', NULL, 1, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'online', NULL, 0, 0, NULL, NULL, 1, NULL, 0, NULL, NULL, '2021-03-07 23:59:38', '2021-03-08 00:00:09', NULL, NULL),
-(303, 'Venus Duncan', NULL, NULL, 'helymewe@mailinator.com', '$2y$10$Y/1dpFjfBL0CQZGRc3IvsutAMSRfKLkYVtnuyrzH0MJDapJTcJ30q', NULL, 1, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'online', NULL, 0, 0, NULL, NULL, 1, NULL, 0, NULL, NULL, '2021-03-10 23:06:57', '2021-03-10 23:18:14', NULL, NULL),
-(304, 'Solomon Savage', NULL, NULL, 'sesorehony@mailinator.com', '$2y$10$fKcq/jtixBzeiTHgy3GoaO.d9F3OjY5t.NvjWspce/cGSxB3wQ2b2', NULL, 1, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'online', NULL, 0, 0, NULL, NULL, 1, NULL, 0, NULL, NULL, '2021-03-10 23:37:24', '2021-03-11 01:04:45', NULL, NULL);
+(278, 'Sharif', '+8801759018266', '278', 'shanto3101@gmail.com', '$2y$10$GYTf6jcu5vKZbj0Y2B.T0ubO6qMGebS7WRWMv14E.flOxaiQeidn.', '170578', 1, 1, 'Male', 'Bangladesh', NULL, 'Middle Badda, Dhaka 1212, Bangladesh', NULL, NULL, NULL, '23.7798106', '90.42371209999999', 'Self', 'Muslim', NULL, 'Fair', 'Department Of English', NULL, 'Businessmen', NULL, 'Never Married', '5 Feet 1 Inch', '48 KG', 'Female', NULL, NULL, NULL, 'online', '1994-11-10', 0, 1, NULL, NULL, 1, NULL, 0, NULL, NULL, '2021-01-27 01:10:58', '2021-01-27 01:10:59', NULL, NULL),
+(279, 'Nill', '01913186406', '279', 'nelufatasnim@gmail.com', '$2y$10$SLha0pqh5UTsge3DIbt40.3yUF8vlIc/Y4NXnPGYL3r0mZn0sNnJO', '231367', 1, 1, 'Female', 'Bangladesh', NULL, 'Bogura, Bangladesh', NULL, NULL, NULL, '24.848078', '89.3729633', 'Self', 'Muslim', NULL, 'Fair', 'Department Of English', NULL, 'BCS (Information): Information Officer / Equivalent Posts', NULL, 'Widowed', '5 Feet 1 Inch', '53 KG', 'Male', NULL, NULL, NULL, 'online', '1989-01-20', 0, 1, NULL, NULL, 1, NULL, 0, NULL, 'NGjGS8CwvZFks3veErue1HECqUrCS1HEqx5HEiDDJiHNYblyDe7Uy86A4wnM', '2021-01-28 05:24:55', '2021-01-30 03:56:06', NULL, NULL),
+(280, 'Nayeem Ahmed', '01627038632', '280', 'nayem.ahmed7217@gmail.com', '$2y$10$Yx4BzHXwdtXZCtAxdE6YvOrUCyr02TucOvVKiB8DaRXrhbSUWkSuy', '551782', 1, 1, 'Male', 'Bangladesh', NULL, 'Mohakhali, Dhaka 1212, Bangladesh', NULL, NULL, NULL, '23.7777571', '90.40574079999999', 'Self', 'Muslim', NULL, 'Fair', 'Computer science Engineering', NULL, 'Engineer', NULL, 'Never Married', '5 Feet 10 Inch', '55 KG', 'Female', NULL, NULL, NULL, 'online', '1993-10-19', 0, 1, NULL, NULL, 1, NULL, 0, NULL, NULL, '2021-01-28 21:40:31', '2021-01-28 21:48:17', NULL, NULL),
+(281, 'arup sarkar apu', '01922652210', '281', 'arupsarkarapu@outlook.com', '$2y$10$GMsR3mJi1NZAu7zjSu6w/Ol2b2sJnMQyvaXo7cYFvP4mzGHzNlrUy', '684621', 1, 1, 'Male', 'Bangladesh', NULL, 'Khulna, Bangladesh', NULL, NULL, NULL, '22.845641', '89.5403279', 'Self', 'Hindu', NULL, 'Bright', 'Department of Marketing', NULL, 'Businessmen', NULL, 'Never Married', '5 Feet 10 Inch', '70 KG', 'Female', NULL, NULL, NULL, 'online', '1995-01-01', 0, 1, NULL, NULL, 1, NULL, 0, NULL, NULL, '2021-01-29 12:37:50', '2021-01-29 13:28:01', NULL, NULL),
+(282, 'Niger Sultana Popy', '+8801676234788', '282', 'syedamanparag@gmail.com', '$2y$10$F9R6rJIw5kJLydLZMY3aFu2Y0opnVo8iUa39r37Z/kPTUhWPvcn9y', '817005', 1, 1, 'Female', 'Bangladesh', NULL, 'Uttara, Dhaka, Bangladesh', 'Dhaka', 'Dhaka', '1230', '23.8758547', '90.3795438', 'Brother', 'Muslim', 'Sunni', 'Brown', 'Higher Secondary Certificate', NULL, 'Businessmen', NULL, 'Divorced', '5 Feet 3 Inch', '53 KG', 'Male', NULL, NULL, NULL, 'online', '1991-08-15', 0, 5, NULL, NULL, 1, 282, 0, NULL, '6LabmUj1cLxf5baWoX3X10YcFIEenPxxELVP2ZWYppipZ5dyqSnknCqZB1wW', '2021-01-29 12:44:47', '2021-01-30 04:36:22', NULL, NULL),
+(283, 'Bokkor', '01743622589', '283', 'hyhlnr8491@reebnz.com', '$2y$10$vX4gpbXbFIj4RRa4gJ9m4u5pl7EThoiaBgt7Q786ixbHHras8TKk6', '559632', 1, 1, 'Male', 'Bangladesh', NULL, 'Cumilla, Bangladesh', NULL, NULL, NULL, '23.4606574', '91.1809065', 'Self', 'Muslim', NULL, 'Fair', 'Diploma in pharmacy', NULL, 'Lecturer', NULL, 'Never Married', '5 Feet 4 Inch', '56 KG', 'Female', NULL, NULL, NULL, 'online', '1993-01-01', 0, 3, NULL, NULL, 1, 283, 0, NULL, NULL, '2021-01-30 15:23:45', '2021-01-30 15:33:15', NULL, NULL),
+(284, 'Test User', NULL, NULL, 'user@user.com', '$2y$10$vHAijJSJoKEVSHdwXISDI.XN6vLXC6AeWPAsON/IXXfROJrzCAMeK', NULL, 1, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'online', NULL, 0, 0, NULL, NULL, 1, NULL, 0, NULL, NULL, '2021-02-03 07:34:09', '2021-02-03 07:36:11', NULL, NULL),
+(285, 'ryDcvSgquQFjXUPp', NULL, NULL, 'mulleritg15@gmail.com', '$2y$10$4xcA0UYnGQxL2esEIwaQzO5WJdfYAGsmXgijfRBrOLyW.WPF..0OO', NULL, 1, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'online', NULL, 0, 0, NULL, NULL, 1, NULL, 0, NULL, NULL, '2021-02-03 20:16:14', '2021-02-03 20:16:22', NULL, NULL),
+(286, 'Middle Family', NULL, '286', 'marriagebd2012@gmail.com', '$2y$10$1Erdy1IrcZ0igsItJ5ZiJ.CaG7SY6f97DFNFsCaNeoElrYE9PvD/q', NULL, 1, 1, 'Male', 'Bangladesh', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Self', 'Muslim', NULL, 'Fair', 'Department of Marketing', NULL, 'Citizen', NULL, 'Never Married', '5 Feet 6 Inch', '64 KG', 'Female', NULL, NULL, NULL, 'online', '1988-02-23', 0, 1, NULL, NULL, 1, NULL, 0, NULL, 'e2hmlgb0CpPrTPDyMvzH6xSo6Au0q3zduabXNIy8YBIYQKJVXs1155H4lZ4t', '2021-02-03 22:26:37', '2021-02-09 23:36:11', NULL, NULL),
+(287, 'Signe Fox', NULL, NULL, 'liwiwy@mailinator.com', '$2y$10$eMfSPDWklxCQ2LANNwT3t.fU4Ufh.AOXnuTm1Nfoh3PFYzSl32fhi', NULL, 1, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'online', NULL, 0, 0, NULL, NULL, 1, NULL, 0, NULL, NULL, '2021-02-03 22:28:17', '2021-02-04 00:01:56', NULL, NULL),
+(288, 'Fahmida Ahmed', NULL, NULL, 'sahida.shonju2@gmail.com', '$2y$10$SJFtizNg3EXW9aqWhtEG3OFY2.rFncrYzl9GFOrQ6sLMIvFx91ZNW', NULL, 1, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'online', NULL, 0, 0, NULL, NULL, 1, NULL, 0, NULL, NULL, '2021-02-05 05:14:40', '2021-02-05 05:14:41', NULL, NULL),
+(289, 'Sabina eyasmin', NULL, NULL, 'sabinaeyasmin336@gmail.com', '$2y$10$q2mafJBPbRveNOJwc46DzeOmEHeC0rpgr/1Fmv5EoP13KMJzmNYlK', NULL, 1, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'online', NULL, 0, 0, NULL, NULL, 1, NULL, 0, NULL, NULL, '2021-02-05 05:52:28', '2021-02-05 05:52:31', NULL, NULL),
+(294, 'MD. MOHEBBULLAH', NULL, NULL, 'rokib.sust@gmail.com', '$2y$10$EAbiEELM8lt64pLAiyc/W.1spSv5bl06q5jviV1lW5FnmIQgvt.9K', NULL, 1, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'online', NULL, 0, 0, NULL, NULL, 1, NULL, 0, NULL, NULL, '2021-02-09 03:36:33', '2021-02-09 03:43:40', NULL, NULL),
+(295, 'Robiul Noyon', '01746050081', NULL, 'robiulnoyon430@outlook.com', '$2y$10$NzORfT1JEiJ0lxN2vnhP2eU12qkfzOtTBy591w4V8AB80sB0Ca1qu', NULL, 1, 0, 'Male', 'Bangladesh', NULL, 'Katakhali Bazar, Bangladesh', 'Rajshahi', 'Rajshahi', '6212', '24.3619704', '88.693438', 'Self', 'Muslim', 'Just Muslim', 'Bright', 'Department of Finance', NULL, 'Businessmen', NULL, 'Never Married', '5 Feet 7 Inch', '70 KG', 'Male', NULL, NULL, NULL, 'online', '1996-06-18', 0, 5, NULL, NULL, 1, 295, 0, NULL, NULL, '2021-02-09 04:04:52', '2021-02-09 04:43:17', NULL, NULL),
+(296, 'Genevieve Caldwell', NULL, NULL, 'hegupi@mailinator.com', '$2y$10$RyXop7qoSzPk7yuW55nZRePOt/wsUW6qzrEPXlUkwIUblZfZy3StO', NULL, 1, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'online', NULL, 0, 0, NULL, NULL, 1, NULL, 0, NULL, NULL, '2021-02-09 23:23:47', '2021-02-09 23:26:02', NULL, NULL),
+(297, 'Basil Burton', NULL, NULL, 'ririqebo@mailinator.com', '$2y$10$mP.uVx925XkqCy4ErZshJulv/zgTDJe4m8nfXqBUVH6iky11xnmIq', NULL, 1, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'online', NULL, 0, 0, NULL, NULL, 1, NULL, 0, NULL, NULL, '2021-02-09 23:27:06', '2021-02-09 23:27:28', NULL, NULL),
+(298, 'Jena Horn', NULL, NULL, 'kiwuzaq@mailinator.com', '$2y$10$qeyo6daLZbOc1BIgHNjM4u.jT2pxQpEg0v1MIPA6zBCFs5KKEvv0O', NULL, 1, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'online', NULL, 0, 0, NULL, NULL, 1, NULL, 0, NULL, NULL, '2021-02-09 23:33:33', '2021-02-09 23:38:52', NULL, NULL),
+(299, 'Aminul Amin', NULL, NULL, 'aminulamin91@gmail.com', '$2y$10$v/ghXJNifUhmyP9I0LsAaOxMIzHrX25c1uEavhPUifMF/FPWbGJ9K', NULL, 1, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'online', NULL, 0, 0, NULL, NULL, 1, NULL, 0, NULL, 'q9lM9OPZQfT9NSd0l5iJaOWFKC6iLk7vlI516V60dsFaLyWTuT3kNsfK1fRy', '2021-02-10 23:24:48', '2021-03-10 22:09:11', NULL, NULL),
+(300, 'Beatrice Campos', NULL, NULL, 'gale@mailinator.com', '$2y$10$8kfbE9Wnvk/l2SOGEk2ZpOh8wgox60ESdwvVYpo7e0i0gsRxFbdT.', NULL, 1, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'online', NULL, 0, 0, NULL, NULL, 1, NULL, 0, NULL, 'I5dEBbhzUzk2zTOjoTQ4NW2L2pzPY88d0UQzxoYNp2sWOj2LWotB1FLwGpPV', '2021-02-10 23:27:36', '2021-03-10 23:17:22', NULL, NULL),
+(301, 'pqhEvzdacIN', NULL, NULL, 'lowmanogx68@gmail.com', '$2y$10$5sTaCvI8qvz0Ur1nPYpse.txHYtKYCMpTcfVM1tcz4i5SIZmmF60a', NULL, 1, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'online', NULL, 0, 0, NULL, NULL, 1, NULL, 0, NULL, NULL, '2021-02-11 03:10:12', '2021-02-11 03:10:26', NULL, NULL),
+(302, 'Syeda Sumaia Rahman', '+8801758537178', NULL, 'trina.sumaia@gmail.com', '$2y$10$T57zpuBuYRH4..Sp82kwaOG/ha2E.AY6NmKkhog56atMGob3eBiVi', NULL, 0, 0, 'Female', 'Bangladesh', NULL, 'New Eskaton Road, Dhaka, Bangladesh', 'Dhaka', 'Dhaka', '1000', '23.7470548', '90.398646', 'Parent', 'Muslim', 'Sunni', 'Fair', 'Department of Civil Engineering', NULL, 'Engineer', NULL, 'Never Married', '5 Feet 3 Inch', '50 KG', 'Male', NULL, NULL, NULL, 'online', '1995-01-05', 0, 1, NULL, NULL, 1, 302, 0, NULL, NULL, '2021-02-12 12:58:53', '2021-02-14 00:03:30', NULL, NULL),
+(303, 'Patrick Vargas', NULL, NULL, 'cifuke@mailinator.com', '$2y$10$xcv/qiesx7Vwsl3uFUA/Ru5E3rPpzN20VRBJ7Rf9sNM0dMNyqYu.y', NULL, 1, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'online', NULL, 0, 0, NULL, NULL, 1, NULL, 0, NULL, NULL, '2021-02-14 22:06:43', '2021-02-14 22:06:48', NULL, NULL),
+(304, 'Brock Ferguson', NULL, NULL, 'rajokaraj@mailinator.com', '$2y$10$cuRR74k34pzp8pDPEMQDfedDW/ruTcj0Qrq5.rn6AMedTRjoUAnyK', NULL, 1, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'online', NULL, 0, 0, NULL, NULL, 1, NULL, 0, NULL, NULL, '2021-02-14 22:09:18', '2021-02-14 22:41:09', NULL, NULL),
+(305, 'Aaron Pittman', 'Aliquid itaque minus', NULL, 'jiwe@mailinator.com', '$2y$10$KbwiwiQDaYIXg1iOWUuigOCWNBodamgFeWxUL7NiqDXL7CvXxave.', NULL, 1, 0, 'Male', 'Saint Barthélemy', NULL, NULL, 'Vel nobis aut deseru', 'Quia harum qui possi', 'Dignissimos mollitia', NULL, NULL, 'Self', 'No Religion', 'Roman Catholic', 'Brown', 'Department of geography and environment', NULL, 'Ministry of Surveying (Bangladesh)', NULL, 'Anulled', '5 Feet 1 Inch', '86 KG', 'Female', NULL, NULL, NULL, 'online', '1993-11-22', 0, 2, NULL, NULL, 1, 305, 0, NULL, NULL, '2021-02-15 06:43:49', '2021-02-15 06:55:03', NULL, NULL),
+(306, 'Dalton Shannon', NULL, NULL, 'rykokyvik@mailinator.com', '$2y$10$jgsXHJ1FGs5250dsEZA26OW7hCosOMd5zLVRr9TiZkJLUoOcpGr7G', NULL, 1, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'online', NULL, 0, 0, NULL, NULL, 1, NULL, 0, NULL, NULL, '2021-02-15 22:20:56', '2021-02-16 00:09:54', NULL, NULL),
+(307, 'Chantale Barry', NULL, NULL, 'barilok@mailinator.com', '$2y$10$ALcF99RpBTD9iEzZoJ4hC.4sMS6XNIt7HdQGXpjl8pFpMt8qR.cWe', NULL, 1, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'online', NULL, 0, 0, NULL, NULL, 1, NULL, 0, NULL, NULL, '2021-02-17 22:40:16', '2021-02-17 23:34:15', NULL, NULL),
+(308, 'Mohammed Parvej', NULL, NULL, 'mdpervej990@yahoo.com', '$2y$10$E6FdhALMccRSQjJS6BGcgOXo2XTmbdvMGPrIJ3XHcrT0oJeG5qG.y', NULL, 1, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'online', NULL, 0, 0, NULL, NULL, 1, NULL, 0, NULL, NULL, '2021-02-19 05:35:03', '2021-02-19 05:35:03', NULL, NULL),
+(309, 'zahidul Kabir', NULL, NULL, 'zahid.primax@gmail.com', '$2y$10$eoXgddHM8gWs9UaLcOGYzeNbnTk6v/iw2JBEDEbreJ1GOGQKTwOyy', NULL, 1, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'online', NULL, 0, 0, NULL, NULL, 1, NULL, 0, NULL, NULL, '2021-02-19 14:14:42', '2021-02-19 14:15:27', NULL, NULL),
+(310, 'Hasan', NULL, NULL, 'hasan2000khk@gmail.com', '$2y$10$vMw.iKAw0TZRaqyRvIsyTutkvlX0t/D1TaFKMiBoWVI6I/3IjSgIq', NULL, 1, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'online', NULL, 0, 0, NULL, NULL, 1, NULL, 0, NULL, NULL, '2021-02-20 08:18:48', '2021-02-20 08:34:00', NULL, NULL),
+(311, 'rayhan', '01766913723', NULL, 'rafi.ligani@gmail.com', '$2y$10$TrnCHuQ7PIAie2o2.6RqouM4pcsIdl5PtfVuWmeze1z79It..tLxC', NULL, 1, 0, 'Male', 'Bangladesh', NULL, 'Bangladesh', 'dhaka', 'dhaka', '1206', '23.684994', '90.356331', 'Self', 'Muslim', 'Salafi', 'Fair', 'Department Of Pharmacy', NULL, 'Running Student', NULL, 'Never Married', '4 Feet 1 Inch', '32 KG', 'Female', NULL, NULL, NULL, 'online', '1995-01-02', 0, 1, NULL, NULL, 1, 311, 0, NULL, 'aDgWf0ECogyZxBCNfYO04M90ZBuCFoLw5ivsnbTKBrPsqOfMVJviRgVosULZ', '2021-02-22 11:21:42', '2021-02-27 08:57:43', NULL, NULL),
+(312, 'Md. Rasel Hossain Razu', '01793324812', NULL, 'raselhossainrazu71@gmail.com', '$2y$10$4Be1JY4WdlOqVMlaoL2MF.kuKBvrzVlMc2J0t6x6xoDwD9ye9cW3G', NULL, 1, 1, 'Male', 'Bangladesh', NULL, 'Mohakhali, Dhaka 1212, Bangladesh', 'Rajshahi', 'Dhaka', '6720', '23.7777571', '90.40574079999999', 'Self', 'Muslim', 'Just Muslim', 'Drak', 'Department of Applied Chemistry and Chemical Engineering', NULL, 'Running Student', NULL, 'Never Married', '5 Feet 5 Inch', '59 KG', 'Male', NULL, NULL, NULL, 'online', '1999-12-08', 0, 3, NULL, NULL, 1, 312, 0, NULL, 'Ke3z3psSdxnQoJbxY8uIgGfqP8tLTWHpp91BJODSB4e4Aky00u2jSliItW6J', '2021-02-25 21:40:01', '2021-03-05 06:53:31', NULL, NULL),
+(313, 'Boris Bentley', NULL, NULL, 'qyxokuh@mailinator.com', '$2y$10$hH6YOZzgzq15bzuo//V7bO9NeD40bvIBAopan4yy3yX9DBt42AVky', NULL, 1, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'online', NULL, 0, 0, NULL, NULL, 1, NULL, 0, NULL, NULL, '2021-02-27 02:08:57', '2021-02-27 03:38:24', NULL, NULL),
+(314, 'test', '01674555111', NULL, 'iamofrun007@gmail.com', '$2y$10$gQA1eDr0Cc86O0c2HVLO5eBm65C1l1U.oXEmNSbJBXyGZSWNqU9yS', NULL, 1, 1, 'Male', 'Bangladesh', NULL, 'Dhaka, Bangladesh', 'dhaka', 'dhaka', '1216', '23.810332', '90.4125181', 'Self', 'Muslim', 'Hanafi', 'Fair', 'Department of Software Engineering', NULL, 'Engineer', NULL, 'Never Married', '5 Feet 7 Inch', '60 KG', 'Female', NULL, NULL, NULL, 'online', '1990-01-01', 0, 2, NULL, NULL, 1, 314, 0, NULL, NULL, '2021-02-27 15:25:37', '2021-02-27 15:49:36', NULL, NULL),
+(315, 'MD. HUMAYUN RASHID BHUIYAN', '01689528514', NULL, 'humayundu.mkt@gmail.com', '$2y$10$opSVU0i0.eyG2YWwjWAk9.dNwnd8YWGv2h8lwmOj.UOP0YqvBcZZe', NULL, 1, 1, 'Male', 'Bangladesh', NULL, 'Dhaka, Bangladesh', 'Dhaka', 'Dhaka', '1236', '23.810332', '90.4125181', 'Self', 'Muslim', 'Sunni', 'Fair', 'Master of Business Administration', NULL, 'BCS Non-Cadre', NULL, 'Never Married', '5 Feet 7 Inch', '70 KG', 'Female', NULL, NULL, NULL, 'online', '1989-06-15', 0, 14, NULL, NULL, 1, 315, 0, NULL, 'egxtWfDcHaGxJpYHUs2S2ci8yt47Se70Lw3aeqYKeLAUWJM7dYaM2v8Kjzvk', '2021-02-28 00:28:59', '2021-02-28 02:19:10', NULL, NULL),
+(316, 'Mohammad Majumdar', '01734258039', NULL, 'anisurrahmanopu83@gmail.com', '$2y$10$SDcaKKmZy5VnV86fKkpbuuEYlInWOKW3K0PvP/48ducNwKnT/jLri', NULL, 1, 1, 'Male', 'Bangladesh', NULL, 'Gulshan, Dhaka, Bangladesh', 'Dhaka', 'Gulshan', '1212', '23.7924961', '90.40780579999999', 'Self', 'Muslim', 'Just Muslim', 'Brown', 'Department of Software Engineering', NULL, 'Businessmen', NULL, 'Divorced', '5 Feet 7 Inch', '70 KG', 'Female', NULL, NULL, NULL, 'online', '1985-09-01', 0, 8, NULL, NULL, 1, 316, 0, NULL, 'NsPb34LetSp34QJ9oc2NwExIFXQ9ZGX1sVJSPq4nRE7zfySqAUl7SSMfov8V', '2021-03-02 11:35:04', '2021-03-09 10:06:35', NULL, NULL),
+(317, 'Mortuza Arfan', '01920216663', NULL, 'mortuzaarfan@gmail.com', '$2y$10$LC089XFLXhvWFc/aUtub0.6thyBrgdMCUfstt6PI488tkeP8qO0Ka', NULL, 1, 0, 'Male', 'Bangladesh', NULL, 'Dhaka, Bangladesh', NULL, 'Dhaka', NULL, '23.810332', '90.4125181', 'Self', 'Muslim', 'Just Muslim', 'Bright', 'Electrical and Electronic Engineering', NULL, 'Businessmen', NULL, 'Never Married', '5 Feet 6 Inch', '62 KG', 'Female', NULL, NULL, NULL, 'online', '1993-10-22', 0, 2, NULL, NULL, 1, 317, 0, NULL, 'Uz5d0ThNnm8N7cLTORZH0jI3jVavWmREB7rfzzl7Xha7ecbC52gOrO3F81UW', '2021-03-03 13:32:15', '2021-03-04 14:20:11', NULL, NULL),
+(318, 'Roksana Islam', '01673872547', NULL, 'nzamanctg@gmail.com', '$2y$10$Y1ad7SmoKr/m79B3Fqj4IOl8awHkfeHkd.JLEbLAeiKYtumC0JWBG', NULL, 1, 1, 'Female', 'Bangladesh', NULL, 'Agrabad Commercial Area, Chattogram, Bangladesh', 'Chittagong', 'Chittagong', '4020', '22.3244537', '91.81172319999999', 'Brother', 'Muslim', 'Sunni', 'Fair', 'Master of Business Administration', NULL, 'Citizen', NULL, 'Never Married', '5 Feet 3 Inch', '53 KG', 'Male', NULL, NULL, NULL, 'online', '1988-02-15', 0, 2, NULL, NULL, 1, 318, 0, NULL, NULL, '2021-03-06 06:06:52', '2021-03-06 07:35:07', NULL, NULL),
+(319, 'Abul Kalam', '01759892354', NULL, 'kalam203455@gmail.com', '$2y$10$/xVfuPRNypJVgDvkar8iSeGzV6WEr65A6JhHlX9znbOcghc4S5JES', NULL, 1, 0, 'Male', 'Bangladesh', NULL, 'Jashore, Bangladesh', 'Khulna', 'Jashore', '7400', '23.1777682', '89.1801225', 'Self', 'Muslim', 'Sunni', 'Bright', 'Master of Political Science', NULL, 'BCS Non-Cadre', NULL, 'Never Married', '5 Feet 6 Inch', '64 KG', 'Female', NULL, NULL, NULL, 'online', '1992-04-03', 0, 3, NULL, NULL, 1, 319, 0, NULL, NULL, '2021-03-07 04:35:18', '2021-03-07 04:42:36', NULL, NULL),
+(320, 'Rashedul H Shimul', '01711403595', NULL, 'rshimul@yahoo.com', '$2y$10$uv1RyksBzKMsC4ob3rhBnuEgOsg48H5RnNizRbYEdBn0EU.TBy4T6', NULL, 1, 0, 'Male', 'Bangladesh', NULL, 'Cumilla, Bangladesh', 'Chittagong', 'Cumilla', '3500', '23.4606574', '91.1809065', 'Self', 'Muslim', 'Hanafi', 'Ten', 'Master of Business Administration', NULL, 'Businessmen', NULL, 'Divorced', '5 Feet 10 Inch', '78 KG', 'Female', NULL, NULL, NULL, 'online', '1977-10-25', 0, 5, NULL, NULL, 1, 320, 0, NULL, NULL, '2021-03-08 05:43:40', '2021-03-08 05:58:35', NULL, NULL),
+(321, 'ehoshan', '01778849298', NULL, 'aliyeasin1984@yahoo.com', '$2y$10$oNTTkaVu1iuVbD7iAkzzpusXX6Hs1Ujgy/iatfZNlYKuhvjCXdPKG', NULL, 1, 0, 'Male', 'Bangladesh', NULL, 'Dhaka, Bangladesh', 'dhaka', 'dhaka', '1212', '23.810332', '90.4125181', 'Friend', 'Muslim', 'Sunni', 'Fair', 'Higher Secondary Certificate', NULL, 'Industrialists', NULL, 'Widowed', '5 Feet 3 Inch', '55 KG', 'Female', NULL, NULL, NULL, 'online', '1984-11-20', 0, 20, NULL, NULL, 1, 321, 0, NULL, NULL, '2021-03-09 03:49:59', '2021-03-09 04:03:48', NULL, NULL),
+(322, 'Md Nayem Hossain', '01762-000016', NULL, 'mnayem971@gmail.com', '$2y$10$lEM/WbvBoqUIfo/0SMtTIupICG0YtRf3fOBdIPXprKIIKs5y0Kqiu', NULL, 1, 1, 'Male', 'Bangladesh', NULL, 'Banglamotors, Dhaka 1205, Bangladesh', 'Dhaka', 'Dhaka', '1000', '23.7467942', '90.39337789999999', 'Self', 'Muslim', 'Hanafi', 'Bright', 'Department of Nutrition and Food Engineering', NULL, 'Engineer', NULL, 'Never Married', '5 Feet 6 Inch', '60 KG', 'Male', NULL, NULL, NULL, 'online', '1996-12-16', 0, 1, NULL, NULL, 1, 322, 0, NULL, NULL, '2021-03-10 03:30:08', '2021-03-10 05:49:05', NULL, NULL),
+(323, 'Hilda Townsend', NULL, NULL, 'posudoto@mailinator.com', '$2y$10$2lcNrzf5RwN7aVVUchShKuIdTePK0xJ03l1cGDDsrAba1Odfl6BZi', NULL, 1, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'online', NULL, 0, 0, NULL, NULL, 1, NULL, 0, NULL, NULL, '2021-03-11 00:28:43', '2021-03-11 01:03:53', NULL, NULL),
+(324, 'MD Zakaria Munna', '01725347977', NULL, 'zakariyamunna.01725@gmail.com', '$2y$10$5hDITJG/oJ.sGAtKO9bDye3BKugF7s90PLviNaLY3n/MO4J2cgsoi', NULL, 1, 0, 'Male', 'Bangladesh', NULL, 'Uttara, Dhaka, Bangladesh', 'Dhaka', 'Dhaka', '1230', '23.8758547', '90.3795438', 'Self', 'Muslim', 'Just Muslim', 'Bright', 'Computer science Engineering', NULL, 'Running Student', NULL, 'Never Married', '5 Feet 7 Inch', '63 KG', 'Female', NULL, NULL, NULL, 'online', '1998-12-05', 0, 2, NULL, NULL, 1, 324, 0, NULL, NULL, '2021-03-16 09:32:56', '2021-03-16 10:05:32', NULL, NULL),
+(325, 'Dr. K. M. Arman', NULL, NULL, 'k.m.arman@gmail.com', '$2y$10$ue0RwyAXCmMWLArmVS.bpOqd8vo3hPkaRXlvhcInzLue09g25cnm6', NULL, 1, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'online', NULL, 0, 0, NULL, NULL, 1, NULL, 0, NULL, NULL, '2021-03-16 10:55:35', '2021-03-16 10:57:43', NULL, NULL),
+(326, 'Md Easin Hossain', '01643301171', NULL, 'ahmedeasin111@gmail.com', '$2y$10$h.oCiZ4o4J5Q6fHtg5ZR6.1CG727T6rH1uRqhjx/xPO3tV06/H8Uu', NULL, 1, 1, 'Male', 'Bangladesh', NULL, 'Savar Union, Bangladesh', 'Dhaka', 'Savar', '1349', '23.8478798', '90.2575646', 'Self', 'Muslim', 'Sunni', 'Fair', 'High School Pass', NULL, 'Running Student', NULL, 'Never Married', '5 Feet 4 Inch', '68 KG', 'Female', NULL, NULL, NULL, 'online', '2000-03-05', 0, 5, NULL, NULL, 1, 326, 0, NULL, 'wiVyMHmdGq3n1u8ejBdpEasqjGe1fzuRvsd79424OK4t2eXf7BxZVFEcWYBl', '2021-03-17 23:50:50', '2021-03-20 00:09:47', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -1938,7 +2125,7 @@ INSERT INTO `users` (`id`, `name`, `mobile`, `username`, `email`, `password`, `p
 CREATE TABLE `user_contacts` (
   `id` int(10) UNSIGNED NOT NULL,
   `user_id` int(10) UNSIGNED NOT NULL,
-  `accepted` tinyint(1) NOT NULL DEFAULT '0',
+  `accepted` tinyint(1) NOT NULL DEFAULT 0,
   `user_second_id` int(10) UNSIGNED NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
@@ -2264,26 +2451,21 @@ INSERT INTO `user_education_records` (`id`, `user_id`, `passed_degree`, `passed_
 (324, 264, 'hsc', '4.12 out of 5', NULL, 'chandana high school', 'gazipur sadar,gazipur,dhaka', 'High School', '2010-01-01', '2014-01-01', '2016-01-01', '2020-12-30 05:49:06', '2020-12-30 05:49:06'),
 (325, 265, 'Electronics and Communications Engineering', '2.75', NULL, 'University of Information Technology and Sciences (UITS)', 'H-190, Rd-5, J-Block, Baridhara, Maddha Naya Nagar, Vatara, Dhaka 1212, Dhaka, 1212,', 'University', '2011-01-01', '2005-01-01', '2011-01-01', '2020-12-30 06:06:46', '2020-12-30 06:06:46'),
 (326, 271, 'LL.M.', 'First Class', 'Department of Law', 'University of Dhaka', 'University of Dhaka', 'University', '2006-01-01', '2012-01-01', '2012-01-01', '2021-01-11 01:52:43', '2021-01-11 01:52:43'),
-(327, 278, 'Msc', '3.52', 'Science', 'University Of Dhaka', 'Shahbag, Dhaka', 'High School', '2021-01-01', '2020-01-01', '2020-01-01', '2021-02-02 03:06:19', '2021-02-02 03:06:19'),
-(328, 281, 'Msc', NULL, 'Science', 'University Of Dhaka', 'Shahbag, Dhaka', 'High School', '2013-01-01', '2008-01-01', '2011-01-01', '2021-02-06 22:49:19', '2021-02-06 22:49:19'),
-(329, 281, 'Msc', '3.52', 'Science', 'University Of Dhaka', 'Shahbag, Dhaka', 'University', '2012-01-01', '2016-01-01', '2019-01-01', '2021-02-07 01:28:28', '2021-02-07 01:28:28'),
-(330, 281, 'Msc', '3.52', 'Science', 'University Of Dhaka', 'Shahbag, Dhaka', 'University', '2012-01-01', '2016-01-01', '2019-01-01', '2021-02-07 01:28:31', '2021-02-07 01:28:31'),
-(331, 281, 'Msc', '3.52', 'Science', 'University Of Dhaka', 'Shahbag, Dhaka', 'University', '2017-01-01', '2009-01-01', '2016-01-01', '2021-02-07 01:29:48', '2021-02-07 01:29:48'),
-(332, 281, 'Msc', '3.52', 'Science', 'University Of Dhaka', 'Shahbag, Dhaka', 'College', '2008-01-01', '2005-01-01', '2008-01-01', '2021-02-07 01:32:13', '2021-02-07 01:32:13'),
-(333, 1, 'Consequatur Et cons', 'Dolores ut qui vel s', 'Voluptatem voluptas', 'Freeman Patrick LLC', 'Padilla Kinney Traders', 'University', '1985-01-01', '1973-01-01', '2002-01-01', '2021-02-07 01:32:48', '2021-02-07 01:32:48'),
-(334, 1, 'Sapiente corrupti e', 'Ut magnam explicabo', 'Dicta fugiat nisi et', 'Warner Fleming LLC', 'Murray and Levy Trading', 'University', '1977-01-01', '2004-01-01', '2014-01-01', '2021-02-07 01:34:29', '2021-02-07 01:34:29'),
-(335, 1, 'Consequatur Et cons', 'Dolores ut qui vel s', 'Science', 'University Of Dhaka', 'Padilla Kinney Traders', 'High School', '2019-01-01', '2020-01-01', '2020-01-01', '2021-02-07 01:38:02', '2021-02-07 01:38:02'),
-(336, 283, 'Id numquam qui tenet', 'Sed autem nulla irur', 'Quia ea commodo aute', 'Martin and Mayo Trading', 'Lowery Rogers Inc', 'College', '2008-01-01', '1997-01-01', '1994-01-01', '2021-02-08 00:43:43', '2021-02-08 00:43:43'),
-(337, 285, 'Architecto dolore at', 'Duis et sit nobis as', 'Ullamco maxime quia', 'Perry and Maldonado Traders', 'Lawson and Carney Co', 'College', '1978-01-01', '1996-01-01', '2019-01-01', '2021-02-08 01:01:44', '2021-02-08 01:01:44'),
-(339, 286, 'Commodi ad blanditii', 'Esse autem sed est', 'Soluta lorem consect', 'Smith Kim Inc', 'Byrd and Phillips Co', 'College', '2012-01-01', '2010-01-01', '2005-01-01', '2021-02-08 01:30:17', '2021-02-08 01:30:17'),
-(340, 286, 'Et qui officia et en', 'Dolor dolor do odit', 'Sed voluptatem ab e', 'Page and Miles Trading', 'Trevino and Baker Plc', 'University', '2011-01-01', '1987-01-01', '2010-01-01', '2021-02-08 01:30:24', '2021-02-08 01:30:24'),
-(341, 287, 'Natus id minus et q', 'Autem commodi optio', 'Asperiores rerum neq', 'Decker Spence Traders', 'Cannon Joseph Inc', 'High School', '1994-01-01', '1976-01-01', '1987-01-01', '2021-02-08 04:08:29', '2021-02-08 04:08:29'),
-(342, 288, 'Cillum neque adipisc', 'Id odit repellendus', 'Voluptatem Dolore f', 'Potts Hansen Inc', 'Hull Roman Inc', 'University', '1991-01-01', '1998-01-01', '2009-01-01', '2021-02-08 05:15:49', '2021-02-08 05:15:49'),
-(343, 290, 'Vel sit autem saepe', 'Est voluptatem min', 'Itaque voluptatem ei', 'Guy and Hall Traders', 'Singleton Chambers Associates', 'College', '1982-01-01', '1981-01-01', '1972-01-01', '2021-02-08 05:35:19', '2021-02-08 05:35:19'),
-(344, 292, 'Sed in quis sint co', 'Ex optio autem amet', 'Qui dolore sint volu', 'George Woods Co', 'Maldonado Winters Trading', 'High School', '1999-01-01', '1996-01-01', '2011-01-01', '2021-02-08 05:40:01', '2021-02-08 05:40:01'),
-(345, 296, 'Possimus soluta ear', 'Nisi quibusdam sapie', 'Dolor tempor dolorem', 'Decker Frost Co', 'Knight Andrews Inc', 'College', '2015-01-01', '2012-01-01', '1997-01-01', '2021-02-15 02:07:05', '2021-02-15 02:07:05'),
-(348, 297, 'Et similique aut quo', 'Quos deserunt ut mag', 'Natus molestiae corr', 'Reyes Shepard Associates', 'Moss Gibbs Co', 'College', '1987-01-01', '2004-01-01', '1998-01-01', '2021-02-15 04:23:19', '2021-02-15 04:23:19'),
-(349, 298, 'Illo sint rerum fugi', 'Quis autem id ea an', 'Dolore sed ipsum off', 'Fuentes Gross LLC', 'Battle and Becker Co', 'Madrasha', '1995-01-01', '1976-01-01', '2002-01-01', '2021-02-15 06:16:42', '2021-02-15 06:16:42');
+(327, 281, 'MBA', NULL, 'marketing', 'gov bl collage', 'GOV. bl collage and university', 'University', '2016-01-01', '2017-01-01', '2017-01-01', '2021-01-29 12:43:59', '2021-01-29 12:43:59'),
+(329, 295, 'BBA in Finance', '3.20', 'Finance', 'Rajshahi Science & Technology University', 'Borohoris pur,Natore,Rajshahi', 'University', '2017-01-01', '2021-01-01', '2021-01-01', '2021-02-09 04:39:54', '2021-02-09 04:39:54'),
+(330, 300, 'Voluptatem eius cum', 'Perspiciatis conseq', 'Odit neque ipsum dui', 'Chapman Walker Traders', 'Carter Cooke LLC', 'Madrasha', '1982-01-01', '1980-01-01', '2015-01-01', '2021-02-10 23:31:24', '2021-02-10 23:31:24'),
+(331, 302, 'BSc. in Civil and Environmental Engineering', NULL, 'Engineering', 'North South University', 'Bashundhara, Dhaka', 'University', '2015-01-01', '2019-01-01', '2019-01-01', '2021-02-12 13:05:09', '2021-02-12 13:05:09'),
+(336, 312, 'B.Sc Honours', '3.5 out of 4', 'Chemistry', 'National university', 'Sapahar govt college, Naogaon', 'College', '2017-01-01', '2021-01-01', '2021-01-01', '2021-02-25 21:51:31', '2021-02-25 21:51:31'),
+(337, 314, 'engineer', '5', 'engineer', 'test org', 'dhaka', 'University', '2008-01-01', '2014-01-01', '2014-01-01', '2021-02-27 15:31:57', '2021-02-27 15:31:57'),
+(338, 314, 'engineer', '5', 'engineer', 'test org', 'dhaka', 'University', '2008-01-01', '2014-01-01', '2014-01-01', '2021-02-27 15:31:57', '2021-02-27 15:31:57'),
+(339, 315, 'MBA', '3.48/4.00', 'Marketing', 'University of Dhaka', 'Dhaka-1000', 'University', '2006-01-01', '2011-01-01', '2011-01-01', '2021-02-28 00:34:32', '2021-02-28 00:34:32'),
+(342, 316, 'B.SC in computer Engineering', '2.60', 'IT', 'East West University', 'Aftabnagor, Dhaka', 'University', '2005-01-01', '2010-01-01', '2011-01-01', '2021-03-02 11:44:33', '2021-03-02 11:44:33'),
+(343, 317, 'Bsc', '2.8 Out of 4', NULL, 'NPI', 'Kawranbajar', 'University', '2011-01-01', '2015-01-01', '2015-01-01', '2021-03-03 13:50:26', '2021-03-03 13:50:26'),
+(344, 317, 'Bsc', '2.8 Out of 4', NULL, 'NPI', 'Kawranbajar', 'University', '2011-01-01', '2015-01-01', '2015-01-01', '2021-03-03 13:50:26', '2021-03-03 13:50:26'),
+(345, 318, 'MBA', NULL, 'Commerce', 'International Islamic University Chittagong', 'Kumira, Chittagong', 'University', '2012-01-01', '2013-01-01', '2013-01-01', '2021-03-06 06:17:53', '2021-03-06 06:17:53'),
+(347, 322, 'yes', '3.50', 'Food And Nutrition', 'Naogaon Polytechnic', 'Naogaon', 'College', '2014-01-01', '2018-01-01', '2018-01-01', '2021-03-10 03:59:01', '2021-03-10 03:59:01'),
+(348, 322, 'yes', '3.50', 'Food And Nutrition', 'Naogaon Polytechnic', 'Naogaon', 'College', '2014-01-01', '2018-01-01', '2018-01-01', '2021-03-10 03:59:08', '2021-03-10 03:59:08'),
+(357, 326, 'ssc', '5 out 5', 'Science', 'Gazirchat A M high school', 'Ashulia, Dhaka', 'High School', '2012-01-01', '2017-01-01', '2017-01-01', '2021-03-18 00:32:09', '2021-03-18 00:32:09');
 
 -- --------------------------------------------------------
 
@@ -2310,12 +2492,12 @@ CREATE TABLE `user_family_infos` (
   `name_of_contact_person` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `relation_with_contact_person` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `yearly_income` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `about_yourself` text COLLATE utf8mb4_unicode_ci,
-  `extra_queries` text COLLATE utf8mb4_unicode_ci,
+  `about_yourself` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `extra_queries` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `family_type` varchar(200) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `checked` tinyint(1) NOT NULL DEFAULT '0',
-  `can_edit` tinyint(1) NOT NULL DEFAULT '1',
-  `addedby_id` int(10) UNSIGNED NOT NULL DEFAULT '1',
+  `checked` tinyint(1) NOT NULL DEFAULT 0,
+  `can_edit` tinyint(1) NOT NULL DEFAULT 1,
+  `addedby_id` int(10) UNSIGNED NOT NULL DEFAULT 1,
   `editedby_id` int(10) UNSIGNED DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -2444,24 +2626,34 @@ INSERT INTO `user_family_infos` (`id`, `user_id`, `father_name`, `father_educati
 (115, 264, 'MD MOHIUDDIN', NULL, 'citizen', 'LATE PARVIN AKTER', 'DIED', NULL, NULL, '1', NULL, 'RAYHANR2487@GMAIL.COM', '+97334123335', 'ANYTIME IN WHATSAPP', '+97334546084', 'MYSELF', 'MYSELF', '400000', 'I am Rayhn uddin from chittagong.Now lives in Bahrain.i love watch movies,listening music.', NULL, 'Middle Family', 0, 1, 264, 264, '2020-12-30 05:53:29', '2020-12-30 05:53:29'),
 (116, 265, 'Mowlana Hossain Ahmed', NULL, 'Govt. job holder', 'Rofika Begum', 'Housewife', '5', '2', '1', '1', 'tanvirectbd@gmail.com', NULL, 'any time', '01762100181', 'Tanvir', '01911332423', NULL, 'I am Tanvir Ahmed. I do business. I have seen expatriates before. Examples of seals outside Bangladesh are UAE, Qatar, oman, and turkey. I come to the country now. Bangladesh I do business on a small scale.', 'I want such a bride. He must be pious. He must have good morals. Must be beautiful and must be a worshiper.', 'Middle Family', 0, 1, 265, 265, '2020-12-30 08:01:19', '2020-12-30 08:01:19'),
 (117, 271, 'late Syed Mohammad Abul Kashem', NULL, 'Ex-expatriate at Muscat of Oman', 'Alam Ara Begum', 'Homemaker', '3', '2', '4', '4', NULL, NULL, '9 AM to 8 PM', '01770389107', 'self', 'self', NULL, 'This is Raihan from Chittagong. I am currently living in Dhaka. I completed my LL.B. and LL.M. from the University of Dhaka. Now, I am working in a leading law firm of Bangladesh and practising law in the Supreme Court of Bangladesh.', NULL, 'Middle Family', 0, 1, 271, 271, '2021-01-11 02:05:58', '2021-01-11 02:05:58'),
-(118, 278, 'Abdur Rahim', NULL, 'Engineer', 'Noor Jahan', 'Doctor', NULL, NULL, NULL, NULL, NULL, NULL, '5 am to 8 pm', '01918515567', 'MD. Noman Hanafi', 'Business Partner', NULL, 'rtryt6yt6httuyy7u6t7uyg7ut7u7iu7u', NULL, 'Middle Family', 0, 1, 278, 278, '2021-02-02 03:07:32', '2021-02-02 03:07:32'),
-(119, 281, 'Abdur Rahim', NULL, 'Doctor', 'Noor Jahan', 'Housewife', NULL, NULL, NULL, NULL, NULL, NULL, '9.00 PM - 12:00 PM', '01918515567', 'MD. Noman Hanafi', 'Business Partner', NULL, 'feessefsefeessefsefeessefsefeessefsefeessefsefeessefse', 'sefs', 'Upper Middle', 0, 1, 281, 281, '2021-02-07 01:27:00', '2021-02-07 01:27:00'),
-(120, 283, 'Alika Obrien', NULL, 'Aliquip dolores poss', 'Rosalyn Macdonald', 'Sequi amet fugiat', '927', '23', '538', '20', 'hicoko@mailinator.com', 'Ea voluptate sunt e', 'Ipsum sed harum pari', 'Exercitationem labor', 'Tatiana Albert', 'Maxime sed vero volu', '261', 'Eveniet ut molestiaEveniet ut molestiaEveniet ut molestiaEveniet ut molestiaEveniet ut molestia', 'Enim similique accus', 'Sequi amet nostrum', 0, 1, 283, 283, '2021-02-08 00:45:04', '2021-02-08 00:45:04'),
-(121, 285, 'Ina Bond', NULL, 'Dolor error et proid', 'Martina Duran', 'Ut impedit nesciunt', '608', '68', '595', '100', 'byrydu@mailinator.com', 'Voluptate in est sin', 'Et autem sunt ut es', 'Est enim pariatur V', 'Hilda Weaver', 'Provident vel vel c', '964', 'Do aut saepe tempor Do aut saepe tempor Do aut saepe tempor Do aut saepe tempor', 'Magni culpa magnam a', 'Molestiae et qui eu', 0, 1, 285, 285, '2021-02-08 01:02:07', '2021-02-08 01:02:07'),
-(122, 286, 'Erasmus Dyer', NULL, 'Aliquam doloremque c', 'Akeem Ashley', 'Veniam earum non un', '190', '99', '463', '36', 'lyhixi@mailinator.com', 'Doloribus veniam om', 'Nam eaque illo accus', 'Cupidatat modi provi', 'Brielle Griffin', 'Eos lorem perferendi', '578', 'Dolor cum deserunt sDolor cum deserunt sDolor cum deserunt s', 'Ut aut obcaecati fug', 'Omnis et id minus do', 0, 1, 286, 286, '2021-02-08 01:29:41', '2021-02-08 01:29:41'),
-(123, 287, 'Suki Carr', NULL, 'Porro fugit volupta', 'Colt Bullock', 'Incidunt ab placeat', '620', '89', '892', '30', 'hiryjutik@mailinator.com', 'Aliquid aliqua Dese', 'Velit ipsum consect', 'Veritatis assumenda', 'Mufutau Vargas', 'Consectetur archite', '446', 'Deserunt corporis saDeserunt corporis saDeserunt corporis sa', 'Ducimus eveniet la', 'Dolorum in libero iu', 0, 1, 287, 287, '2021-02-08 04:26:03', '2021-02-08 04:26:03'),
-(124, 288, 'Elton Sellers', NULL, 'Laudantium doloribu', 'Baker Medina', 'Est cillum proident', '29', '64', '194', '97', 'vitapy@mailinator.com', 'Est sed lorem rerum', 'Mollit nemo reiciend', 'Omnis consequatur Na', 'Shea Long', 'Eos voluptatem et at', '281', 'Nostrum officia sintNostrum officia sintNostrum officia sintNostrum officia sint', 'Tempora Nam sint lab', 'Velit qui quod veli', 0, 1, 288, 288, '2021-02-08 05:16:03', '2021-02-08 05:16:03'),
-(125, 290, 'William Britt', NULL, 'Ipsa magni porro re', 'Aurora Raymond', 'Excepturi est sunt a', '72', '43', '266', '11', 'zahoxuh@mailinator.com', 'Velit eos itaque ull', 'Lorem soluta eaque a', 'Aut dolor modi quia', 'Rowan Osborn', 'Et in iste accusamus', '977', 'Dolor velit nisi conDolor velit nisi conDolor velit nisi conDolor velit nisi conDolor velit nisi conDolor velit nisi conDolor velit nisi con', 'Repudiandae repudian', 'Nulla possimus non', 0, 1, 290, 290, '2021-02-08 05:36:03', '2021-02-08 05:36:03'),
-(126, 295, 'Todd Baker', 'Ut exercitationem qu', 'Doctor', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '336', NULL, NULL, NULL, 0, 1, 1, NULL, '2021-02-13 03:21:59', '2021-02-13 03:21:59'),
-(127, 296, 'Danielle Warner', 'Magni vel ducimus m', 'Doctor', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '5000000', NULL, NULL, 'Industrial', 0, 1, 1, NULL, '2021-02-15 02:06:40', '2021-02-15 02:06:40'),
-(128, 297, 'Dara Massey', 'Quae culpa enim sed', 'Doctor', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '173333333', NULL, NULL, 'Industrial', 0, 1, 1, NULL, '2021-02-15 02:21:45', '2021-02-15 02:21:45'),
-(129, 298, 'Halee Bailey', 'Ratione id error do', 'Doctor', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '4630000', NULL, NULL, 'Industrial', 0, 1, 1, NULL, '2021-02-15 05:40:07', '2021-02-15 05:40:07'),
-(130, 299, 'Laith Bradley', 'Sapiente reprehender', 'Doctor', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '50000000', NULL, NULL, 'Middle Class', 0, 1, 1, NULL, '2021-02-26 23:05:12', '2021-02-26 23:05:12'),
-(131, 300, 'Arden Ferrell', 'Totam impedit quia', 'Sit dolor tempore', 'Jaquelyn William', 'Unde consequuntur et', '885', '56', '408', '45', 'wurix@mailinator.com', 'Nulla molestiae enim', 'Tenetur veritatis re', 'Dolor dolor blanditi', 'Shana Wood', 'Rerum molestiae volu', '864', 'Dicta dolores aut readawdwDicta dolores aut readawdwDicta dolores aut readawdwDicta dolores aut readawdw', 'Est fuga Accusamus', 'Aut magnam aspernatu', 0, 1, 1, 300, '2021-02-27 00:12:08', '2021-02-27 01:32:00'),
-(132, 301, 'Jenette Wilcox', 'Dolor id quod est p', 'Engineer', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '42800000', NULL, NULL, 'Higher Middle Class', 0, 1, 1, NULL, '2021-03-07 23:00:17', '2021-03-07 23:00:17'),
-(133, 302, 'Leah Mills', 'Esse debitis nostrud', 'Doctor', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '446010000', NULL, NULL, 'Industrial', 0, 1, 1, NULL, '2021-03-07 23:59:38', '2021-03-07 23:59:38'),
-(134, 303, 'Xena Aguilar', 'Consequatur laboris', 'Engineer', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '452342343', NULL, NULL, 'Industrial', 0, 1, 1, NULL, '2021-03-10 23:06:57', '2021-03-10 23:06:57'),
-(135, 304, 'Darius Drake', 'Nulla ullam placeat', 'Engineer', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '50744444', NULL, NULL, 'Elite Family', 0, 1, 1, NULL, '2021-03-10 23:37:24', '2021-03-10 23:37:24');
+(118, 281, 'sarkar bhusan chandra tarun', NULL, 'job holder', 'archana sarkar', 'Housewife', NULL, NULL, NULL, NULL, 'playboyopu@gamil.com', '01672822235', '2pm to 10pm', '01922652210', 'arup sarkar apu', 'mother', '6,00,000', 'First of all, I would like to thank you to introduce myself.\r\n\r\nMy name is Arup sarkar apu\r\n\r\nI am from khulna\r\n\r\nI have done SSC in Hsc school and BBA and MBA at khulna \r\n\r\nI have done plus two in  college at khulna .\r\n\r\nI have done Degree BBA & MBA   in Gov Bl college at khulna .\r\n\r\nAnd then come to my family.\r\n\r\nMy mother name is Archana sarkar .\r\n\r\nI have a no sister and brother . \r\n\r\nMy hobbies are playing chess, watching movies, hunting, cricket, world politics\r\n\r\nMy strengths are hard-working, easily adaptable to any kind environment and team members.\r\n\r\nMy weakness is I am not comfortable until I finish my work within the given time.\r\n\r\nMy short-term goals to get a job in a reputed company.\r\n\r\nMy long-term goal is a knowledgeable personality, good position in my company.\r\n\r\nThat\'s all about me once again thanks for giving opportunity introduce behind you.', 'painting ,  firefighter,  singer,', 'Upper Middle', 0, 1, 281, 281, '2021-01-29 13:19:07', '2021-01-29 13:19:07'),
+(119, 282, 'Syed Md. Abdur Rahim', NULL, 'Retired', 'Syeda Jesmin Ara Begum', 'Housewife', '2', '2', NULL, NULL, NULL, '+8801819008293', '10am to 9pm', '+8801676234788', 'Syed Aman', 'Elder Brother', NULL, 'I am Niger Sultana Popy. I am single Mother. Currently live in Dhaka. I am doing private job as a Trainer  at krylon Bangladesh.', 'I want my life partner who are honestly interested to care me with my daughter.', 'Middle Family', 0, 1, 282, 282, '2021-01-30 04:29:57', '2021-01-30 04:29:58'),
+(120, 295, 'Md. Saifur Rahman', NULL, 'Labour', 'Mst. Akhlima Begum', 'Housewife', '1', NULL, '2', '2', 'robiulnoyon08@gmail.com', '01842050081', '2.00 pm', '01746050081', 'Noyon', 'won', '6000', 'I am Robiul  Noyon. I Live in Rajshahi.', 'I Want my Life Patnar, that she cearing me & my Family.', 'Middle Family', 0, 1, 295, 295, '2021-02-09 04:28:05', '2021-02-09 04:41:44'),
+(121, 302, 'M. A. Malek', NULL, 'Businessman', 'Khaleda Malek Liza', 'Housewife', NULL, NULL, '1', NULL, NULL, NULL, 'After 7pm', '+8801917750384', 'Khaleda Malek Liza', 'Mother', NULL, 'Calm, simple, well mannered, practicing Muslim girl.', 'Honest, friendly, practicing Muslim.', 'Middle Family', 0, 1, 302, 302, '2021-02-12 13:11:58', '2021-02-12 13:11:58'),
+(122, 303, 'Kirsten Lucas', 'Tempore proident t', 'Engineer', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '500000', NULL, NULL, NULL, 0, 1, 1, NULL, '2021-02-14 22:06:43', '2021-02-14 22:06:43'),
+(123, 304, 'Pearl Holman', 'Maiores exercitation', 'Engineer', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '50000', NULL, NULL, NULL, 0, 1, 1, NULL, '2021-02-14 22:09:18', '2021-02-14 22:09:18'),
+(124, 305, 'Dylan Dale', 'Adipisci aut amet s', 'Doctor', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '90600000', NULL, NULL, 'Middle Class', 0, 1, 1, NULL, '2021-02-15 06:43:49', '2021-02-15 06:43:49'),
+(125, 306, 'Harper Hayden', 'Qui ut et ipsum omn', 'Engineer', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '50000', NULL, NULL, 'Higher Middle Class', 0, 1, 1, NULL, '2021-02-15 22:20:56', '2021-02-15 22:20:56'),
+(126, 307, 'Urielle Ingram', 'Libero animi ut in', 'Engineer', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '80000000', NULL, NULL, 'Higher Middle Class', 0, 1, 1, NULL, '2021-02-17 22:40:17', '2021-02-17 22:40:17'),
+(127, 308, 'Mohammad Harun', 'Class 8 Pass', 'Businessman', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '240000', NULL, NULL, 'Middle Class', 0, 1, 1, NULL, '2021-02-19 05:35:05', '2021-02-19 05:35:05'),
+(128, 309, 'Zahid', 'MA', 'Businessman', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '50000', NULL, NULL, 'Middle Class', 0, 1, 1, NULL, '2021-02-19 14:14:42', '2021-02-19 14:14:42'),
+(129, 310, 'Riaz uddin', 'MBA', 'Businessman', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '400000', NULL, NULL, 'Industrial', 0, 1, 1, NULL, '2021-02-20 08:18:48', '2021-02-20 08:18:48'),
+(130, 311, 'alem miah', 'safdsafasf', 'Doctor', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1000000', NULL, NULL, 'Industrial', 0, 1, 1, NULL, '2021-02-22 11:21:42', '2021-02-22 11:21:42'),
+(131, 312, 'Md. Ali Asraf', 'Uneducated', 'Others', 'Mst. Rabia Begum', 'Housewife', NULL, NULL, '2', '1', 'raselhossainrazu71@gmail.com', '01793324812', '8Pm To 12Am', '01793324812', 'Me', 'me', '120000', 'I am Rasel hossain Razu. I am from sirajganj.I am stil student, I have a partime job in ghulshan.I have a lovely family.I love my family so much. Reading, writing, Traveling is my favourite things, \r\nআমি সহজ সরল,বড় আবেগী।\r\n\"গুণ\" বলতে সহজে বিশ্বাস করি।\r\nমিশতে পারি তাই কষ্টের পাল্লা ভারি।\r\nভাল লাগে মধ্য রাতের আকাশ।\r\nশেষ বিকালের স্নিগ্ধ সোনালি হলদে রোদ।\r\nআর শ্রাবণের ঝুমঝুম বৃষ্টি।\r\nভাল লাগে ছোট জোনাকি।\r\nজোছনা রাত, ঝিঁঝি পোকার ডাক।\r\nভালবাসি ইসলামিক, বিজ্ঞান কল্পকাহিনীর বই আর গল্পের যাদুকর হুমায়ূণ স্যার।\r\nভালবাসি একটুকরো মেঘ আর সমুদ্র স্নান।\r\nভাল লাগে ছুটে চলতে পাহাড়ে কোলে,\r\nভেঙে সব রাগ অভিমান।\r\nভাল লাগে ফুল,পাখি আর রাতের তাঁরা।\r\nভালে লাগে আমার আমি,আমাকে নিয়ে সারা।����\r\nপাগলের সুখ মনে মনে,\r\nনাচে তাই বে\'তালে ����', 'Only love me', 'Middle Class', 0, 1, 1, 312, '2021-02-25 21:40:02', '2021-02-28 19:34:34'),
+(132, 313, 'Adara Pace', 'Officia id rem in mi', 'Doctor', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '8200000', NULL, NULL, 'Higher Middle Class', 0, 1, 1, NULL, '2021-02-27 02:08:58', '2021-02-27 02:08:58'),
+(133, 314, 'pest', 'doctor', 'Doctor', 'testy', 'Housewife', '2', NULL, NULL, NULL, 'test@gmail.com', '01674111222', '9:00 am to 12:00 pm', '0167555111', 'test', 'bro', '500000', 'I am test, I am currently live in Dhaka. I like to travelling various places...', 'I want my life partner will have some virtues like honest, friendly, helpful, will from dhaka only...', 'Elite Family', 0, 1, 1, 314, '2021-02-27 15:25:38', '2021-02-27 15:37:25'),
+(134, 315, 'Lt. HARUN UR RASHID BHUIYAN', 'SSc', 'Businessman', 'Khandakar Naima Zahan', 'Housewife', '1', NULL, '1', NULL, 'toran786@gmail.com', '01918998268', '9.00-12.00', '01777739196', 'Khandakar Naima Zahan', 'Mother', '9,60,000', 'Assalamualaikum. I am a simple person. I am searching same type person.', 'I want a simple & beautiful wife.', 'Middle Class', 0, 1, 1, 315, '2021-02-28 00:28:59', '2021-02-28 00:40:51'),
+(135, 316, 'Md.Rafiqul Islam Majumdar', 'Business', 'Businessman', 'Belayter Nehar', 'Housewife', '1', '1', '2', '2', 'opuewu.itworld@gmail.com', '01403800286', '9.00 to 12', '01734258039', 'Mohammad Majumdar', 'Brother', '50000', 'I am Mohammad Anisur Rahman Majumdar. I currently live in Dhaka.', NULL, 'Middle Class', 0, 1, 1, 316, '2021-03-02 11:35:07', '2021-03-02 11:51:43'),
+(136, 317, 'Md. Gulam Mostafa', 'B.B.A', 'Others', 'Mrs.Shanaz Parul', 'Housewife', '1', '1', NULL, NULL, 'Clickart@gmail.com', '01968809993', '10.00 a.m - 08.00 p.m', '01920216663', 'Arfan', 'Family friend', '70000', 'Hi\r\nI am mortuza arfan.\r\nI am very silent boy.', 'I want to my life partner is very simple girl', 'Higher Middle Class', 0, 1, 1, 317, '2021-03-03 13:32:15', '2021-03-03 19:16:24'),
+(137, 318, 'Rafiqul Islam', 'MBA', 'Others', 'Mahmuda Islam', 'Housewife', '1', NULL, '2', NULL, 'rfqctg@gmail.com', '01720548467', '9:00 am to 12:00 pm', '01673872547', 'Naim Uz Zaman', 'Brother', '50000', 'I am Roksana Islam Poppy, I love to travel and gardening. I aam looking for a caring and honest groom.', 'What is your expectation from your Bride and her family?', 'Middle Class', 0, 1, 1, 318, '2021-03-06 06:06:53', '2021-03-06 06:15:15'),
+(138, 319, 'Munsur ALi', 'Eight', 'Others', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '100000', NULL, NULL, 'Middle Class', 0, 1, 1, NULL, '2021-03-07 04:35:18', '2021-03-07 04:35:18'),
+(139, 320, 'Rashedul H Shimul', 'B.com', 'Businessman', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '150000', NULL, NULL, 'Higher Middle Class', 0, 1, 1, NULL, '2021-03-08 05:43:40', '2021-03-08 05:43:40'),
+(140, 321, 'nurul islam', 'retired', 'Others', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '50000', NULL, NULL, 'Industrial', 0, 1, 1, NULL, '2021-03-09 03:50:00', '2021-03-09 03:50:00'),
+(141, 322, 'Md Sirajul Islam', 'Master\'s', 'Others', 'Mst. Aregina', 'Housewife', NULL, NULL, '1', NULL, 'sfcbograzone01@gmail.com', '01785721112', '6 PM to 12 AM', '01762000016', 'Md. Nayem Hossain', 'Self', '300000', 'I am Md. Nayem Hossain. I am Muslim and always try to pray. I am a very Cool person. I like to simple life.', NULL, 'Middle Class', 0, 1, 1, 322, '2021-03-10 03:30:09', '2021-03-10 03:49:54'),
+(142, 323, 'Brynn Wallace', 'Id voluptates lauda', 'Industrialist', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '76423243234', NULL, NULL, 'Higher Middle Class', 0, 1, 1, NULL, '2021-03-11 00:28:43', '2021-03-11 00:28:43'),
+(143, 324, 'Md Samsul Haque rasel', 'HSC', 'Businessman', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '60000', NULL, NULL, 'Middle Class', 0, 1, 1, NULL, '2021-03-16 09:32:56', '2021-03-16 09:32:56'),
+(144, 325, 'K. M. Oliar', 'Bachalor', 'Others', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '50000', NULL, NULL, 'Higher Middle Class', 0, 1, 1, NULL, '2021-03-16 10:55:35', '2021-03-16 10:55:35'),
+(145, 326, 'Md Billal Hossain', 'Uneducated', 'Others', 'Ranu Begum', 'Housewife', '1', '1', '1', '1', 'ahmedeasin111@gmail.com', '01643301171', '5pm-10pm', '01849855211', 'Shahadat Hossain', 'Brother', '8000', 'I am Md Easin Hossain, I lived in Savar, Dhaka, studied at diploma in Electrical  Engineering  department', 'I want my partner who is completed Hafeza, alema or running student of this.', 'Middle Class', 0, 1, 1, 326, '2021-03-17 23:50:51', '2021-03-18 00:33:10');
 
 -- --------------------------------------------------------
 
@@ -2481,7 +2673,7 @@ CREATE TABLE `user_payments` (
   `paid_amount` decimal(10,2) DEFAULT NULL,
   `paid_currency` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `payment_method` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `payment_details` text COLLATE utf8mb4_unicode_ci,
+  `payment_details` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `admin_comment` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `user_id` int(10) UNSIGNED NOT NULL,
   `addedby_id` int(10) UNSIGNED NOT NULL,
@@ -2495,11 +2687,10 @@ CREATE TABLE `user_payments` (
 --
 
 INSERT INTO `user_payments` (`id`, `status`, `membership_package_id`, `package_title`, `package_description`, `package_amount`, `package_currency`, `package_duration`, `paid_amount`, `paid_currency`, `payment_method`, `payment_details`, `admin_comment`, `user_id`, `addedby_id`, `editedby_id`, `created_at`, `updated_at`) VALUES
-(2, 'paid', 4, 'Enterprise (Bangladesh)', 'One Year Membership for Bangladeshi People', '9500.00', 'BDT', '365', '9000.00', 'BDT', 'bKash', 'some info with bkash/bank transaction history', 'some admin comment', 1, 1, 1, '2019-01-10 13:47:34', '2019-01-10 13:47:34'),
-(98, 'paid', 1, 'Starter (Bangladesh)', '45 Days Membership for Bangladeshi People', '10.00', 'BDT', '45', '10.00', 'BDT', 'online', NULL, NULL, 1, 1, 1, '2019-03-29 02:27:47', '2019-03-29 02:30:15'),
-(100, 'paid', 1, 'Starter (Bangladesh)', '45 Days Membership for Bangladeshi People', '10.00', 'BDT', '45', '10.00', 'BDT', 'online', NULL, NULL, 16, 16, 16, '2019-04-10 22:24:19', '2019-04-10 22:25:47'),
-(103, 'pending', 5, 'Starter (Foreign)', '45 Days Membership for Outside Bangladesh', '36.00', 'USD', '45', NULL, 'BDT', 'Bank', NULL, NULL, 60, 60, NULL, '2019-04-23 16:15:18', '2019-04-23 16:15:18'),
-(104, 'paid', 4, 'Enterprise (Bangladesh)', 'Nine Months Membership for Bangladeshi People', '25000.00', 'BDT', '270', '10000.00', 'BDT', 'Bank', 'ycyvyg', NULL, 1, 1, 1, '2021-02-07 01:35:41', '2021-02-07 01:37:14');
+(2, 'paid', 4, 'Enterprise (Bangladesh)', 'One Year Membership for Bangladeshi People', 9500.00, 'BDT', '365', 9000.00, 'BDT', 'bKash', 'some info with bkash/bank transaction history', 'some admin comment', 1, 1, 1, '2019-01-10 13:47:34', '2019-01-10 13:47:34'),
+(98, 'paid', 1, 'Starter (Bangladesh)', '45 Days Membership for Bangladeshi People', 10.00, 'BDT', '45', 10.00, 'BDT', 'online', NULL, NULL, 1, 1, 1, '2019-03-29 02:27:47', '2019-03-29 02:30:15'),
+(100, 'paid', 1, 'Starter (Bangladesh)', '45 Days Membership for Bangladeshi People', 10.00, 'BDT', '45', 10.00, 'BDT', 'online', NULL, NULL, 16, 16, 16, '2019-04-10 22:24:19', '2019-04-10 22:25:47'),
+(103, 'pending', 5, 'Starter (Foreign)', '45 Days Membership for Outside Bangladesh', 36.00, 'USD', '45', NULL, 'BDT', 'Bank', NULL, NULL, 60, 60, NULL, '2019-04-23 16:15:18', '2019-04-23 16:15:18');
 
 -- --------------------------------------------------------
 
@@ -2518,10 +2709,10 @@ CREATE TABLE `user_photos` (
   `img_ext` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `img_mime` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `img_type` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `autoload` tinyint(1) NOT NULL DEFAULT '1',
-  `checked` tinyint(1) NOT NULL DEFAULT '0',
-  `can_edit` tinyint(1) NOT NULL DEFAULT '1',
-  `addedby_id` int(10) UNSIGNED NOT NULL DEFAULT '1',
+  `autoload` tinyint(1) NOT NULL DEFAULT 1,
+  `checked` tinyint(1) NOT NULL DEFAULT 0,
+  `can_edit` tinyint(1) NOT NULL DEFAULT 1,
+  `addedby_id` int(10) UNSIGNED NOT NULL DEFAULT 1,
   `editedby_id` int(10) UNSIGNED DEFAULT NULL,
   `user_id` int(10) UNSIGNED DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -2854,22 +3045,30 @@ INSERT INTO `user_photos` (`id`, `img_name`, `img_original_name`, `img_url`, `im
 (338, '262_pub_2021_01_10_045611_sosdq0wA.jpg', '262_pp_2020_12_28_070053_41028303.jpg', 'storage/users/photos/262_pub_2021_01_10_045611_sosdq0wA.jpg', '137496', '720', '719', 'jpg', 'image/jpeg', 'public', 0, 0, 1, 1, NULL, 262, '2021-01-09 22:56:11', '2021-01-09 22:56:11', NULL),
 (339, '247_pub_2021_01_10_045657_q79YQWCa.jpg', '247_pp_2020_12_05_012441_87934162.jpg', 'storage/users/photos/247_pub_2021_01_10_045657_q79YQWCa.jpg', '73817', '720', '540', 'jpg', 'image/jpeg', 'public', 0, 0, 1, 1, NULL, 247, '2021-01-09 22:56:57', '2021-01-09 22:56:57', NULL),
 (340, '276_pub_2021_01_17_092201_xJ70PHDT.jpg', '276_pp_2021_01_14_053440_57779464.jpg', 'storage/users/photos/276_pub_2021_01_17_092201_xJ70PHDT.jpg', '369860', '1982', '1982', 'jpg', 'image/jpeg', 'public', 0, 0, 1, 16, NULL, 276, '2021-01-17 03:22:01', '2021-01-17 03:22:01', NULL),
-(341, 'kJa1bH6w1612782292.png', 'admin.png', 'storage/users/photos/kJa1bH6w1612782292.png', '1493', '248', '248', 'png', 'image/png', 'public', 0, 0, 1, 287, NULL, 287, '2021-02-08 05:04:53', '2021-02-08 05:04:53', NULL),
-(342, 'xspiKU4D1612782293.png', 'cl.png', 'storage/users/photos/xspiKU4D1612782293.png', '1470', '200', '200', 'png', 'image/png', 'public', 0, 0, 1, 287, NULL, 287, '2021-02-08 05:04:53', '2021-02-08 05:04:53', NULL),
-(343, '1nbHccB41612782293.jpg', 'details-hero.jpg', 'storage/users/photos/1nbHccB41612782293.jpg', '152211', '960', '640', 'jpg', 'image/jpeg', 'public', 0, 0, 1, 287, NULL, 287, '2021-02-08 05:04:53', '2021-02-08 05:04:53', NULL),
-(344, '0enCpcCX1612782309.png', 'admin.png', 'storage/users/photos/0enCpcCX1612782309.png', '1493', '248', '248', 'png', 'image/png', 'public', 0, 0, 1, 287, NULL, 287, '2021-02-08 05:05:09', '2021-02-08 05:05:09', NULL),
-(346, 'PpsGEfPT1612782309.jpg', 'details-hero.jpg', 'storage/users/photos/PpsGEfPT1612782309.jpg', '152211', '960', '640', 'jpg', 'image/jpeg', 'public', 0, 0, 1, 287, NULL, 287, '2021-02-08 05:05:09', '2021-02-08 05:05:09', NULL),
-(347, 'bxlOWbDx1612782309.png', 'details-hero.png', 'storage/users/photos/bxlOWbDx1612782309.png', '98676', '900', '620', 'png', 'image/png', 'public', 0, 0, 1, 287, NULL, 287, '2021-02-08 05:05:09', '2021-02-08 05:05:09', NULL),
-(348, '287_pub_2021_02_08_111239_8zx0Q6WR.png', 'image.png', 'storage/users/photos/287_pub_2021_02_08_111239_8zx0Q6WR.png', '1722', '200', '200', 'png', 'image/png', 'public', 0, 0, 1, 1, NULL, 287, '2021-02-08 05:12:39', '2021-02-08 05:12:39', NULL),
-(349, 'QVC2dkDl1612782990.png', 'details-hero1.png', 'storage/users/photos/QVC2dkDl1612782990.png', '23668', '416', '288', 'png', 'image/png', 'public', 0, 0, 1, 288, NULL, 288, '2021-02-08 05:16:30', '2021-02-08 05:16:30', NULL),
-(350, 'mofyVA2t1612782990.png', 'details-hero2.png', 'storage/users/photos/mofyVA2t1612782990.png', '100401', '477', '281', 'png', 'image/png', 'public', 0, 0, 1, 288, NULL, 288, '2021-02-08 05:16:30', '2021-02-08 05:16:30', NULL),
-(351, 'lyEKy9CI1612782991.png', 'image.png', 'storage/users/photos/lyEKy9CI1612782991.png', '1722', '200', '200', 'png', 'image/png', 'public', 0, 0, 1, 288, NULL, 288, '2021-02-08 05:16:31', '2021-02-08 05:16:31', NULL),
-(352, 'O1YhJMCq1612784207.png', 'admin.png', 'storage/users/photos/O1YhJMCq1612784207.png', '1493', '248', '248', 'png', 'image/png', 'public', 0, 0, 1, 290, NULL, 290, '2021-02-08 05:36:47', '2021-02-08 05:36:47', NULL),
-(353, 'Heq2KMkW1612784207.png', 'cl.png', 'storage/users/photos/Heq2KMkW1612784207.png', '1470', '200', '200', 'png', 'image/png', 'public', 0, 0, 1, 290, NULL, 290, '2021-02-08 05:36:47', '2021-02-08 05:36:47', NULL),
-(354, 'UqpzHAMZ1612784207.jpg', 'details-hero.jpg', 'storage/users/photos/UqpzHAMZ1612784207.jpg', '152211', '960', '640', 'jpg', 'image/jpeg', 'public', 0, 0, 1, 290, NULL, 290, '2021-02-08 05:36:47', '2021-02-08 05:36:47', NULL),
-(355, 'KMm2gDRT1614411341.jpg', 'UKRI-WomanUnwellSofa-GettyImages-1158815156-735x490.jpg', 'storage/users/photos/KMm2gDRT1614411341.jpg', '48635', '735', '490', 'jpg', 'image/jpeg', 'public', 0, 0, 1, 300, NULL, 300, '2021-02-27 01:35:41', '2021-02-27 01:35:41', NULL),
-(356, 'D37cmyaD1614411341.jpg', '192928-4160b152-1911-419c-a158-b6221f9cacc2.jpg', 'storage/users/photos/D37cmyaD1614411341.jpg', '59044', '800', '391', 'jpg', 'image/jpeg', 'public', 0, 0, 1, 300, NULL, 300, '2021-02-27 01:35:41', '2021-02-27 01:35:41', NULL),
-(357, 'iLA3sV6O1614411341.jpg', 'UKRI-191020-AntibioticsPills-GettyImages-photo-final-735x490.jpg', 'storage/users/photos/iLA3sV6O1614411341.jpg', '50486', '735', '490', 'jpg', 'image/jpeg', 'public', 0, 0, 1, 300, NULL, 300, '2021-02-27 01:35:41', '2021-02-27 01:35:41', NULL);
+(341, 'mu5yWtIg1614462450.jpg', '1.jpg', 'storage/users/photos/mu5yWtIg1614462450.jpg', '40356', '750', '563', 'jpg', 'image/jpeg', 'public', 0, 0, 1, 314, NULL, 314, '2021-02-27 15:47:30', '2021-02-27 15:47:31', NULL),
+(342, '8RInGYzM1614462451.jpeg', '2.jpeg', 'storage/users/photos/8RInGYzM1614462451.jpeg', '23410', '600', '450', 'jpeg', 'image/jpeg', 'public', 0, 0, 1, 314, NULL, 314, '2021-02-27 15:47:31', '2021-02-27 15:47:32', NULL),
+(343, '0tdrLvE71614462452.jpg', '3.jpg', 'storage/users/photos/0tdrLvE71614462452.jpg', '17868', '600', '450', 'jpg', 'image/jpeg', 'public', 0, 0, 1, 314, NULL, 314, '2021-02-27 15:47:32', '2021-02-27 15:47:32', NULL),
+(344, 'S8Su8sP91614494697.jpg', 'IMG_20210202_104028.jpg', 'storage/users/photos/S8Su8sP91614494697.jpg', '1585433', '3000', '4000', 'jpg', 'image/jpeg', 'public', 0, 0, 1, 315, NULL, 315, '2021-02-28 00:44:57', '2021-02-28 00:44:57', NULL),
+(345, 'BK6Yr9vx1614494697.jpg', 'IMG_20210204_100131.jpg', 'storage/users/photos/BK6Yr9vx1614494697.jpg', '1922953', '3000', '4000', 'jpg', 'image/jpeg', 'public', 0, 0, 1, 315, NULL, 315, '2021-02-28 00:44:57', '2021-02-28 00:44:57', NULL),
+(346, 'vwrrquqy1614494697.jpg', 'IMG_20210204_100154.jpg', 'storage/users/photos/vwrrquqy1614494697.jpg', '1010048', '3000', '4000', 'jpg', 'image/jpeg', 'public', 0, 0, 1, 315, NULL, 315, '2021-02-28 00:44:57', '2021-02-28 00:44:58', NULL),
+(347, 'iF5I3vkC1614562336.jpg', 'IMG_20210220_180529-1.jpg', 'storage/users/photos/iF5I3vkC1614562336.jpg', '2593258', '1940', '2577', 'jpg', 'image/jpeg', 'public', 0, 0, 1, 312, NULL, 312, '2021-02-28 19:32:16', '2021-02-28 19:32:17', NULL),
+(348, '1m98xZXL1614562337.jpg', 'IMG_20210220_175512-1.jpg', 'storage/users/photos/1m98xZXL1614562337.jpg', '3127508', '1571', '3183', 'jpg', 'image/jpeg', 'public', 0, 0, 1, 312, NULL, 312, '2021-02-28 19:32:17', '2021-02-28 19:32:17', NULL),
+(349, '6G0KYXOt1614562337.jpg', 'IMG_20210220_175457-1-1.jpg', 'storage/users/photos/6G0KYXOt1614562337.jpg', '1158989', '858', '2076', 'jpg', 'image/jpeg', 'public', 0, 0, 1, 312, NULL, 312, '2021-02-28 19:32:17', '2021-02-28 19:32:17', NULL),
+(350, 'XSqk8iZQ1614707812.jpg', '13566995_10154408970728945_3004505768173313876_n.jpg', 'storage/users/photos/XSqk8iZQ1614707812.jpg', '67525', '720', '960', 'jpg', 'image/jpeg', 'public', 0, 0, 1, 316, NULL, 316, '2021-03-02 11:56:53', '2021-03-02 11:56:53', NULL),
+(351, 'bUB5Khal1614707813.jpg', '50035280_10157082686323945_1391601878151725056_n.jpg', 'storage/users/photos/bUB5Khal1614707813.jpg', '104093', '960', '960', 'jpg', 'image/jpeg', 'public', 0, 0, 1, 316, NULL, 316, '2021-03-02 11:56:53', '2021-03-02 11:56:53', NULL),
+(352, 'LHy2CTrP1614707814.jpg', 'eid1.jpg', 'storage/users/photos/LHy2CTrP1614707814.jpg', '86666', '960', '443', 'jpg', 'image/jpeg', 'public', 0, 0, 1, 316, NULL, 316, '2021-03-02 11:56:54', '2021-03-02 11:56:54', NULL),
+(353, 'LSMGWYfy1615032641.jpg', 'c92e1f3a-7332-4b1d-bb44-05071a4a88eb.jpg', 'storage/users/photos/LSMGWYfy1615032641.jpg', '63631', '1024', '768', 'jpg', 'image/jpeg', 'public', 0, 0, 1, 318, NULL, 318, '2021-03-06 06:10:41', '2021-03-06 06:10:41', NULL),
+(354, 'eQ1uN0Es1615032641.jpg', 'f290eeb4-b8e6-43de-8ca8-8e55dca9e3b2.jpg', 'storage/users/photos/eQ1uN0Es1615032641.jpg', '57565', '1024', '768', 'jpg', 'image/jpeg', 'public', 0, 0, 1, 318, NULL, 318, '2021-03-06 06:10:41', '2021-03-06 06:10:42', NULL),
+(355, 'zJAP8gxm1615032642.jpg', '1678accd-736e-4c8e-b77b-05089a98180c.jpg', 'storage/users/photos/zJAP8gxm1615032642.jpg', '119535', '1024', '768', 'jpg', 'image/jpeg', 'public', 0, 0, 1, 318, NULL, 318, '2021-03-06 06:10:43', '2021-03-06 06:10:43', NULL),
+(356, 'ZFUCVDjB1615370750.jpg', '87264734_626915421478351_9001182744293670912_n.jpg', 'storage/users/photos/ZFUCVDjB1615370750.jpg', '193162', '1368', '2048', 'jpg', 'image/jpeg', 'public', 0, 0, 1, 322, NULL, 322, '2021-03-10 04:05:51', '2021-03-10 04:05:52', NULL),
+(357, 'wpDHRFk91615370752.jpg', '156513900_468236510975343_2524203647657381120_n.jpg', 'storage/users/photos/wpDHRFk91615370752.jpg', '76950', '946', '630', 'jpg', 'image/jpeg', 'public', 0, 0, 1, 322, NULL, 322, '2021-03-10 04:05:52', '2021-03-10 04:05:53', NULL),
+(358, 'VSZVKcXz1615370753.jpg', '154961398_950424965362459_8633906808421238353_n.jpg', 'storage/users/photos/VSZVKcXz1615370753.jpg', '44424', '540', '810', 'jpg', 'image/jpeg', 'public', 0, 0, 1, 322, NULL, 322, '2021-03-10 04:05:54', '2021-03-10 04:05:54', NULL),
+(359, 'zsfRyNtM1615908956.jpg', '88963705_560348174601574_32474629977145344_o (2).jpg', 'storage/users/photos/zsfRyNtM1615908956.jpg', '53756', '417', '626', 'jpg', 'image/jpeg', 'public', 0, 0, 1, 324, NULL, 324, '2021-03-16 09:35:56', '2021-03-16 09:35:56', NULL),
+(360, 'n8YI9GEA1615908956.jpg', '132872472_758684338101289_6959586205871235821_o.jpg', 'storage/users/photos/n8YI9GEA1615908956.jpg', '376531', '1365', '2048', 'jpg', 'image/jpeg', 'public', 0, 0, 1, 324, NULL, 324, '2021-03-16 09:35:56', '2021-03-16 09:35:56', NULL),
+(361, '3TbL6v7T1615908957.jpeg', '1608905416957-01.jpeg', 'storage/users/photos/3TbL6v7T1615908957.jpeg', '3673731', '3456', '5184', 'jpeg', 'image/jpeg', 'public', 0, 0, 1, 324, NULL, 324, '2021-03-16 09:35:57', '2021-03-16 09:35:57', NULL),
+(362, 'aLCwzrqb1616049357.jpg', 'inbound5173972034133292530.jpg', 'storage/users/photos/aLCwzrqb1616049357.jpg', '11712', '300', '300', 'jpg', 'image/jpeg', 'public', 0, 0, 1, 326, NULL, 326, '2021-03-18 00:35:57', '2021-03-18 00:35:57', NULL),
+(363, 'n8zIJyIo1616049357.jpg', 'inbound8795766936030617302.jpg', 'storage/users/photos/n8zIJyIo1616049357.jpg', '11712', '300', '300', 'jpg', 'image/jpeg', 'public', 0, 0, 1, 326, NULL, 326, '2021-03-18 00:35:57', '2021-03-18 00:35:57', NULL),
+(364, 'dhX6lS8S1616049357.jpg', 'inbound5568409758561021410.jpg', 'storage/users/photos/dhX6lS8S1616049357.jpg', '11712', '300', '300', 'jpg', 'image/jpeg', 'public', 0, 0, 1, 326, NULL, 326, '2021-03-18 00:35:57', '2021-03-18 00:35:58', NULL);
 
 -- --------------------------------------------------------
 
@@ -2887,9 +3086,9 @@ CREATE TABLE `user_pictures` (
   `image_size` int(11) DEFAULT NULL,
   `image_width` int(11) DEFAULT NULL,
   `image_height` int(11) DEFAULT NULL,
-  `autoload` tinyint(1) NOT NULL DEFAULT '1',
-  `checked` tinyint(1) NOT NULL DEFAULT '0',
-  `can_edit` tinyint(1) NOT NULL DEFAULT '1',
+  `autoload` tinyint(1) NOT NULL DEFAULT 1,
+  `checked` tinyint(1) NOT NULL DEFAULT 0,
+  `can_edit` tinyint(1) NOT NULL DEFAULT 1,
   `image_type` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `editedby_id` int(10) UNSIGNED DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -3178,11 +3377,35 @@ INSERT INTO `user_pictures` (`id`, `user_id`, `image_name`, `image_mime`, `image
 (573, 275, '275_pp_2021_01_13_055540_31130676.jpg', 'image/jpeg', 'jpg', 'Marriage Solution BD', 303493, 1080, 758, 1, 0, 1, 'profilepic', NULL, '2021-01-12 23:55:40', '2021-01-12 23:55:40'),
 (575, 277, '277_pp_2021_01_16_033021_86352652.jpg', 'image/jpeg', 'jpg', 'Marriage Solution BD', 1613795, 1944, 2592, 1, 0, 1, 'profilepic', NULL, '2021-01-15 21:30:22', '2021-01-15 21:30:22'),
 (576, 276, '276_pp_2021_01_17_092159_45425896.jpg', 'image/jpeg', 'jpg', 'Marriage Solution BD', 369860, 200, 200, 1, 1, 1, 'profilepic', NULL, '2021-01-17 03:22:00', '2021-01-17 03:22:00'),
-(579, 287, '287_pp_2021_02_08_111238_37312901.png', 'image/png', 'png', 'Marriage Solution BD', 1722, 200, 200, 1, 1, 1, 'profilepic', NULL, '2021-02-08 05:12:39', '2021-02-08 05:12:39'),
-(580, 288, '288_pp_2021_02_08_111620_79254769.png', 'image/png', 'png', 'Marriage Solution BD', 1722, 200, 200, 1, 0, 1, 'profilepic', NULL, '2021-02-08 05:16:20', '2021-02-08 05:16:20'),
-(581, 290, '290_pp_2021_02_08_113638_50220394.png', 'image/png', 'png', 'Marriage Solution BD', 1470, 200, 200, 1, 0, 1, 'profilepic', NULL, '2021-02-08 05:36:38', '2021-02-08 05:36:38'),
-(582, 300, '300_pp_2021_02_27_073118_66090005.jpg', 'image/jpeg', 'jpg', 'Marriage Solution BD', 50486, 735, 490, 0, 0, 1, 'profilepic', 300, '2021-02-27 01:31:19', '2021-02-27 01:35:41'),
-(583, 300, '300_pp_2021_02_27_073541_74618615.jpg', 'image/jpeg', 'jpg', 'Marriage Solution BD', 49284, 735, 490, 1, 0, 1, 'profilepic', NULL, '2021-02-27 01:35:41', '2021-02-27 01:35:41');
+(577, 278, '278_pp_2021_01_27_071059_37067358.jpg', 'image/jpeg', 'jpg', 'Marriage Solution BD', 19840, 542, 540, 1, 0, 1, 'profilepic', NULL, '2021-01-27 01:10:59', '2021-01-27 01:10:59'),
+(578, 279, '279_pp_2021_01_28_112455_51603123.jpeg', 'image/jpeg', 'jpeg', 'Marriage Solution BD', 43045, 720, 960, 1, 0, 1, 'profilepic', NULL, '2021-01-28 05:24:56', '2021-01-28 05:24:56'),
+(579, 280, '280_pp_2021_01_29_034031_26505381.jpg', 'image/jpeg', 'jpg', 'Marriage Solution BD', 175505, 472, 591, 1, 0, 1, 'profilepic', NULL, '2021-01-28 21:40:31', '2021-01-28 21:40:31'),
+(580, 281, '281_pp_2021_01_29_063751_85158606.jpg', 'image/jpeg', 'jpg', 'Marriage Solution BD', 367166, 2448, 3264, 0, 0, 1, 'profilepic', 281, '2021-01-29 12:37:52', '2021-01-29 13:23:55'),
+(581, 282, '282_pp_2021_01_29_064447_67313956.jpg', 'image/jpeg', 'jpg', 'Marriage Solution BD', 126674, 959, 1280, 1, 0, 1, 'profilepic', NULL, '2021-01-29 12:44:47', '2021-01-29 12:44:47'),
+(582, 281, '281_pp_2021_01_29_072355_59657563.jpg', 'image/jpeg', 'jpg', 'Marriage Solution BD', 36786, 574, 765, 1, 0, 1, 'profilepic', NULL, '2021-01-29 13:23:55', '2021-01-29 13:23:55'),
+(583, 283, '283_pp_2021_01_30_092346_20133674.jpeg', 'image/jpeg', 'jpeg', 'Marriage Solution BD', 100211, 1072, 1440, 1, 0, 1, 'profilepic', NULL, '2021-01-30 15:23:46', '2021-01-30 15:23:46'),
+(584, 295, '295_pp_2021_02_09_103112_35996376.jpg', 'image/jpeg', 'jpg', 'Marriage Solution BD', 274970, 2006, 2015, 0, 0, 1, 'profilepic', 295, '2021-02-09 04:31:12', '2021-02-09 04:42:03'),
+(585, 295, '295_pp_2021_02_09_104202_16277370.jpg', 'image/jpeg', 'jpg', 'Marriage Solution BD', 274970, 2006, 2015, 1, 0, 1, 'profilepic', NULL, '2021-02-09 04:42:02', '2021-02-09 04:42:02'),
+(586, 302, '302_pp_2021_02_12_071350_82892029.jpg', 'image/jpeg', 'jpg', 'Marriage Solution BD', 288190, 1365, 2048, 0, 0, 1, 'profilepic', 302, '2021-02-12 13:13:50', '2021-02-12 13:15:09'),
+(587, 302, '302_pp_2021_02_12_071509_56121307.jpg', 'image/jpeg', 'jpg', 'Marriage Solution BD', 288190, 1365, 2048, 0, 0, 1, 'profilepic', 302, '2021-02-12 13:15:09', '2021-02-12 13:19:08'),
+(588, 302, '302_pp_2021_02_12_071907_50526268.jpg', 'image/jpeg', 'jpg', 'Marriage Solution BD', 323587, 1365, 1365, 0, 0, 1, 'profilepic', 302, '2021-02-12 13:19:07', '2021-02-12 13:19:27'),
+(589, 302, '302_pp_2021_02_12_071927_75361437.jpg', 'image/jpeg', 'jpg', 'Marriage Solution BD', 323587, 1365, 1365, 1, 0, 1, 'profilepic', NULL, '2021-02-12 13:19:27', '2021-02-12 13:19:27'),
+(590, 312, '312_pp_2021_02_26_034513_51083605.jpg', 'image/jpeg', 'jpg', 'Marriage Solution BD', 2593258, 1940, 2577, 0, 0, 1, 'profilepic', 312, '2021-02-25 21:45:14', '2021-02-25 22:09:49'),
+(591, 312, '312_pp_2021_02_26_040949_70947889.jpg', 'image/jpeg', 'jpg', 'Marriage Solution BD', 2593258, 1940, 2577, 0, 0, 1, 'profilepic', 312, '2021-02-25 22:09:49', '2021-02-26 04:56:28'),
+(592, 312, '312_pp_2021_02_26_105623_67919665.jpg', 'image/jpeg', 'jpg', 'Marriage Solution BD', 93324, 480, 686, 0, 0, 1, 'profilepic', 312, '2021-02-26 04:56:23', '2021-02-28 19:32:16'),
+(593, 299, '299_pp_2021_02_27_045045_81771241.jpg', 'image/jpeg', 'jpg', 'Marriage Solution BD', 40507, 566, 566, 1, 0, 1, 'profilepic', NULL, '2021-02-26 22:50:45', '2021-02-26 22:50:46'),
+(594, 314, '314_pp_2021_02_27_094729_84365970.jpg', 'image/jpeg', 'jpg', 'Marriage Solution BD', 64224, 620, 450, 1, 0, 1, 'profilepic', NULL, '2021-02-27 15:47:29', '2021-02-27 15:47:29'),
+(595, 315, '315_pp_2021_02_28_064457_73219146.jpg', 'image/jpeg', 'jpg', 'Marriage Solution BD', 74397, 467, 588, 1, 0, 1, 'profilepic', NULL, '2021-02-28 00:44:57', '2021-02-28 00:44:57'),
+(596, 312, '312_pp_2021_03_01_013216_89944673.jpg', 'image/jpeg', 'jpg', 'Marriage Solution BD', 1382803, 1008, 2160, 1, 0, 1, 'profilepic', NULL, '2021-02-28 19:32:16', '2021-02-28 19:32:16'),
+(597, 316, '316_pp_2021_03_02_055652_15570577.jpg', 'image/jpeg', 'jpg', 'Marriage Solution BD', 79619, 960, 960, 1, 0, 1, 'profilepic', NULL, '2021-03-02 11:56:52', '2021-03-02 11:56:52'),
+(598, 318, '318_pp_2021_03_06_121040_48473925.jpg', 'image/jpeg', 'jpg', 'Marriage Solution BD', 32539, 540, 720, 0, 0, 1, 'profilepic', 318, '2021-03-06 06:10:40', '2021-03-06 07:34:57'),
+(599, 318, '318_pp_2021_03_06_013457_60943789.jpg', 'image/jpeg', 'jpg', 'Marriage Solution BD', 32539, 540, 720, 1, 0, 1, 'profilepic', NULL, '2021-03-06 07:34:57', '2021-03-06 07:34:57'),
+(600, 322, '322_pp_2021_03_10_100549_79737312.jpg', 'image/jpeg', 'jpg', 'Marriage Solution BD', 8715, 236, 295, 0, 0, 1, 'profilepic', 322, '2021-03-10 04:05:49', '2021-03-10 04:06:46'),
+(601, 322, '322_pp_2021_03_10_100645_47066385.jpg', 'image/jpeg', 'jpg', 'Marriage Solution BD', 8715, 236, 295, 0, 0, 1, 'profilepic', 322, '2021-03-10 04:06:45', '2021-03-10 04:07:46'),
+(602, 322, '322_pp_2021_03_10_100745_29508922.jpg', 'image/jpeg', 'jpg', 'Marriage Solution BD', 44872, 945, 945, 0, 0, 1, 'profilepic', 322, '2021-03-10 04:07:45', '2021-03-10 05:48:29'),
+(603, 322, '322_pp_2021_03_10_114829_26426792.jpg', 'image/jpeg', 'jpg', 'Marriage Solution BD', 44872, 945, 945, 1, 0, 1, 'profilepic', NULL, '2021-03-10 05:48:29', '2021-03-10 05:48:29'),
+(604, 324, '324_pp_2021_03_16_033555_26734734.jpeg', 'image/jpeg', 'jpeg', 'Marriage Solution BD', 2335090, 3304, 3284, 1, 0, 1, 'profilepic', NULL, '2021-03-16 09:35:56', '2021-03-16 09:35:56'),
+(605, 326, '326_pp_2021_03_18_063557_43128372.jpg', 'image/jpeg', 'jpg', 'Marriage Solution BD', 11712, 300, 300, 1, 0, 1, 'profilepic', NULL, '2021-03-18 00:35:57', '2021-03-18 00:35:57');
 
 -- --------------------------------------------------------
 
@@ -3194,7 +3417,7 @@ CREATE TABLE `user_proposals` (
   `id` int(10) UNSIGNED NOT NULL,
   `user_id` int(10) UNSIGNED NOT NULL,
   `user_second_id` int(10) UNSIGNED NOT NULL,
-  `accepted` tinyint(1) NOT NULL DEFAULT '0',
+  `accepted` tinyint(1) NOT NULL DEFAULT 0,
   `message` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `checked` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '0',
   `editedby_id` int(10) UNSIGNED DEFAULT NULL,
@@ -3208,7 +3431,7 @@ CREATE TABLE `user_proposals` (
 --
 
 INSERT INTO `user_proposals` (`id`, `user_id`, `user_second_id`, `accepted`, `message`, `checked`, `editedby_id`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 24, 21, 0, 'Dear Nowshin Nawar, I would like to send you my proposal. Please, accept it as if it helps us to start our conversation in a better way...', '0', NULL, '2019-01-14 01:38:36', '2019-01-14 01:38:36', NULL),
+(1, 24, 21, 0, 'Dear Nowshin Nawar, I would like to send you my proposal. Please, accept it as if it helps us to start our conversation in a better way...', '0', 16, '2019-01-14 01:38:36', '2021-01-24 04:18:18', NULL),
 (2, 34, 13, 0, 'Dear Tania, I would like to send you my proposal. Please, accept it as if it helps us to start our conversation in a better way...', '0', 16, '2019-02-02 18:44:53', '2019-02-05 17:14:02', NULL),
 (3, 56, 13, 0, 'Dear Tania, I would like to send you my proposal. Please, accept it as if it helps us to start our conversation in a better way...', '0', NULL, '2019-03-23 05:29:22', '2019-03-23 05:29:22', NULL),
 (4, 64, 26, 0, 'Dear Rusafa Rahman, I would like to send you my proposal. Please, accept it as if it helps us to start our conversation in a better way...', '0', NULL, '2019-04-07 15:00:12', '2019-04-07 15:00:12', NULL),
@@ -3272,7 +3495,25 @@ INSERT INTO `user_proposals` (`id`, `user_id`, `user_second_id`, `accepted`, `me
 (62, 249, 242, 0, 'Dear priscilla, I would like to send you my proposal. Please, accept it as if it helps us to start our conversation in a better way...', '0', NULL, '2020-12-07 18:56:23', '2020-12-07 18:56:23', NULL),
 (63, 264, 63, 0, 'Dear Toupa, I would like to send you my proposal. Please, accept it as if it helps us to start our conversation in a better way...', '0', NULL, '2020-12-30 05:56:57', '2020-12-30 05:56:57', NULL),
 (64, 264, 85, 0, 'Dear Israt Jahan, I would like to send you my proposal. Please, accept it as if it helps us to start our conversation in a better way...', '0', NULL, '2020-12-30 05:57:41', '2020-12-30 05:57:41', NULL),
-(65, 1, 262, 0, 'Dear Nila Mony Shikder, I would like to send you my proposal. Please, accept it as if it helps us to start our conversation in a better way...', '0', NULL, '2021-01-09 23:51:51', '2021-01-09 23:51:51', NULL);
+(65, 1, 262, 0, 'Dear Nila Mony Shikder, I would like to send you my proposal. Please, accept it as if it helps us to start our conversation in a better way...', '0', NULL, '2021-01-09 23:51:51', '2021-01-09 23:51:51', NULL),
+(66, 280, 84, 0, 'Dear Mousumi Akther, I would like to send you my proposal. Please, accept it as if it helps us to start our conversation in a better way...', '0', NULL, '2021-01-28 21:44:33', '2021-01-28 21:44:33', NULL),
+(67, 280, 85, 0, 'Dear Israt Jahan, I would like to send you my proposal. Please, accept it as if it helps us to start our conversation in a better way...', '0', NULL, '2021-01-28 21:45:12', '2021-01-28 21:45:12', NULL),
+(68, 280, 169, 0, 'Dear momin miah, I would like to send you my proposal. Please, accept it as if it helps us to start our conversation in a better way...', '0', NULL, '2021-01-28 21:46:41', '2021-01-28 21:46:41', NULL),
+(69, 283, 13, 0, 'Dear Tania, I would like to send you my proposal. Please, accept it as if it helps us to start our conversation in a better way...', '0', NULL, '2021-01-30 15:29:13', '2021-01-30 15:29:13', NULL),
+(70, 283, 199, 0, 'Dear Rownuk jahan rima, I would like to send you my proposal. Please, accept it as if it helps us to start our conversation in a better way...', '0', NULL, '2021-01-30 15:32:40', '2021-01-30 15:32:40', NULL),
+(71, 286, 276, 0, 'Dear Ishat Salsabil, I would like to send you my proposal. Please, accept it as if it helps us to start our conversation in a better way...', '0', NULL, '2021-02-03 23:55:44', '2021-02-03 23:55:44', NULL),
+(72, 315, 243, 0, 'Dear Taslima Rashid, I would like to send you my proposal. Please, accept it as if it helps us to start our conversation in a better way...', '0', NULL, '2021-02-28 00:48:33', '2021-02-28 00:48:33', NULL),
+(73, 312, 112, 0, 'Dear Md. Nadim Mahmud, I would like to send you my proposal. Please, accept it as if it helps us to start our conversation in a better way...', '0', NULL, '2021-02-28 19:52:41', '2021-02-28 19:52:41', NULL),
+(74, 312, 105, 0, 'Dear Farjana akter bithi, I would like to send you my proposal. Please, accept it as if it helps us to start our conversation in a better way...', '0', NULL, '2021-02-28 19:53:41', '2021-02-28 19:53:41', NULL),
+(75, 312, 221, 0, 'Dear Umme Hani, I would like to send you my proposal. Please, accept it as if it helps us to start our conversation in a better way...', '0', NULL, '2021-02-28 20:00:59', '2021-02-28 20:00:59', NULL),
+(76, 316, 262, 0, 'Dear Nila Mony Shikder, I would like to send you my proposal. Please, accept it as if it helps us to start our conversation in a better way...', '0', NULL, '2021-03-02 12:00:04', '2021-03-02 12:00:04', NULL),
+(77, 316, 275, 0, 'Dear Sumaiya Rahman, I would like to send you my proposal. Please, accept it as if it helps us to start our conversation in a better way...', '0', NULL, '2021-03-02 12:04:22', '2021-03-02 12:04:22', NULL),
+(78, 316, 240, 0, 'Dear Alifa akter, I would like to send you my proposal. Please, accept it as if it helps us to start our conversation in a better way...', '0', NULL, '2021-03-02 12:05:12', '2021-03-02 12:05:12', NULL),
+(79, 316, 233, 0, 'Dear Wasifa Tahsin, I would like to send you my proposal. Please, accept it as if it helps us to start our conversation in a better way...', '0', NULL, '2021-03-05 11:26:56', '2021-03-05 11:26:56', NULL),
+(80, 316, 85, 0, 'Dear Israt Jahan, I would like to send you my proposal. Please, accept it as if it helps us to start our conversation in a better way...', '0', NULL, '2021-03-05 11:29:33', '2021-03-05 11:29:33', NULL),
+(81, 322, 176, 0, 'Dear Sadia Hossain, I would like to send you my proposal. Please, accept it as if it helps us to start our conversation in a better way...', '0', NULL, '2021-03-10 04:55:41', '2021-03-10 04:55:41', NULL),
+(82, 322, 63, 0, 'Dear Toupa, I would like to send you my proposal. Please, accept it as if it helps us to start our conversation in a better way...', '0', NULL, '2021-03-10 04:56:11', '2021-03-10 04:56:11', NULL),
+(83, 322, 276, 0, 'Dear Ishat Salsabil, I would like to send you my proposal. Please, accept it as if it helps us to start our conversation in a better way...', '0', NULL, '2021-03-10 05:46:21', '2021-03-10 05:46:21', NULL);
 
 -- --------------------------------------------------------
 
@@ -3285,7 +3526,7 @@ CREATE TABLE `user_roles` (
   `user_id` int(10) UNSIGNED NOT NULL,
   `role_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `role_value` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
-  `branch_id` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `branch_id` int(10) UNSIGNED NOT NULL DEFAULT 0,
   `addedby_id` int(10) UNSIGNED NOT NULL,
   `editedby_id` int(10) UNSIGNED DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -3335,9 +3576,9 @@ INSERT INTO `user_role_items` (`id`, `user_id`, `role_id`, `name`, `addedby_id`,
 
 CREATE TABLE `user_search_terms` (
   `id` int(10) UNSIGNED NOT NULL,
-  `custom_search` tinyint(1) NOT NULL DEFAULT '1',
-  `min_age` int(11) NOT NULL DEFAULT '18',
-  `max_age` int(11) NOT NULL DEFAULT '60',
+  `custom_search` tinyint(1) NOT NULL DEFAULT 1,
+  `min_age` int(11) NOT NULL DEFAULT 18,
+  `max_age` int(11) NOT NULL DEFAULT 60,
   `country` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `country_other` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `country_of_residence` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -3375,9 +3616,9 @@ CREATE TABLE `user_search_terms` (
   `favourite_movies` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `favourite_cooking` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `dress_style` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `checked` tinyint(1) NOT NULL DEFAULT '0',
-  `can_edit` tinyint(1) NOT NULL DEFAULT '1',
-  `addedby_id` int(10) UNSIGNED NOT NULL DEFAULT '1',
+  `checked` tinyint(1) NOT NULL DEFAULT 0,
+  `can_edit` tinyint(1) NOT NULL DEFAULT 1,
+  `addedby_id` int(10) UNSIGNED NOT NULL DEFAULT 1,
   `editedby_id` int(10) UNSIGNED DEFAULT NULL,
   `user_id` int(10) UNSIGNED DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -3391,7 +3632,7 @@ CREATE TABLE `user_search_terms` (
 INSERT INTO `user_search_terms` (`id`, `custom_search`, `min_age`, `max_age`, `country`, `country_other`, `country_of_residence`, `country_of_residence_other`, `user_status`, `education_level`, `subject_studied`, `job_title`, `profession`, `profession_other`, `citizenship`, `income`, `marital_status`, `do_u_have_children`, `body_build`, `skin_color`, `smoke_status`, `disabilities_status`, `disabilities_status_other`, `alcohol_status`, `min_height`, `max_height`, `diat_status`, `mother_tongue`, `district`, `thana`, `citizenship_other`, `city_of_residence`, `state_of_residence`, `religion`, `social_order`, `interests`, `favourite_music`, `favourite_reads`, `favourite_movies`, `favourite_cooking`, `dress_style`, `checked`, `can_edit`, `addedby_id`, `editedby_id`, `user_id`, `created_at`, `updated_at`) VALUES
 (1, 1, 22, 45, 'Bangladesh', '', NULL, NULL, NULL, NULL, NULL, NULL, 'Doctor', '', NULL, NULL, 'Never Married', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '5 Feet 1 Inch', '5 Feet 6 Inch', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Just Muslim', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 1, 13, NULL, 13, '2018-11-13 05:41:36', '2018-11-13 05:41:36'),
 (2, 1, 18, 60, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 1, 1, NULL, 16, '2018-12-07 00:21:32', '2018-12-07 00:21:32'),
-(3, 1, 20, 60, 'Afghanistan', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Doctor', NULL, NULL, NULL, 'Never Married', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '5 Feet', '5 Feet 2 Inch', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Muslim', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 1, 1, NULL, 1, '2018-12-07 00:26:22', '2021-02-06 23:56:49'),
+(3, 1, 18, 60, 'Afghanistan', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Doctor', NULL, NULL, NULL, 'Never Married', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '5 Feet', '5 Feet 2 Inch', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Muslim', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 1, 1, NULL, 1, '2018-12-07 00:26:22', '2021-01-09 06:51:05'),
 (4, 1, 22, 34, 'Bangladesh', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, NULL, 'Widowed', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '4 Feet 11 Inch', '5 Feet 4 Inch', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Hanafi', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 1, 17, NULL, 17, '2018-12-10 02:02:11', '2018-12-10 02:02:11'),
 (5, 1, 18, 26, 'Bangladesh', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, NULL, 'Never Married', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '5 Feet 2 Inch', '5 Feet 6 Inch', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Just Muslim', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 1, 18, NULL, 18, '2018-12-16 12:32:39', '2018-12-16 12:32:39'),
 (6, 1, 20, 28, 'Bangladesh', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Citizen', NULL, NULL, NULL, 'Divorced', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '5 Feet 2 Inch', '5 Feet 6 Inch', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Just Muslim', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 1, 19, NULL, 19, '2018-12-19 18:26:57', '2018-12-19 18:26:57'),
@@ -3666,26 +3907,29 @@ INSERT INTO `user_search_terms` (`id`, `custom_search`, `min_age`, `max_age`, `c
 (274, 1, 28, 32, 'Bangladesh', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Doctor', NULL, NULL, NULL, 'Never Married', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '5 Feet 9 Inch', '6 Feet', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Sunni', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 1, 275, NULL, 275, '2021-01-12 23:55:40', '2021-01-13 03:16:37'),
 (275, 1, 26, 29, 'Bangladesh', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Never Married', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '5 Feet 5 Inch', '5 Feet 10 Inch', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Sunni', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 1, 276, NULL, 276, '2021-01-14 11:34:41', '2021-01-14 11:59:39'),
 (276, 1, 21, 47, 'Bangladesh', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Professor', NULL, NULL, NULL, 'Never Married', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '5 Feet', '6 Feet', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Baidya', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 1, 277, NULL, 277, '2021-01-15 21:30:22', '2021-01-15 21:30:22'),
-(277, 1, 20, 29, 'Andorra', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'BCS (Taxation): Assistant Commissioner of Taxes', NULL, NULL, NULL, 'Never Married', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '4 Feet 5 Inch', '5 Feet 1 Inch', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Just Muslim', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 1, 1, NULL, 1, '2021-02-03 05:01:59', '2021-02-03 05:01:59'),
-(278, 1, 22, 30, 'Austria', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'BCS (Customs & Excise): Assistant Commissioner of customs', NULL, NULL, NULL, 'Legally Separated', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '5 Feet', '4 Feet 4 Inch', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Ahle Hadith', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 1, 1, NULL, 1, '2021-02-03 05:03:37', '2021-02-03 05:03:37'),
-(279, 1, 22, 30, 'Austria', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'BCS (Customs & Excise): Assistant Commissioner of customs', NULL, NULL, NULL, 'Legally Separated', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '5 Feet', '4 Feet 4 Inch', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Ahle Hadith', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 1, 1, NULL, 1, '2021-02-03 05:03:43', '2021-02-03 05:03:43'),
-(280, 1, 21, 30, 'Azerbaijan', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'BCS (Taxation): Assistant Commissioner of Taxes', NULL, NULL, NULL, 'Legally Separated', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '4 Feet 1 Inch', '5 Feet 2 Inch', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Brahmin', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 1, 281, NULL, 281, '2021-02-03 05:05:57', '2021-02-07 01:22:53'),
-(281, 1, 23, 29, 'Argentina', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'BCS (Foreign Affairs): Assistant Secretary (Former Section Officer)', NULL, NULL, NULL, 'Legally Separated', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '4 Feet 11 Inch', '4 Feet 7 Inch', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Salafi', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 1, 281, NULL, 281, '2021-02-03 05:10:10', '2021-02-03 05:10:10');
+(277, 1, 18, 22, 'Bangladesh', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, NULL, 'Never Married', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '4 Feet 9 Inch', '5 Feet 1 Inch', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Sunni', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 1, 278, NULL, 278, '2021-01-27 01:11:02', '2021-01-27 01:11:02'),
+(278, 1, 36, 40, 'Canada', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'BCS (Audit & Accounts): Assistant Accountant General', NULL, NULL, NULL, 'Anulled', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '5 Feet 7 Inch', '5 Feet 10 Inch', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Just Muslim', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 1, 279, NULL, 279, '2021-01-28 05:24:56', '2021-01-28 05:24:58'),
+(279, 1, 18, 35, 'Bangladesh', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, NULL, 'Legally Separated', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '4 Feet 10 Inch', '5 Feet 10 Inch', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Just Muslim', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 1, 280, NULL, 280, '2021-01-28 21:40:32', '2021-01-28 21:40:32'),
+(280, 1, 18, 25, 'Bangladesh', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Never Married', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '4 Feet 8 Inch', '5 Feet 1 Inch', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Hindu', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 1, 281, NULL, 281, '2021-01-29 12:37:52', '2021-01-29 13:25:31'),
+(281, 1, 30, 40, 'Bangladesh', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Businessmen', NULL, NULL, NULL, 'Divorced', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '5 Feet 7 Inch', '6 Feet 2 Inch', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Sunni', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 1, 282, NULL, 282, '2021-01-29 12:44:47', '2021-01-30 04:29:26'),
+(282, 1, 22, 24, 'Bangladesh', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Doctor', NULL, NULL, NULL, 'Never Married', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '5 Feet 1 Inch', '5 Feet 3 Inch', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Just Muslim', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 1, 283, NULL, 283, '2021-01-30 15:23:46', '2021-01-30 15:23:46');
 INSERT INTO `user_search_terms` (`id`, `custom_search`, `min_age`, `max_age`, `country`, `country_other`, `country_of_residence`, `country_of_residence_other`, `user_status`, `education_level`, `subject_studied`, `job_title`, `profession`, `profession_other`, `citizenship`, `income`, `marital_status`, `do_u_have_children`, `body_build`, `skin_color`, `smoke_status`, `disabilities_status`, `disabilities_status_other`, `alcohol_status`, `min_height`, `max_height`, `diat_status`, `mother_tongue`, `district`, `thana`, `citizenship_other`, `city_of_residence`, `state_of_residence`, `religion`, `social_order`, `interests`, `favourite_music`, `favourite_reads`, `favourite_movies`, `favourite_cooking`, `dress_style`, `checked`, `can_edit`, `addedby_id`, `editedby_id`, `user_id`, `created_at`, `updated_at`) VALUES
-(282, 1, 22, 28, 'Argentina', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'BCS (Foreign Affairs): Assistant Secretary (Former Section Officer)', NULL, NULL, NULL, 'Never Married', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '4 Feet 11 Inch', '5 Feet 3 Inch', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Hanafi', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 1, 281, NULL, 281, '2021-02-03 05:12:27', '2021-02-03 05:12:27'),
-(283, 1, 18, 60, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 1, 280, NULL, 280, '2021-02-03 05:41:47', '2021-02-03 05:41:47'),
-(284, 1, 18, 60, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 1, 282, NULL, 282, '2021-02-03 05:46:27', '2021-02-03 05:46:27'),
-(285, 1, 22, 25, 'Antarctica', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Industrialists', NULL, NULL, NULL, 'Legally Separated', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '4 Feet 3 Inch', '4 Feet 6 Inch', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Ahle Hadith', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 1, 282, NULL, 282, '2021-02-03 06:31:19', '2021-02-03 06:31:19'),
-(286, 1, 18, 51, 'Bangladesh', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Male Police officer', NULL, NULL, NULL, 'Never Married', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '4 Feet 2 Inch', '4 Feet 4 Inch', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Just Muslim', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 1, 282, NULL, 282, '2021-02-03 06:35:10', '2021-02-03 06:35:10'),
-(287, 1, 41, 70, 'Curaçao', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Ministry of Health (Bangladesh)', NULL, NULL, NULL, 'Divorced', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '6 Feet 3 Inch', '6 Feet', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Just Muslim', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 1, 1, NULL, 1, '2021-02-06 05:24:08', '2021-02-06 05:24:08'),
-(288, 1, 40, 37, 'Timor-Leste', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Bangladesh Air Force', NULL, NULL, NULL, 'Legally Separated', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '4 Feet 11 Inch', '6 Feet 3 Inch', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Hindu', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 1, 283, NULL, 283, '2021-02-07 23:31:40', '2021-02-08 00:45:58'),
-(289, 1, 29, 55, 'Benin', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Lecturer', NULL, NULL, NULL, 'Widowed', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '5 Feet 9 Inch', '6 Feet 7 Inch', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Other', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 1, 1, NULL, 285, '2021-02-08 01:04:33', '2021-02-08 01:04:33'),
-(290, 1, 25, 48, 'Anguilla', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Businessmen', NULL, NULL, NULL, 'Widowed', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '5 Feet 8 Inch', '5 Feet 8 Inch', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Muslim', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 1, 1, NULL, 286, '2021-02-08 01:30:05', '2021-02-08 01:30:05'),
-(291, 1, 24, 49, 'Sao Tome and Principe', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Professor', NULL, NULL, NULL, 'Anulled', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '4 Feet 1 Inch', '5 Feet 5 Inch', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Muslim', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 1, 1, NULL, 287, '2021-02-08 04:26:10', '2021-02-08 04:26:10'),
-(292, 1, 33, 43, 'Pakistan', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Ministry of shipping bangladesh', NULL, NULL, NULL, 'Divorced', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '5 Feet 11 Inch', '4 Feet 10 Inch', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Buddhist', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 1, 1, NULL, 288, '2021-02-08 05:16:10', '2021-02-08 05:16:10'),
-(293, 1, 21, 50, 'Nigeria', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Businessmen', NULL, NULL, NULL, 'Anulled', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '4 Feet 9 Inch', '5 Feet 8 Inch', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Other', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 1, 290, NULL, 290, '2021-02-08 05:31:34', '2021-02-08 05:36:18'),
-(294, 1, 18, 60, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 1, 291, NULL, 291, '2021-02-08 05:38:28', '2021-02-08 05:38:28'),
-(295, 1, 18, 60, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 1, 1, NULL, 294, '2021-02-13 03:19:13', '2021-02-13 03:19:13');
+(283, 1, 18, 60, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 1, 284, NULL, 284, '2021-02-03 07:34:34', '2021-02-03 07:34:34'),
+(284, 1, 24, 26, 'Bangladesh', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Citizen', NULL, NULL, NULL, 'Never Married', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '5 Feet 3 Inch', '5 Feet 4 Inch', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Just Muslim', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 1, 286, NULL, 286, '2021-02-03 23:52:14', '2021-02-03 23:52:15'),
+(285, 1, 18, 60, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 1, 288, NULL, 288, '2021-02-05 05:14:42', '2021-02-05 05:14:42'),
+(286, 1, 18, 60, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 1, 289, NULL, 289, '2021-02-05 05:52:33', '2021-02-05 05:52:33'),
+(287, 1, 18, 22, 'Bangladesh', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Running Student', NULL, NULL, NULL, 'Never Married', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '5 Feet 3 Inch', '5 Feet 5 Inch', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Muslim', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 1, 1, NULL, 295, '2021-02-09 04:30:18', '2021-02-09 04:30:18'),
+(288, 1, 26, 34, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Engineer', NULL, NULL, NULL, 'Never Married', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '5 Feet 6 Inch', '6 Feet 2 Inch', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Muslim', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 1, 1, NULL, 302, '2021-02-12 13:13:18', '2021-02-12 13:13:18'),
+(289, 1, 18, 60, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 1, 310, NULL, 310, '2021-02-20 08:34:02', '2021-02-20 08:34:02'),
+(290, 1, 18, 29, 'Bangladesh', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'BCS (Foreign Affairs): Assistant Secretary (Former Section Officer)', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '4 Feet 2 Inch', '5 Feet', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 1, 1, NULL, 311, '2021-02-25 05:00:19', '2021-02-25 05:00:19'),
+(291, 1, 18, 30, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Divorced', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '4 Feet', '6 Feet 4 Inch', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 1, 1, NULL, 312, '2021-02-25 21:59:59', '2021-02-25 21:59:59'),
+(292, 1, 24, 31, 'Bangladesh', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Engineer', NULL, NULL, NULL, 'Never Married', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '5 Feet', '5 Feet 6 Inch', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Muslim', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 1, 1, NULL, 314, '2021-02-27 15:39:09', '2021-02-27 15:39:09'),
+(293, 1, 18, 28, 'Bangladesh', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Never Married', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '5 Feet', '5 Feet 6 Inch', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Muslim', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 1, 1, NULL, 315, '2021-02-28 00:41:32', '2021-02-28 00:41:32'),
+(294, 1, 22, 28, 'Bangladesh', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Running Student', NULL, NULL, NULL, 'Never Married', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '5 Feet 4 Inch', '5 Feet 6 Inch', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Muslim', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 1, 1, NULL, 316, '2021-03-02 11:53:11', '2021-03-02 11:53:11'),
+(295, 1, 20, 26, 'Bangladesh', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Never Married', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '5 Feet', '5 Feet 10 Inch', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Muslim', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 1, 1, NULL, 317, '2021-03-03 13:34:04', '2021-03-03 13:34:04'),
+(296, 1, 33, 40, 'Bangladesh', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Engineer', NULL, NULL, NULL, 'Never Married', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '5 Feet 4 Inch', '6 Feet', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Muslim', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 1, 1, NULL, 318, '2021-03-06 06:12:03', '2021-03-06 06:12:03'),
+(297, 1, 20, 27, 'Bangladesh', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Running Student', NULL, NULL, NULL, 'Divorced', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '5 Feet', '5 Feet 1 Inch', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Muslim', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 1, 1, NULL, 322, '2021-03-10 03:51:56', '2021-03-10 05:44:38'),
+(298, 1, 18, 20, 'Bangladesh', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Running Student', NULL, NULL, NULL, 'Never Married', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '5 Feet 3 Inch', '5 Feet 5 Inch', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Muslim', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 1, 1, NULL, 326, '2021-03-18 00:15:48', '2021-03-18 00:15:48');
 
 -- --------------------------------------------------------
 
@@ -3723,7 +3967,7 @@ INSERT INTO `user_setting_fields` (`id`, `title`, `addedby_id`, `editedby_id`, `
 (14, 'Family Types', 16, NULL, '2019-02-05 17:22:44', '2019-02-05 17:22:44'),
 (15, 'Residing District/City', 1, NULL, '2019-03-18 20:13:26', '2019-03-18 20:13:26'),
 (16, 'Employed In', 1, NULL, '2019-03-18 20:13:26', '2019-03-18 20:13:26'),
-(17, 'Family Class', 1, NULL, '2021-02-12 22:03:15', '2021-02-12 22:03:15');
+(17, 'Family Class', 1, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -4139,7 +4383,6 @@ INSERT INTO `user_setting_items` (`id`, `title`, `drag_id`, `field_id`, `addedby
 (414, 'Industrialists', NULL, 10, 16, NULL, '2018-12-11 18:17:04', '2018-12-11 18:17:04'),
 (415, 'Male Police officer', NULL, 10, 16, NULL, '2018-12-11 18:17:42', '2018-12-11 18:17:42'),
 (416, 'Female Police officer', NULL, 10, 16, NULL, '2018-12-11 18:18:06', '2018-12-11 18:18:06'),
-(417, 'Businessmen', NULL, 10, 16, NULL, '2018-12-11 18:19:31', '2018-12-11 18:19:31'),
 (418, 'Businessmen', NULL, 10, 16, NULL, '2018-12-11 18:20:43', '2018-12-11 18:20:43'),
 (419, 'Professor', NULL, 10, 16, NULL, '2018-12-11 18:23:09', '2018-12-11 18:23:09'),
 (420, 'Lecturer', NULL, 10, 16, NULL, '2018-12-11 18:25:51', '2018-12-11 18:25:51'),
@@ -4177,14 +4420,19 @@ INSERT INTO `user_setting_items` (`id`, `title`, `drag_id`, `field_id`, `addedby
 (452, 'Brown', NULL, 8, 16, NULL, '2019-01-23 16:35:37', '2019-01-23 16:35:37'),
 (453, 'Ten', NULL, 8, 16, NULL, '2019-01-23 16:39:20', '2019-01-23 16:39:20'),
 (454, 'Computer science Engineering', NULL, 9, 16, NULL, '2019-02-05 17:05:43', '2019-02-05 17:05:43'),
-(458, 'Industrial', NULL, 14, 16, 1, '2019-02-05 17:24:07', '2021-02-15 00:26:23'),
-(459, 'Elite Family', NULL, 14, 16, 1, '2019-02-05 17:24:49', '2021-02-15 00:26:33'),
-(460, 'Higher Middle Class', NULL, 14, 16, 1, '2019-02-05 17:25:03', '2021-02-15 00:26:41'),
+(458, 'Industrial', NULL, 14, 16, 1, '2019-02-05 17:24:07', '2021-02-14 23:53:02'),
+(459, 'Elite Family', NULL, 14, 16, 1, '2019-02-05 17:24:49', '2021-02-14 23:53:11'),
+(460, 'Higher Middle Class', NULL, 14, 16, 1, '2019-02-05 17:25:03', '2021-02-14 23:53:17'),
 (464, 'Doctor', NULL, 12, 1, NULL, '2019-03-18 20:36:06', '2019-03-18 20:36:06'),
 (465, 'Engineer', NULL, 12, 1, NULL, '2019-03-18 20:36:14', '2019-03-18 20:36:14'),
 (466, 'Housewife', NULL, 13, 1, NULL, '2019-03-18 20:36:27', '2019-03-18 20:36:27'),
 (467, 'Doctor', NULL, 13, 1, NULL, '2019-03-18 20:36:36', '2019-03-18 20:36:36'),
-(472, 'Middle Class', NULL, 14, 1, NULL, '2021-02-15 00:27:02', '2021-02-15 00:27:02');
+(473, 'Businessman', NULL, 12, 16, NULL, '2021-02-14 00:06:13', '2021-02-14 00:06:13'),
+(474, 'Middle Class', NULL, 14, 1, NULL, '2021-02-14 23:53:44', '2021-02-14 23:53:44'),
+(476, 'Politician', NULL, 12, 16, NULL, '2021-02-20 23:51:41', '2021-02-20 23:51:41'),
+(477, 'Industrialist', NULL, 12, 16, NULL, '2021-02-20 23:51:55', '2021-02-20 23:51:55'),
+(478, 'Others', NULL, 12, 16, NULL, '2021-02-20 23:52:36', '2021-02-20 23:52:36'),
+(479, 'Medical Student', NULL, 9, 16, NULL, '2021-03-10 22:12:31', '2021-03-10 22:12:31');
 
 -- --------------------------------------------------------
 
@@ -4196,7 +4444,7 @@ CREATE TABLE `user_visitors` (
   `id` int(10) UNSIGNED NOT NULL,
   `user_id` int(10) UNSIGNED NOT NULL,
   `visitor_id` int(10) UNSIGNED NOT NULL,
-  `visits` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `visits` int(10) UNSIGNED NOT NULL DEFAULT 0,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -4453,7 +4701,7 @@ INSERT INTO `user_visitors` (`id`, `user_id`, `visitor_id`, `visits`, `created_a
 (245, 267, 275, 1, '2021-01-13 00:01:04', '2021-01-13 00:01:04'),
 (246, 265, 275, 1, '2021-01-13 00:01:43', '2021-01-13 00:01:43'),
 (247, 215, 275, 1, '2021-01-13 00:22:53', '2021-01-13 00:22:53'),
-(248, 79, 275, 16, '2021-01-13 01:37:03', '2021-01-21 03:31:10'),
+(248, 79, 275, 32, '2021-01-13 01:37:03', '2021-03-18 14:51:56'),
 (249, 270, 275, 2, '2021-01-13 01:45:34', '2021-01-13 03:12:06'),
 (250, 268, 275, 2, '2021-01-13 01:56:11', '2021-01-13 05:04:30'),
 (251, 274, 275, 1, '2021-01-13 03:11:52', '2021-01-13 03:11:52'),
@@ -4478,7 +4726,77 @@ INSERT INTO `user_visitors` (`id`, `user_id`, `visitor_id`, `visits`, `created_a
 (270, 64, 277, 1, '2021-01-15 22:21:28', '2021-01-15 22:21:28'),
 (271, 15, 277, 1, '2021-01-15 22:22:10', '2021-01-15 22:22:10'),
 (272, 1, 277, 1, '2021-01-15 22:27:04', '2021-01-15 22:27:04'),
-(273, 178, 275, 1, '2021-01-19 05:19:19', '2021-01-19 05:19:19');
+(273, 178, 275, 1, '2021-01-19 05:19:19', '2021-01-19 05:19:19'),
+(274, 276, 275, 2, '2021-01-25 15:07:10', '2021-03-14 15:07:00'),
+(275, 5, 279, 1, '2021-01-28 05:27:24', '2021-01-28 05:27:24'),
+(276, 269, 279, 1, '2021-01-28 06:22:40', '2021-01-28 06:22:40'),
+(277, 13, 280, 1, '2021-01-28 21:40:36', '2021-01-28 21:40:36'),
+(278, 276, 280, 1, '2021-01-28 21:40:46', '2021-01-28 21:40:46'),
+(279, 262, 280, 1, '2021-01-28 21:41:10', '2021-01-28 21:41:10'),
+(280, 84, 280, 2, '2021-01-28 21:44:03', '2021-01-28 21:44:33'),
+(281, 85, 280, 2, '2021-01-28 21:44:40', '2021-01-28 21:45:12'),
+(282, 169, 280, 2, '2021-01-28 21:46:23', '2021-01-28 21:46:42'),
+(283, 247, 280, 1, '2021-01-28 21:47:21', '2021-01-28 21:47:21'),
+(284, 270, 282, 1, '2021-01-29 12:54:07', '2021-01-29 12:54:07'),
+(285, 276, 281, 1, '2021-01-29 13:22:40', '2021-01-29 13:22:40'),
+(286, 45, 282, 3, '2021-01-30 04:34:08', '2021-01-30 04:36:11'),
+(287, 10, 283, 1, '2021-01-30 15:24:32', '2021-01-30 15:24:32'),
+(288, 262, 283, 1, '2021-01-30 15:25:38', '2021-01-30 15:25:38'),
+(289, 243, 283, 1, '2021-01-30 15:26:17', '2021-01-30 15:26:17'),
+(290, 69, 283, 1, '2021-01-30 15:28:32', '2021-01-30 15:28:32'),
+(291, 13, 283, 2, '2021-01-30 15:28:55', '2021-01-30 15:29:14'),
+(292, 199, 283, 2, '2021-01-30 15:32:24', '2021-01-30 15:32:40'),
+(293, 266, 283, 1, '2021-01-30 15:33:15', '2021-01-30 15:33:15'),
+(294, 276, 286, 3, '2021-02-03 23:52:27', '2021-02-03 23:56:00'),
+(295, 266, 270, 1, '2021-02-27 09:57:30', '2021-02-27 09:57:30'),
+(296, 276, 270, 1, '2021-02-27 09:58:57', '2021-02-27 09:58:57'),
+(297, 262, 270, 1, '2021-02-27 10:00:22', '2021-02-27 10:00:22'),
+(298, 243, 270, 1, '2021-02-27 10:06:41', '2021-02-27 10:06:41'),
+(299, 233, 270, 1, '2021-02-27 10:08:03', '2021-02-27 10:08:03'),
+(300, 247, 270, 1, '2021-02-27 10:09:39', '2021-02-27 10:09:39'),
+(301, 243, 315, 1, '2021-02-28 00:47:35', '2021-02-28 00:47:35'),
+(302, 240, 315, 1, '2021-02-28 00:48:49', '2021-02-28 00:48:49'),
+(303, 243, 312, 1, '2021-02-28 19:35:53', '2021-02-28 19:35:53'),
+(304, 241, 312, 2, '2021-02-28 19:37:23', '2021-02-28 19:38:57'),
+(305, 240, 312, 1, '2021-02-28 19:41:00', '2021-02-28 19:41:00'),
+(306, 221, 312, 3, '2021-02-28 19:42:13', '2021-02-28 20:00:59'),
+(307, 217, 312, 1, '2021-02-28 19:42:40', '2021-02-28 19:42:40'),
+(308, 215, 312, 1, '2021-02-28 19:43:35', '2021-02-28 19:43:35'),
+(309, 182, 312, 1, '2021-02-28 19:46:26', '2021-02-28 19:46:26'),
+(310, 181, 312, 1, '2021-02-28 19:46:44', '2021-02-28 19:46:44'),
+(311, 136, 312, 1, '2021-02-28 19:49:24', '2021-02-28 19:49:24'),
+(312, 135, 312, 1, '2021-02-28 19:49:57', '2021-02-28 19:49:57'),
+(313, 121, 312, 1, '2021-02-28 19:50:28', '2021-02-28 19:50:28'),
+(314, 115, 312, 1, '2021-02-28 19:50:54', '2021-02-28 19:50:54'),
+(315, 112, 312, 2, '2021-02-28 19:51:24', '2021-02-28 19:52:42'),
+(316, 105, 312, 2, '2021-02-28 19:53:05', '2021-02-28 19:53:42'),
+(317, 90, 312, 1, '2021-02-28 19:54:13', '2021-02-28 19:54:13'),
+(318, 75, 312, 1, '2021-02-28 19:54:55', '2021-02-28 19:54:55'),
+(319, 69, 312, 1, '2021-02-28 19:55:37', '2021-02-28 19:55:37'),
+(320, 63, 312, 1, '2021-02-28 19:56:05', '2021-02-28 19:56:05'),
+(321, 26, 312, 1, '2021-02-28 19:56:54', '2021-02-28 19:56:54'),
+(322, 198, 312, 1, '2021-02-28 19:58:45', '2021-02-28 19:58:45'),
+(323, 247, 312, 1, '2021-02-28 19:59:40', '2021-02-28 19:59:40'),
+(324, 276, 316, 1, '2021-03-02 11:57:54', '2021-03-02 11:57:54'),
+(325, 262, 316, 7, '2021-03-02 11:59:02', '2021-03-03 10:53:44'),
+(326, 240, 316, 1, '2021-03-03 10:39:16', '2021-03-03 10:39:16'),
+(327, 241, 322, 1, '2021-03-10 04:10:09', '2021-03-10 04:10:09'),
+(328, 63, 322, 2, '2021-03-10 04:50:39', '2021-03-10 04:52:59'),
+(329, 176, 322, 1, '2021-03-10 04:52:16', '2021-03-10 04:52:16'),
+(330, 276, 322, 1, '2021-03-10 05:46:07', '2021-03-10 05:46:07'),
+(331, 276, 326, 4, '2021-03-18 00:36:33', '2021-03-20 00:06:41'),
+(332, 266, 326, 4, '2021-03-18 00:37:42', '2021-03-18 12:24:02'),
+(333, 243, 326, 4, '2021-03-18 00:39:52', '2021-03-20 00:09:47'),
+(334, 240, 326, 2, '2021-03-18 00:40:39', '2021-03-18 00:41:09'),
+(335, 233, 326, 1, '2021-03-18 00:41:56', '2021-03-18 00:41:56'),
+(336, 231, 326, 1, '2021-03-18 00:43:08', '2021-03-18 00:43:08'),
+(337, 230, 326, 1, '2021-03-18 00:43:28', '2021-03-18 00:43:28'),
+(338, 176, 326, 1, '2021-03-18 00:49:15', '2021-03-18 00:49:15'),
+(339, 141, 326, 1, '2021-03-18 00:49:41', '2021-03-18 00:49:41'),
+(340, 241, 326, 1, '2021-03-18 03:57:33', '2021-03-18 03:57:33'),
+(341, 217, 326, 1, '2021-03-18 12:24:34', '2021-03-18 12:24:34'),
+(342, 247, 326, 1, '2021-03-20 00:07:29', '2021-03-20 00:07:29'),
+(343, 262, 326, 1, '2021-03-20 00:08:22', '2021-03-20 00:08:22');
 
 -- --------------------------------------------------------
 
@@ -4681,22 +4999,27 @@ INSERT INTO `user_working_records` (`id`, `user_id`, `company_name`, `company_ad
 (185, 264, 'ALDAASAKI ELECTRICALCONTRACTING', 'manama,bahrain', 'salesman', '2017-08-17', NULL, '2020-12-30 05:50:02', '2020-12-30 05:50:02'),
 (186, 265, 'Elaf Network', 'Manikgonz', 'owner', '2016-07-13', '2020-12-30', '2020-12-30 06:10:17', '2020-12-30 06:10:17'),
 (187, 271, 'The Law Counsel', 'Green City Square, Suite No. A-12, 750, Satmasjid Road, Dhanmondi, Dhaka', 'Associate', '2012-01-26', NULL, '2021-01-11 01:56:46', '2021-01-11 01:56:46'),
-(188, 278, 'a2sys', 'Mokbul Tower, 17/1 DIT Road, Rampura Dhaka.', 'Not Applicable', '2021-02-21', '2021-03-04', '2021-02-02 03:06:51', '2021-02-02 03:06:51'),
-(189, 281, 'a2sys', 'Mokbul Tower, 17/1 DIT Road, Rampura Dhaka.', 'Not Applicable', '2020-12-28', NULL, '2021-02-07 01:16:34', '2021-02-07 01:16:34'),
-(190, 281, 'a2sys', 'Mokbul Tower, 17/1 DIT Road, Rampura Dhaka.', 'Not Applicable', '2020-12-28', NULL, '2021-02-07 01:16:37', '2021-02-07 01:16:37'),
-(191, 281, 'a2sys', 'Mokbul Tower, 17/1 DIT Road, Rampura Dhaka.', 'Not Applicable', '2021-02-01', '2021-02-07', '2021-02-07 01:19:54', '2021-02-07 01:19:54'),
-(192, 281, 'a2sys', 'Mokbul Tower, 17/1 DIT Road, Rampura Dhaka.', 'Not Applicable', '2021-02-02', '2021-02-17', '2021-02-07 01:23:17', '2021-02-07 01:23:17'),
-(193, 283, 'Short and Joyce Traders', 'Christensen and Cotton Traders', 'Sint expedita volup', '1985-09-07', '1993-08-19', '2021-02-08 00:44:09', '2021-02-08 00:44:09'),
-(194, 285, 'Holloway and Castro Co', 'Blake and Rodriquez Plc', 'Non quis distinctio', '2016-06-01', '1970-06-01', '2021-02-08 01:01:52', '2021-02-08 01:01:52'),
-(195, 286, 'Nielsen England Co', 'Romero Sims Plc', 'Minus ipsam est sit', '1971-06-29', '1994-08-31', '2021-02-08 01:29:33', '2021-02-08 01:29:33'),
-(196, 286, 'Daniel and Wyatt Traders', 'Knowles Woodard Co', 'Mollit sunt unde rem', '1973-06-26', '1974-03-05', '2021-02-08 01:31:42', '2021-02-08 01:31:42'),
-(197, 287, 'Schneider Aguirre Co', 'Armstrong and Valentine Associates', 'Autem ad enim ration', '1989-03-10', '2004-05-09', '2021-02-08 04:25:44', '2021-02-08 04:25:44'),
-(198, 288, 'Adkins and Cook Traders', 'Carney and Brown Traders', 'Qui at cumque praese', '2010-02-27', '1987-01-30', '2021-02-08 05:15:55', '2021-02-08 05:15:55'),
-(199, 290, 'Spence Jefferson Plc', 'Santana Clemons Co', 'Proident consequatu', '1986-01-06', '2004-11-30', '2021-02-08 05:35:30', '2021-02-08 05:35:30'),
-(200, 292, 'Washington Olson Associates', 'Lester and Jenkins Inc', 'Iusto est nihil inci', '1974-03-07', '2010-11-28', '2021-02-08 05:44:29', '2021-02-08 05:44:29'),
-(201, 297, 'Hendrix Barnett LLC', 'Cline and Mack Trading', 'Possimus sit omnis', '1984-01-22', '1992-05-23', '2021-02-15 04:19:55', '2021-02-15 04:19:55'),
-(202, 298, 'Curry Mccall LLC', 'Duran and Meyers Associates', 'Odio sint repudiand', '1971-01-18', '2004-05-09', '2021-02-15 06:17:11', '2021-02-15 06:17:11'),
-(203, 304, 'Mathis and Gates Inc', 'Benton and Bender Trading', 'Aut eveniet ratione', '2007-12-07', '2007-11-22', '2021-03-11 00:05:08', '2021-03-11 00:05:08');
+(188, 281, 'dsk', 'adabor houseing socity', 'accounts deperment', '2020-01-02', NULL, '2021-01-29 12:53:34', '2021-01-29 12:53:34'),
+(189, 282, 'Krylon Bangladesh', 'Gulshan-2, Dhaka', 'Trainer', '2017-01-05', NULL, '2021-01-29 19:27:37', '2021-01-29 19:27:37'),
+(190, 282, 'Krylon Bangladesh', 'Gulshan-2, Dhaka', 'Trainer', '2017-01-05', NULL, '2021-01-29 19:27:57', '2021-01-29 19:27:57'),
+(191, 282, 'Krylon Bangladesh', 'Gulshan-2, Dhaka', 'Trainer', '2017-01-05', NULL, '2021-01-29 19:28:17', '2021-01-29 19:28:17'),
+(192, 295, 'Rajshahi Baby Shop', 'Rajshahi', 'Manager', '2020-05-05', '2022-04-30', '2021-02-09 04:34:00', '2021-02-09 04:34:00'),
+(193, 295, 'Rajshahi Baby Shop', 'Rajshahi', 'Manager', '2020-05-05', '2022-04-30', '2021-02-09 04:41:24', '2021-02-09 04:41:24'),
+(195, 300, 'Walter Sherman Trading', 'Clark Ramirez Plc', 'Ullamco temporibus p', '2016-12-30', '2014-11-19', '2021-02-10 23:35:06', '2021-02-10 23:35:06'),
+(196, 302, 'Esolve International', 'Dhanmondi, Dhaka', 'Project Engineer', '2021-01-01', NULL, '2021-02-12 13:07:22', '2021-02-12 13:07:22'),
+(197, 312, 'Private company', 'Ghulshan-1,niketon,Block -c', 'Co admin', '2020-12-29', NULL, '2021-02-25 21:54:38', '2021-02-25 21:54:38'),
+(198, 314, 'test org', 'dhaka', 'engineer', '2015-01-01', NULL, '2021-02-27 15:33:34', '2021-02-27 15:33:34'),
+(199, 315, 'Dhaka Electric Supply Company Ltd.', '22/B,Khilkhet,Nikunja-2,Dhaka.', 'Junior Assistant Manager', '2012-12-06', NULL, '2021-02-28 00:36:14', '2021-02-28 00:36:14'),
+(200, 316, 'IT World', 'Motijheel, Dhaka', 'Web Developer', '2017-01-02', NULL, '2021-03-02 11:46:51', '2021-03-02 11:46:51'),
+(201, 317, 'Skyview online', 'Jatrabari,dhaka', 'Marketing had', '2020-09-01', NULL, '2021-03-03 13:39:52', '2021-03-03 13:39:52'),
+(202, 318, 'self employed', 'n/a', 'Freelancer', '2015-01-01', '2020-01-01', '2021-03-06 06:16:33', '2021-03-06 06:16:33'),
+(203, 322, 'Doctors Agrovet. Ltd.', 'Nurjehan Tower (5th Floor),2 Link Road, Banglamotor,Dhaka-100', 'Logistic Officer', '2019-12-01', NULL, '2021-03-10 03:56:40', '2021-03-10 03:56:40'),
+(204, 323, 'Sellers and Gonzales Associates', 'Hill and Green Inc', 'Qui corporis quia ea', '2003-09-27', '2005-12-14', '2021-03-11 00:29:51', '2021-03-11 00:29:51'),
+(205, 326, 'BKash shoes', 'Rashid market, Ashulia, Dhaka', 'Salesman', '2019-05-17', NULL, '2021-03-18 00:14:31', '2021-03-18 00:14:31'),
+(206, 326, 'BKash shoes', 'Rashid market, Ashulia, Savar,Dhaka', 'Salesman', '2019-05-17', NULL, '2021-03-18 00:20:53', '2021-03-18 00:20:53'),
+(207, 326, 'BKash shoes', 'Rashid market, Ashulia, Dhaka.', 'Salesman', '2019-05-17', NULL, '2021-03-18 00:24:03', '2021-03-18 00:24:03'),
+(208, 326, 'BKash shoes', 'Rashid market, Ashulia, Dhaka.', 'Salesman', '2019-05-17', NULL, '2021-03-18 00:24:12', '2021-03-18 00:24:12'),
+(209, 326, 'BKash shoes', 'Ashulia, Dhaka', 'Salesman', '2019-05-17', NULL, '2021-03-18 00:33:03', '2021-03-18 00:33:03');
 
 -- --------------------------------------------------------
 
@@ -4722,11 +5045,11 @@ CREATE TABLE `video_galleries` (
 --
 
 INSERT INTO `video_galleries` (`id`, `title`, `description`, `video_url`, `date`, `publish_status`, `addedby_id`, `editedby_id`, `created_at`, `updated_at`) VALUES
-(2, 'Marriage Solution BD Uttara Club', 'Marriage Solution BD Uttara Club 2017', 'https://www.youtube.com/embed/jnENCV4ylc4', '2017-10-10', 'published', 1, 1, '2018-11-30 16:09:20', '2018-11-30 16:19:17'),
-(3, 'Marriage Solution BD', 'Marriage solution', 'https://www.youtube.com/embed/g3sXVqaXUoQ', '2018-10-11', 'published', 1, 1, '2018-11-30 16:19:17', '2018-11-30 16:29:51'),
-(4, 'Marriage Solution BD', 'Our Best wishes for the new couple to spent their happy marriage life.', 'https://www.youtube.com/embed/lbCXG6Q_yNA', '2018-03-11', 'published', 1, 1, '2018-11-30 16:29:52', '2018-12-01 04:18:20'),
-(5, 'Achievement of Marriage Solution BD', 'Marriage Solution is an international matrimonial organization founded on 12th December 2012, aimed at fulfilling the needs of expected life partner across the country. We provide a trusted source of genuine people trying to find their perfect partner.', 'https://www.youtube.com/embed/n9lwc5TfBgk', '2017-08-09', 'published', 1, 1, '2018-12-01 04:18:20', '2018-12-01 04:20:02'),
-(6, 'The Introductory program between our client\'s family members', 'The Introductory program between our client\'s family members For more info visit our website www.marriagesolutionbd.com', 'https://www.youtube.com/embed/_4d5CvYCTSg', '2019-06-30', 'published', 16, 16, '2018-12-01 04:20:04', '2019-06-30 16:37:26'),
+(2, 'Marriage Solution BD Uttara Club', 'Marriage Solution BD Uttara Club 2017', 'https://www.youtube.com/embed/YBhMG2p5un0', '2017-10-10', 'published', 1, 1, '2018-11-30 16:09:20', '2021-01-23 23:08:30'),
+(3, 'Marriage Solution BD', 'Marriage solution', 'https://www.youtube.com/embed/gXqRdcCxLOc', '2018-10-11', 'published', 1, 1, '2018-11-30 16:19:17', '2021-01-23 23:05:05'),
+(4, 'Marriage Solution BD', 'Our Best wishes for the new couple to spent their happy marriage life.', 'https://www.youtube.com/embed/V576z9Z1H4s', '2018-03-11', 'published', 1, 1, '2018-11-30 16:29:52', '2021-01-23 23:05:34'),
+(5, 'Achievement of Marriage Solution BD', 'Marriage Solution is an international matrimonial organization founded on 12th December 2012, aimed at fulfilling the needs of expected life partner across the country. We provide a trusted source of genuine people trying to find their perfect partner.', 'https://www.youtube.com/embed/NRI4j67Y-Tw', '2017-08-09', 'published', 1, 1, '2018-12-01 04:18:20', '2021-01-23 23:06:42'),
+(6, 'The Introductory program between our client\'s family members', 'The Introductory program between our client\'s family members For more info visit our website www.marriagesolutionbd.com', 'https://www.youtube.com/embed/CM-jWTAWp7M', '2019-06-30', 'published', 16, 1, '2018-12-01 04:20:04', '2021-01-23 23:07:49'),
 (7, NULL, NULL, NULL, NULL, 'temp', 16, NULL, '2019-06-30 16:34:44', '2019-06-30 16:34:44');
 
 -- --------------------------------------------------------
@@ -4737,21 +5060,21 @@ INSERT INTO `video_galleries` (`id`, `title`, `description`, `video_url`, `date`
 
 CREATE TABLE `website_parameters` (
   `id` int(10) UNSIGNED NOT NULL,
-  `title` text COLLATE utf8mb4_unicode_ci,
+  `title` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `short_title` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `h1` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `slogan` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `logo` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `favicon` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `google_analytics_code` text COLLATE utf8mb4_unicode_ci,
-  `facebook_pixel_code` text COLLATE utf8mb4_unicode_ci,
+  `google_analytics_code` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `facebook_pixel_code` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `meta_author` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `meta_keyword` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `meta_description` text COLLATE utf8mb4_unicode_ci,
-  `footer_address` text COLLATE utf8mb4_unicode_ci,
-  `footer_copyright` text COLLATE utf8mb4_unicode_ci,
+  `meta_description` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `footer_address` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `footer_copyright` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `addthis_url` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `google_map_code` text COLLATE utf8mb4_unicode_ci,
+  `google_map_code` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `fb_page_code` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `contact_mobile` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `contact_email` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -4788,6 +5111,13 @@ ALTER TABLE `branches`
 --
 ALTER TABLE `branch_users`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `categories`
+--
+ALTER TABLE `categories`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `categories_title_index` (`title`);
 
 --
 -- Indexes for table `chatables`
@@ -4922,6 +5252,19 @@ ALTER TABLE `password_resets`
   ADD KEY `password_resets_email_index` (`email`(191));
 
 --
+-- Indexes for table `posts`
+--
+ALTER TABLE `posts`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `posts_title_index` (`title`);
+
+--
+-- Indexes for table `post_categories`
+--
+ALTER TABLE `post_categories`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `reports`
 --
 ALTER TABLE `reports`
@@ -4934,6 +5277,13 @@ ALTER TABLE `social_identities`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `social_identities_provider_id_unique` (`provider_id`),
   ADD UNIQUE KEY `social_identities_provider_token_unique` (`provider_token`);
+
+--
+-- Indexes for table `tags`
+--
+ALTER TABLE `tags`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `tags_title_index` (`title`);
 
 --
 -- Indexes for table `team_members`
@@ -5071,6 +5421,12 @@ ALTER TABLE `branch_users`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT for table `categories`
+--
+ALTER TABLE `categories`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT for table `chatables`
 --
 ALTER TABLE `chatables`
@@ -5104,7 +5460,7 @@ ALTER TABLE `front_sliders`
 -- AUTO_INCREMENT for table `galleries`
 --
 ALTER TABLE `galleries`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=127;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=147;
 
 --
 -- AUTO_INCREMENT for table `image_galleries`
@@ -5122,7 +5478,7 @@ ALTER TABLE `image_gallery_items`
 -- AUTO_INCREMENT for table `media`
 --
 ALTER TABLE `media`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=240;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=256;
 
 --
 -- AUTO_INCREMENT for table `media_people`
@@ -5152,7 +5508,7 @@ ALTER TABLE `menus`
 -- AUTO_INCREMENT for table `menu_pages`
 --
 ALTER TABLE `menu_pages`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=306;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=325;
 
 --
 -- AUTO_INCREMENT for table `messages`
@@ -5170,19 +5526,31 @@ ALTER TABLE `message_files`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
 -- AUTO_INCREMENT for table `pages`
 --
 ALTER TABLE `pages`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT for table `page_items`
 --
 ALTER TABLE `page_items`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=70;
+
+--
+-- AUTO_INCREMENT for table `posts`
+--
+ALTER TABLE `posts`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `post_categories`
+--
+ALTER TABLE `post_categories`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `reports`
@@ -5194,19 +5562,25 @@ ALTER TABLE `reports`
 -- AUTO_INCREMENT for table `social_identities`
 --
 ALTER TABLE `social_identities`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- AUTO_INCREMENT for table `tags`
+--
+ALTER TABLE `tags`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `team_members`
 --
 ALTER TABLE `team_members`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=305;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=327;
 
 --
 -- AUTO_INCREMENT for table `user_contacts`
@@ -5218,37 +5592,37 @@ ALTER TABLE `user_contacts`
 -- AUTO_INCREMENT for table `user_education_records`
 --
 ALTER TABLE `user_education_records`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=350;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=358;
 
 --
 -- AUTO_INCREMENT for table `user_family_infos`
 --
 ALTER TABLE `user_family_infos`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=136;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=146;
 
 --
 -- AUTO_INCREMENT for table `user_payments`
 --
 ALTER TABLE `user_payments`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=105;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=104;
 
 --
 -- AUTO_INCREMENT for table `user_photos`
 --
 ALTER TABLE `user_photos`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=358;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=365;
 
 --
 -- AUTO_INCREMENT for table `user_pictures`
 --
 ALTER TABLE `user_pictures`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=584;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=606;
 
 --
 -- AUTO_INCREMENT for table `user_proposals`
 --
 ALTER TABLE `user_proposals`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=84;
 
 --
 -- AUTO_INCREMENT for table `user_roles`
@@ -5266,7 +5640,7 @@ ALTER TABLE `user_role_items`
 -- AUTO_INCREMENT for table `user_search_terms`
 --
 ALTER TABLE `user_search_terms`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=296;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=299;
 
 --
 -- AUTO_INCREMENT for table `user_setting_fields`
@@ -5278,19 +5652,19 @@ ALTER TABLE `user_setting_fields`
 -- AUTO_INCREMENT for table `user_setting_items`
 --
 ALTER TABLE `user_setting_items`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=473;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=480;
 
 --
 -- AUTO_INCREMENT for table `user_visitors`
 --
 ALTER TABLE `user_visitors`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=274;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=344;
 
 --
 -- AUTO_INCREMENT for table `user_working_records`
 --
 ALTER TABLE `user_working_records`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=204;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=210;
 
 --
 -- AUTO_INCREMENT for table `video_galleries`

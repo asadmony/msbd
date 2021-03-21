@@ -29,10 +29,20 @@ function is_image($mimeType)
 function custom_slug($text)
 {
     $date = date('ynjGis');
-    $string = str_slug($text);
+    $string = \Str::slug($text);
     $rand = strtolower(str_random(8));
     $string = substr($string, 0,100);
     return $date.'-'.$rand.'-'.$string;
+}
+
+function str_random($number)
+{
+  return \Str::random($number);
+}
+
+function str_limit($text, $limit = 20, $end = "..")
+{
+  \Str::limit($text,$limit,$end);
 }
 
 function custom_name($text, $limit)
@@ -59,6 +69,48 @@ function custom_title($text, $limit)
     return $text;
   }
 
+}
+
+function new_slug($text='')
+{
+  $string = \Str::slug($text);
+  // if($string){ 
+  //   return $string; 
+  // }else{ 
+
+  //   // return strtolower(preg_replace('/\s+/u', '-', $text));
+  //   return strtolower(preg_replace('/[\W\s\/]+/', '-', $text));
+
+  if(!$string)
+  {
+       $text = str_replace(' ', '-', $text);
+    $text = str_replace('!', '-', $text);
+    $text = preg_replace('/\s+/u', '-', trim($text));
+
+    # $text = preg_replace('/[^A-Za-z0-9\-]/', '', $text);
+
+    $text = preg_replace('/-+/', '-', $text); // Replaces multiple hyphens with single one.
+
+    $text = strtolower($text);
+  }
+  else
+  {
+    $text = $string;
+  }
+
+ 
+
+  // }
+
+  // $generator = new \Vnsdks\SlugGenerator\SlugGenerator;
+  // return $generator->generate($text);
+
+  // dd(str_replace(' ', '-', $text));
+
+    # $text = preg_replace('/[^!@#$%^&*().]/u','', strip_tags($text));
+
+
+  return $text;
 }
 
 function bdMobile($mobile)

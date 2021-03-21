@@ -952,14 +952,14 @@ class CommonController1 extends Controller
 
 
     // blog
-    public function newPost()
-    {
-        menuSubmenu('blog', 'newPost');
-        return view('common.blog.newPost');
-    }
-    public function allPosts()
-    {
-        menuSubmenu('blog', 'allPosts');
-        return view('common.blog.allPosts');
-    }
+    // public function newPost()
+    // {
+    //     menuSubmenu('blog', 'newPost');
+    //     return view('common.blog.newPost');
+    // }
+    // public function allPosts()
+    // {
+    //     menuSubmenu('blog', 'allPosts');
+    //     return view('common.blog.allPosts');
+    // }
 }
