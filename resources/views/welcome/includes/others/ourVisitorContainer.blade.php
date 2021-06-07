@@ -5,7 +5,7 @@
     <div class="box box-widget">
             <div class="box-header w3-panel w3-leftbar w3-border-purple">
               <h3 class="box-title">
-                 Our Website Visitor
+                 {{ __('Our Website Visitor') }}
               </h3>
             </div>
             <div class="box-body w3-topbar">
@@ -15,14 +15,6 @@
 
 <script type="text/javascript" id="clustrmaps" src="//cdn.clustrmaps.com/map_v2.js?d=j9LnyN1WwJOiWTSiUgUf2AIItjOIgGY20jn1JS8J2Co&cl=ffffff&w=a"></script>
 
-
-  
-
-
-
-              
-
-              
                
             </div>
           </div>             

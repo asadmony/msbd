@@ -9,7 +9,7 @@
         {{-- <h1 class="text-center">Success Stories (Photo)</h1> --}}
 
         <h1 class="m-0 px-3 text-center" style="color: gold; font-family: 'Lobster Two', cursive; font-style: italic;">
-                <u>Our Activities Album</u>
+                Our Stories
             </h1>
             <div style="width:100%; height: 30px; background: url(/img/leaf.png) no-repeat center bottom;"></div>
             <br>

@@ -2,7 +2,6 @@
 
 @if ($me->isAdmin() || $me->hasRoleItem('payments'))
 
-
 <li class="treeview {{ session('lsbm') == 'payments' ? 'active' : '' }}">
     <a href="#">
         <i class="fa fa-id-card" aria-hidden="true"></i>
@@ -56,11 +55,29 @@
 
     </ul>
 </li>
+@endif
 
+@if (auth()->user()->isAdmin() || auth()->user()->hasRoleItem('career'))
+        <li class="treeview {{ session('lsbm') == 'career' ? 'active' : '' }}">
+          <a href="#">
+            <i class="fa fa-th" aria-hidden="true"></i>
+            <span>Career</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+ 
+            <li class="{{ session('lsbsm') == 'applications' ? 'active' : '' }}"><a class="changed-menu" href="{{route('admin.careerApplications')}}"><i class="fa fa-circle-o"></i> Applications</a></li>
+          </ul>
+        </li>
+@endif
 
+@if ($me->isAdmin() || $me->hasRoleItem('blog'))
 <li class=" treeview{{ session('lsbm') == 'blog' ? ' active ' : '' }}">
     <a href="#">
-        <i class="fa fa-podcast"></i> <span>Blog</span>
+        <i class="fa fa-podcast"></i> <span>Blog 
+        </span>
         <span class="pull-right-container">
             <i class="fa fa-angle-left pull-right"></i>
         </span>
@@ -81,21 +98,10 @@
 
             <li class="{{ session('lsbsm') == 'postsAll' ? ' active ' : '' }}"><a href="{{route('commonblog.postsAll')}}"><i class="fa fa-circle-o"></i> Posts All </a></li>
 
-  
-
     </ul>
 </li>
-
-
-<li class=" -treeview{{ session('lsbm') == 'teamMembers' ? ' active ' : '' }}">
-    <a href="{{ route('admin.teamMemberList') }}">
-        <i class="fa fa-users"></i> <span>Team Members</span>
-        <span class="pull-right-container">
-            {{-- <i class="fa fa-angle-left pull-right"></i> --}}
-        </span>
-    </a>
-</li>
 @endif
+
 
 @if ($me->isAdmin() || $me->hasRoleItem('gallery'))
 

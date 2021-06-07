@@ -57,7 +57,8 @@ class CommonBlogController extends Controller
 
         $validation = Validator::make($request->all(),
         [
-          'category'=> 'required|min:2|max:100|unique:categories,title'
+          'category'=> 'required|min:2|max:100|unique:categories,title',
+          'category_bn'=> 'required|min:2|max:100|unique:categories,title_bn'
         ]);
         if($validation->fails())
         {
@@ -69,6 +70,7 @@ class CommonBlogController extends Controller
 
         $cat = new Category;
         $cat->title = $request->category;
+        $cat->title_bn = $request->category_bn;
         // $cat->addedby_id = $request->user()->id;
         $cat->save();
 
@@ -91,7 +93,8 @@ class CommonBlogController extends Controller
     {
         $validation = Validator::make($request->all(),
         [ 
-            'name'=> 'required|min:2|max:100|unique:categories,title',
+            'name'=> 'required|min:2|max:100|unique:categories,title,'.$cat->id,
+            'name_bn'=> 'required|min:2|max:100|unique:categories,title_bn,'.$cat->id,
         ]);
         if($validation->fails())
         {
@@ -101,8 +104,13 @@ class CommonBlogController extends Controller
         }
 
         $name = $request->name;
+        $name_bn = $request->name_bn;
+        
         $cat_old_name = $cat->title;
+        $cat_old_name_bn = $cat->title_bn;
+
         $cat->title = $name ?: $cat_old_name;
+        $cat->title_bn = $name_bn ?: $cat_old_name_bn;
         // $cat->editedby_id = Auth::id();
         $cat->save();
 
@@ -179,12 +187,15 @@ class CommonBlogController extends Controller
         // dd($request->all());
         $validation = Validator::make($request->all(),
         [ 
-          // "title" => "title"
-          // "description" => "required"
-          // "publish" => "on"
+          "title" => "required|max:255",
+          "title_bn" => "required|max:255",
+          "description" => "required",
+          "description_bn" => "required",
+          // "publish" => "on",
             'excerpt' => 'max:254|required',
-            'feature_image' => 'image'
-            // 'feature_image' => 'image|dimensions:min_with=300,min_height=20,ratio=3/2'
+            'excerpt_bn' => 'max:254|required',
+            'feature_image' => 'image',
+            // 'feature_image' => 'image|dimensions:min_with=300,min_height=20,ratio=3/2',
         ]);
 
         if($validation->fails())
@@ -206,7 +217,7 @@ class CommonBlogController extends Controller
                    $t->title = $tag;
                    // $t->addedby_id = Auth::id();
                    $t->save(); 
-                }                
+                }               
             }
         }
 
@@ -218,8 +229,11 @@ class CommonBlogController extends Controller
         }
 
         $post->title = $request->title ?: null;
+        $post->title_bn = $request->title_bn ?: null;
         $post->description = $request->description ?: null;
+        $post->description_bn = $request->description_bn ?: null;
         $post->excerpt = $request->excerpt ?: null;
+        $post->excerpt_bn = $request->excerpt_bn ?: null;
         $post->publish_status = $request->publish ? 'published' : 'draft';
         $post->front_slider = $request->front_slider ? true : false;
 
@@ -313,11 +327,14 @@ class CommonBlogController extends Controller
 
         $validation = Validator::make($request->all(),
         [ 
-          // "title" => "title"
-          // "description" => "required"
-          // "publish" => "on"
-            'excerpt' => 'max:254|required',
-            'feature_image' => 'image'
+          "title" => "required|max:255",
+          "description" => "required",
+          'excerpt' => 'max:254|required',
+          "title_bn" => "required|max:255",
+          "description_bn" => "required",
+          'excerpt_bn' => 'max:254|required',
+          // "publish" => "on",
+            'feature_image' => 'image',
         ]);
 
         if($validation->fails())
@@ -346,6 +363,9 @@ class CommonBlogController extends Controller
         $post->title = $request->title ?: null;
         $post->description = $request->description ?: null;
         $post->excerpt = $request->excerpt ?: null;
+        $post->title_bn = $request->title_bn ?: null;
+        $post->description_bn = $request->description_bn ?: null;
+        $post->excerpt_bn = $request->excerpt_bn ?: null;
         $post->publish_status = $request->publish ? 'published' : 'draft';
         $post->front_slider = $request->front_slider ? true : false;
         $post->headline = $request->headline ? true : false;

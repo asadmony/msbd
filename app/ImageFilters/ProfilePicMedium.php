@@ -9,7 +9,7 @@ class ProfilePicMedium implements FilterInterface
 {
     public function applyFilter(Image $image)
     {
-        return $image->fit(90, 90);
+        return $image->fit(100, 100);
     }
 }
 

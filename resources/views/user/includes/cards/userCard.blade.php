@@ -5,7 +5,7 @@
                         <div class="col-sm-3">
                             {{-- <img class="img-bordered rounded mb-4" src="{{ asset($user->latestCheckedPP()) }}" style="width: 100%;" alt=""> --}}
 
-                            <img src="{{ asset($user->latestCheckedPP()) }}" class="rounded img-bordered mb-4 "  alt="{{ $user->username }}" style="max-width: 150px;">
+                            <img src="{{ route('imagecache', [ 'template'=>'ppsmbl','filename' => $user->latestCheckedPP() ]) }}" class="rounded img-bordered mb-4 "  alt="{{ $user->username }}" style="max-width: 150px;">
                         </div>
                         <div class="col-sm-9">
 

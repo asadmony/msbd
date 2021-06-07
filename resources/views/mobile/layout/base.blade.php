@@ -78,10 +78,9 @@
     </style>
     @stack('css')
 
-
 </head>
 
-<body>
+<body  oncontextmenu="return false;">
     <i class="screen-overlay"></i>
     @include('mobile.layout.left_sidebar')
     <!-- =============== screen-wrap =============== -->

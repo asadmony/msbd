@@ -17,6 +17,9 @@ class CreateBranchUsersTable extends Migration
             $table->increments('id');
             $table->integer('branch_id');
             $table->integer('user_id');
+            $table->integer('contact_user_role_id')
+                ->unsigned()
+                ->nullable();
             $table->integer('addedby_id')
                   ->unsigned()
                   ->nullable();

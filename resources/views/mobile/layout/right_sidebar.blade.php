@@ -12,15 +12,22 @@
             </div>
             <div class="modal-body">
                 <nav class="nav-sidebar">
-                    <a href="{{ url('/') }}"> <i class="fa fa-home w3-text-purple"></i> Home</a>
-                    <a href="{{ route('welcome.ourBranches') }}"> <i class="fa fa-map w3-text-purple"></i> Branches</a>
+                    <a href="{{ url('/') }}"> <i class="fa fa-home w3-text-purple"></i> {{ __('Home') }}</a>
+                    <a href="{{ route('welcome.ourBranches') }}"> <i class="fa fa-map w3-text-purple"></i> {{ __('Branches') }}</a>
 
                     @foreach ($userMobileRightSidebarMenu->pages as $umrsm)
                     <a href="{{ route('page', [$umrsm->id, $umrsm->route_name]) }}"> <i
-                            class="far fa-circle w3-text-purple"></i> {{ $umrsm->page_title }}</a>
+                            class="far fa-circle w3-text-purple"></i> {{ $umrsm->localeTitle }}</a>
                     @endforeach
                     <a class="" href="{{ route('welcome.successStories') }}">
-                       <i class="fa fa-image w3-text-purple"></i> Success Stories
+                       <i class="fa fa-image w3-text-purple"></i> {{ __('Success Stories') }}
+                    </a>
+                    <a class="" title="{{__('welcome.change_language')}}"  href="{{route('welcome.languageChange')}}" >
+                        @if(Cookie::get('locale') == 'bn')
+                        <i class="fa fa-language w3-text-purple"></i> English
+                        @else
+                        <i class="fa fa-language w3-text-purple"></i> বাংলা
+                        @endif
                     </a>
                 </nav>
             </div>

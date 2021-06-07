@@ -6,7 +6,7 @@
 
 
     <div class="progress-group">
-                    <span class="progress-text">Profile Info currently Completed</span>
+                    <span class="progress-text">{{ __('Profile Info currently Completed') }}</span>
                     <span class="progress-number"><b><a data-toggle="tooltip" title="Profile Information {{ $me->profilePoint() }}% Completed" href="">  {{ $me->profilePoint() }}   </a></b>/100</span>
 
                     <a data-toggle="tooltip" title="Profile Information {{ $me->profilePoint() }}% Completed" href=""> 
@@ -21,7 +21,7 @@
                       @endif
 
                       progress-bar-striped" role="progressbar" aria-valuenow="{{ $me->profilePoint() }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ $me->profilePoint() }}%">
-                  <span class="sr-only">{{ $me->profilePoint() }}% Complete</span>
+                  <span class="sr-only">{{ $me->profilePoint() }}% {{ __('Complete') }}</span>
                 </div>
                     </div>
                   </a>
@@ -30,7 +30,7 @@
   </div>
     <div class="box-body" style="min-height: 130px;">
 
-      User Progress Card
+      {{ __('User Progress Card') }}
 
     </div>
 </div>

@@ -16,6 +16,7 @@ class CreatePagesTable extends Migration
         Schema::create('pages', function (Blueprint $table) {
             $table->increments('id');
             $table->string('page_title')->nullable();
+            $table->string('page_title_bn')->nullable();
             $table->string('page_type')->default('Full Page'); 
             //Part Page, Full Page
             $table->string('route_name')->nullable();

@@ -1,0 +1,326 @@
+/* 
+font-family: 'Lato', sans-serif; 
+font-family: 'Open Sans', sans-serif;
+font-family: 'Great Vibes', cursive;
+*/
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Lato", sans-serif;
+}
+
+:root {
+  --primarycolor: #641b69;
+  --secendarycolor: #605154;
+}
+
+.icon-bar {
+  position: fixed;
+  top: 20%;
+  right: 0;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  z-index: 100;
+}
+
+.icon-bar a {
+  display: block;
+  text-align: center;
+  padding: 10px;
+  transition: all 0.3s ease;
+  color: white;
+  font-size: 16px;
+}
+
+.icon-bar a:hover {
+  background-color: #000;
+}
+
+.bn {
+  background: var(--primarycolor);
+  text-decoration: none;
+  color: white;
+}
+
+.fb {
+  background: #85248b;
+  color: white;
+}
+
+header {
+  background: rgb(254, 243, 255);
+  background: linear-gradient(
+    180deg,
+    rgba(254, 243, 255, 1) 0%,
+    rgba(255, 255, 255, 1) 100%
+  );
+}
+
+.nav-item a {
+  color: var(--primarycolor) !important;
+  font-family: "Lato", sans-serif;
+}
+
+.login {
+  color: var(--primarycolor);
+  border: 1px solid var(--primarycolor);
+  font-family: "Lato", sans-serif;
+  letter-spacing: 1px;
+  background: #f0e7f4;
+  margin-right: 1rem;
+  margin-left: 1rem;
+  border-radius: 0 !important;
+  width: 8rem;
+}
+
+.login:hover {
+  color: var(--primarycolor);
+}
+
+.register {
+  color: #fff;
+  border: 1px solid var(--primarycolor);
+  font-family: "Lato", sans-serif;
+  letter-spacing: 1px;
+  background: var(--primarycolor);
+  border-radius: 0 !important;
+  width: 8rem;
+}
+
+.register:hover {
+  color: #fff;
+}
+
+.membership h1 {
+  font-family: "Open Sans", sans-serif;
+  color: var(--primarycolor);
+  margin-bottom: 2rem;
+}
+
+.card1 {
+  max-width: 300px;
+  max-height: 500px;
+  margin-bottom: 3rem;
+  background: #feefff;
+  position: relative;
+}
+
+.card1 h4 {
+  position: relative;
+  margin-top: -8rem;
+  font-family: "Lato", sans-serif;
+  font-size: 26px;
+  letter-spacing: 5px;
+  font-weight: 900;
+  color: #fff;
+}
+
+.hr_1 {
+  width: 40%;
+  margin: 1rem auto;
+  color: #fff;
+  position: relative;
+}
+
+.card1 h2 {
+  color: #000;
+  margin-top: 4rem;
+  font-size: 18px;
+  font-weight: 700;
+  font-family: "Lato", sans-serif;
+  letter-spacing: 4px;
+  margin-bottom: -1rem;
+}
+
+.card1 a {
+  height: 48px;
+  width: 200px;
+  background: #641b6915;
+  position: relative;
+  margin-top: 2rem;
+  text-transform: uppercase;
+  color: #641b69;
+  font-family: "Lato", sans-serif;
+  font-size: 18px;
+  letter-spacing: 2px;
+  padding-top: 0.6rem;
+  border: 1px solid #641b69;
+  border-radius: 0;
+}
+
+.lists {
+  margin-bottom: 10rem;
+  margin-top: 5rem;
+  text-align: left;
+  font-family: "Lato", sans-serif;
+  font-size: 20px;
+  font-weight: 300;
+}
+
+.lists ul {
+  list-style: url(./../img/Icon\ feather-check-circle.png);
+}
+
+.listsb ul {
+  list-style: url(./../img/Icon\ feather-check-circle.png);
+}
+
+.lists li {
+  margin-top: 1rem;
+  padding-left: 1rem;
+}
+
+.text h1 {
+  font-size: 36px;
+  color: #000;
+  font-family: "Lato", sans-serif;
+  font-weight: 600;
+}
+
+.text p {
+  font-family: "Lato", sans-serif;
+  font-size: 20px;
+  font-weight: 300;
+  line-height: 2em;
+}
+
+.office {
+  background: url(./../img/Ghotok_bdwedding.png);
+  position: relative;
+  height: 400px;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-position: bottom;
+  background-size: cover;
+  text-align: center;
+  color: #fff;
+  margin-top: 10rem !important;
+}
+
+.office_row {
+  margin-left: 10rem;
+}
+
+.office_row p {
+  font-size: 14px;
+}
+
+.office ul {
+  list-style-type: none;
+  margin-top: 2rem;
+  font-family: "Lato", sans-serif;
+}
+
+.office ul h1 {
+  font-size: 18px !important;
+  font-family: "Lato", sans-serif;
+}
+
+.office img {
+  margin-top: -5.5rem;
+  border: 5px solid var(--primarycolor);
+  z-index: 100 !important;
+}
+
+.office h1 {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 700;
+}
+
+.office_foregr {
+  background: var(--primarycolor);
+  height: 400px;
+  width: 100%;
+  opacity: 90%;
+  position: absolute;
+  margin-top: 0rem;
+  right: 0;
+  left: 0;
+}
+
+footer {
+  font-family: "Lato", sans-serif;
+  color: var(--primarycolor);
+}
+
+@media only screen and (max-width: 600px) {
+  .card1 {
+    position: relative;
+    margin: 1rem auto;
+  }
+
+  .text p {
+    text-align: left;
+  }
+
+  .icon-bar {
+    position: fixed;
+    top: 30%;
+    right: 0;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    z-index: 100;
+  }
+
+  .office {
+    background: url(./../img/Ghotok_bdwedding.png);
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-position: bottom;
+    background-size: cover;
+    text-align: center;
+    color: #fff;
+  }
+
+  .office_row {
+    margin-left: 0;
+  }
+
+  .office_row p {
+    font-size: 14px;
+  }
+
+  .office ul {
+    list-style-type: none;
+    margin-top: 2rem;
+    font-family: "Lato", sans-serif;
+  }
+
+  .office ul h1 {
+    font-size: 18px !important;
+    font-family: "Lato", sans-serif;
+  }
+
+  .office img {
+    margin-top: -5.5rem;
+    border: 5px solid var(--primarycolor);
+    z-index: 100 !important;
+  }
+
+  .office h1 {
+    font-family: "Open Sans", sans-serif;
+    font-weight: 700;
+  }
+
+  .office_foregr {
+    background: var(--primarycolor);
+    height: 100%;
+    width: 100%;
+    opacity: 90%;
+    position: absolute;
+    margin-top: 0rem;
+    right: 0;
+    left: 0;
+  }
+
+  footer {
+    font-family: "Lato", sans-serif;
+    color: var(--primarycolor);
+  }
+}

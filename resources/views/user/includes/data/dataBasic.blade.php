@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-sm-3">
-    <img class="img-bordered rounded mb-4" src="{{ asset($user->latestCheckedPP()) }}" style="width: 100%;" alt="{{ $user->username }}">
+    <img class="img-bordered rounded mb-4" src="{{ route('imagecache', [ 'template'=>'ppsmbl','filename' => $user->latestCheckedPP() ]) }}" style="width: 100%;" alt="{{ $user->username }}">
   </div>
   <div class="col-sm-9">
 

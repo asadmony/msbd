@@ -1,6 +1,6 @@
 <section class="gallery-wrap">
-    <a href="{{ asset($user->latestCheckedPP()) }}" data-fancybox="gallery" class="img-big-wrap"><img class="w-100"
-            src="{{ asset($user->latestCheckedPP()) }}" alt="{{ $user->username }}"></a>
+    <a href="{{ route('imagecache', [ 'template'=>'ppsmbl','filename' => $user->latestCheckedPP() ]) }}" data-fancybox="gallery" class="img-big-wrap"><img class="w-100"
+            src="{{ route('imagecache', [ 'template'=>'ppsmbl','filename' => $user->latestCheckedPP() ]) }}" alt="{{ $user->username }}"></a>
     <div class="thumbs-wrap scroll-horizontal">
         @foreach ($user->userPhotos as $photo)
         <a href="{{ asset($photo->img_url) }}" data-fancybox="gallery" class="item-thumb"> <img

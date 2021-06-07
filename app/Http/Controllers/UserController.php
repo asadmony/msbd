@@ -2480,7 +2480,7 @@ public function settingBasicInfoPost(Request $request)
             $user->country_other = null;
         }
 
-        $user->profile_created_by = $request->profile_created_by;
+        // $user->profile_created_by = $request->profile_created_by;
 
         // if( ($request->profile_created_by == 'Other') ||
         //     ($request->profile_created_by == 'Others'))

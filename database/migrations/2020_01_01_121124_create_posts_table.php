@@ -18,9 +18,14 @@ class CreatePostsTable extends Migration
             $table->string('title')
                   ->index()
                   ->nullable();
+            $table->string('title_bn')
+                  ->nullable();
             $table->text('description')
                   ->nullable();
+            $table->text('description_bn')
+                  ->nullable();
             $table->string('excerpt')->nullable();
+            $table->string('excerpt_bn')->nullable();
             $table->string('feature_img_name')
                   ->nullable();
             $table->string('feature_img_original_name')
@@ -35,6 +40,7 @@ class CreatePostsTable extends Migration
             $table->string('meta_keywords')->nullable();
             $table->string('meta_description')->nullable();
             $table->integer('read')->default(0);
+            $table->date('last_read')->nullable();
             $table->date('date')->nullable();
             $table->boolean('headline')->default(0);
             $table->boolean('front_slider')->default(0);

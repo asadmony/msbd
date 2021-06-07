@@ -50,7 +50,11 @@
         opacity: 0.7;
         background-color: #ffff;
     }
+    tr{
+        line-height: 1;
+    }
 </style>
+<link rel="stylesheet" href="{{ asset('css/Payment.css') }}">
 @endpush
 
 @section('header')
@@ -61,7 +65,119 @@
     <div class="row">
         <div class="col-sm-12 p-0 m-0">
 
+            @if ($page->id == 20)
+                <!-- Payment -->
+    <div class="container payment">
+        {{-- <h1 class="fw-bold text-uppercase">Payment Method</h1> --}}
+        <div class="row container">
+          <div class="col-lg-6 col-md-12 col-sm-12 my-3">
+            <div class="card shadow border-0  h-100" style="width: 35rem">
+              <div class="card-body">
+                <h5 class="card-title mx-auto">BANK PAYMENT</h5>
+                <h6 class="card-subtitle mb-2">
+                  <img src="{{ asset('img/dbbl.png') }}" class="img-fluid" alt="" />
+                </h6>
+                <p class="card-text">
+                 <table class="table table-borderless">
+                      <tbody>
+                        <tr>
+                          <td>Bank Name</td>
+                          <th>Dutch Bangla Bank Ltd.</th>
+                        </tr>
+                        <tr>
+                          <td>Branch</td>
+                          <th>Mohammadpur, Dhaka</th>
+                        </tr>
+                        <tr>
+                          <td>Account Name</td>
+                          <th>Marriage Solution BD</th>
+                        </tr>
+                        <tr>
+                          <td>Account No</td>
+                          <th>258.110.3970</th>
+                        </tr>
+                        <tr>
+                          <td>Online Tracking No.</td>
+                          <th>090263286</th>
+                        </tr>
+                      </tbody>
+                    </table>
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-12 col-sm-12 my-3">
+            <div class="card shadow border-0  h-100" style="width: 35rem">
+                 <div class="card-body">
+                   <h5 class="card-title mx-auto">BKASH PAYMENT</h5>
+                   <h6 class="card-subtitle mb-2">
+                     <img src="{{ asset('img/bkash.png') }}" class="img-fluid bkash" alt="" />
+                   </h6>
+                   <p class="card-text">
+                    <table class="table table-borderless mt-4">
+                         <tbody>
+                           <tr>
+                             <td>bKash Account 1</td>
+                             <th>01720504504</th>
+                           </tr>
+                           <tr>
+                             <td>bKash Account 2</td>
+                             <th>01633036062</th>
+                           </tr>
+                           
+                         </tbody>
+                       </table>
+                   </p>
+                 </div>
+               </div>
+          </div>
+          <div class="col-lg-6 col-md-12 col-sm-12 my-3">
+            <div class="card shadow border-0  h-100" style="width: 35rem">
+                 <div class="card-body">
+                   <h5 class="card-title mx-auto">ROCKET PAYMENT</h5>
+                   <h6 class="card-subtitle mb-2 pt-4">
+                     <img style="max-width: 50%; margin:auto;" src="{{ asset('img/rocket.jpg') }}" class="img-fluid bkash" alt="" />
+                   </h6>
+                   <p class="card-text">
+                    <table class="table table-borderless mt-4">
+                         <tbody>
+                           <tr>
+                             <td>Rocket Account</td>
+                             <th>018198739430</th>
+                           </tr>
+                         </tbody>
+                       </table>
+                   </p>
+                 </div>
+               </div>
+          </div>
+          <div class="col-lg-6 col-md-12 col-sm-12 my-3">
+            <div class="card shadow border-0  h-100" style="width: 35rem">
+                 <div class="card-body">
+                   <h5 class="card-title mx-auto">NAGAD PAYMENT</h5>
+                   <h6 class="card-subtitle mb-2 pt-4">
+                     <img style="max-width: 50%; margin:auto;" src="{{ asset('img/nagad.png') }}" class="img-fluid bkash" alt="" />
+                   </h6>
+                   <p class="card-text">
+                    <table class="table table-borderless mt-4">
+                         <tbody>
+                           <tr>
+                             <td>Nagad Account</td>
+                             <th>01720504504</th>
+                           </tr>
+                         </tbody>
+                       </table>
+                   </p>
+                 </div>
+               </div>
+          </div>
+        </div>
+      </div>
+      <!-- !Payment -->
+            @else
+                
             @include('common.pages.parts.pageBody')
+            @endif
 
         </div>
     </div>

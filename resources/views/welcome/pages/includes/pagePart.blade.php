@@ -3,7 +3,7 @@
         @if (!$page->title_hide)
         <div class="box-header w3-leftbar w3-border-purple ajax-box-header-remove">
             <h3 class="box-title">
-                {{ $page->page_title }}
+                {{ $page->localeTitle }}
             </h3>
         </div>
         @endif

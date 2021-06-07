@@ -46,9 +46,9 @@
 
                       @if($package->image_name)
                       <div class="pull-right">
-                    <img class="img-circle" width="40" src="{{ asset('storage/package/' . $package->image_name) }}" alt="{{ env('APP_NAME_BIG') }}">
-                  </div>
-                    @endif
+                        <img class="img-circle" width="40" src="{{ asset('storage/package/' . $package->image_name) }}" alt="{{ env('APP_NAME_BIG') }}">
+                      </div>
+                      @endif
                       
                     </div>
                     

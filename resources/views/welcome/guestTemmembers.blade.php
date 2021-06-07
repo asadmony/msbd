@@ -51,6 +51,8 @@ Our Team Members | {{env('APP_NAME_BIG')}}
         background-color: #ffff;
     }
 </style>
+
+<link rel="stylesheet" href="{{ asset('css/Payment.css') }}">
 @endpush
 
 @section('header')
@@ -58,23 +60,22 @@ Our Team Members | {{env('APP_NAME_BIG')}}
 @endsection
 @section('content')
 
-<section class="page-header page-header-modern bg-color-light-scale-1 page-header-md mb-0">
+<section class="page-header page-header-modern bg-color-light-scale-1- bg-color-custom page-header-md pb-5">
     <div class="container">
         <div class="row">
 
-
-            <div class="col-md-8 order-2 order-md-1 align-self-center p-static">
-                <h1 class="text-dark" style="font-family: cursive;"><strong>Our Team Members</strong></h1>
+            <div class="col-md-12 text-center order-2 order-md-1 align-self-center p-static">
+                <h1 class="fw-bold bold text-uppercase w3-xxlarge" style="color: #605154;">{{ __('Our Team Members') }}</h1>
             </div>
 
-            <div class="col-md-4 order-1 order-md-2 align-self-center">
+            {{-- <div class="col-md-4 order-1 order-md-2 align-self-center">
                 <ul class="breadcrumb d-block text-md-right">
-                    <li><a href="/">Home</a></li>
+                    <li><a href="/">{{ __('Home') }}</a></li>
                     <li class="active">
-                        <a href="{{ route('welcome.teamMembers') }}"> Our Team Members </a>
+                        <a href="{{ route('welcome.teamMembers') }}"> {{ __('Our Team Members') }} </a>
                     </li>
                 </ul>
-            </div>
+            </div> --}}
         </div>
     </div>
 </section>

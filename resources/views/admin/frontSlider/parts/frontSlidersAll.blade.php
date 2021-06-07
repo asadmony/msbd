@@ -26,17 +26,42 @@
 
       <div class="box box-widget">
         <div class="box-body text-center">
-          <form class="form-inline" action="{{ route('admin.frontSliderAddNew') }}" method="post" enctype="multipart/form-data">
+          <form class="form-inline-" action="{{ route('admin.frontSliderAddNew') }}" method="post" enctype="multipart/form-data">
             {{ csrf_field() }}
-  <div class="form-group {{ $errors->has('image') ? 'has-error' : '' }}">
-    <label for="image">Image (1200 X 500px):</label>
-    <input type="file" name="image" class="form-control" id="image" style="height: 40px;">
-    @if ($errors->has('image'))
-      <p>{{ $errors->first('image') }}</p>
-    @endif
-  </div>
- 
-  <button style="height: 40px;" type="submit" class="btn btn-primary">Submit</button>
+            <div class="form-group- text-left">
+              <div class="form-group pb-3 {{ $errors->has('image') ? 'has-error' : '' }}">
+                <label for="image">Slider Image (1200 X 460):</label>
+                <input type="file" name="image" class="form-control" id="image" style="height: 40px;">
+                @if ($errors->has('image'))
+                  <p>{{ $errors->first('image') }}</p>
+                @endif
+              </div>
+            
+              <div class="form-group pb-3 {{ $errors->has('image') ? 'has-error' : '' }}">
+                <label for="p_image">Profile Image (100 X 100):</label>
+                <input type="file" name="p_image" class="form-control" id="p_image" style="height: 40px;">
+                @if ($errors->has('p_image'))
+                  <p>{{ $errors->first('p_image') }}</p>
+                @endif
+              </div>
+            
+              <div class="form-group pb-3 {{ $errors->has('image') ? 'has-error' : '' }}">
+                <label for="title">Title:</label>
+                <input type="text" name="title" class="form-control" id="title" style="height: 40px;" value="{{ old('title') }}">
+                @if ($errors->has('title'))
+                  <p>{{ $errors->first('title') }}</p>
+                @endif
+              </div>
+              <div class="form-group pb-3 {{ $errors->has('image') ? 'has-error' : '' }}">
+                <label for="description">Description:</label>
+                <textarea name="description" class="form-control" id="description" style="height: 40px;">{{ old('description') }}</textarea>
+                @if ($errors->has('description'))
+                  <p>{{ $errors->first('description') }}</p>
+                @endif
+              </div>
+             
+              <button style="height: 40px;" type="submit" class="btn btn-primary">Submit</button>
+            </div>
 </form>
         </div>
       </div>
@@ -52,7 +77,9 @@
             <tr>
               <th width="300">Image</th>
  
-              <th>Added By</th>
+              <th>Profile Image</th>
+              <th>Title</th>
+              <th>Description</th>
               <th width="100">Action</th>
             </tr>
           </thead>
@@ -62,9 +89,14 @@
             <tr>            
                
               <td>
-                <img width="300" src="{{ asset($slider->image_url) }}" alt="Front Slider">
+                <img width="300" src="{{ asset($slider->image_url) }}" alt="">
               </td>
-
+               
+              <td>
+                <img style="max-width: 100px; max-height: 100px; margin: auto;" src="{{ asset($slider->pp_url) }}" alt="">
+              </td>
+              <td>{{ $slider->title }}</td>
+              <td>{{ $slider->description }}</td>
               <td>
                 {{ $slider->addedBy->name }}
               </td>

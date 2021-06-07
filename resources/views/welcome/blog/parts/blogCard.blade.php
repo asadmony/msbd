@@ -10,8 +10,22 @@
         </div>
         <div class="col-lg-7">
             <div class="post-content">
-                <h2 class="font-weight-semibold pt-4 pt-lg-0 text-5 line-height-4 mb-2"><a href="{{ route('blogPostDetails', [$postItem->id, Str::slug($postItem->title)]) }}">{{ $postItem->title }}</a></h2>
-                <p class="mb-0">{{ Str::limit($postItem->excerpt, 300, '...') }}</p>
+                <h2 class="font-weight-semibold pt-4 pt-lg-0 text-5 line-height-4 mb-2"><a href="{{ route('blogPostDetails', [$postItem->id, Str::slug($postItem->title)]) }}">
+                    {{ $postItem->localeTitle }}
+                    {{-- @if (Cookie::get('locale') == 'bn')
+                    {{ $postItem->title_bn }}
+                    @else
+                    {{ $postItem->title }}
+                    @endif --}}
+                </a></h2>
+                <p class="mb-0">
+                    {{ Str::limit($postItem->localeExcerpt, 300, '...') }}
+                    {{-- @if (Cookie::get('locale') == 'bn')
+                    {{ Str::limit($postItem->excerpt_bn, 300, '...') }}
+                    @else
+                    {{ Str::limit($postItem->excerpt, 300, '...') }}
+                    @endif --}}
+                </p>
             </div>
         </div>
     </div>
@@ -26,7 +40,13 @@
                     @if ($loop->iteration > 1)
                      , 
                     @endif
-                    <a href="#">{{ $catItem->title }}</a>
+                    <a href="{{ route('blogCategory', [$catItem, Str::slug($catItem->title)]) }}">
+                        @if (Cookie::get('locale') == 'bn')
+                        {{ $catItem->title_bn }}
+                        @else
+                        {{ $catItem->title }}
+                        @endif
+                    </a>
                     @endforeach
                 </span>
                 {{-- <span><i class="far fa-comments"></i> <a href="#">12 Comments</a></span> --}}

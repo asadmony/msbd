@@ -128,17 +128,18 @@
 
     <div class="col-sm-9">
       <select class="form-control form-group-sm" id="payment_method" name="payment_method">
-    <option value="">Select Payment Method </option>
+    <option value="" selected disabled>Select Payment Method </option>
     @if(old('payment_method'))
     <option selected>{{old('payment_method')}}</option>
     @endif
 
-    <option>bKash</option>
+    <option value="bKash">bKash (by Admin)</option>
     {{-- <option>Rocket</option> --}}
-    <option>Bank</option>
+    <option value="Bank">Bank (by Admin)</option>
     {{-- <option>Money Gram</option> --}}
     {{-- <option>Western Union</option> --}}
     {{-- <option>Hand Cash</option> --}}
+    <option value="Online">Online (by Customer)</option>
  
   </select>
     </div>
@@ -206,6 +207,22 @@
 
 
     </div>
+    {{-- <div class="form-group form-group-sm ">
+        <label class="control-label col-sm-3" for="admin_comment">Online Payment:</label>
+
+        <div class="col-sm-9">
+
+        	<input  
+        type="checkbox" 
+        id="online_payment" 
+        name="online_payment" 
+        />
+ 
+    	</div>
+
+
+
+    </div> --}}
 
     <p>(New Package Duration (days) will be added with previous duration)</p>
 

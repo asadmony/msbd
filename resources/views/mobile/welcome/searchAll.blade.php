@@ -6,7 +6,7 @@
         @foreach ($users as $user)
         <div class="col-6 col-sm-6 col-md-4 py-2">
             <a href="{{url('/', $user->username)}}" class="product-sm mb-3">
-                <div class="img-wrap"> <img src="{{ asset($user->latestCheckedPP()) }}" alt="{{ $user->username }}">
+                <div class="img-wrap"> <img src="{{ route('imagecache', [ 'template'=>'ppsmbl','filename' => $user->latestCheckedPP() ]) }}" alt="{{ $user->username }}">
                 </div>
                 <div class="text-wrap">
                     <p class="title text-truncate w3-small">

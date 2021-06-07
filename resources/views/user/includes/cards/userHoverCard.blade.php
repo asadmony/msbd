@@ -81,7 +81,7 @@
                                 
 
                 <div class="text-center">
-                    <a class="w3-btn w3-small w3-round w3-border w3-border-purple p-1" href="{{url('/', $user->username)}}"><i class="fa fa-user fa-fw"></i> See Details</a>
+                    <a class="w3-btn w3-small w3-round w3-border w3-border-purple p-1" href="{{url('/', $user->username)}}"><i class="fa fa-user fa-fw"></i> {{ __('See Details') }}</a>
                     @auth
                     
                     {{-- @include('user.includes.others.btnRightArea') --}}

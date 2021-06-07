@@ -102,6 +102,14 @@
             <li class="{{ session('lsbsm') == 'allMembershipPackages' ? 'active' : '' }}"><a class="changed-menu" href="{{route('admin.allMembershipPackages')}}"><i class="fa fa-circle-o"></i> All Packages</a></li>
 
           </ul>
+        </li>      
+        <li class=" -treeview{{ session('lsbm') == 'teamMembers' ? ' active ' : '' }}">
+          <a href="{{ route('admin.teamMemberList') }}">
+              <i class="fa fa-users"></i> <span>Team Members</span>
+              <span class="pull-right-container">
+                  {{-- <i class="fa fa-angle-left pull-right"></i> --}}
+              </span>
+          </a>
         </li>
 
         @else
@@ -119,6 +127,8 @@
 
           </ul>
         </li>
+
+  
 
         @endif
 

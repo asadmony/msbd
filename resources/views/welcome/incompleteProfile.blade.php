@@ -49,7 +49,7 @@
       <div class="box-header with-border">
         <h3 class="box-title">
            {{-- @include('user.includes.timeline.timelineTopBtns') --}}
-           <b>Complete your profile</b>
+           <b>{{ __('Complete your profile') }}</b>
         </h3>
       </div>
   </div>

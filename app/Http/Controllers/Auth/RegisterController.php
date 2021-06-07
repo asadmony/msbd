@@ -63,13 +63,14 @@ class RegisterController extends Controller
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'education_level' => ['required'],
             'profession' => ['required'],
-            'monthly_income' => ['required','numeric', 'min:50000'],
             'father_name' => ['required'],
-            'father_education' => ['required'],
-            'father_occupation' => ['required'],
-            'family_type' => ['required'],
+            // 'monthly_income' => ['required','numeric', 'min:50000'],
+            // 'father_education' => ['required'],
+            // 'father_occupation' => ['required'],
+            // 'family_type' => ['required'],
             'gender' => ['required'],
             'birth_date' => ['required','date'],
+            'profile_created_by' => ['required'],
         ]);
     }
 
@@ -88,7 +89,7 @@ class RegisterController extends Controller
             'gender' => $data['gender'],
             'education_level' => $data['education_level'],
             'profession' => $data['profession'],
-            'profession' => $data['profession'],
+            'profile_created_by' => $data['profile_created_by'],
             'dob' => $data['birth_date'],
             'password' => Hash::make($data['password']),
         ]);
@@ -96,10 +97,10 @@ class RegisterController extends Controller
         $userFamily = new UserFamilyInfo;
         $userFamily->user_id = $user->id;
         $userFamily->father_name = $data['father_name'];
-        $userFamily->yearly_income = $data['monthly_income'];
-        $userFamily->father_education = $data['father_education'];
-        $userFamily->father_occupation = $data['father_occupation'];
-        $userFamily->family_type = $data['family_type'];
+        // $userFamily->yearly_income = $data['monthly_income'];
+        // $userFamily->father_education = $data['father_education'];
+        // $userFamily->father_occupation = $data['father_occupation'];
+        // $userFamily->family_type = $data['family_type'];
         $userFamily->save();
 
         return $user;

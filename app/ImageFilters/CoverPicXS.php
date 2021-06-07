@@ -9,6 +9,6 @@ class CoverPicXS implements FilterInterface
 {
     public function applyFilter(Image $image)
     {
-        return $image->fit(350, 129);
+        return $image->fit(520, 340);
     }
 }

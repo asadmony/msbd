@@ -1,4 +1,4 @@
-<form class="form-horizontal" role="form" method="post" action="{{ route('admin.roleAddNewPost') }}">
+<form class="form-horizontal" id="addrole" role="form" method="post" action="{{ route('admin.roleAddNewPost') }}">
 
 {{csrf_field()}}
 
@@ -16,6 +16,7 @@
                     <div class="form-group">
     <label class="control-label col-sm-3" for="email">User:</label>
     <div class="col-sm-9">
+      <div class="input-group">
 
         <select id="email"
             name="email"
@@ -25,17 +26,77 @@
             data-ajax-cache="true"
             data-ajax-dataType="json"
             data-ajax-delay="200"
-            required 
+             
             style="width: 100%;">
                 <option>{{old('email')}}</option>
               </select>
             @if( $errors->has('email') )
               <span class="help-block">{{ $errors->first('email') }}</span>
             @endif
-       
+            
+            <div class="input-group-addon" onclick='event.preventDefault(); $("#newUserForm").toggleClass("hide"); $("#addrole").trigger("reset")'>
+              <i class="fa fa-user-plus"></i>
+            </div>
+        </div>
+    </div>
+  </div> 
+    
+  <div @if($errors->has('name') || $errors->has('mobile') || $errors->has('newEmail') || $errors->has('password') || old('newEmail')) @else class="hide" @endif id="newUserForm">
+    <div class="form-group {{ $errors->has('name') ? ' has-error' : '' }}">
+      <label class="control-label col-sm-3" for="name">Add New User</label>
+      <div class="col-sm-9">
+      </div>
+    </div>
+    <div class="form-group {{ $errors->has('name') ? ' has-error' : '' }}">
+      <label class="control-label col-sm-3" for="name">Name:</label>
+
+      <div class="col-sm-9">
+      <input class="form-control form-group-sm" id="name" name="name" value="{{ old('name') }}">
+      @if ($errors->has('name'))
+      <span class="help-block">
+          <strong>{{ $errors->first('name') }}</strong>
+      </span>
+      @endif
+      </div>
+    </div>
+    <div class="form-group {{ $errors->has('mobile') ? ' has-error' : '' }}">
+      <label class="control-label col-sm-3" for="mobile">mobile:</label>
+
+      <div class="col-sm-9">
+      <input class="form-control form-group-sm" id="mobile" name="mobile" value="{{ old('mobile') }}">
+      @if ($errors->has('mobile'))
+      <span class="help-block">
+          <strong>{{ $errors->first('mobile') }}</strong>
+      </span>
+      @endif
+      </div>
+    </div>
+    <div class="form-group {{ $errors->has('newEmail') ? ' has-error' : '' }}">
+      <label class="control-label col-sm-3" for="newEmail">New user email:</label>
+
+      <div class="col-sm-9">
+      <input class="form-control form-group-sm" type="email" id="newEmail" name="newEmail" value="{{ old('newEmail') }}">
+      @if ($errors->has('newEmail'))
+      <span class="help-block">
+          <strong>{{ $errors->first('newEmail') }}</strong>
+      </span>
+      @endif
+      </div>
+    </div>
+    <div class="form-group {{ $errors->has('password') ? ' has-error' : '' }}">
+      <label class="control-label col-sm-3" for="password">Password:</label>
+
+      <div class="col-sm-9">
+      <input class="form-control form-group-sm" id="password" name="password" value="{{ old('password') }}">
+      @if ($errors->has('password'))
+      <span class="help-block">
+          <strong>{{ $errors->first('password') }}</strong>
+      </span>
+      @endif
+      </div>
     </div>
   </div>
-            
+
     <div class="form-group form-group-sm {{ $errors->has('branch') ? ' has-error' : '' }}">
                 <label class="control-label col-sm-3" for="branch">Branch:</label>
 
@@ -177,6 +238,20 @@
             <label>
               <input name="items[]" value="users" type="checkbox">
               User Manage
+            </label>
+          </div>
+
+          <div class="checkbox">
+            <label>
+              <input name="items[]" value="blog" type="checkbox">
+              Blogs
+            </label>
+          </div>
+
+          <div class="checkbox">
+            <label>
+              <input name="items[]" value="career" type="checkbox">
+              Career Applications
             </label>
           </div>
 

@@ -16,7 +16,7 @@
     <div class="box box-widget" id="photo-gallery">
             <div class="box-header w3-panel w3-leftbar w3-border-purple">
               <h3 class="box-title">
-                 Success Story / Picture Gallery
+                 {{ __('Success Story / Picture Gallery') }}
               </h3>
             </div>
             <div class="box-body w3-topbar">

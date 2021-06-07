@@ -14,7 +14,7 @@ class WelcomeBlogController extends Controller
          //tags //blog tags
          public function __construct()
          {
-           $this->middleware('welcome');
+           $this->middleware(['welcome', 'locale']);
        
              // $this->device = 'theme.'.config('app.theme').'.';
            if(Agent::isDesktop())
@@ -53,12 +53,12 @@ class WelcomeBlogController extends Controller
     }
     //tags //blog tags
     //
-     public function blog()
+     public function blog(Post $post)
     {
-      $popularPosts = Post::where('publish_status', 'published')->orderBy('read','desc')->latest()->limit(4)->get();
+      $popularPosts = $post->popularPosts();
       $recentPosts = Post::where('publish_status', 'published')->latest()->limit(4)->get();
       $posts = Post::where('publish_status', 'published')->latest()->paginate(18);
-      $categories = Category::inRandomOrder()->take(5)->get();
+      $categories = Category::latest()->take(10)->get();
       return view('welcome.blog.allPost',[
         'posts'=>$posts,
         'recentPosts' => $recentPosts,
@@ -73,9 +73,24 @@ class WelcomeBlogController extends Controller
       // ]);
     }
 
+    public function blogCategory(Category $category,Post $post)
+    {
+      $popularPosts = $post->popularPosts();
+      $recentPosts = Post::where('publish_status', 'published')->latest()->limit(4)->get();
+      $posts = $category->posts()->where('publish_status', 'published')->latest()->paginate(18);
+      $categories = Category::latest()->take(10)->get();
+      return view('welcome.blog.categoryPost',[
+        'posts'=>$posts,
+        'recentPosts' => $recentPosts,
+        'popularPosts' => $popularPosts,
+        'categories' => $categories,
+        'category' => $category,
+      ]);
+    }
+
     public function blogPostDetails(Post $post)
     {
-      $popularPosts = Post::where('publish_status', 'published')->orderBy('read','desc')->latest()->limit(4)->get();
+      $popularPosts = $post->popularPosts();
       $recentPosts = Post::where('publish_status', 'published')->latest()->limit(4)->get();
       
       
@@ -83,12 +98,14 @@ class WelcomeBlogController extends Controller
       // $postIds = PostCategory::whereIn('category_id', $catIds)->latest()->limit(100)->pluck('post_id');
       
       $post->increment('read');
+      $post->last_read = now();
+      $post->save();
       // $relatedPosts = Post::where('publish_status','published')
       //     ->whereIn('id',$postIds)
       //     ->latest()
       //     ->paginate(10); 
 
-      $categories = Category::inRandomOrder()->take(5)->get();
+      $categories = Category::latest()->take(10)->get();
 
       return view('welcome.blog.singlePost', [
         'post'=> $post,
@@ -102,5 +119,28 @@ class WelcomeBlogController extends Controller
       //   'popularPosts'=> $popularPosts,
       //   'relatedPosts' => $relatedPosts
       // ]);
+    }
+    public function blogSearch(Request $request, Post $post)
+    {
+      if ($request->q) {
+        $search = $request->q;
+        $posts = $post->where('publish_status', 'published')->where(function ($query) use ($search){
+          $query->where('title', 'like', "%{$search}%")
+          ->orWhere('title_bn', 'like', "%{$search}%");
+        })->latest()->paginate(18);$popularPosts = $post->popularPosts();
+        $recentPosts = Post::where('publish_status', 'published')->latest()->limit(4)->get();
+        
+        $categories = Category::latest()->take(10)->get();
+        return view('welcome.blog.searchPost',[
+          'posts'=>$posts,
+          'recentPosts' => $recentPosts,
+          'popularPosts' => $popularPosts,
+          'categories' => $categories,
+          'search' => $search,
+        ]);
+      }else{
+        return redirect()->route('blog');
+      }
+        
     }
 }

@@ -256,9 +256,6 @@
                     <div class="col-md-12 ">
 
 
-
-
-
                     </div>
                 </div>
             </div>
@@ -295,12 +292,6 @@
             @include('welcome.includes.others.branches')
 
 
-
-
-
-
-
-
             @include('welcome.includes.others.imageGallery')
 
             <div class="row">
@@ -314,7 +305,7 @@
                             <div class="box box-widget" id="video-gallery">
                                 <div class="box-header w3-panel w3-leftbar w3-border-purple">
                                     <h3 class="box-title">
-                                        Our Visitors
+                                        {{ __('Our Visitors') }}
                                     </h3>
                                 </div>
                                 <div class="box-body w3-topbar">
@@ -323,8 +314,6 @@
                                     <script type="text/javascript" id="clstr_globe"
                                         src="//cdn.clustrmaps.com/globe.js?d=j9LnyN1WwJOiWTSiUgUf2AIItjOIgGY20jn1JS8J2Co">
                                     </script>
-
-
 
 
                                 </div>

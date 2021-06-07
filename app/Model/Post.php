@@ -131,4 +131,40 @@ class Post extends Model
 	{
 		return $this->hasMany('App\Model\Comment','post_id');
 	}
+
+	public function getLocaleTitleAttribute()
+    {
+        if(app()->getLocale() == 'bn')
+        {
+            return $this->title_bn ?: $this->title;
+        }else
+        {
+            return $this->title ?: $this->title_bn;
+        }
+    }
+	public function getLocaleDescriptionAttribute()
+    {
+        if(app()->getLocale() == 'bn')
+        {
+            return $this->description_bn ?: $this->description;
+        }else
+        {
+            return $this->description ?: $this->description_bn;
+        }
+    }
+	public function getLocaleExcerptAttribute()
+    {
+        if(app()->getLocale() == 'bn')
+        {
+            return $this->excerpt_bn ?: $this->excerpt;
+        }else
+        {
+            return $this->excerpt ?: $this->excerpt_bn;
+        }
+    }
+
+	public function popularPosts()
+	{
+		return $this->where('publish_status', 'published')->where('last_read', '>=', now()->subDays(7))->orderBy('read','desc')->limit(4)->get();
+	}
 }

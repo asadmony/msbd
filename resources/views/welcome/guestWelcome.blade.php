@@ -11,178 +11,9 @@ Matchmaker Service in Bangladesh
 
 @endsection
 
-@section('meta')
-@endsection
 
 @push('css')
-<style>
-    @import url('https://fonts.googleapis.com/css?family=Lobster+Two:400,700|Ubuntu:400,500,700');
-
-    .lob-font {
-        font-family: 'Lobster Two', cursive;
-    }
-
-    .lobster {
-        font-family: 'Lobster Two', cursive;
-        line-height: 95px;
-        letter-spacing: 1px;
-        font-weight: 800 !important;
-        font-size: 79px;
-    }
-
-    .sd {
-        opacity: 0.7 !important;
-    }
-
-    h2.married-date {
-        background: rgba(0, 0, 0, 0) url(svg/red_hidding_bg.svg) no-repeat scroll center center / contain;
-        display: inline-block;
-        font-size: 40px;
-        font-weight: 400;
-        margin-bottom: 0;
-        padding: 5px 100px 10px;
-        color: #fff;
-    }
-
-    .sda {
-        padding-top: 8rem !important;
-    }
-
-    .timeline-box {
-        opacity: 0.7;
-        background-color: #ffff;
-    }
-
-    .slider-container .tp-opacity-overlay {
-        background: #000;
-        opacity: 0.6;
-    }
-
-
-    .bg-prods {
-        background: #180405 url(/img/Elite-bg1.jpg) bottom repeat-x;
-        min-height: 400px;
-        border-bottom: #f7e1e6 solid 1px;
-    }
-
-    .prod-ops {
-        padding: 20px;
-        text-align: center;
-        border-radius: 50px 0px;
-        box-shadow: #180408 1px 1px 6px;
-        /* background-image: linear-gradient(to top, #49082a 0%, #170104 100%); */
-        margin-bottom: 10px;
-        border: solid 1px rgba(255, 255, 255, 0.13);
-        background: #0b0b0b url(/img/back.jpg) no-repeat center top;
-    }
-
-    .total-single-service-area .single-services-area {
-        background: url(/img/bg-box.png) no-repeat;
-        padding: 30px 0;
-        transition: all 0.5s ease 0s;
-        background-size: cover;
-        background-position: 0 0;
-
-    }
-
-    .total-single-service-area .single-services-area:hover {
-        background: url(/img/bg-box-hover.png) no-repeat;
-        padding: 30px 0;
-        transition: all 0.5s ease 0s;
-        background-size: cover;
-        background-position: 0 0;
-
-    }
-
-    .total-single-service-area .single-services-area h3 {
-        font-family: 'Open Sans', Arial;
-        font-size: 18px;
-        color: #fff;
-        font-weight: 600;
-        position: relative;
-        margin: 58px 0px 15px 0px;
-        line-height: 35px;
-        transition: all 0.5s ease 0s;
-    }
-
-    .total-single-service-area .single-services-area h3 strong {
-        color: #cd3162;
-    }
-
-    .total-single-service-area .single-services-area h3 span {
-        font-weight: 700;
-        color: #e9b52e;
-        font-style: italic;
-        text-transform: uppercase;
-    }
-
-    .read-more {
-        display: inline-block;
-    }
-
-    .read-more a {
-        display: block;
-        padding: 10px 30px;
-        font-weight: 600;
-        border: 1px solid;
-        transition: all 0.5s ease 0s;
-        -webkit-border-radius: 40px;
-        -moz-border-radius: 40px;
-        border-radius: 40px;
-        color: #fff;
-        border-color: #cd3162;
-    }
-
-    .read-more a:hover {
-        background: #cd3162;
-        color: #ffffff;
-    }
-
-    .home-title {
-        /* color: gold !important; */
-        /* font-family: 'Sacramento', cursive; */
-        font-family: 'Lobster Two', cursive;
-        font-style: italic;
-        padding: 10px;
-        /* font-size: 60pt; */
-        background: -webkit-linear-gradient(#c246c2, gold, #a740a7);
-        /* background: linear-gradient(to top right, #8B008B 20%, gold 51%, gold 51%, #8B008B 80%); */
-        /* background: linear-gradient(to top right, red 20%, gold 51%, gold 51%, red 80%); */
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        /* text-shadow: 4px 2px 5px rgba(255, 255, 255, 0.267); */
-    }
-
-
-    .home-title2 {
-        /* font-family: 'Lobster Two', cursive; */
-        color: rgba(236, 201, 0, 0.979) !important;
-        /* background: -webkit-linear-gradient(rgb(151, 132, 25), gold, rgb(151, 132, 25)) !important; */
-        font-size: 18px;
-    }
-
-    .home-title3 {
-        font-size: 18px;
-        /* background: linear-gradient(to top right, rgb(253, 24, 24) 0%, gold 51%, gold 51%, red 100%); */
-        background: -webkit-linear-gradient(rgb(151, 132, 25), gold, rgb(151, 132, 25));
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        font-style: italic;
-    }
-
-    @media screen and (min-width: 782px) {
-        .home-title3 {
-            font-size: 18pt !important;
-        }
-
-        .home-title2 {
-            font-size: 14pt !important;
-            font-weight: bold;
-        }
-    }
-</style>
-<link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Sacramento&display=swap" rel="stylesheet">
+<link href="{{ asset('css/LandingPage.css') }}" rel="stylesheet">
 @endpush
 
 @section('header')
@@ -191,7 +22,7 @@ Matchmaker Service in Bangladesh
 @section('content')
 
 
-<div class="slider-container rev_slider_wrapper" style="height: 100vh;">
+{{-- <div class="slider-container rev_slider_wrapper" style="height: 100vh;">
     <div id="revolutionSlider" class="slider rev_slider" data-version="5.4.8" data-plugin-revolution-slider
         data-plugin-options="{'sliderLayout': 'fullscreen', 'fullScreenOffsetContainer': '', 'fullScreenOffset': '0', 'responsiveLevels': [4096,1200,992,500]}">
         <ul>
@@ -203,7 +34,7 @@ Matchmaker Service in Bangladesh
                     data-videoheight="100%" data-videomp4="{{ asset('videos/msbd.mp4') }}" data-videopreload="preload"
                     data-videoloop="loop" data-forceCover="1" data-aspectratio="16:9" data-autoplay="true"
                     data-autoplayonlyfirsttime="false" data-nextslideatend="false">
-                </div>
+                </div> --}}
 
                 {{-- <div class="tp-caption" data-x="center" data-hoffset="['-170','-170','-170','-350']" data-y="center"
                     data-voffset="['-50','-50','-50','-75']" data-start="1000"
@@ -241,11 +72,11 @@ Matchmaker Service in Bangladesh
         <span class="home-title3">"দৃষ্টিভঙ্গি বদলান-জীবন বদলে যাবে"</span>
     </div> --}}
 
-    <div class="tp-dottedoverlay tp-opacity-overlay-"></div>
+    {{-- <div class="tp-dottedoverlay tp-opacity-overlay-"></div>
     </li>
     </ul>
 </div>
-</div>
+</div> --}}
 {{--
 <div id="intro" class="">
     <header id="header" class="header-narrow header-below-slider"
@@ -320,532 +151,286 @@ class="dropdown-item"><i class="fa fa-phone fa-rotate-90 mr-2"></i>
 
 @include('welcome.layouts.guestWelcomeHeaderAlt')
 
-<div class="container-fluid py-5 w-100"
-    style=" background:url({{ asset('img/form-bg.jpg')  }}) ; background-repeat: no-repeat; background-size: cover;">
-    <div class="row justify-content-center">
-        <div class="col-md-4 mx-md-auto">
-            {{-- <img class="rounded w-100" style="opacity: 0.8" src="{{ asset('img/mrg.jpg') }}" alt=""> --}}
-        </div>
-        <div class="col-lg-8 pt-5 mx-md-auto">
-            <div class="col-lg-12 order-1 order-lg-2">
-                <div class=" row justify-content-md-center">
-					<div class=" ">
-                    <div class=" featured-box featured-box-primary text-left mt-0">
-                    <div class="box-content text-center">
-                        {{-- <h4 class="color-primary font-weight-semibold text-4 text-uppercase mb-3">Marriage Solution
-                            BD</h4>
-                        <hr> --}}
 
-                        <ul class="nav nav-tabs " id="myTab" role="tablist">
-                            <li class="nav-item ">
-                              <a class="nav-link w3-text-grey  active" id="home-tab" data-toggle="tab" href="#login" role="tab" aria-controls="home" aria-selected="true">Login</a>
-                            </li>
-                            <li class="nav-item">
-                              <a class="nav-link w3-text-grey " id="profile-tab" data-toggle="tab" href="#register" role="tab" aria-controls="profile" aria-selected="false">Register</a>
-                            </li>
-                          </ul>
-                          <div class="tab-content" id="myTabContent">
-                            <div class="tab-pane fade show active" id="login" role="tabpanel" aria-labelledby="home-tab">
-                                <form action="{{ route('login') }}" method="post" class="signin-form">
-                                    @csrf
-                                    <div class="form-input- input-group mb-3">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text" id="basic-addon1"><span class="fa fa-envelope" aria-hidden="true"></span>
-                                        </div>
-                                        <input class="form-control" id="email" type="email" name="email"
-                                            class="{{ $errors->has('email') ? ' is-invalid' : '' }}"
-                                            placeholder="{{ __('E-Mail Address') }}" value="{{ old('email') }}" required autofocus />
-                                    </div>
-                                    @if ($errors->has('email'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong class="w3-text-red">{{ $errors->first('email') }}</strong>
-                                    </span>
-                                    @endif
-                                    <div class="form-input input-group mb-3">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text" id="basic-addon1"><span class="fa fa-key" aria-hidden="true"></span>
-                                        </div>
-                                        <input class="form-control" id="password" type="password" name="password"
-                                            class="{{ $errors->has('password') ? ' is-invalid' : '' }}"
-                                            placeholder="{{ __('Password') }}" required />
-                                    </div>
-                                    @if ($errors->has('password'))
-                                    <span class="invalid-feedback w3-text-red" role="alert">
-                                        <strong class="w3-text-red">{{ $errors->first('password') }}</strong>
-                                    </span>
-                                    @endif
-                                    <input type="hidden" name="remember" value="on">
-                                    <div class="login-remember d-grid">
-                                        {{-- <label class="check-remaind">
-                                            <input class="form-check-input" type="checkbox" name="remember" id="remember"
-                                                {{ old('remember') ? 'checked' : '' }}>
-                                            <span class="checkmark"></span>
-                                            <p class="remember">Remember me</p>
-                                        </label> --}}
-                                        
-                                        <button class="btn btn-default border" type="reset">Reset</button>
-                                        <button class="btn btn-primary theme-button">{{ __('Login') }}</button>
-                                    </div>
-                                    <div class="new-signup">
-                                        <a href="{{ route('password.request') }}"
-                                            class="signuplink">
-                                            {{ __('Forgot Your Password?') }}
-                                        </a>
-                                    </div>
-                                </form>
-                            </div>
-                            <div class="tab-pane fade" id="register" role="tabpanel" aria-labelledby="profile-tab">
-                                <form method="POST" action="{{ route('register') }}">
-                                    @csrf
-                                    <div class="form-group row mt-3">
-                                        {{-- <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label> --}}
-                                        <div class="col-md-12">
-                                        <div class="input-group">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text" id="basic-addon1"><span class="fa fa-user" aria-hidden="true"></span>
-                                            </div>
-                                            <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" placeholder="Full Name" autofocus>
-                
-                                            @error('name')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                        
-                                    </div>
-                                    
-                                    <div class="form-group row">
-                                        <div class="input-group col-md-12">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text" id="basic-addon1"><i class="fa fa-graduation-cap"></i>
-                                            </div>
-                                            <select name="education_level" id="education_level" class="form-control">
-                                            <option >Select Education</option>
-                                            @foreach ($userSettingFields[8]->values as $value)
-                                            <option>{{ $value->title }}</option>
-                                            @endforeach
-                                            </select>
-                                        </div>
-                                    </div>
-                
-                                    <div class="form-group row">
-                                        <div class="col-md-6  mb-3 mb-md-0">
-                                            <div class="input-group">
-                                                <div class="input-group-prepend">
-                                                    <span class="input-group-text" id="basic-addon1"><i class="fa fa-briefcase"></i>
-                                                </div>
-                                                <select name="profession" id="profession" class="form-control">
-                                                <option >Select Occupation</option>
-                                                @foreach ($userSettingFields[9]->values as $value)
-                                                    <option>{{ $value->title }}</option>
-                                                @endforeach
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="input-group">
-                                                <div class="input-group-prepend">
-                                                    <span class="input-group-text" id="basic-addon1">
-                                                        {{-- &#2547; --}}
-                                                        <i class="far fa-money-bill-alt"></i>
-                                                </div>
-                                                <div class="input-group-prepend">
-                                                    <span class="input-group-text bg-white" id="basic-addon1">
-                                                        &#2547;
-                                                        {{-- <i class="fa fa-money"></i> --}}
-                                                </div>
-                                                <input type="number" step="0.5" min="50000" name="monthly_income" id="monthly_income" class="form-control" placeholder="Monthly Income (min. 50000)" required>
-                                                <span  style="display: none;">Tips: Income should be more than &#2547;50000 </span>
-                                            </div>
-                                            <small id="monthly_income_tips" style="display: none;">Tips: Income should be more than &#2547;50000</small>
-                                        </div>
-                                    </div>
-                
-                                    <div class="form-group row">
-                                        <div class="input-group col-md-6 mb-3 mb-md-0">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text" id="basic-addon1"><i class="fa fa-users"></i>
-                                            </div>
-                                            <input type="text" name="father_name" class="form-control" placeholder="Father's Name">
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="input-group ">
-                                                <div class="input-group-prepend">
-                                                    <span class="input-group-text" id="basic-addon1"><i class="fa fa-users"></i>
-                                                </div>
-                                                <input type="text" class="form-control" name="father_education" placeholder="Father's Education Background">
-                                            </div>
-                
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <div class="input-group col-md-6 mb-3 mb-md-0">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text" id="basic-addon1"><i class="fa fa-users"></i>
-                                            </div>
-                                            <select class="form-control" name="father_occupation" id="father_occupation">
-                                                <option selected disabled>Select Father's Occupation</option>
-                                                @foreach ($userSettingFields[11]->values as $value)
-                                                    <option>{{ $value->title }}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="input-group">
-                                                <div class="input-group-prepend">
-                                                    <span class="input-group-text" id="basic-addon1"><i class="fa fa-edit "></i>
-                                                </div>
-                                                <select name="family_type" id="" class="form-control">
-                                                <option selected disabled>Select Family Class</option>
-                                                @foreach ($userSettingFields[13]->values as $value)
-                                                    <option>{{ $value->title }}</option>
-                                                @endforeach
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                
-                                    <div class="form-group row">
-                                        <div class="input-group col-md-6  p-0 ">
-                                            <div class="form-group label-floating {{ $errors->has('gender') ? ' has-error' : '' }}">
-                                                <div class="input-group">
-                                                    <div class="col-md-7"><label class="control-label">Gender <small>(Required)</small> </label>
-                                                    </div>
-                                                    <div class="col-md-5 p-0">
-                                                        <select required class="form-control" style="min-width: 130px;"  id="gender" name="gender">
-                                                                    
-                                                            @if(old('gender'))
-                                                            <option selected>{{old('gender')}}</option>
-                                                            @else 
-                                                            <option value="" selected disabled>Select Gender</option>
-                                                            @endif
-                                                            {{-- id:1, title:gender --}}
-                                                            @foreach ($userSettingFields[0]->values as $value)
-                                                              <option>{{ $value->title }}</option>
-                                                            @endforeach
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                @if ($errors->has('gender'))
-                                                    <span class="text-red">
-                                                        <strong>{{ $errors->first('gender') }}</strong>
-                                                    </span>
-                                                    @else
-                                                    {{-- <span class="text-red">Country is required</span> --}}
-                                                    @endif
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="input-group">
-                                                <div class="input-group-prepend">
-                                                    <span class="input-group-text" id="basic-addon1"><i class="fa fa-birthday-cake"></i>
-                                                </div>
-                                                <input type="date" name="birth_date" class="form-control" placeholder="Birthdate">
-                                            </div>
-                                        </div>
-                                        
-                                    </div>
-                
-                                    
-                                    <div class="form-group row">
-                                        {{-- <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label> --}}
-                                        
-                                        <div class="input-group col-md-12">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text" id="basic-addon1"><span class="fa fa-envelope" aria-hidden="true"></span>
-                                            </div>
-                                            <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" placeholder="E-mail Address" required autocomplete="email">
-                
-                                            @error('email')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
-                                        </div>
-                                    </div>
-                
-                                    <div class="form-group row">
-                                        {{-- <label for="mobile" class="col-md-4 col-form-label text-md-right">{{ __('Mobile') }}</label> --}}
-                                        <div class="input-group col-md-12">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text" id="basic-addon1"><span class="fa fa-phone" aria-hidden="true"></span>
-                                            </div>
-                                            <input id="text" type="mobile" class="form-control @error('mobile') is-invalid @enderror" name="mobile" value="{{ old('mobile') }}" required placeholder="Mobile number" autocomplete="mobile">
-                
-                                            @error('mobile')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        {{-- <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label> --}}
-                
-                                        <div class="input-group col-md-12">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text" id="basic-addon1"><span class="fa fa-key" aria-hidden="true"></span>
-                                            </div>
-                                            <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" placeholder="Password" name="password" required autocomplete="new-password">
-                
-                                            @error('password')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
-                                        </div>
-                                    </div>
-                
-                                    <div class="form-group row">
-                                        {{-- <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label> --}}
-                
-                                        <div class="input-group col-md-12">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text" id="basic-addon1"><span class="fa fa-lock" aria-hidden="true"></span>
-                                            </div>
-                                            <input id="password-confirm" type="password" class="form-control" placeholder="Confirm Password" name="password_confirmation" required autocomplete="new-password">
-                                        </div>
-                                    </div>
-                
-                                    <div class="form-group row mb-0">
-                                        <div class="input-group col-md-12 offset-md-4">
-                                            <button class="btn btn-default border mr-2" type="reset">Reset</button>
-                                            <button type="submit" class="btn btn-primary">
-                                                {{ __('Register') }}
-                                            </button>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                          </div>
 
-                        {{-- <form action="/" id="frmSignUp" method="post" class="pb-3 needs-validation">
-                            <div class="form-row">
-                                <div class="form-group col-lg-6">
-                                    <input type="text" value="" data-msg-required="Please enter your name."
-                                        maxlength="100" class="form-control" name="name" placeholder="First Name"
-                                        required>
-                                </div>
-                                <div class="form-group col-lg-6">
-                                    <input type="text" value="" data-msg-required="Please enter your email address."
-                                        data-msg-email="Please enter a valid email address." maxlength="100"
-                                        class="form-control" name="email" placeholder="Last Name" required>
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="form-group col">
-                                    <label class="font-weight-bold text-dark text-2">Country</label>
-                                    <select class="form-control">
-                                        <option value="" selected disabled>Seeking Alliance for</option>
-                                        <option value="">Self</option>
-                                        <option value="">Daughter</option>
-                                        <option value="">Son</option>
-                                        <option value="">Brother</option>
-                                        <option value="">Sister</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="form-group col">
-                                    <label class="font-weight-bold text-dark text-2">E-mail Address</label>
-                                    <input type="text" value="" placeholder="email address"
-                                        class="form-control form-control-lg" required>
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="form-group col-lg-4">
-                                    <input type="text" value="" data-msg-required="Please enter your name."
-                                        maxlength="100" class="form-control" name="name" placeholder="+880" required>
-                                </div>
-                                <div class="form-group col-lg-8">
-                                    <input type="text" value="" data-msg-required="Please enter your email address."
-                                        data-msg-email="Please enter a valid email address." maxlength="100"
-                                        class="form-control" name="email" placeholder="phone number" required>
-                                </div>
-                            </div>
-                            <div class="text-center pt-2">
-                                <button class="btn btn-default btn-lg" type="reset">Reset</button>
-                                <button class="btn btn-primary btn-lg" type="submit">Submit</button>
-                            </div>
-                        </form> --}}
+<div class="z-index-1 appear-animation" data-appear-animation="fadeInDownShorter" data-appear-animation-delay="100">
+  <div class="owl-carousel owl-theme full-width owl-loaded owl-drag owl-carousel-init m-0" data-plugin-options="{'items': 1, 'loop': true, 'nav': true, 'dots': false,
+  {{-- 'animateOut':'fadeOut', --}}
+   {{-- 'animateOut': 'slideOutLeft', 'animateIn': 'slideInRight', --}} 'autoplayHoverPause':false,  'autoplay':true, 'autoplayTimeout': 5000}">
+   @foreach ($sliders as $slider)
+       
+   <div>
+          <img src="{{ route('imagecache', [ 'template'=>'cpxlg','filename' => $slider->image_name ]) }}"  class="img-fluid" alt="">
+
+          <div class="row slider-custom-caption" style="margin-top: -60px;">
+
+                      
+            <div class="col-md-12">
+
+                <div class="container p-0">
+                    
+                  @if ($slider->pp_url || $slider->title || $slider->description)
+                      
+                <div class="w3-card-">
+            <div class="card- w3-card-4- px-5 rounded slider-card-bg-color-" style="background-color:#fef5ff">
+                <div class="card- shadow- card1- mx-auto- w3-animate-zoom w-100 p-0" style="background-color:#fef5ff">
+                    <div class="row g-0">
+                      <div class="col-lg-2 col-md-3 pt-2">
+                        <img
+                          src="{{ asset($slider->pp_url) }}"
+                          class="m-auto p-2 d-flex w3-circle"
+                          style="max-width: 100px; max-height: 100px;"
+                          alt=""
+                        />
+                      </div>
+                      <div class="col-lg-10 col-md-9 pl-0">
+                        <div class="card-body pt-4 pb-0 pl-0">
+                          <div class="card-title fw-bold bold w3-large p-0 text-dark pl-0"  style="color: #605154; font-weight: 400 !important;">{{ $slider->title }}</div>
+                          <p class="fw-lighter fst-italic w3-medium text-dark">
+                            {{ $slider->description }}
+                          </p>
+                        </div>
+                      </div>
                     </div>
+                  </div>
+            </div>
+        </div>
+                
+        @endif
                 </div>
             </div>
         </div>
+          
+      </div>  
+@endforeach
+  </div>
+</div>
+
+
+{{-- <!-- Hero -->
+<div class="container hero">
+    <div class="hero_shadows mx-auto"></div>
+    <div>
+      <img
+        src="{{ asset('img/NowrinFaruki.png') }}"
+        class="p-0 hero_img img-fluid"
+        alt=""
+      />
     </div>
-</div>
-</div>
-</div>
-
-
-
-<div class="text-center">
-    <div class="text-center w3-large p-2 w3-text-black"
-        style="background: url({{ asset('img/bg-ribon.jpg') }}) repeat;min-height: 20px;width: 100%;font-weight:bold;">
-        Marriage Solution BD: The Largest Matrimony Organization in Bangladesh
-    </div>
-
-</div>
-
-{{-- <section>
-    <div style="min-height: 300px; background: url({{ asset('https://www.marriagesolutionbd.com/storage/media/image/p12G21020133.png
-    ') }}); background-repeat: no-repeat;
-  background-size: 100%;" >
-    <div class="text-center">
-        <img src="https://www.marriagesolutionbd.com/storage/media/image/8aQK21020140.png
-  " alt="" >
-    </div>
-    <div class="text-center w3-round-xxlarge w3-white- bg-semitransparent p-3 mt-4 w3-card" style="background-color: #8910d454">
-        <div class="appear-animation w3-tag w3-white- w3-round-xlarge mb-3 mt-n5 w3-card"
-        data-appear-animation="fadeInDown" data-appear-animation-delay="100" style="background-color: #f5f5f5e6">
-            <img src="{{ asset('img/leaf.png') }}" alt="{{ env('APP_NAME') }}">
-            <br>
-            <p class="w3-xlarge w3-text-dark-gray lob-font "><b>Welcome</b></p>
+    <div class="hero_front"></div>
+    <div class="card shadow card1 mx-auto">
+      <div class="row g-0">
+        <div class="col-md-1">
+          <img
+            src="{{ asset('img/NowrinFaruki1.png') }}"
+            class="mx-3 mt-4 d-flex"
+            height="86px"
+            width="86px"
+            alt="..."
+          />
         </div>
-
-        <div class="appear-animation text-white w3-medium w3-shadow w3-round-xlarge text-justify px-md-4 bold " data-appear-animation="fadeInRight" data-appear-animation-delay="300">
-            
-                Dear customers and well wishers, <br>
-                Assalamu Alaikum, marriage is a great deed from a religious point of view. If any of your relatives, friends and colleagues is getting married, convey the message of Marriage Solution BD to them. According toevery religion, marriage is a sacred process. Be patient and inspire others in this full-fledged humanitarian initiative. May you and your family be protected in the shadow of Allah's mercy.
-
+        <div class="col-md-11">
+          <div class="card-body mt-3">
+            <div class="card-title fw-bold">Nowrin & Faruki</div>
+            <p class="fw-lighter fst-italic">
+              "Lorem ipsum dolor sit amet, consectetur adi pisi cing elit,
+              sed do eiusmod tempor exercitationemut labore et dolore magna
+              aliqua. Ut enim ad consequatur quis aliquip ex ea commodo
+              consequat"
+            </p>
+          </div>
         </div>
-        <div class="appear-animation text-white text-right w3-medium bold"
-        data-appear-animation="fadeInLeft" data-appear-animation-delay="300"> <i> "Service is good worship, come forward in the service of humanity, you also takepart in the great service"
-        </i>
-        </div> 
+      </div>
     </div>
-    </div>
-    
-</section> --}}
-<section
-    class="section-overlay-opacity section-overlay-opacity-scale-8 parallax- section section-parallax section-center pb-0 my-0"
-    data-plugin-parallax data-plugin-options="{'speed': 1.5}" data-image-src="{{ asset('img/back2.png') }}">
-    <div class="container">
-        <div class="section-space bg-prods">
-            <div class="container">
-                <div class="col-md-10 offset-md-1 LV-content">
-                    <div class="row">
-                        <div class="col-xs-12">
-                            {{-- <div class="appear-animation w3-tag mb-3 px-4 py-3 w3-xxlarge w3-round-xlarge text-center w3-text-black"
-                            data-appear-animation="fadeInDown" data-appear-animation-delay="100"
-                            style="background: url({{ asset('img/bg-ribon.jpg') }}) repeat;min-height: 20px;font-weight:bold;"
-                            >
-                                بسم الله الرحمن الرحيم
-                                
-                            </div> --}}
-                            <div class="text-center">
-                                <img src="https://www.marriagesolutionbd.com/storage/media/image/8aQK21020140.png" alt="">
-                            </div>
-                            <div class="text-center w3-round-xxlarge w3-white- bg-semitransparent p-3 mt-4 w3-card" >
-                                {{-- <div class="appear-animation w3-tag w3-white- w3-round-xlarge mb-3 mt-n5 w3-card"
-                                data-appear-animation="fadeInDown" data-appear-animation-delay="100" style="background-color: #f5f5f5e6">
-                                    <img src="{{ asset('img/leaf.png') }}" alt="{{ env('APP_NAME') }}">
-                                    <br>
-                                    <p class="w3-xlarge w3-text-dark-gray lob-font "><b>Welcome</b></p>
-                                </div> --}}
+  </div>
+  <!-- !Hero --> --}}
+</header>
+<!-- Intro -->
+<div class="container intro">
+  <div class="row">
+    <div class="col-lg-4 col-md-12 col-sm-12">
+      <h1 class="fw-bold">INTRODUCTION</h1>
+      <div class="h1"></div>
 
-                                <div class="lob-font appear-animation text-white w3-medium w3-shadow w3-round-xlarge text-justify px-md-4 bold " data-appear-animation="fadeInRight" data-appear-animation-delay="300" >
-                                    {{-- <p class="w3-xlarge lob-font text-center text-white"><b>Welcome</b></p> --}} <p style="color: #ffa500e3; font-size:19px;">
-                                        Dear customers and well wishers, <br>
-                                        Assalamu Alaikum, marriage is a great deed from a religious point of view. If any of your relatives, friends and colleagues is getting married, convey the message of Marriage Solution BD to them. According toevery religion, marriage is a sacred process. Be patient and inspire others in this full-fledged humanitarian initiative. May you and your family be protected in the shadow of Allah's mercy.
-                                    </p>
-                                </div>
-                                <div class="appear-animation text-white text-right w3-medium bold"
-                                data-appear-animation="fadeInLeft" data-appear-animation-delay="300"> 
-                                <p style="color: #fff; font-size: 16px;">
-                                    <i> "Service is good worship, come forward in the service of humanity, you also takepart in the great service"
-                                    </i>
-                                </p>
-                                </div> 
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+      <p class="left_p">
+        Let us assist you to choose your right life partner. 
+      </p>
     </div>
-</section>
-<div class="mb-0" style="background-color: #eee">
-    <div class="container py-5">
-        <div class="text-center w3-round-xxlarge w3-white p-3 w3-card">
-            <div class="appear-animation w3-tag w3-white w3-round-xlarge mb-3 mt-n5 w3-card"
-            data-appear-animation="fadeInDown" data-appear-animation-delay="100">
-                <img src="{{ asset('img/leaf.png') }}" alt="{{ env('APP_NAME') }}">
-                <br>
-                <p class="w3-xlarge w3-text-dark-gray lob-font "><b>Marriage Counselling Services</b></p>
-            </div>
-            <div class="col-xs-12">
-                {{-- <div class="w3-tag w3-white py-2 px-3 w3-border w3-round-large">
-                    <h1 class="w3-text-red m-0 p-0 bold" style="color:#c246c2; text-shadow: 1px 4px 6px #def, 0 0 0 #000, 1px 4px 6px #def;">
-                        
-                    </h1>
-                </div> --}}
-                <div class="p-3 mt-3 w3-round-xlarge w3-black" style="background: url(img/bg-home.jpg) no-repeat center;background-size: cover; background-height: 100%;"
-                >
-                    <div class="appear-animation w3-medium text-justify"        data-appear-animation="fadeInLeft" data-appear-animation-delay="300">
-                        A GROUP OF HIGHLY EDUCATED, SMART, LOYAL, HONEST, HUMBLE, SKILLED, EXPERIENCED, CLEVER AND EXECUTIVE IS WORKING TOWARDS MARRIAGE AND FAMILY FORMATION OF WEALTHY AND ELITE FAMILIES, ALSO MARRIAGE SOLUTION BDIS NOW PRROVIDING MATCHING / COUNSELLING SERVICES.
-                    </div>
-                    <div class="appear-animation text-right w3-large" data-appear-animation="fadeInRight" data-appear-animation-delay="300">“Change the view, life will change”</div> 
-                </div>
-                <div class="appear-animation row my-4 px-3 justify-content-center"
-                data-appear-animation="fadeInUp" data-appear-animation-delay="500">
-                    <div class="col-md-2 div col-sm-3 col-xs-6 col-6 p-0 m-0 border" style="background-color: #673003; margin: auto; height: 100px; color: white;">
-                        <img class="" width="80%" style="margin-top: -20px !important; border: 4px solid #5a2a03" src="{{ asset('img/qr.png') }}" alt="">
-                    </div>
-                    <div class="col-md-2 div col-sm-3 col-xs-6 col-6 border" style="background-color: #673003; margin: auto; height: 100px; color: white;"   >
-                        <div class="w3-text-medium pt-2">
-                            <span style="color: gold; font-weight: bold;"> ASAD GATE</span> <br>
-                            01720504504 <br>
-                            01633036062
-                        </div>
-                    </div>
-                    <div class="col-md-2 div col-sm-3 col-xs-6 col-6 border" style="background-color: #673003; margin: auto; height: 100px; color: white;" >
-                        <div  class="w3-text-medium pt-2">
-                            <span style="color: gold; font-weight: bold;"> GULSHAN</span> <br>
-                            01777118606 <br>
-                            01907550361
-                        </div>
-                    </div>
-                    <div class="col-md-2 div col-sm-3 col-xs-6 col-6 border" style="background-color: #673003; margin: auto; height: 100px; color: white;" >
-                        <div class="w3-text-medium pt-2">
-                            <span style="color: gold; font-weight: bold;"> UTTARA</span> <br>
-                            01791266153 <br>
-                            01776687989
-                        </div>
-                    </div>
-                    <div class="col-md-2 div col-sm-3 col-xs-6 col-6 border" style="background-color: #673003; margin: auto; height: 100px; color: white;" >
-                        <div class="w3-text-medium pt-2">
-
-                            <span style="color: gold; font-weight: bold;"> KAKRAIL</span> <br>
-                            01780414897 <br>
-                            01319378112
-                        </div>
-                    </div>
-                    <div class="col-md-2 div col-sm-3 col-xs-6 col-6 border" style="background-color: #673003; margin: auto; height: 100px; color: white;" >
-                        <div class="w3-text-medium pt-2">
-
-                            <span style="color: gold; font-weight: bold;"> CHATTOGRAM </span><br>
-                            01617014140 <br>
-                            01617013455
-                        </div>
-                    </div>
-                </div>
-            </div>
-            {{-- <p class="text-justify w3-medium">Marriage Solution BD, the world's largest online matchmaking site
-                was founded
-                with one simple objective - to provide a superior matchmaking experience all over the world. The company
-                pioneered online matchmaking when it launched in 2012 and continues to lead the exciting matrimony
-                category
-                after more than 6 years. MarriageSolutionBD.com has redefined the way people meet for marriage and has
-                touched the lives of 1 Million people all over the world and helped over 3 Million people find their
-                matches. Amongst many other awards MarriageSolutionBD.com was recently recognized amongst the world's 50
-                Most Innovative Companies by Fast Company.
-            </p> --}}
-        </div>
+    <div class="col-lg-8 col-md-12 col-sm-12">
+      <p class="right_p">
+        Marriage Solution BD's philosophy is to change attitudes and misconceptions about marriage media
+of Bangladesh. We trust, changing to right attitude towards marriage will change lives. We believe
+in integrity, reliability, trust and our far-reaching services to touch the hearts of millions across. We
+are here to help! Our yearlong experiences will help the clients to match their potential better half.
+We have successfully carried out – number of marriages till date!
+      </p>
     </div>
+  </div>
 </div>
+<!-- !Intro -->
+<!-- Recent Stories -->
+<div class="stories">
+  <div class="container py-5">
+    <div class="row">
+      <div class="col-lg-4 col-md-12 col-sm-12 str_left">
+        <h1 class="fw-bold bold text-center">RECENT STORIES</h1>
+        <p class="text-center">BRIDE & GROOM</p>
+      </div>
+      <div class="col-lg-8 col-md-12 col-sm-12 d-flex">
+        <div class="v1"></div>
+        <p class="my-auto p-4 str_right bold w3-medium">
+          Every story has a wonderful bonding & We create the bonding of a life time
+        </p>
+      </div>
+    </div>
+  </div>
+  <!-- Brid -->
+  <div class="container">
+    <div class="row pb-5 pt-5">
+      <div class="col-lg-6 col-md-12 col-sm-12">
+        <div
+          class="card card2 mx-auto bg-transparent border-0 text-center"
+          style="width: 20rem"
+        >
+          <img
+            src="{{ asset('img/Group4.png') }}"
+            class="card-img-top img-fluid"
+            alt="..."
+          />
+          <div class="card-body">
+            <h1 class="card-title">Sabrina Amin</h1>
+            <p class="card-text">
+              "Our family is grateful to have the support from Marriage Solution BD. We have trusted their work ethics to build our relationships between families."
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-1 ml-5 v2"></div>
+      <div class="col-lg-4 col-md-12 col-sm-12">
+        <div
+          class="card card2 bg-transparent border-0 text-center"
+          style="width: 20rem"
+        >
+          <img
+            src="{{ asset('img/Group5.png') }}"
+            class="card-img-top img-fluid"
+            alt="..."
+          />
+          <div class="card-body">
+            <h1 class="card-title">Sadman Sakib</h1>
+            <p class="card-text">
+              "Marriage Solution BD has really helped me and my family to find the right life partner. Their dedication and effort is remarkable."
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- <div class="container d-flex mx-auto w-75">
+    <div
+      class="card card2 mx-auto bg-transparent border-0 text-center"
+      style="width: auto"
+    >
+      <img
+        src="./img/Group 4.png"
+        class="card-img-top w-50 mx-auto"
+        alt="..."
+      />
+      <div class="card-body">
+        <h1 class="card-title">Sabrina Amin</h1>
+        <p class="card-text">
+          "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
+          nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
+          erat, sed diam voluptua. At vero eos et accusam et justo duo
+          dolores"
+        </p>
+      </div>
+    </div>
+    <div class="v2"></div>
+    <div
+      class="card card2 bg-transparent border-0 text-center"
+      style="width: auto"
+    >
+      <img
+        src="./img/Group 5.png"
+        class="card-img-top w-50 mx-auto"
+        alt="..."
+      />
+      <div class="card-body">
+        <h1 class="card-title">Sadman Sakib</h1>
+        <p class="card-text">
+          "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
+          nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
+          erat, sed diam voluptua. At vero eos et accusam et justo duo
+          dolores"
+        </p>
+      </div>
+    </div>
+  </div> -->
+  <!-- !Brid -->
+  <!-- Gallery -->
+  <div class="container gallery">
+    <div class="row">
+      <div class="col">
+        <h1 class="text-center">GALLERY OF HAPPY MOMENTS &nbsp;&nbsp; <a href="{{ route('welcome.photoGallery') }}" class="w3-medium btn-link p-2 rounded">View All <i class="fa fa-angle-right"></i></a></h1>
+        <div class="owl-carousel owl-theme show-nav-title" data-plugin-options="{'items': 3, 'margin': 10, 'loop': true, 'nav': true, 'dots': false, 'autoplay': true, 'autoplayTimeout': 3000}">
+          @foreach ($photos as $photo)
+          <div>
+            <img alt="" class="img-fluid rounded" src="{{ route('imagecache', [ 'template'=>'cpxs','filename' => $photo->image_name ]) }}">
+          </div>
+          @endforeach
+          
+        </div>
+      </div>
+    </div>
+    {{-- <h1 class="my-5 fw-bold text-center">GALLERY OF HAPPY MOMENTS</h1> --}}
+
+    {{-- <div class="row pb-5">
+      <div class="col-lg-4 col-md-12 col-sm-12">
+        <img src="./img/20170104.png" class="img-fluid" alt="" />
+      </div>
+      <div class="col-lg-4 col-md-12 col-sm-12">
+        <img
+          src="./img/118508456_3362110627189007_5297299518122107661_n.png"
+          class="img-fluid"
+          alt=""
+        />
+      </div>
+      <div class="col-lg-4 col-md-12 col-sm-12">
+        <img src="./img/Saif (8).png" class="img-fluid" alt="" />
+      </div>
+    </div> --}}
+  </div>
+  <!-- !Gallery -->
+</div>
+<!-- !Recent Stories -->
+<!-- Profiles -->
+<div class="container profiles py-5">
+  <div class="row">
+    <div class="col-lg-6 col-md-12 col-sm-12">
+      <div>
+        <img src="{{ asset('img/Group15.png') }}" class="img-fluid" alt="" />
+      </div>
+    </div>
+    <div class="col-lg-6 col-md-12 col-sm-12">
+      <h1 class="fw-bold">FEATURED PROFILES</h1>
+      <p class="fw-light w3-medium">
+        Matching your partner is a wonderful process. Our specific profile creation will help you to reach your perfect match.
+      </p>
+      <a href="{{ route('welcome.membershipPackages') }}" class="btn fw-lighter">Become Our Member</a
+      ><br />
+      <div class="icon">
+        <i class="bi bi-facebook"></i>
+        <i class="bi bi-twitter"></i>
+        <i class="bi bi-linkedin"></i>
+        <i class="bi bi-instagram"></i>
+        <i class="bi bi-youtube"></i>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- !Profiles -->
+
 
 
 @endsection

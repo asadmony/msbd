@@ -159,6 +159,16 @@
                     <li>
                         <a href="{{ route('common2.makeUserActive', $user) }}">Make {{ $user->active ? 'Inactive' : 'Active' }}</a>
                     </li>
+                    <li>
+                        <a href="{{ route('common3.makeUserInvoice', $user) }}">Make Invoice</a>
+                    </li>
+                    <li>
+                        <a href="" onclick="event.preventDefault(); if(confirm('Are you sure to delete?')){$('#delete_form_{{ $user->id }}').submit()}"><i class="fa fa-trash"></i> delete</a>
+                        <form action="{{ route('common2.userDelete', $user) }}" id="delete_form_{{ $user->id }}" method="post">
+                        @csrf
+                        @method('delete')
+                        </form>
+                    </li>
 
                     {{-- <li>
                         <a target="_blank" href="{{ route('admin.paymentHistoryForUser', $user) }}">Payment History</a>

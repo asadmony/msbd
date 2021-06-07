@@ -7,7 +7,7 @@
             <div class="box box-widget" id="video-gallery">
                 <div class="box-header w3-panel w3-leftbar w3-border-purple">
                     <h3 class="box-title">
-                        Video Gallery
+                        {{ __('Video Gallery') }}
                     </h3>
                 </div>
                 <div class="box-body w3-topbar">
@@ -34,15 +34,11 @@
                             <div class="text-center">
                                 <br> <br>
                                 <a class="w3-btn w3-white w3-text-purple w3-round w3-border w3-border-purple w3-small"
-                                    href="{{route('welcome.videoGallery')}}">More Videos <i
+                                    href="{{route('welcome.videoGallery')}}">{{ __('More Videos') }} <i
                                         class="fa fa-angle-double-right"></i></a>
                             </div>
                         </div>
                     </div>
-
-
-
-
 
 
                 </div>

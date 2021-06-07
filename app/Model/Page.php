@@ -14,4 +14,14 @@ class Page extends Model
     {
         return $this->hasMany('App\Model\PageItem', 'page_id');
     }
+    public function getLocaleTitleAttribute()
+    {
+        if(app()->getLocale() == 'bn')
+        {
+            return $this->page_title_bn ?: $this->page_title;
+        }else
+        {
+            return $this->page_title ?: $this->page_title_bn;
+        }
+    }
 }

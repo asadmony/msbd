@@ -69,5 +69,6 @@ class Kernel extends HttpKernel
         'userupdate' => \App\Http\Middleware\UserupdateMiddleware::class,
         'welcome' => \App\Http\Middleware\WelcomeMiddleware::class,
         'profile.check' => \App\Http\Middleware\ProfileCheckMiddleware::class,
+        'locale' => \App\Http\Middleware\LocaleMiddleware::class,
     ];
 }

@@ -29,6 +29,18 @@
                        
                 </div>
  
+                <div class="form-group {{ $errors->has('title_bn') ? ' has-error' : '' }}">
+                  <label for="title_bn" class="  control-label">Title (বাংলা)</label>
+ 
+                    <input type="text" name="title_bn" class="form-control" value="{{old('title_bn') ?: $post->title_bn}}" id="title_bn" placeholder="Title (বাংলা) of post" autocomplete="off">
+                    @if ($errors->has('title_bn'))
+	                    <span class="help-block">
+	                        <strong>{{ $errors->first('title_bn') }}</strong>
+	                    </span>
+	                @endif
+                       
+                </div>
+ 
  
 
                 <div class="form-group {{ $errors->has('description') ? ' has-error' : '' }}">
@@ -43,6 +55,20 @@
 	                @endif
 
                 </div>
+ 
+
+                <div class="form-group {{ $errors->has('description_bn') ? ' has-error' : '' }}">
+                  <label for="description_bn" class="control-label"> Description (বাংলা)</label>
+
+                    <textarea  name="description_bn" class="form-control" rows="10" id="description_bn" placeholder="Description (বাংলা)">{!! old('description_bn') ?: $post->description_bn !!}</textarea>
+
+                    @if ($errors->has('description_bn'))
+	                    <span class="help-block">
+	                        <strong>{{ $errors->first('description_bn') }}</strong>
+	                    </span>
+	                @endif
+
+                </div>
 
                 <div class="form-group {{ $errors->has('excerpt') ? ' has-error' : '' }}">
                   <label for="excerpt" class="control-label">excerpt</label>
@@ -52,6 +78,19 @@
                     @if ($errors->has('excerpt'))
                       <span class="help-block">
                           <strong>{{ $errors->first('excerpt') }}</strong>
+                      </span>
+                  @endif
+             
+                </div>
+
+                <div class="form-group {{ $errors->has('excerpt_bn') ? ' has-error' : '' }}">
+                  <label for="excerpt_bn" class="control-label">excerpt (বাংলা)</label>
+
+
+                    <textarea  name="excerpt_bn" class="form-control" rows="3" id="excerpt_bn" placeholder="Excerpt (বাংলা) of Post">{{ old('excerpt_bn') ?: $post->excerpt_bn }}</textarea>
+                    @if ($errors->has('excerpt_bn'))
+                      <span class="help-block">
+                          <strong>{{ $errors->first('excerpt_bn') }}</strong>
                       </span>
                   @endif
              

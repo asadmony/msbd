@@ -26,6 +26,12 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'mobile',
+        'gender',
+        'education_level',
+        'profession',
+        'profile_created_by',
+        'dob',
         'updated_at'
     ];
 
@@ -1639,6 +1645,11 @@ class User extends Authenticatable
         return UserProposal::has('user')->has('userSecond')->where('checked', false)->count();
     }
 
+    public function userPayments()
+    {
+        return $this->hasMany(UserPayment::class, 'user_id');
+    }
+
 
 
     //msbd end
@@ -2446,6 +2457,11 @@ class User extends Authenticatable
     public function identities()
     {
         return $this->hasOne('App\Model\SocialIdentity', 'user_id');
+    }
+
+    public function serviceCenter()
+    {
+        return $this->hasOne(BranchUser::class, 'user_id');
     }
 
     

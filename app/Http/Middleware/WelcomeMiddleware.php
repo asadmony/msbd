@@ -60,7 +60,7 @@ class WelcomeMiddleware
                     ->with('pages', function($qq){$qq->whereActive(true);})
                     ->first());
                 view()->share('membership',  Menu::has('pages')
-                    ->where('menu_title', 'Membership Details')
+                    ->where('menu_title', 'Packages & Payments')
                     ->with('pages', function($qq){$qq->whereActive(true);})
                     ->first());
                 view()->share('ownersMsg',  Menu::has('pages')
@@ -68,7 +68,7 @@ class WelcomeMiddleware
                     ->with('pages', function($qq){$qq->whereActive(true);})
                     ->first());
                 view()->share('contactUs',  Menu::has('pages')
-                    ->where('menu_title', 'Contact Us')
+                    ->where('menu_title', 'Find Us')
                     ->with('pages', function($qq){$qq->whereActive(true);})
                     ->first());
                 view()->share('userFooterMenu',  Menu::has('pages')
@@ -88,7 +88,7 @@ class WelcomeMiddleware
                     ->with('pages', function($qq){$qq->whereActive(true);})
                     ->first());
                 view()->share('membership',  Menu::has('pages')
-                    ->where('menu_title', 'Membership Details')
+                    ->where('menu_title', 'Packages & Payments')
                     ->with('pages', function($qq){$qq->whereActive(true);})
                     ->first());
                 view()->share('ownersMsg',  Menu::has('pages')
@@ -96,7 +96,7 @@ class WelcomeMiddleware
                     ->with('pages', function($qq){$qq->whereActive(true);})
                     ->first());
                 view()->share('contactUs',  Menu::has('pages')
-                    ->where('menu_title', 'Contact Us')
+                    ->where('menu_title', 'Find Us')
                     ->with('pages', function($qq){$qq->whereActive(true);})
                     ->first());
                 view()->share('welcomeFooterMenu', Menu::has('pages')

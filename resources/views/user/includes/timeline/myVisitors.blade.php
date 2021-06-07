@@ -7,7 +7,7 @@
 		</h3>
 
 		<div class="box-tools pull-right">
-                <a class="w3-button w3-small w3-round w3-border w3-border-purple w3-hover-purple p-1 btn-menu-to-container" data-url="{{ route('user.myAsset', 'my_visitor_users') }}" href="">View All <i class="fa fa-angle-right"></i></a>             
+                <a class="w3-button w3-small w3-round w3-border w3-border-purple w3-hover-purple p-1 btn-menu-to-container" data-url="{{ route('user.myAsset', 'my_visitor_users') }}" href="">{{ __('View All') }} <i class="fa fa-angle-right"></i></a>             
                 
               </div>
 	</div>

@@ -7,6 +7,11 @@
         <input type="text" class="form-control" placeholder="Page Title" id="page_title" name="page_title"
             value="{{ old('page_title') }}">
     </div>
+    <div class="form-group{{ $errors->has('page_title_bn') ? ' has-error' : '' }}">
+        <label for="page_title_bn">Page Title (Bangla):</label>
+        <input type="text" class="form-control" placeholder="Page Title" id="page_title_bn" name="page_title_bn"
+            value="{{ old('page_title_bn') }}">
+    </div>
 
     <div class="form-group{{ $errors->has('route_name') ? ' has-error' : '' }}">
         <label for="route_name">Route Name:</label>

@@ -27,7 +27,7 @@
                     </div>
 
                     <div class="form-group {{ $errors->has('mobile') ? ' has-danger' : '' }}">
-                        <label for="mobile">Mobile *</label>
+                        <label for="mobile">{{ __('Mobile') }} *</label>
                         <input  
                         type="text" 
                         id="mobile" 
@@ -47,7 +47,7 @@
                     </div>
 
                     <div class="form-group {{ $errors->has('email') ? ' has-danger' : '' }}">
-                        <label for="email">Email *</label>
+                        <label for="email">{{ __('Email') }} *</label>
                         <input  
                         type="text" 
                         id="email" 
@@ -66,7 +66,7 @@
                         @endif
                     </div>
 <div class="form-group {{ $errors->has('location') ? ' has-danger' : '' }}">
-    <label for="location">Location *</label>
+    <label for="location">{{ __('Location') }} *</label>
     <input  
     type="text" 
     required id="location-input" 
@@ -91,7 +91,7 @@
 
 
 <div class="form-group {{ $errors->has('state') ? ' has-danger' : '' }}">
-            <label for="state">State / Division</label>
+            <label for="state">{{ __('State') }} / {{ __('Division') }}</label>
             <input  
             type="text" 
             id="state" 
@@ -115,7 +115,7 @@
 
 
         <div class="form-group {{ $errors->has('city') ? ' has-danger' : '' }}">
-            <label for="city">City</label>
+            <label for="city">{{ __('City') }}</label>
             <input  
             type="text" 
             id="city" 
@@ -137,7 +137,7 @@
 
 
         <div class="form-group {{ $errors->has('post_code') ? ' has-danger' : '' }}">
-            <label for="post_code">Post Code</label>
+            <label for="post_code">{{ __('Post Code') }}</label>
             <input  
             type="text" 
             id="post_code" 
@@ -233,7 +233,7 @@
 
 
 <div class="form-group form-group-sm {{ $errors->has('date_of_birth') ? ' has-error' : '' }}">
-    <label for="date_of_birth">Date of Birth:</label>
+    <label for="date_of_birth">{{ __('Date of Birth') }}:</label>
 
     <div class="w3-row">
 
@@ -243,7 +243,7 @@
                     @if($me->dob)
                     <option value="{{date('d', strtotime($me->dob))}}">{{date('d', strtotime($me->dob))}}</option>
                     @else
-                    <option value="">Day</option>
+                    <option value="">{{ __('Day') }}</option>
                     @endif
                     @for ($i = 1; $i <= 31; $i++)
                     <option>{{ $i }}</option>
@@ -257,20 +257,20 @@
                     @if($me->dob)
                     <option value="{{date('m', strtotime($me->dob))}}">{{date('M', strtotime($me->dob))}}</option>
                     @else
-                    <option value="">Month</option>
+                    <option value="">{{ __('Month') }}</option>
                     @endif
-                    <option value="01">January</option>
-                    <option value="02">February</option>
-                    <option value="03">March</option>
-                    <option value="04">April</option>
-                    <option value="05">May</option>
-                    <option value="06">Jun</option>
-                    <option value="07">July</option>
-                    <option value="08">August</option>
-                    <option value="09">September</option>
-                    <option value="10">October</option>
-                    <option value="11">November</option>
-                    <option value="12">December</option>
+                    <option value="01">{{ __('January') }}</option>
+                    <option value="02">{{ __('February') }}</option>
+                    <option value="03">{{ __('March') }}</option>
+                    <option value="04">{{ __('April') }}</option>
+                    <option value="05">{{ __('May') }}</option>
+                    <option value="06">{{ __('Jun') }}</option>
+                    <option value="07">{{ __('July') }}</option>
+                    <option value="08">{{ __('August') }}</option>
+                    <option value="09">{{ __('September') }}</option>
+                    <option value="10">{{ __('October') }}</option>
+                    <option value="11">{{ __('November') }}</option>
+                    <option value="12">{{ __('December') }}</option>
                 </select>
             </div>
             <div class="w3-col s4"><select class="form-control w3-border w3-border-light-gray w3-padding" id="year" name="year" required>
@@ -278,7 +278,7 @@
                @if($me->dob)
                <option value="{{date('Y', strtotime($me->dob))}}">{{date('Y', strtotime($me->dob))}}</option>
                @else
-               <option value="">Year</option>
+               <option value="">{{ __('Year') }}</option>
                @endif
 
                @for ($i = date('Y') -14; $i >= date('Y') - 60; $i--)
@@ -290,7 +290,6 @@
 
    
     </div>
-
 
                 </div>
             </div>

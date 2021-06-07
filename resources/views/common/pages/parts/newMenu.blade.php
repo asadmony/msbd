@@ -49,6 +49,22 @@
                   </div>
                 </div>
 
+
+                <div class="form-group{{ $errors->has('menu_title_bn') ? ' has-error' : '' }}">
+                  <label for="menu_title_bn" class="col-sm-2 control-label">Menu Title (বাংলা)</label>
+
+                  <div class="col-sm-10">
+                    <input type="text" name="menu_title_bn" class="form-control" value="{{ old('menu_title_bn') }}" id="menu_title_bn" placeholder="Menu Title in Bangla" required autofocus>
+
+                    @if ($errors->has('menu_title_bn'))
+                        <span class="help-block">
+                            <strong>{{ $errors->first('menu_title_bn') }}</strong>
+                        </span>
+                    @endif
+
+                  </div>
+                </div>
+
  
 
                 <div class="form-group{{ $errors->has('menu_type') ? ' has-error' : '' }}">

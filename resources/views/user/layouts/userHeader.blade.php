@@ -52,7 +52,7 @@
                 @foreach($userHeaderMenu->pages as $uhmPage)
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('page', [$uhmPage->id, $uhmPage->route_name]) }}">
-                        {{ Str::limit( $uhmPage->page_title , 30,'..') }}
+                        {{ Str::limit( $uhmPage->localeTitle , 30,'..') }}
                     </a>
                 </li>
                 @endforeach
@@ -60,13 +60,13 @@
                 @if (isset($management))
                 <li class="dropdown nav-item">
                     <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="true">
-                        <span class="w3-text-white">{{ $management->menu_title }}</span>
+                        <span class="w3-text-white">{{ $management->localeTitle }}</span>
                         <div class="ripple-container"></div>
                     </a>
                     <div class="dropdown-menu dropdown-with-icons">
                         @foreach($management->pages as $uhmPage)
                         <a class="dropdown-item" href="{{ route('page', [$uhmPage->id, $uhmPage->route_name]) }}">
-                            {{ Str::limit( $uhmPage->page_title , 30,'..') }}
+                            {{ Str::limit( $uhmPage->localeTitle , 30,'..') }}
                         </a>
                         @endforeach
                         {{-- <a class="dropdown-item" href="{{ route('welcome.teamMembers') }}">
@@ -79,65 +79,68 @@
                 @if (isset($membership))
                 <li class="dropdown nav-item">
                     <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="true">
-                        <span class="w3-text-white">{{ $membership->menu_title }}</span>
+                        <span class="w3-text-white">{{ $membership->localeTitle }}</span>
                         <div class="ripple-container"></div>
                     </a>
                     <div class="dropdown-menu dropdown-with-icons">
                         @foreach($membership->pages as $uhmPage)
                         <a class="dropdown-item" href="{{ route('page', [$uhmPage->id, $uhmPage->route_name]) }}">
-                            {{ Str::limit( $uhmPage->page_title , 30,'..') }}
+                            {{ Str::limit( $uhmPage->localeTitle , 30,'..') }}
                         </a>
                         @endforeach
+                        <a class="dropdown-item" href="{{ route('welcome.teamMembers') }}">
+                            {{ __('Employee Stories') }}
+                        </a>
                     </div>
                 </li>
                 @endif
-                @if (isset($ownersMsg))
+                {{-- @if (isset($ownersMsg))
                 <li class="dropdown nav-item">
                     <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="true">
-                        <span class="w3-text-white">{{ $ownersMsg->menu_title }}</span>
+                        <span class="w3-text-white">{{ $ownersMsg->localeTitle }}</span>
                         <div class="ripple-container"></div>
                     </a>
                     <div class="dropdown-menu dropdown-with-icons">
                         @foreach($ownersMsg->pages as $uhmPage)
                         <a class="dropdown-item" href="{{ route('page', [$uhmPage->id, $uhmPage->route_name]) }}">
-                            {{ Str::limit( $uhmPage->page_title , 30,'..') }}
+                            {{ Str::limit( $uhmPage->localeTitle , 30,'..') }}
                         </a>
                         @if ($loop->iteration == 1)
                         <a class="dropdown-item" href="{{ route('welcome.successStories') }}">
-                            Success Stories
+                            {{ __('Success Stories') }}
                         </a>
                         <a class="dropdown-item" href="{{ route('welcome.teamMembers') }}">
-                            Employee Stories
+                            {{ __('Employee Stories') }}
                         </a>
-                        {{-- <a class="dropdown-item" href="{{ route('welcome.photoGallery') }}">
+                        <a class="dropdown-item" href="{{ route('welcome.photoGallery') }}">
                             Success Stories (Photos)
                         </a>
                         <a class="dropdown-item" href="{{ route('welcome.videoGallery') }}">
                             Success Stories (Videos)
-                        </a> --}}
+                        </a>
                         @endif
                         @endforeach
 
-                        {{-- <a class="dropdown-item" href="{{ route('welcome.successStories', 'photo') }}">
+                        <a class="dropdown-item" href="{{ route('welcome.successStories', 'photo') }}">
                             Success Stories (Photos)
-                        </a> --}}
+                        </a>
                     </div>
                 </li>
-                @endif
+                @endif --}}
                 @if (isset($contactUs))
                 <li class="dropdown nav-item">
                     <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="true">
-                        <span class="w3-text-white">{{ $contactUs->menu_title }}</span>
+                        <span class="w3-text-white">{{ $contactUs->localeTitle }}</span>
                         <div class="ripple-container"></div>
                     </a>
                     <div class="dropdown-menu dropdown-with-icons">
                         @foreach($contactUs->pages as $uhmPage)
                         <a class="dropdown-item" href="{{ route('page', [$uhmPage->id, $uhmPage->route_name]) }}">
-                            {{ Str::limit( $uhmPage->page_title , 30,'..') }}
+                            {{ Str::limit( $uhmPage->localeTitle , 30,'..') }}
                         </a>
                         @if ($loop->first)
                         <a class="dropdown-item" href="{{ route('welcome.ourBranches')}}">
-                            Branch Office Address
+                            {{ __('Branch Office Address') }}
                         </a>
                         @endif
                         @endforeach
@@ -150,12 +153,38 @@
                 </a>
                 </li> --}}
 
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                     <a class="nav-link" href="{{ route('blog') }}" >
-                     Blog
+                     {{ __('Blog') }}
                     </a>
+                </li> --}}
+                {{-- <li class="nav-item">
+                    <a class="nav-link" title="{{__('welcome.change_language')}}"  href="{{route('welcome.languageChange')}}" >
+                        @if(Cookie::get('locale') == 'bn')
+                        English
+                        @else
+                        বাংলা
+                        @endif
+                    </a>
+                </li> --}}
+                <li class="dropdown nav-item">
+                    <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="true">
+                        <span class="w3-text-white">More </span>
+                        <div class="ripple-container"></div>
+                    </a>
+                    <div class="dropdown-menu dropdown-with-icons">
+                        <a class="dropdown-item" href="{{ route('blog') }}">
+                            {{ __('Blog') }}
+                        </a>
+                        <a class="dropdown-item" href="{{route('welcome.languageChange')}}">
+                            @if(Cookie::get('locale') == 'bn')
+                            English
+                            @else
+                            বাংলা
+                            @endif
+                        </a>
+                    </div>
                 </li>
-
 
 
                 @endif
@@ -221,7 +250,7 @@
 
                         @if(Auth::user()->isAdmin())
                         <a href="{{route('admin.dashboard')}}" class="dropdown-item">
-                            <i class="material-icons">layers</i> Admin Dashboard
+                            <i class="material-icons">layers</i> {{ __('Admin Dashboard') }}
                         </a>
                         @endif
 
@@ -233,19 +262,14 @@
 
                         @if(Auth::user()->isMediaPerson())
                         <a href="{{route('mediaperson.dashboard')}}" class="dropdown-item">
-                            <i class="material-icons">layers</i> Media Person Dashboard
+                            <i class="material-icons">layers</i> {{ __('Media Person Dashboard') }}
                         </a>
                         @endif
 
 
-
-
-
-
-
                         <a href="{{ route('logout') }}" class="dropdown-item" onclick="event.preventDefault();
                   document.getElementById('logout-form').submit();">
-                            <i class="material-icons">content_paste</i> Logout
+                            <i class="material-icons">content_paste</i> {{ __('logout') }}
                         </a>
 
 

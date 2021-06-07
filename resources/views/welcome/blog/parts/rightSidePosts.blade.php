@@ -1,7 +1,7 @@
 <div class="tabs tabs-dark mb-4 pb-2">
     <ul class="nav nav-tabs">
-        <li class="nav-item active"><a class="nav-link show active text-1 font-weight-bold text-uppercase" href="#popularPosts" data-toggle="tab">Popular</a></li>
-        <li class="nav-item"><a class="nav-link text-1 font-weight-bold text-uppercase" href="#recentPosts" data-toggle="tab">Recent</a></li>
+        <li class="nav-item active"><a class="nav-link show active text-1 font-weight-bold text-uppercase" href="#popularPosts" data-toggle="tab">{{ __('Popular') }}</a></li>
+        <li class="nav-item"><a class="nav-link text-1 font-weight-bold text-uppercase" href="#recentPosts" data-toggle="tab">{{ __('Recent') }}</a></li>
     </ul>
     <div class="tab-content">
         <div class="tab-pane active" id="popularPosts">
@@ -17,7 +17,14 @@
                         </div>
                     </div>
                     <div class="post-info">
-                        <a href="{{ route('blogPostDetails', [$item->id, Str::slug($item->title)]) }}">{{ Str::limit($item->title, 100, '...') }}</a>
+                        <a href="{{ route('blogPostDetails', [$item->id, Str::slug($item->title)]) }}">
+                            {{ Str::limit($item->localeTitle, 100, '...') }}
+                            {{-- @if (Cookie::get('locale') == 'bn')
+                            {{ Str::limit($item->title_bn, 100, '...') }}
+                            @else
+                            {{ Str::limit($item->title, 100, '...') }}
+                            @endif --}}
+                        </a>
                         <div class="post-meta">
                              {{ now()->parse($item->created_at)->format('d-M-Y') }}
                         </div>
@@ -39,7 +46,14 @@
                         </div>
                     </div>
                     <div class="post-info">
-                        <a href="{{ route('blogPostDetails', [$item->id, Str::slug($item->title)]) }}">{{ Str::limit($item->title, 100, '...') }}</a>
+                        <a href="{{ route('blogPostDetails', [$item->id, Str::slug($item->title)]) }}">
+                            {{ Str::limit($item->localeTitle, 100, '...') }}
+                            {{-- @if (Cookie::get('locale') == 'bn')
+                            {{ Str::limit($item->title_bn, 100, '...') }}
+                            @else
+                            {{ Str::limit($item->title, 100, '...') }}
+                            @endif --}}
+                        </a>
                         <div class="post-meta">
                             {{ now()->parse($item->created_at)->format('d-M-Y') }}
                         </div>

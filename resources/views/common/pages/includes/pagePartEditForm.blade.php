@@ -26,6 +26,21 @@
         @endif
 
     </div>
+    <div class="form-group {{ $errors->has('description_bn') ? ' has-error' : '' }}">
+        <label for="description_bn" class="control-label"> Description Bangla: <a class="btn btn-xs w3-deep-orange w3-btn"
+                href="{{ route('common1.pageItemEditEditor', $it) }}">
+                {{ $it->editor ? 'Without Editor' : 'With Editor' }}</a></label>
+
+        <textarea name="description_bn" class="form-control  {{ $it->editor ? ' details-input ' : '' }} " rows="10"
+            id="description_bn" placeholder="Description in bangla">{!! old('description_bn') ?: $it->content_bn  !!}</textarea>
+
+        @if ($errors->has('description_bn'))
+        <span class="help-block">
+            <strong>{{ $errors->first('description_bn') }}</strong>
+        </span>
+        @endif
+
+    </div>
 
 
 

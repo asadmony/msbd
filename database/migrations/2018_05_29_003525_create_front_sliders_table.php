@@ -17,6 +17,10 @@ class CreateFrontSlidersTable extends Migration
             $table->increments('id');
             $table->string('image_name')->nullable();
             $table->string('image_url')->nullable();
+            $table->string('pp_name')->nullable();
+            $table->string('pp_url')->nullable();
+            $table->string('title')->nullable();
+            $table->text('description')->nullable();
             $table->integer('addedby_id')
                   ->unsigned()
                   ->nullable();

@@ -44,9 +44,16 @@ class CommonController2 extends Controller
         }
         else
         {
+            // $usersAll = User::withoutGlobalScopes()
+            // ->whereHas('branches', function($q){
+            //     $q->where('branches.id', Auth::user()->commonRole()->branch_id);
+            // })
+            // ->latest()
+            // ->paginate(50);
+
             $usersAll = User::withoutGlobalScopes()
-            ->whereHas('branches', function($q){
-                $q->where('branches.id', Auth::user()->commonRole()->branch_id);
+            ->whereHas('serviceCenter', function ($q){
+                $q->where('branch_users.branch_id', auth()->user()->commonRole()->branch_id)->where('branch_users.contact_user_role_id', auth()->user()->commonRole()->id);
             })
             ->latest()
             ->paginate(50);
@@ -242,7 +249,7 @@ class CommonController2 extends Controller
 
             if(!$user)
             {
-                return back()->with('error', 'Sorry, You have no permission to update the information of this account.');
+                return redirect()->back()->with('error', 'Sorry, You have no permission to update the information of this account.');
             }             
         }
 
@@ -262,8 +269,7 @@ class CommonController2 extends Controller
             }
 
         }
-
-        return back()->with('info', "User's activity updated.");
+        return redirect()->back()->with('info', "User's activity updated.");
     }
 
 
@@ -351,8 +357,7 @@ class CommonController2 extends Controller
                 'success' => true
               ]);
         }
-
-        return back();
+        return redirect()->back();
     }
 
 
@@ -382,7 +387,6 @@ class CommonController2 extends Controller
         }
         else
         {
-
            $user = User::withoutGlobalScopes()
             ->whereHas('branches', function($q){
                 $q->where('branches.id', Auth::user()->commonRole()->branch_id);
@@ -392,7 +396,7 @@ class CommonController2 extends Controller
 
             if(!$user)
             {
-                return back()->with('error', 'Sorry, You have no permission to update the information of this account.');
+                return redirect()->back()->with('error', 'Sorry, You have no permission to update the information of this account.');
             }             
         }
 
@@ -440,7 +444,7 @@ class CommonController2 extends Controller
 
         if($validation->fails())
         {
-            return back()
+            return redirect()->back()
             ->withErrors($validation)
             ->withInput()
             ->with('error', 'Something Went Worng!');
@@ -459,7 +463,7 @@ class CommonController2 extends Controller
         //         }
         // }
 
-        return back()->with('success', "New temporary password set for {$user->username}");
+        return redirect()->back()->with('success', "New temporary password set for {$user->username}");
 
 
     }
@@ -480,8 +484,7 @@ class CommonController2 extends Controller
             $user->save();
             $picture->delete();
         }
-
-        return back()->with('info', 'Photo Successfully Deleted.');
+        return redirect()->back()->with('info', 'Photo Successfully Deleted.');
     }
 
     public function userProfilepicChange(Request $request, User $user)
@@ -627,7 +630,7 @@ class CommonController2 extends Controller
                 ->render());
           }
       }
-      return back();
+      return redirect()->back();
     }
 
 
@@ -666,7 +669,7 @@ class CommonController2 extends Controller
                         ->where('status', 'pending')->first();
             if($payment)
             {
-                return back()
+                return redirect()->back()
                 ->with('info', "Previous payment order of {$user->username} is pending");
             }else
             {
@@ -707,8 +710,7 @@ class CommonController2 extends Controller
                 //         ->subject('Payment Processing Completed at '.url('/'));
                 //     });
                 // }
-
-                return back()->with('success', 'Free package processing successfully completed.');
+                return redirect()->back()->with('success', 'Free package processing successfully completed.');
             }            
     }
     //user package
@@ -788,8 +790,7 @@ class CommonController2 extends Controller
         $user->editedby_id = Auth::id();
 
         $user->save();
-         
-        return back()->with('success', 'User Branch Package Reference Support Successfully Updated.');
+        return redirect()->back()->with('success', 'User Branch Package Reference Support Successfully Updated.');
  
     }
     //branchPackageReferenceSupport
@@ -845,11 +846,9 @@ class CommonController2 extends Controller
             $cp->img_mime = $mime;
             $cp->save();
         }
-
-        return back()->with('success', 'Public Photos Successfully Uploaded.');
+        return redirect()->back()->with('success', 'Public Photos Successfully Uploaded.');
         }
-
-        return back();
+        return redirect()->back();
 
     }
 
@@ -861,8 +860,7 @@ class CommonController2 extends Controller
             ->delete('users/photos/'.$photo->img_name);
             $photo->delete();
         }
-
-        return back()->with('info', 'Photo Successfully Deleted.');
+        return redirect()->back()->with('info', 'Photo Successfully Deleted.');
     }
 
     public function userDetailsUpdatePost(Request $request)
@@ -886,8 +884,7 @@ class CommonController2 extends Controller
 
         if($validation->fails())
         {
-            
-            return back()
+            return redirect()->back()
             ->withErrors($validation)
             ->withInput()
             ->with('error', ' Try Again With correct Info');
@@ -1039,8 +1036,7 @@ $fi->editedby_id = Auth::id();
 $fi->save();
             
         }
-
-        return back()->with('success', 'User Information Successfully Updated.');
+        return redirect()->back()->with('success', 'User Information Successfully Updated.');
     }
 
 
@@ -1166,8 +1162,7 @@ $fi->save();
                     //         // return $e->getResponse()->getStatusCode();
                     //     }
                     ### sms api end here (masking & nonmasking seperate) ###
-
-                return back()->with('success', 'Payment info successfully updated.');
+                return redirect()->back()->with('success', 'Payment info successfully updated.');
             }            
         }
     }
@@ -1175,7 +1170,7 @@ $fi->save();
     public function paymentDelete(Request $request, UserPayment $payment)
     {
         $payment->delete();
-        return back()->with('info', 'Payment info deleted successfully.');
+        return redirect()->back()->with('info', 'Payment info deleted successfully.');
     }
 
     public function paymentAddNew(Request $request)
@@ -1190,7 +1185,7 @@ $fi->save();
 
     public function paymentAddNewPost(Request $request)
     {
-         // dd($request->all());
+        //  dd($request->all());
         $validation = Validator::make($request->all(),
         [
               "email" => 'required|email|exists:users,email',
@@ -1223,12 +1218,22 @@ $fi->save();
                         ->where('status', 'pending')->first();
             if($payment)
             {
-                return back()
+                return redirect()->back()
                 ->with('info', 'Previous payment order of this user is pending');
             }else
             {
-                $payment = new UserPayment;
-                $payment->status = 'paid';
+                $inactivePayment = UserPayment::where('user_id', $user->id)
+                    ->where('status', 'inactive')->first();
+                if ($inactivePayment) {
+                    $payment = $inactivePayment;
+                }else{
+                    $payment = new UserPayment;
+                }
+                if ($request->payment_method == 'Online') {
+                    $payment->status = 'inactive';
+                }else{
+                    $payment->status = 'paid';
+                }
                 $payment->membership_package_id = $package->id;
                 $payment->package_title = $package->package_title;
                 $payment->package_description = $package->package_description;
@@ -1249,6 +1254,9 @@ $fi->save();
                 $expired_at = $user->expired_at;
                 if($expired_at > Carbon::now())
                 {
+                    if ($inactivePayment) {
+                        $expired_at = $expired_at->subDays($inactivePayment->package->package_duration);
+                    }
                     $user->expired_at = $expired_at->addDays($payment->package_duration);
                 }else
                 {
@@ -1290,8 +1298,7 @@ $fi->save();
                     //         // return $e->getResponse()->getStatusCode();
                     //     }
                     ### sms api end here (masking & nonmasking seperate) ###
-
-                return back()->with('success', 'Payment info successfully saved.');
+                return redirect()->back()->with('success', 'Payment info successfully saved.');
             }            
         }
     }
@@ -1383,6 +1390,59 @@ $fi->save();
         return view('admin.userRegistrationInfo', ['users'=>$users]);
     }
 
+    public function userDelete(User $user)
+    {
+        if ($user->img_name) {
+            Storage::disk('upload')
+            ->delete('users/pp/'.$user->img_name);
+        }
+        if ($user->file_name) {
+            Storage::disk('upload')
+            ->delete('users/cv/'.$user->file_name);
+        }
+        if ($user->userPictures) {
+            foreach ($user->userPictures as $picture) {
+                Storage::disk('upload')
+            ->delete('users/pp/'.$picture->image_name);
+            $picture->delete();
+            }
+        }
+        if ($user->userPhotos) {
+            foreach ($user->userPhotos as $picture) {
+                Storage::disk('upload')
+            ->delete('users/photos/'.$picture->img_name);
+            $picture->delete();
+            }
+        }
+        if ($user->roles) {
+            $user->roles()->delete();
+        }
+        if ($user->roleItems) {
+            $user->roleItems()->delete();
+        }
+        if ($user->mediaPerson) {
+            $user->mediaPerson()->delete();
+        }
+        if ($user->mediaItem) {
+            $user->mediaItem()->delete();
+        }
+        $user->blocks()->delete();
+        $user->favourites()->delete();
+        $user->contacts()->delete();
+        $user->proposal()->delete();
+        $user->userVis()->delete();
+        $user->memPackage()->delete();
+        $user->userPayments()->delete();
+        $user->searchTerm()->delete();
+        $user->userEducationRecord()->delete();
+        $user->userWorkingRecord()->delete();
+        $user->familyInfo()->delete();
+        $user->identities()->delete();
+        $user->serviceCenter()->delete();
+        $user->blockerOf()->delete();
+        $user->delete();
 
+        return redirect()->back()->with('success', 'User is deleted successfully.');
+    }
 
 }

@@ -13,7 +13,7 @@
                     <div class="row">
                         <div class="col-sm-12 text-center">
                             <a target="_blank" href="{{ url('/',$user->username) }}">
-                                <img class="img-rounded img-bordered mb-2" title="{{ $user->username }}" width="45" src="{{ asset($user->latestCheckedPP()) }}" alt="{{ $user->username }}">
+                                <img class="img-rounded img-bordered mb-2" title="{{ $user->username }}" width="45" src="{{ route('imagecache', [ 'template'=>'ppsmbl','filename' => $user->latestCheckedPP() ]) }}" alt="{{ $user->username }}">
                             </a>
                             <i class="fa fa-angle-double-right  w3-large w3-text-purple"></i> 
                             <i class="fa fa-angle-double-right  w3-large w3-text-purple"></i> 

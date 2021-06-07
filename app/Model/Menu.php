@@ -31,4 +31,13 @@ class Menu extends Model
     {
         return $this->belongsTo('App\Model\Menu', 'parent_id');
     }
+
+	public function getLocaleTitleAttribute()
+	{
+		if (app()->getLocale() == 'bn') {
+			return $this->menu_title_bn ?: $this->menu_title;
+		} else {
+			return $this->menu_title ?: $this->menu_title_bn;
+		}
+	}
 }

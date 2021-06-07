@@ -8,7 +8,7 @@
     <div class="box box-widget">
             <div class="box-header w3-panel w3-leftbar w3-border-purple">
               <h3 class="box-title">
-                 Our Facebook Page
+                 {{ __('Our Facebook Page') }}
               </h3>
             </div>
             <div class="box-body w3-topbar">

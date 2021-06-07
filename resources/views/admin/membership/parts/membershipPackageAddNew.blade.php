@@ -50,7 +50,33 @@
           <div class="form-group">
             <label class="control-label col-sm-3" for="description">Package Description:</label>
             <div class="col-sm-9">
-              <input type="text" class="form-control" id="description" value="{{ old('description') }}" required name="description" placeholder="Package Description">
+              <textarea class="form-control" id="description" required name="description" placeholder="Package Description">{{ old('description') }}</textarea>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="control-label col-sm-3" for="contact_person_name">Contact Person:</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" id="contact_person_name" required name="contact_person_name" placeholder="Contact Person Name" value="{{ old('contact_person_name') }}">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label col-sm-3" for="contact_person_number">Contact Person Number:</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" id="contact_person_number" required name="contact_person_number" placeholder="Contact Person Number" value="{{ old('contact_person_number') }}">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="control-label col-sm-3" for="second_person_name">Second Contact Person:</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" id="second_person_name"  name="second_person_name" placeholder="Second Person Name" value="{{ old('second_person_name') }}">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label col-sm-3" for="second_person_number">Second Person Number:</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" id="second_person_number"  name="second_person_number" placeholder="Second Person Number" value="{{ old('second_person_number') }}">
             </div>
           </div>
 
@@ -78,6 +104,13 @@
             <label class="control-label col-sm-3" for="description">Duration / Days:</label>
             <div class="col-sm-9">
               <input type="number" min="1" required max="10000" step="1" class="form-control" id="duration" value="{{ old('duration') }}" name="duration" placeholder="Package Duration in Day">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="control-label col-sm-3" for="live">Live:</label>
+            <div class="col-sm-9">
+              <input type="checkbox" class="" id="live" @if(old('live') == true) checked @endif name="live">
             </div>
           </div>
 

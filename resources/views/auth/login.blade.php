@@ -12,13 +12,13 @@
                     @csrf
                     <div class="form-input">
                         <span class="fa fa-envelope-o" aria-hidden="true"></span>
-                        <input id="email" type="email" name="email"
-                            class="{{ $errors->has('email') ? ' is-invalid' : '' }}"
-                            placeholder="{{ __('E-Mail Address') }}" value="{{ old('email') }}" required autofocus />
+                        <input id="email" type="email" name="login"
+                            class="{{ $errors->has('login') ? ' is-invalid' : '' }}"
+                            placeholder="{{ __('E-Mail Address') }}" value="{{ old('login') }}" required autofocus />
                     </div>
-                    @if ($errors->has('email'))
+                    @if ($errors->has('login'))
                     <span class="invalid-feedback" role="alert">
-                        <strong class="w3-text-red">{{ $errors->first('email') }}</strong>
+                        <strong class="w3-text-red">{{ $errors->first('login') }}</strong>
                     </span>
                     @endif
                     <div class="form-input">
@@ -49,7 +49,7 @@
                             class="signuplink">{{ __('Forgot Your Password?') }}</a>
                     </div>
                 </form>
-                <div class="social-icons">
+                {{-- <div class="social-icons">
                     <p class="continue"><span>Or</span></p>
                     <div class="social-login">
                         <a href="{{ route('socialLogin', 'facebook') }}">
@@ -63,8 +63,10 @@
                             </div>
                         </a>
                     </div>
-                </div>
-                <p class="signup">Don’t have an account? <a href="{{ route('register') }}" class="signuplink">Sign up</a>
+                </div> --}}
+                <p class="signup text-center">
+                    <a href="{{ route('register') }}" class="btn btn-success text-white">Create New Account</a>
+                    {{-- Don’t have an account? <a href="{{ route('register') }}" class="signuplink">Sign up</a> --}}
                 </p>
             </div>
         </div>

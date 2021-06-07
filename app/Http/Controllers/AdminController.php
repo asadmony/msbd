@@ -2,15 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use Auth;
+use Illuminate\Support\Facades\Auth;
 use Mail;
 use Str;
-use Hash;
+use Illuminate\Support\Facades\Hash;
 use Validator;
 use Carbon\Carbon;
 use App\Model\Page;
 use App\Model\User;
 use App\Model\Branch;
+use App\Model\CareerApplication;
 use App\Model\Report;
 use GuzzleHttp\Client;
 use App\Model\Country;
@@ -23,6 +24,7 @@ use App\Model\UserSettingItem;
 use App\Model\UserSettingField;
 use App\Model\WebsiteParameter;
 use App\Model\MembershipPackage;
+use App\Model\UserFamilyInfo;
 use League\Flysystem\Filesystem;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Cache;
@@ -81,7 +83,7 @@ class AdminController extends Controller
         $validation = Validator::make($request->all(),
         [ 
 
-          'meta_keyword' => 'max:255',
+          //'meta_keyword' => 'max:255',
 
         ]);
 
@@ -454,15 +456,25 @@ class AdminController extends Controller
 
     public function roleAddNewPost(Request $request)
     {
- 
-
-        $validation = Validator::make($request->all(),
-        [
-            'branch' => 'numeric',
-            'role_value' => 'required',
-            'items' => 'required',
-            'email' => 'required|email'
-        ]);
+        if ($request->name || $request->newEmail || $request->mobile || $request->password) {
+            $validationRules = [
+                'branch' => 'numeric',
+                'role_value' => 'required',
+                'items' => 'required',
+                'name' => 'required',
+                'mobile' => 'required|unique:users,mobile',
+                'newEmail' => 'required|unique:users,email',
+                'password' => 'required|string|min:8',
+            ];
+        }else{
+            $validationRules = [
+                'branch' => 'numeric',
+                'role_value' => 'required',
+                'items' => 'required',
+                'email' => 'required|email'
+            ];
+        }
+        $validation = Validator::make($request->all(),$validationRules);
         if($validation->fails())
         {
             return back()
@@ -470,15 +482,24 @@ class AdminController extends Controller
             ->withInput()
             ->with('error', 'Something went wrong.');
         }
-
-
-        $user = User::where('email', $request->email)->first();
+        // dd($request->all());
+        if ($request->name && $request->newEmail && $request->mobile && $request->password) {
+            $user = User::create([
+                'name' => $request->name,
+                'email' => $request->newEmail,
+                'mobile' => $request->mobile,
+                'password' => Hash::make($request->password),
+            ]);
+            $userFamily = new UserFamilyInfo;
+            $userFamily->user_id = $user->id;
+            $userFamily->save();
+        }else{
+            $user = User::where('email', $request->email)->first();
+        }
         if($user)
         {
- 
             if (!$user->isCommonWithoutAdmin()) 
             {
-
                 if($request->items)
                 {
                    $r =  $user->roles()->create([
@@ -499,7 +520,7 @@ class AdminController extends Controller
                     
                     return back()->with('success', 'New Role Successfully Created.');                
                 }
-            }                
+            }
 
             return back()->with('error', 'This user already has a role.');          
         }
@@ -553,9 +574,14 @@ class AdminController extends Controller
         $package = new MembershipPackage;
         $package->package_title = $request->title;
         $package->package_description = $request->description;
+        $package->contact_person_name = $request->contact_person_name;
+        $package->contact_person_number = $request->contact_person_number;
+        $package->second_person_name = $request->second_person_name;
+        $package->second_person_number = $request->second_person_number;
         $package->package_amount = $request->price;
         $package->package_currency = $request->currency;
         $package->package_duration = $request->duration;
+        $package->live = $request->live ? true : false;
         $package->save();
 
         Cache::forget('mPackage1');
@@ -586,12 +612,17 @@ class AdminController extends Controller
 
         $package->package_title = $request->title;
         $package->package_description = $request->description;
+        $package->contact_person_name = $request->contact_person_name;
+        $package->contact_person_number = $request->contact_person_number;
+        $package->second_person_name = $request->second_person_name;
+        $package->second_person_number = $request->second_person_number;
         $package->package_type = $request->package_type;
         $package->package_amount = $request->price;
         $package->package_currency = $request->currency;
         $package->package_duration = $request->duration;
         $package->proposal_send_daily_limit = $request->proposal_send_daily_limit;
         $package->proposal_send_total_limit = $request->proposal_send_total_limit;
+        $package->live = $request->live ? true : false;
 
         $package->contact_view_limit = $request->contact_view_limit;
 
@@ -841,7 +872,8 @@ class AdminController extends Controller
 
         $validation = Validator::make($request->all(),
         [ 
-            'image' => 'required|image|dimensions:min_with=1200,min_height=500'
+            'image' => 'required|image|dimensions:min_with=1200,min_height=460',
+            'p_image' => 'image|dimensions:min_with=80,min_height=80',
         ]);
         if($validation->fails())
         {
@@ -859,9 +891,23 @@ class AdminController extends Controller
 
             Storage::disk('upload')->put('slider/'.$fimageNewName, File::get($ffile));
 
+
             $sl = new FrontSlider;
             $sl->image_name = $fimageNewName;
             $sl->image_url = 'storage/slider/'.$fimageNewName;
+
+            if ($request->hasFile('p_image')) {
+                $ffileP = $request->p_image;
+                $fimgExtP = strtolower($ffile->getClientOriginalExtension());               
+                $fimageNewNameP = Str::random(8).time().'.'.$fimgExtP;
+
+                Storage::disk('upload')->put('slider/'.$fimageNewNameP, File::get($ffileP));
+
+                $sl->pp_name = $fimageNewNameP;
+                $sl->pp_url = 'storage/slider/'.$fimageNewNameP;
+            }
+            $sl->title = $request->title;
+            $sl->description = $request->description;
             $sl->addedby_id = Auth::id();
             $sl->save();
 
@@ -879,15 +925,18 @@ class AdminController extends Controller
         if($slider)
         {
             Storage::disk('upload')->delete('slider/'.$slider->image_name);
+            if ($slider->pp_name) {
+                Storage::disk('upload')->delete('slider/'.$slider->pp_name);
+            }
             $slider->delete();
             Cache::flush();
         }
-
-
         return back()->with('success', 'Front slider successfully deleted.');
         
     }
 
     //front slider
+
+
 
 }

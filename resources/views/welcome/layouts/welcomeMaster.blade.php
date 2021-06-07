@@ -159,7 +159,7 @@
 </head>
 
 
-<body class="{{Auth::check() ? 'profile-page' : 'index-page'}}">
+<body  oncontextmenu="return false;" class="{{Auth::check() ? 'profile-page' : 'index-page'}}">
     @include('alerts.alertSweet')
     {{-- <body class="{{Auth::check() ? 'profile-page' : 'landing'}}"> --}}
     <div id="backtop">&#9650;</div>
@@ -322,7 +322,6 @@ $(document).keydown(function(e){
         });
     </script>
 
-
     <script type="text/javascript">
         $(function() {
         $('.slide').slide({
@@ -367,7 +366,6 @@ $(document).ready(function(){
 </script> --}}
     {{-- @endif --}}
 
-
     {{-- @endauth --}}
 
     @auth
@@ -387,6 +385,7 @@ $(document).ready(function(){
     </script>
     @endif
 
+
 @else
     @if(!$me->hasEducation() or !$me->hasWork() or ! $me->familyInfo )
 
@@ -402,6 +401,18 @@ $(document).ready(function(){
     </script>
     @endif
 
+    {{-- @if (!empty($inactivePayment))
+    @include('user.includes.modal.incompletePaymentModal')
+    <script>
+        $(document).ready(function(){
+    // Show the Modal on load
+
+    $("#inactivePayment").modal({backdrop: "static"});
+    $("#inactivePayment").modal("show");
+
+    });
+    </script>
+    @endif --}}
 @endif
 
     @endauth

@@ -8,7 +8,7 @@
     <div class="box box-widget" id="our-branches">
             <div class="box-header w3-panel w3-leftbar w3-border-purple">
               <h3 class="box-title">
-                 Our Branches
+                 {{ __('Our Branches') }}
               </h3>
             </div>
             <div class="box-body  w3-topbar">
@@ -32,7 +32,7 @@
                   <a class="btn btn-sm btn-primary" href="tel:{{ $branch->mobile }}" 
                   title="{{ $branch->mobile }}, {{ $branch->email }}" 
                   
-                  >Contact Now</a>
+                  >{{ __('Contact Now') }}</a>
                 </div>
               </div>
               <div class="box-body">

@@ -44,6 +44,7 @@ class CommonController1 extends Controller
         $validation = Validator::make($request->all(),
         [
             'menu_title' => 'required|max:250|string',
+            'menu_title_bn' => 'required|max:250|string',
             'menu_type' => 'required|max:50|string',
         ]);
         if($validation->fails())
@@ -56,6 +57,7 @@ class CommonController1 extends Controller
 
         $menu = new Menu;
         $menu->menu_title = $request->menu_title;
+        $menu->menu_title_bn = $request->menu_title_bn;
         $menu->menu_type = $request->menu_type;
         $menu->addedby_id = $request->user()->id;
         $menu->save();
@@ -266,8 +268,9 @@ class CommonController1 extends Controller
         // dd($request->all());
         $validation = Validator::make($request->all(),
         [
-            'page_title' => 'required|max:50|string',
-            'route_name' => 'required|max:50|string',
+            'page_title' => 'required|max:150|string',
+            'page_title_bn' => 'max:150|string',
+            'route_name' => 'required|max:150|string',
         ]);
         if($validation->fails())
         {
@@ -279,6 +282,7 @@ class CommonController1 extends Controller
 
         $page = new Page;
         $page->page_title = $request->page_title;
+        $page->page_title_bn = $request->page_title_bn;
         $page->title_hide = $request->title_hide ? 1 : 0;
         $page->active = $request->active ? 1 : 0;
         // $page->list_in_menu = $request->list_in_menu ? 1 : 0;
@@ -333,8 +337,9 @@ class CommonController1 extends Controller
     {
         $validation = Validator::make($request->all(),
         [
-            'page_title' => 'required|max:50|string',
-            'route_name' => 'required|max:50|string',
+            'page_title' => 'required|max:150|string',
+            'page_title_bn' => 'max:150|string',
+            'route_name' => 'required|max:150|string',
         ]);
         if($validation->fails())
         {
@@ -344,6 +349,7 @@ class CommonController1 extends Controller
         }
 
         $page->page_title = $request->page_title;
+        $page->page_title_bn = $request->page_title_bn;
         $page->title_hide = $request->title_hide ? 1 : 0;
         $page->active = $request->active ? 1 : 0;
         // $page->list_in_menu = $request->list_in_menu ? 1 : 0;
@@ -395,6 +401,7 @@ class CommonController1 extends Controller
         [
             'title' => 'required|max:50|string',
             'description' => 'required|max:60000|string',
+            'description_bn' => 'max:60000',
         ]);
         if($validation->fails())
         {
@@ -407,6 +414,7 @@ class CommonController1 extends Controller
         $item->page_id = $page->id;
         $item->title = $request->title ?: null;
         $item->content = $request->description ?: null;
+        $item->content_bn = $request->description_bn ?: null;
         $item->editor = $request->editor ? 1 : 0;
         $item->active = $request->active ? 1 : 0;
         $item->addedby_id = Auth::id();
@@ -455,6 +463,7 @@ class CommonController1 extends Controller
         [
             'title' => 'required|max:50|string',
             'description' => 'required|max:60000|string',
+            'description_bn' => 'max:60000',
         ]);
         if($validation->fails())
         {
@@ -465,6 +474,7 @@ class CommonController1 extends Controller
 
         $item->title = $request->title ?: null;
         $item->content = $request->description ?: null;
+        $item->content_bn = $request->description_bn ?: null;
         $item->editor = $request->editor ? 1 : 0;
         $item->active = $request->active ? 1 : 0;
 

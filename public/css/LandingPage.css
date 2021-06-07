@@ -1,0 +1,537 @@
+/* 
+font-family: 'Lato', sans-serif; 
+font-family: 'Open Sans', sans-serif;
+font-family: 'Great Vibes', cursive;
+*/
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Lato", sans-serif;
+}
+
+:root {
+  --primarycolor: #641b69;
+  --secendarycolor: #605154;
+}
+
+.icon-bar {
+  position: fixed;
+  top: 20%;
+  right: 0;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  z-index: 100;
+}
+
+.icon-bar a {
+  display: block;
+  text-align: center;
+  padding: 10px;
+  transition: all 0.3s ease;
+  color: white;
+  font-size: 16px;
+}
+
+.icon-bar a:hover {
+  background-color: #000;
+}
+
+.bn {
+  background: var(--primarycolor);
+  text-decoration: none;
+  color: white;
+}
+
+.fb {
+  background: #85248b;
+  color: white;
+}
+
+header {
+  background: rgb(254, 243, 255);
+  background: linear-gradient(
+    180deg,
+    rgba(254, 243, 255, 1) 0%,
+    rgba(255, 255, 255, 1) 100%
+  );
+}
+
+.nav-item a {
+  color: var(--primarycolor) !important;
+  font-family: "Lato", sans-serif;
+}
+
+.login {
+  color: var(--primarycolor);
+  border: 1px solid var(--primarycolor);
+  font-family: "Lato", sans-serif;
+  letter-spacing: 1px;
+  background: #f0e7f4;
+  margin-right: 1rem;
+  margin-left: 1rem;
+  border-radius: 0 !important;
+  width: 8rem;
+}
+
+.login:hover {
+  color: var(--primarycolor);
+}
+
+.register {
+  color: #fff;
+  border: 1px solid var(--primarycolor);
+  font-family: "Lato", sans-serif;
+  letter-spacing: 1px;
+  background: var(--primarycolor);
+  border-radius: 0 !important;
+  width: 8rem;
+}
+
+.register:hover {
+  color: #fff;
+}
+
+.hero_shadows {
+  background-color: var(--primarycolor);
+  /* height: 513px; */
+  height: 490px;
+  width: 98%;
+  opacity: 12%;
+  z-index: -100;
+}
+
+.hero_img {
+  opacity: 100% !important;
+  width: 1685px;
+  margin-top: -34.5rem;
+}
+
+.hero_front {
+  background-color: var(--primarycolor);
+  height: 497.8px;
+  opacity: 51%;
+  margin-top: -33.2rem;
+}
+
+.card1 {
+  width: 90%;
+  height: 136px;
+  margin-top: -4rem;
+}
+
+.card1 .card-title {
+  color: var(--primarycolor);
+  font-family: "Lato", sans-serif;
+  font-size: 16px;
+}
+
+.intro {
+  margin-top: 7rem;
+  margin-bottom: 5rem;
+}
+
+.intro h1 {
+  color: var(--primarycolor);
+  margin-bottom: 2rem;
+  margin-top: 2rem;
+  letter-spacing: 2px;
+  font-family: "Open Sans", sans-serif;
+}
+
+.h1 {
+  color: #641b69;
+  width: 60%;
+  border: 1px solid #641b69;
+  margin-bottom: 1.5rem;
+}
+
+.left_p {
+  font-size: 18px;
+  font-weight: 300;
+}
+
+.right_p {
+  color: var(--primarycolor);
+  font-size: 22px;
+  font-weight: 300;
+  text-align: justify !important;
+  font-family: "Lato", sans-serif;
+}
+
+.stories {
+  background-color: #fef5ff;
+}
+
+.str_left h1 {
+  color: var(--secendarycolor);
+  font-family: "Open Sans", sans-serif;
+  letter-spacing: 2px;
+}
+
+.str_left p {
+  color: var(--secendarycolor);
+  font-family: "Open Sans", sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: 3px;
+}
+
+.v1 {
+  border-left: 5px solid var(--primarycolor);
+  height: 89px;
+}
+
+.str_right p {
+  font-size: 18px;
+  font-weight: 300;
+  font-family: "Lato", sans-serif;
+}
+
+.card2 h1 {
+  font-family: "Great Vibes", cursive;
+  color: var(--primarycolor);
+}
+
+.card2 p {
+  font-size: 18px;
+  font-family: "Lato", sans-serif;
+  font-weight: 300;
+}
+
+.v2 {
+  border-left: 1px solid #d2d2d2;
+  height: 508px;
+}
+
+.gallery h1 {
+  color: var(--secendarycolor);
+  font-family: "Open Sans", sans-serif;
+}
+
+.profiles h1 {
+  font-family: "Open Sans", sans-serif;
+  color: var(--primarycolor);
+  letter-spacing: 2px;
+  margin-top: 4rem;
+}
+
+.profiles p {
+  font-family: "Lato", sans-serif;
+}
+
+.profiles a {
+  border: 1px solid var(--primarycolor);
+  background-color: var(--primarycolor);
+  color: #fff;
+  font-family: "Lato", sans-serif;
+  font-size: 24px;
+  letter-spacing: 2px;
+}
+
+.profiles a:hover {
+  color: #fff;
+}
+
+.profiles .icon {
+  color: var(--primarycolor);
+  font-size: 20px;
+  letter-spacing: 10px;
+  margin-left: 2.5rem;
+  margin-top: 2rem;
+}
+
+.office {
+  background: url(./../img/Ghotok_bdwedding.png);
+  position: relative;
+  height: 400px;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-position: bottom;
+  background-size: cover;
+  text-align: center;
+  color: #fff;
+}
+
+.office_row {
+  margin-left: 10rem;
+}
+
+.office_row p {
+  font-size: 14px;
+}
+
+.office ul {
+  list-style-type: none;
+  margin-top: 2rem;
+  font-family: "Lato", sans-serif;
+}
+
+.office ul h1 {
+  font-size: 18px !important;
+  font-family: "Lato", sans-serif;
+}
+
+.office img {
+  margin-top: -5.5rem;
+  border: 5px solid var(--primarycolor);
+  z-index: 100 !important;
+}
+
+.office h1 {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 700;
+}
+
+.office_foregr {
+  background: var(--primarycolor);
+  height: 400px;
+  width: 100%;
+  opacity: 90%;
+  position: absolute;
+  margin-top: 0rem;
+  right: 0;
+  left: 0;
+}
+
+footer {
+  font-family: "Lato", sans-serif;
+  color: var(--primarycolor);
+}
+
+@media only screen and (max-width: 600px) {
+  .icon-bar {
+    position: fixed;
+    top: 30%;
+    right: 0;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    z-index: 100;
+  }
+
+  .hero_shadows {
+    background-color: var(--primarycolor);
+    height: 100%;
+    width: 98%;
+    opacity: 12%;
+  }
+
+  .hero_img {
+    opacity: 100% !important;
+    width: 1685px;
+    margin-top: 0;
+  }
+
+  .hero_front {
+    background-color: var(--primarycolor);
+    height: 150px;
+    opacity: 51%;
+    margin-top: -9rem;
+  }
+
+  .card1 {
+    width: 90%;
+    height: 100px;
+    margin-top: -3.5rem;
+  }
+
+  .card1 .card-title {
+    color: var(--primarycolor);
+    font-family: "Lato", sans-serif;
+    font-size: 12px;
+  }
+
+  .card1 img {
+    margin-top: 5px !important;
+  }
+
+  .card1 .card-title {
+    margin-top: -7rem !important;
+    margin-left: 6rem;
+  }
+
+  .card1 p {
+    font-size: 8px;
+    margin-top: 0 !important;
+    margin-left: 6rem;
+  }
+
+  .intro {
+    margin-top: 0;
+    margin-bottom: 3rem;
+  }
+
+  .intro h1 {
+    color: var(--primarycolor);
+    margin-bottom: 2rem;
+    margin-top: 5rem;
+    letter-spacing: 2px;
+    font-family: "Open Sans", sans-serif;
+  }
+
+  .h1 {
+    color: #641b69;
+    width: 60%;
+    border: 1px solid #641b69;
+    margin-bottom: 1.5rem;
+  }
+
+  .left_p {
+    font-size: 14px;
+    font-weight: 300;
+  }
+
+  .right_p {
+    color: var(--primarycolor);
+    font-size: 16px;
+    font-weight: 300;
+    text-align: justify !important;
+    font-family: "Lato", sans-serif;
+  }
+
+  .stories {
+    background-color: #fef5ff;
+  }
+
+  .str_left h1 {
+    color: var(--secendarycolor);
+    font-family: "Open Sans", sans-serif;
+    letter-spacing: 2px;
+  }
+
+  .str_left p {
+    color: var(--secendarycolor);
+    font-family: "Open Sans", sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 3px;
+  }
+
+  .v1 {
+    border-left: 5px solid var(--primarycolor);
+    height: 89px;
+    margin-left: 1rem;
+    margin-right: -1rem;
+  }
+
+  .str_right {
+    font-size: 12px;
+    font-weight: 300;
+    font-family: "Lato", sans-serif;
+    text-align: justify !important;
+    padding: 0;
+    margin-top: -1rem !important;
+  }
+
+  .card2 h1 {
+    font-family: "Great Vibes", cursive;
+    color: var(--primarycolor);
+  }
+
+  .card2 p {
+    font-size: 18px;
+    font-family: "Lato", sans-serif;
+    font-weight: 300;
+  }
+
+  .v2 {
+    display: none;
+  }
+
+  .gallery h1 {
+    color: var(--secendarycolor);
+    font-family: "Open Sans", sans-serif;
+    font-size: 20px;
+  }
+
+  .gallery img {
+    margin-bottom: 1rem;
+  }
+
+  .profiles p {
+    font-family: "Lato", sans-serif;
+    font-size: 14px;
+  }
+
+  .profiles a {
+    border: 1px solid var(--primarycolor);
+    background-color: var(--primarycolor);
+    color: #fff;
+    font-family: "Lato", sans-serif;
+    font-size: 20px;
+    letter-spacing: 2px;
+  }
+
+  .profiles a:hover {
+    color: #fff;
+  }
+
+  .profiles .icon {
+    color: var(--primarycolor);
+    font-size: 20px;
+    letter-spacing: 10px;
+    margin-left: 1.5rem;
+    margin-top: 1rem;
+  }
+
+  .office {
+    background: url(./../img/Ghotok_bdwedding.png);
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-position: bottom;
+    background-size: cover;
+    text-align: center;
+    color: #fff;
+  }
+
+  .office_row {
+    margin-left: 0;
+  }
+
+  .office_row p {
+    font-size: 14px;
+  }
+
+  .office ul {
+    list-style-type: none;
+    margin-top: 2rem;
+    font-family: "Lato", sans-serif;
+  }
+
+  .office ul h1 {
+    font-size: 18px !important;
+    font-family: "Lato", sans-serif;
+  }
+
+  .office img {
+    margin-top: -5.5rem;
+    border: 5px solid var(--primarycolor);
+    z-index: 100 !important;
+  }
+
+  .office h1 {
+    font-family: "Open Sans", sans-serif;
+    font-weight: 700;
+  }
+
+  .office_foregr {
+    background: var(--primarycolor);
+    height: 100%;
+    width: 100%;
+    opacity: 90%;
+    position: absolute;
+    margin-top: 0rem;
+    right: 0;
+    left: 0;
+  }
+
+  footer {
+    font-family: "Lato", sans-serif;
+    color: var(--primarycolor);
+  }
+}

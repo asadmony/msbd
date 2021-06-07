@@ -23,6 +23,19 @@
         @endif
 
     </div>
+    <div class="form-group {{ $errors->has('description_bn') ? ' has-error' : '' }}">
+        <label for="description_bn" class="control-label"> Description Bangla</label>
+
+        <textarea name="description_bn" class="form-control details-input" rows="10" id="description_bn"
+            placeholder="Description in bangla">{!! old('description_bn')   !!}</textarea>
+
+        @if ($errors->has('description_bn'))
+        <span class="help-block">
+            <strong>{{ $errors->first('description_bn') }}</strong>
+        </span>
+        @endif
+
+    </div>
 
 
 

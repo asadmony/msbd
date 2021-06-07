@@ -8,7 +8,7 @@
     <div class="box box-widget" id="featured-professions">
             <div class="box-header w3-panel w3-leftbar w3-border-purple">
               <h3 class="box-title">
-                 Featured Professions
+                 {{ __('Featured Professions') }}
               </h3>
             </div>
             <div class="box-body w3-topbar">
@@ -29,7 +29,7 @@
                 alt="Doctor" 
                 class="img-fluid">
                 <div class="w3-container w3-center w3-light-gray w3-padding">
-                  <h5 class="cat-title">Doctor</h5>
+                  <h5 class="cat-title">{{ __('Doctor') }}</h5>
                 </div>
               </div>
           </a>
@@ -50,7 +50,7 @@
                 alt="Engineer" 
                 class="img-fluid">
                 <div class="w3-container w3-center w3-light-gray w3-padding">
-                  <h5 class="cat-title">Engineer</h5>
+                  <h5 class="cat-title">{{ __('Engineer') }}</h5>
                 </div>
               </div>
           </a>
@@ -68,7 +68,7 @@
                 alt="Banker" 
                 class="img-fluid">
                 <div class="w3-container w3-center w3-light-gray w3-padding">
-                  <h5 class="cat-title">Banker</h5>
+                  <h5 class="cat-title">{{ __('Banker') }}</h5>
                 </div>
               </div>
           </a>
@@ -88,7 +88,7 @@
                 alt="Defence" 
                 class="img-fluid">
                 <div class="w3-container w3-center w3-light-gray w3-padding">
-                  <h5 class="cat-title">Defence</h5>
+                  <h5 class="cat-title">{{ __('Defence') }}</h5>
                 </div>
               </div>
           </a>
@@ -103,7 +103,7 @@
                 alt="Business" 
                 class="img-fluid">
                 <div class="w3-container w3-center w3-light-gray w3-padding">
-                  <h5 class="cat-title">Business Man</h5>
+                  <h5 class="cat-title">{{ __('Business Man') }}</h5>
                 </div>
               </div>
           </a>
@@ -120,7 +120,7 @@
                 alt="Government Job" 
                 class="img-fluid">
                 <div class="w3-container w3-center w3-light-gray w3-padding">
-                  <h5 class="cat-title">Gov't Job Holder</h5>
+                  <h5 class="cat-title">{{ __("Gov't Job Holder") }}</h5>
                 </div>
               </div>
           </a>

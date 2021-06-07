@@ -9,8 +9,8 @@
                 </button> --}}
             </div>
             <div class="modal-body text-white lob-font text-center">
-                <p class="" style="font-family:'Lobster Two', cursive; color: #ffa500e3; font-style: italic; font-size: 18px;">Welcome to <br> Marriage Solution BD. <br>Please create your profile to continue.</p>
-                <a href="{{ route('user.incompleteProfile') }}" class="btn btn-success text-dark"  style="background: url({{ asset('img/bg-ribon.jpg') }})">Create New Profile</a>
+                <p class="" style="font-family:'Lobster Two', cursive; color: #ffa500e3; font-style: italic; font-size: 18px;">Welcome to <br> Marriage Solution BD. <br>{{ __('Please create your profile to continue') }}.</p>
+                <a href="{{ route('user.incompleteProfile') }}" class="btn btn-success text-dark"  style="background: url({{ asset('img/bg-ribon.jpg') }})">{{ __('Create New Profile') }}</a>
 {{-- 
             @if(!Auth::user()->hasEducation())
             

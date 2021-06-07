@@ -43,6 +43,17 @@
 	                @endif
                   </div>
                 </div>
+                <div class="form-group {{ $errors->has('category_bn') ? ' has-error' : '' }}">
+                  <label for="category_bn" class="col-sm-3 control-label">Category (Bangla)</label>
+                  <div class="col-sm-9">
+                    <input type="text" name="category_bn" class="form-control" value="{{old('category_bn')}}" id="category_bn" placeholder="ক্য়াটেগরি" autocomplete="off">
+                    @if ($errors->has('category_bn'))
+	                    <span class="help-block">
+	                        <strong>{{ $errors->first('category_bn') }}</strong>
+	                    </span>
+	                @endif
+                  </div>
+                </div>
 
 
                 <div class="form-group">

@@ -15,12 +15,22 @@ use App\Model\FrontSlider;
 use App\Model\ImageGallery;
 use App\Model\VideoGallery;
 use App\Mail\InformationSend;
+use App\Model\BranchUser;
+use App\Model\CareerApplication;
+use App\Model\MembershipPackage;
+use App\Model\UserPayment;
+use App\Model\UserRole;
 use Illuminate\Http\Request;
 use App\Model\UserSettingField;
 use App\TeamMember;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Cookie;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use Intervention\Image\ImageManagerStatic as Image;
 
@@ -29,7 +39,7 @@ class WelcomeController extends Controller
 
   public function __construct()
   {
-    $this->middleware('welcome');
+    $this->middleware(['welcome','profile.check', 'locale']);
 
       // $this->device = 'theme.'.config('app.theme').'.';
     if(Agent::isDesktop())
@@ -50,7 +60,7 @@ class WelcomeController extends Controller
 
 	public function welcome(Request $request)
     {
-      //dd('abc');
+      // dd('abc');
       if (Auth::check())
       {
 
@@ -78,10 +88,11 @@ class WelcomeController extends Controller
         //         });
 
         $userSettingFields = UserSettingField::all();
+        
         return view($this->device.'welcome.welcome',[
           'countries' => $countries,
           'userSettingFields' => $userSettingFields,
-          'me'=>$me
+          'me'=>$me,
         ]);
       }
 
@@ -130,6 +141,8 @@ class WelcomeController extends Controller
                 return FrontSlider::all();
             });
 
+        $photos = Gallery::latest()->take(7)->get();
+        // $featuredProfiles = User::inRandomOrder()->where('active', 1)->where('img_name', '<>', null)->take(8)->get();
    		return view('welcome.guestWelcome',[
             // 'users'=>$users,
             'sliders' => $sliders,
@@ -140,6 +153,8 @@ class WelcomeController extends Controller
             'userSettingFields' => $userSettingFields,
             'videoGalleries'=> $vgs,
             'branches' => $branches,
+            // 'featuredProfiles' => $featuredProfiles,
+            'photos' => $photos,
         ]);
    }
 
@@ -685,7 +700,220 @@ $userSettingFields = Cache::remember('userSettingFields', 518400, function () {
       ]);
     }
 
+    public function serviceCenter()
+    {
+      $me = auth()->user();
+      $branches = Branch::all();
+      return view($this->device.'.welcome.serviceCenter', [
+        'branches' => $branches,
+        'me' => $me,
+      ]);
+    }
 
+    public function chooseService()
+    {
+      $me = auth()->user();
+      $branches = Branch::all();
+      return view($this->device.'.welcome.chooseService', [
+        'branches' => $branches,
+        'me' => $me,
+      ]);
+    }
+    public function choosePackage()
+    {
+      $me = auth()->user();
+      $packages = MembershipPackage::where('live', true)->get();
+      return view($this->device.'.welcome.choosePackage', [
+        'packages' => $packages,
+        'me' => $me,
+      ]);
+    }
+    public function savePackage(Request $request)
+    {
+      $this->validate($request,[
+        'package' => 'required',
+      ]);
+      $user = auth()->user();
+      $package = MembershipPackage::where('id', $request->package)
+        ->first();
+        if($package)
+        {
+          $inactivePayment = UserPayment::where('user_id', $user->id)
+              ->where('status', 'inactive')->first();
+          if ($inactivePayment) {
+              $payment = $inactivePayment;
+          }else{
+              $payment = new UserPayment;
+          }
+          $payment->status = 'inactive';
+          $payment->membership_package_id = $package->id;
+          $payment->package_title = $package->package_title;
+          $payment->package_description = $package->package_description;
+          $payment->package_amount = $package->package_amount;
+          $payment->package_currency = $package->package_currency;
+          $payment->package_duration = $package->package_duration;
+          $payment->paid_amount = $package->package_amount ?? '';
+          $payment->paid_currency = $package->package_currency ?? '';
+          $payment->payment_method = 'Online';
+          $payment->user_id = $user->id;
+          $payment->addedby_id = Auth::id();
+          $payment->save();
 
+          $user->package = $payment->membership_package_id;
+          $expired_at = $user->expired_at;
+          if($expired_at > now()){
+              if ($inactivePayment) {
+                  $expired_at = $expired_at->subDays($inactivePayment->package->package_duration);
+              }
+              $user->expired_at = $expired_at->addDays($payment->package_duration);
+          }else{
+              $user->expired_at = now()->addDays($payment->package_duration);
+          }
+          if ($inactivePayment) {
+              $psdl =  ($user->proposal_send_daily_limit - $inactivePayment->package->proposal_send_daily_limit)+$package->proposal_send_daily_limit;
+              $pstl = ($user->proposal_send_total_limit - $inactivePayment->package->proposal_send_total_limit)+$package->proposal_send_total_limit;
+              $cvl = ($user->contact_view_limit - $inactivePayment->package->contact_view_limit)+$package->contact_view_limit;
+          }else{
+              $psdl = $user->proposal_send_daily_limit + $package->proposal_send_daily_limit;
+              $pstl = $user->proposal_send_total_limit + $package->proposal_send_total_limit;
+              $cvl = $user->contact_view_limit + $package->contact_view_limit;
+          }
+          $user->proposal_send_daily_limit    = $psdl;
+          $user->proposal_send_total_limit    = $pstl;
+          $user->contact_view_limit           = $cvl;
+          $user->save();
+        }else{
+          return redirect()->back()->with('error', 'Invalid package is selected. Please try again');
+        }
+      return redirect()->route('welcome.welcome')->with('success', 'Package has been selected successfully. Please make the payment.');
+    }
 
+    public function branchContactPersons($branch)
+    {
+      $contactPersons = UserRole::where('branch_id', $branch)->with('user')->get();
+      return response()->json($contactPersons, 200);
+    }
+
+    public function serviceCenterSave(Request $request)
+    {
+        $this->validate($request,[
+          'branch' => 'required',
+          'contact_person' => 'required',
+        ]);
+        $user = auth()->user();
+        
+        $user->branches()->detach();
+
+        $c = BranchUser::where('branch_id',$request->branch)->where('user_id',$user->id)->first();
+        if(!$c)
+        {
+            $c = new BranchUser;
+            $c->branch_id     = $request->branch;
+            $c->contact_user_role_id = $request->contact_person;
+            $c->user_id       = $user->id;
+            $c->addedby_id    = Auth::id();
+            $c->save();    
+        }
+        return redirect()->route('welcome.welcome')->with('success', 'Your Service center is selected successfully.');
+    }
+
+    public function incompletePayment()
+    {
+      $me = auth()->user();
+      $inactivePayment = UserPayment::where('user_id', $me->id)->where('status', 'inactive')->first();
+      return view('welcome.incompletePayment', [
+        'inactivePayment' => $inactivePayment,
+        'me' => $me
+      ]);
+    }
+
+    public function languageChange(Request $request)
+    {
+      if (Cookie::get('locale') == 'bn')
+        {
+           
+            // return redirect()->back()->withCookie(Cookie::forget('locale'));
+            $cookie = cookie('locale', 'en', 43200);
+            return redirect()->back()->withCookie($cookie);
+
+        }else
+        {
+            $cookie = cookie('locale', 'bn', 43200);
+            return redirect()->back()->withCookie($cookie);
+        }
+        // $cookie = cookie('name', 'value', $minutes);
+        // $bn = $request->cookie('locale');
+        // if($bn)
+        // {
+        //   App::setLocale('en');
+        //   return redirect()->back()->withCookie(Cookie::forget('locale'));
+        // }else
+        // {
+        //     $cookie = cookie('locale', 'bn', 43200);
+        //     App::setLocale('bn');
+        //     return redirect()->back()->withCookie($cookie);
+        // }
+
+        // if(Cookie::get('locale') == 'bn')
+        // {
+        //     App::setLocale('bn');
+        // }
+        // elseif(Cookie::get('locale') == 'en')
+        // {
+        //     App::setLocale('en');
+        // }
+
+        // elseif(Cookie::get('locale') == null)
+        // {
+        //     $cookie = cookie('locale', 'bn', 43200);
+        //     App::setLocale('bn');
+        //     return redirect()->back()->withCookie($cookie);
+        // }
+
+        // return redirect()->back();
+    }
+
+    public function membershipPackages()
+    {
+      $packages = MembershipPackage::where('live', true)->get();
+      if (auth()->check()) {
+        return view($this->device.'welcome.memberships', [
+          'packages' => $packages,
+        ]);
+      }
+      return view('welcome.guestMemberships', [
+        'packages' => $packages,
+      ]);
+    }
+    public function careerApply(Request $request)
+    {
+      $this->validate($request,[
+        'name' => 'required|max:255',
+        'email' => 'email|max:255',
+        'mobile' => 'required|max:255',
+        'address' => 'required',
+        'cv' => 'required|mimes:pdf,image,doc,docx|max:2048',
+      ]);
+
+      $application = new CareerApplication;
+      $application->name = $request->name;
+      $application->email = $request->email;
+      $application->mobile = $request->mobile;
+      $application->address = $request->address;
+      $application->cover_letter = $request->cover_letter;
+      if ($request->hasFile('cv')) {
+          $file = $request->cv;
+          $ext = $file->getClientOriginalExtension();
+
+          $imageNewName = Str::random(8).time().'.'.$ext;
+
+          Storage::disk('upload')
+          ->put('application/cv/'.$imageNewName, File::get($file));
+
+          $application->cv = 'storage/application/cv/'.$imageNewName;
+      }
+      $application->save();
+
+      return redirect()->back()->with('success', 'Your application has been placed successfully.');
+    }
 }

@@ -17,11 +17,56 @@ use App\Http\Controllers\MemberController;
 */
 
 
+
+
+Route::get('/', [
+    'uses' =>'WelcomeController@welcome',
+    'as' => 'welcome.welcome'
+]);
+
+Route::get('our-team-members',[
+    'uses' => 'WelcomeController@teamMembers',
+    'as' => 'welcome.teamMembers',
+    ]);
+Route::get('branch/{branch}/team-members',[
+    'uses' => 'WelcomeController@branchTeamMembers',
+    'as' => 'welcome.branchTeamMembers',
+    ]);
+Route::get('membership/packages',[
+    'uses' => 'WelcomeController@membershipPackages',
+    'as' => 'welcome.membershipPackages',
+]);
+Route::get('incomplete-profile', [
+    'uses' =>'WelcomeController@incompleteProfile',
+    'as' => 'user.incompleteProfile'
+]);
+// Route::post('/incomplete-profile', [
+//     'uses' =>'WelcomeController@createProfile',
+//     'as' => 'user.createProfile'
+// ]);
+Route::post('incomplete-profile', [
+    'uses' =>'WelcomeController@createProfilePost',
+    'as' => 'user.createProfilePost'
+]);
+Route::get('language/change', [
+    'uses' =>'WelcomeController@languageChange',
+    'as' => 'welcome.languageChange'
+    ]);
+
 //blog
 
 Route::get('blog', [
     'uses' => 'WelcomeBlogController@blog',
     'as' => 'blog' 
+]);
+
+Route::get('blog/search', [
+    'uses' => 'WelcomeBlogController@blogSearch',
+    'as' => 'blogSearch' 
+]);
+Route::get('blog/category/{category}/{slug?}', [
+    'uses' => 'WelcomeBlogController@blogCategory',
+    'as' => 'blogCategory' 
 ]);
 
 Route::get('blog/{post}/{title?}', [
@@ -36,30 +81,37 @@ Route::get('select/tags/or/add/new', [
 
 //blog
 
-Route::get('/', [
-    'uses' =>'WelcomeController@welcome',
-    'as' => 'welcome.welcome'
-]);
-Route::get('/our-team-members',[
-    'uses' => 'WelcomeController@teamMembers',
-    'as' => 'welcome.teamMembers',
-]);
-Route::get('/branch/{branch}/team-members',[
-    'uses' => 'WelcomeController@branchTeamMembers',
-    'as' => 'welcome.branchTeamMembers',
-]);
-Route::get('/incomplete-profile', [
-    'uses' =>'WelcomeController@incompleteProfile',
-    'as' => 'user.incompleteProfile'
-]);
-// Route::post('/incomplete-profile', [
-//     'uses' =>'WelcomeController@createProfile',
-//     'as' => 'user.createProfile'
-// ]);
-Route::post('/incomplete-profile', [
-    'uses' =>'WelcomeController@createProfilePost',
-    'as' => 'user.createProfilePost'
-]);
+Route::middleware(['auth'])->group(function () {
+    Route::get('choose-service', [
+    'uses' =>'WelcomeController@chooseService',
+        'as' => 'user.chooseService'
+    ]);
+    Route::get('choose-package', [
+    'uses' =>'WelcomeController@choosePackage',
+        'as' => 'user.choosePackage'
+    ]);
+    Route::post('save-package', [
+    'uses' =>'WelcomeController@savePackage',
+        'as' => 'user.savePackage'
+    ]);
+    Route::get('service-center', [
+    'uses' =>'WelcomeController@serviceCenter',
+        'as' => 'user.serviceCenter'
+    ]);
+    Route::get('branch/{branch}/contact-persons', [
+        'uses' =>'WelcomeController@branchContactPersons',
+        'as' => 'user.branchContactPersons'
+    ]);
+    Route::post('service-center', [
+        'uses' =>'WelcomeController@serviceCenterSave',
+        'as' => 'user.attachBranch'
+    ]);
+    Route::get('incomplete-payment', [
+    'uses' =>'WelcomeController@incompletePayment',
+        'as' => 'user.incompletePayment'
+    ]);
+});
+
 
 Route::get('login/{provider}', 
     'Auth\LoginController@redirectToProvider')->name('socialLogin');
@@ -88,13 +140,23 @@ Route::get('/our-success-stories', [
     'as' => 'welcome.successStories'
 ]);
 
+Route::post('career/apply', [
+    'uses' =>'WelcomeController@careerApply',
+    'as' => 'welcome.careerApply'
+]);
+
 
 // Auth::routes();
 
 Route::get('login', [
     'uses' =>'Auth\LoginController@showLoginForm',
     'as' => 'login'
-]);
+])->middleware('locale');
+
+Route::get('emplyee', [
+    'uses' =>'Auth\LoginController@showEmployeeLoginForm',
+    'as' => 'emplyee.login'
+])->middleware('locale');
 
 Route::post('login', [
     'uses' =>'Auth\LoginController@login',
@@ -132,7 +194,7 @@ Route::get('password/reset/{token}', [
 Route::get('register', [
     'uses' =>'Auth\RegisterController@showRegistrationForm',
     'as' => 'register'
-]);
+])->middleware('locale');
 
 Route::post('register', [
     'uses' =>'Auth\RegisterController@register',
@@ -167,7 +229,7 @@ Route::get('test/{view}', [
 ]);
 
 
-Route::get('/{username}', [
+Route::get('profile/{username}', [
     'uses' =>'WelcomeController@username',
     'as' => 'welcome.username'
 ])->middleware('auth');
@@ -194,11 +256,11 @@ Route::get('video/gallery/{gallery?}', [
 
 
 // SSLCOMMERZ Start
-    // Route::get('ssl/pay', 'PublicSslCommerzPaymentController@index');
-    // Route::POST('ssl/success', 'PublicSslCommerzPaymentController@success');
-    // Route::POST('ssl/fail', 'PublicSslCommerzPaymentController@fail');
-    // Route::POST('ssl/cancel', 'PublicSslCommerzPaymentController@cancel');
-    // Route::POST('ssl/ipn', 'PublicSslCommerzPaymentController@ipn');
+    Route::get('ssl/pay', 'PublicSslCommerzPaymentController@index');
+    Route::POST('ssl/success', 'PublicSslCommerzPaymentController@success');
+    Route::POST('ssl/fail', 'PublicSslCommerzPaymentController@fail');
+    Route::POST('ssl/cancel', 'PublicSslCommerzPaymentController@cancel');
+    Route::POST('ssl/ipn', 'PublicSslCommerzPaymentController@ipn');
 
     Route::any('ssl/pay/{payment}', [
     'uses' =>'PublicSslCommerzPaymentController@index',
@@ -235,6 +297,7 @@ Route::group(['middleware' => ['auth','role:admin'] ,'prefix' => 'admin'], funct
     'uses' =>'AdminController@dashboard',
     'as' => 'admin.dashboard'
     ]);
+    
 
     Route::get('/website/parameter', [
     'uses' =>'AdminController@websiteParameter',
@@ -311,10 +374,10 @@ Route::group(['middleware' => ['auth','role:admin'] ,'prefix' => 'admin'], funct
         'as' => 'admin.selectNewRole',
         'uses' => 'AdminController@selectNewRole'
     ]);
-    // Route::post('admin/add/new/post', [
-    // 'uses' =>'AdminController@adminAddNewPost',
-    // 'as' => 'admin.adminAddNewPost'
-    // ]);
+    Route::post('admin/add/new/post', [
+    'uses' =>'AdminController@adminAddNewPost',
+    'as' => 'admin.adminAddNewPost'
+    ]);
 
     Route::post('admin/delete/{role}', [
     'uses' =>'AdminController@adminDelete',
@@ -339,7 +402,6 @@ Route::group(['middleware' => ['auth','role:admin'] ,'prefix' => 'admin'], funct
     //role
 
     //media person
-
     Route::get('media/persons/all/', [
     'uses' =>'AdminController@mediaPersonsAll',
     'as' => 'admin.mediaPersonsAll'
@@ -450,12 +512,17 @@ Route::group(['middleware' => ['auth','role:admin'] ,'prefix' => 'admin'], funct
 
 
 #common start //common
-Route::group(['middleware' => ['auth','role:common','profile.check'] ,'prefix' => 'authority'], function () {
+Route::group(['middleware' => ['auth','role:common'] ,'prefix' => 'authority'], function () {
 
     Route::get('dashboard', [
     'uses' =>'CommonController1@dashboard',
     'as' => 'common1.dashboard'
     ]);
+
+    Route::get('/career/applications', [
+        'uses' =>'CommonController3@careerApplications',
+        'as' => 'admin.careerApplications'
+        ]);
 
     // Blogs
     //menu & page
@@ -729,10 +796,16 @@ Route::group(['middleware' => ['auth','role:common','profile.check'] ,'prefix' =
     'as' => 'common2.usersAll'
     ]);
 
+    Route::delete('/user/{user}/delete', [
+    'uses' =>'CommonController2@userDelete',
+    'as' => 'common2.userDelete'
+    ]);
+
     Route::get('make/user/active/{user}', [
     'uses' =>'CommonController2@makeUserActive',
     'as' => 'common2.makeUserActive'
     ]);
+
 
 
     Route::get('users/group/{type}', [
@@ -883,6 +956,19 @@ Route::group(['middleware' => ['auth','role:common','profile.check'] ,'prefix' =
         'as' => 'common2.selectNewRole',
         'uses' => 'CommonController2@selectNewRole'
     ]);
+
+
+
+    Route::get('make/user/{user}/invoice', [
+        'uses' =>'CommonController3@makeUserInvoice',
+        'as' => 'common3.makeUserInvoice'
+    ]);
+
+    Route::post('save/user/{user}/invoice', [
+        'uses' =>'CommonController3@saveUserInvoice',
+        'as' => 'common3.saveUserInvoice'
+    ]);
+
     //payment
 
 
@@ -1180,10 +1266,10 @@ Route::group(['middleware' => ['auth', 'welcome'], 'prefix' => 'mypanel'], funct
     ]);
 
     //this is for tmm
-    Route::any('payto/payment/gateway/{payment}', [
-    'uses' =>'WalletMixController@paytoPaymentGateway',
-    'as' => 'user.paytoPaymentGateway'
-    ]);
+    // Route::any('payto/payment/gateway/{payment}', [
+    // 'uses' =>'WalletMixController@paytoPaymentGateway',
+    // 'as' => 'user.paytoPaymentGateway'
+    // ]);
 
     //this is for msbd
     Route::any('payto/sslcommerz/gateway/{payment}', [

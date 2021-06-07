@@ -44,11 +44,9 @@ class PublicSslCommerzPaymentController extends Controller
 // $payment->addedby_id = Auth::id();
 // $payment->save();
 
-
-
             $post_data = array();
-            $post_data['total_amount'] = $payment->package_amount; # You cant not pay less than 10
-            $post_data['currency'] = $payment->package_currency;
+            $post_data['total_amount'] = $payment->paid_amount; # You cant not pay less than 10
+            $post_data['currency'] = $payment->paid_currency;
             $post_data['tran_id'] = $payment->id; // tran_id must be unique
             #Start to save these value  in session to pick in success page.
             // $_SESSION['payment_values']['tran_id']=$post_data['tran_id']; 
@@ -112,9 +110,6 @@ class PublicSslCommerzPaymentController extends Controller
         $tran_id = $request->session()->get('trid');
  
             
-             
-
- 
             
  
         #End to received these value from session. which was saved in index function.
@@ -132,7 +127,7 @@ class PublicSslCommerzPaymentController extends Controller
            echo 'Payment is succussfull, please contact admin to update your membership package.';
         }
 
-        if($payment->status == 'pending')
+        if($payment->status == 'pending' || $payment->status == 'inactive')
         {
 
             
@@ -153,7 +148,7 @@ class PublicSslCommerzPaymentController extends Controller
             $payment->status = 'paid';
             $payment->payment_method = 'online';
 
-            $payment->paid_amount = $payment->package_amount;
+            $payment->paid_amount = $payment->paid_amount;
 
 
           // $payment->payment_method = "Payment Card: ".$wmx_response->payment_card . ", Payment Method: " . $wmx_response->payment_method;
@@ -207,11 +202,13 @@ class PublicSslCommerzPaymentController extends Controller
             echo "Invalid Transaction";
         }    
          
+        return redirect()->route('welcome.welcome');
     }
     public function fail(Request $request) 
     {
          // $tran_id = $_SESSION['payment_values']['tran_id'];
-         $tran_id = $request->session()->get('trid');
+         //$tran_id = $request->session()->get('trid');
+         $tran_id = $request->tran_id;
          $payment = UserPayment::whereId($tran_id)->first();
 
          if(!$payment)
@@ -224,7 +221,7 @@ class PublicSslCommerzPaymentController extends Controller
          //                    ->select('order_id', 'order_status','currency','grand_total')->first();
 
 
-        if($payment->status == 'pending')
+        if($payment->status == 'pending' || $payment->status == 'inactive')
         {
             // $update_product = DB::table('orders')
             //                 ->where('order_id', $tran_id)
@@ -238,14 +235,16 @@ class PublicSslCommerzPaymentController extends Controller
         else
         {
             echo "Transaction is Invalid"; 
-        }        
+        }
+        return redirect()->route('welcome.welcome');
                             
     }
      public function cancel(Request $request) 
     {
         // $tran_id = $_SESSION['payment_values']['tran_id'];
 
-        $tran_id = $request->session()->get('trid');
+        //$tran_id = $request->session()->get('trid');
+        $tran_id = $request->tran_id;
          $payment = UserPayment::find($tran_id);
 
          if(!$payment)
@@ -259,7 +258,7 @@ class PublicSslCommerzPaymentController extends Controller
         //                     ->select('order_id', 'order_status','currency','grand_total')->first();
 
 
-        if($payment->status =='pending')
+        if($payment->status =='pending' || $payment->status == 'inactive')
         {
             // $update_product = DB::table('orders')
             //                 ->where('order_id', $tran_id)
@@ -273,7 +272,8 @@ class PublicSslCommerzPaymentController extends Controller
         else
         {
             echo "Transaction is Invalid"; 
-        }                 
+        }
+        return redirect()->route('welcome.welcome');
         
     }
      public function ipn(Request $request) 
@@ -289,10 +289,10 @@ class PublicSslCommerzPaymentController extends Controller
 
           $payment = UserPayment::find($tran_id);
 
-                if($payment->status =='pending')
+                if($payment->status =='pending' || $payment->status == 'inactive')
                 {
                     $sslc = new SSLCommerz();
-                    $validation = $sslc->orderValidate($tran_id, $payment->package_amount, $payment->package_currency, $request->all());
+                    $validation = $sslc->orderValidate($tran_id, $payment->paid_amount, $payment->paid_currency, $request->all());
                     if($validation == TRUE) 
                     {
                         /*

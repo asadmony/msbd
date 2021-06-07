@@ -34,7 +34,8 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    // protected $redirectTo = RouteServiceProvider::HOME;
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -45,7 +46,6 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
-
 
 
 
@@ -110,4 +110,45 @@ class LoginController extends Controller
            }
        }
    }
+
+   // custom login functions
+   
+   public function showEmployeeLoginForm()
+   {
+       return view('auth.employeeLogin');
+   }
+
+   public function username()
+    {
+        $loginId = request()->input('login');
+        $fieldType = filter_var($loginId, FILTER_VALIDATE_EMAIL) ? 'email' : 'mobile';
+        request()->merge([$fieldType => $loginId]);
+        return $fieldType;
+    }
+
+    protected function sendLoginResponse(Request $request)
+    {
+        $request->session()->regenerate();
+
+        $this->clearLoginAttempts($request);
+
+        
+        if (isset($request->employee_login) && $request->employee_login == 1) {
+            if (auth()->user()->isAdmin() || auth()->user()->isCommonWithoutAdmin()) {
+            }else{
+                $this->guard()->logout();
+            }
+        }
+
+        if ($response = $this->authenticated($request, $this->guard()->user())) {
+            return $response;
+        }
+
+        
+
+        return $request->wantsJson()
+                    ? new JsonResponse([], 204)
+                    : redirect()->intended($this->redirectPath());
+    }
+
 }

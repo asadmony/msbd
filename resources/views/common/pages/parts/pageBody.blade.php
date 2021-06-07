@@ -12,7 +12,7 @@
                     <div class="w3-card w3-round p-0 p-lg-2" style="margin-bottom:20px; min-height: 593px;">
                         <div class="card-body">
                             <div style="display:grid; grid-template-columns:auto auto; grid-gap:5px;word-break:keep-all;">
-                                {!! $item->content !!}
+                                {!! $item->localeContent !!}
                             </div>
                         </div>
                     </div>
@@ -88,7 +88,54 @@
         </div>
 
         @else
-        {!! $item->content !!}
+
+        {!! $item->localeContent !!}
+        
+        @endif
+        @if ($page->id == 33)
+        <div class="container">
+            @include('alerts.alerts')
+        </div>
+            <div class="container pb-5">
+                <div class="card border my-3 pb-5">
+                    <div class="card-header h3">
+                        {{ __('Application Form') }}
+                    </div>
+                    <div class="card-body d-block pb-5">
+                        <form action="{{ route('welcome.careerApply') }}" method="post" enctype="multipart/form-data">
+                            {{-- @honeypot --}}
+                            @csrf
+                        <div class="form-group">
+                            <label for="name">{{ __('Name') }}*</label>
+                            <input type="text" class="form-control" name="name" value="{{ old('name') }}">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">{{ __('Email') }}</label>
+                            <input type="text" class="form-control" name="email" value="{{ old('email') }}">
+                        </div>
+                        <div class="form-group">
+                            <label for="mobile">{{ __('Mobile no.') }}*</label>
+                            <input type="text" class="form-control" name="mobile" value="{{ old('mobile') }}">
+                        </div>
+                        <div class="form-group">
+                            <label for="address">{{ __('Address') }}*</label>
+                            <textarea type="text" class="form-control" name="address">{{ old('address') }}</textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="cover_letter">{{ __('Cover Letter') }}</label>
+                            <textarea type="text" class="form-control" name="cover_letter">{{ old('cover_letter') }}</textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="cv">{{ __('CV including Photo') }}*</label>
+                            <input type="file" class="form-control" name="cv" value="{{ old('cv') }}">
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary px-5">{{ __('Submit') }}</button>
+                        </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
         @endif
     </div>
 

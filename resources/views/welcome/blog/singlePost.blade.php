@@ -2,7 +2,12 @@
 
 @section('title')
 
-{{ $post->title  }}| Blog |{{ env('APP_NAME_BIG') }} | Matrimony Service in Bangladesh | Marriage Media Service provider in Bangladesh |
+@if(Cookie::get('locake') == 'bn')
+{{ $post->title_bn  }}
+@else
+{{ $post->title }}
+@endif
+| Blog |{{ env('APP_NAME_BIG') }} | Matrimony Service in Bangladesh | Marriage Media Service provider in Bangladesh |
 Matchmaker Service in Bangladesh
 
 @endsection
@@ -17,6 +22,8 @@ Matchmaker Service in Bangladesh
 @push('css')
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Sacramento&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="{{ asset('css/Payment.css') }}">
 @endpush
 
 @section('header')
@@ -35,14 +42,21 @@ Matchmaker Service in Bangladesh
 
                 <div class="col-md-12 align-self-center p-static order-2 text-center">
 
-                    <h1 class="text-dark font-weight-bold text-8">{{ $post->title }}</h1>
+                    <h1 class="text-dark font-weight-bold text-8">
+                        {{ $post->localeTitle }}
+                        {{-- @if (Cookie::get('locale') == 'bn')
+                            {{ $post->title_bn }}
+                        @else
+                            {{ $post->title }}
+                        @endif --}}
+                    </h1>
                 </div>
 
                 <div class="col-md-12 align-self-center order-1">
 
                     <ul class="breadcrumb d-block text-center">
                         <li><a href="/">Home</a></li>
-                        <li class=""><a href="{{ route('blog') }}"> Blog</a></li>
+                        <li class=""><a href="{{ route('blog') }}"> {{ __('Blog') }}</a></li>
                         <li class=""><a href="{{ route('blog') }}"></a></li>
                     </ul>
                 </div>
@@ -70,7 +84,16 @@ Matchmaker Service in Bangladesh
                 
                         <div class="post-content ml-0">
                 
-                            <h2 class="font-weight-bold"><a href="">{{ $post->title }}</a></h2>
+                            <h2 class="font-weight-bold">
+                                <a href="">
+                                    {{ $post->localeTitle }}
+                                    {{-- @if (Cookie::get('locale') == 'bn')
+                                    {{ $post->title_bn }}
+                                    @else
+                                    {{ $post->title }}
+                                    @endif --}}
+                                </a>
+                            </h2>
                 
                             <div class="post-meta">
                                 <span><i class="far fa-user"></i> By <a href="#">{{ env('APP_NAME') }}</a> </span>
@@ -79,16 +102,27 @@ Matchmaker Service in Bangladesh
                                     @if ($loop->iteration > 1)
                                      , 
                                     @endif
-                                    <a href="#">{{ $catItem->title }}</a>
+                                    <a href="{{ route('blogCategory', [$catItem, Str::slug($catItem->title)]) }}">
+                                        {{ $catItem->localeTitle }}
+                                        {{-- @if (Cookie::get('locale') == 'bn')
+                                        {{ $catItem->title_bn }}
+                                        @else
+                                        {{ $catItem->title }}
+                                        @endif --}}
+                                    </a>
                                     @endforeach </span>
                                 {{-- <span><i class="far fa-comments"></i> <a href="#">12 Comments</a></span> --}}
                             </div>
-
-                            <p>{!! $post->description !!}</p>
+                            <p>{!! $post->localeDescription !!}</p>
+                            {{-- @if (Cookie::get('locale') == 'bn')
+                            <p>{!! $post->description_bn !!}</p>
+                            @else
+                                <p>{!! $post->description !!}</p>
+                            @endif --}}
                 
                 
                             <div class="post-block mt-5 post-share">
-                                <h4 class="mb-3">Share this Post</h4>
+                                {{-- <h4 class="mb-3">{{ __('Share this Post') }}</h4> --}}
                 
                                 <!-- AddThis Button BEGIN -->
                                 <div class="addthis_toolbox addthis_default_style ">

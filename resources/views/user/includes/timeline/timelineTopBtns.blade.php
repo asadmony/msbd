@@ -9,21 +9,21 @@
             <li class="nav-item">
                 <a class=" active w3-small w3-btn w3-round w3-white w3-border w3-border-purple mb-1 mr-1 w3-hover-purple"
                     href="{{ url('/') }}">
-                    Timeline
+                    {{ __('Timeline') }}
                 </a>
             </li>
 
             <li class="nav-item">
                 <a class=" w3-small w3-btn w3-round w3-white w3-border w3-border-purple mb-1 mr-1 w3-hover-purple"
                     href="{{ route('welcome.username', $me->username ?? 'a') }}">
-                    My Profile
+                    {{ __('My Profile') }}
                 </a>
             </li>
             <li class="nav-item">
                 <a data-url="{{ route('user.myAsset','search_preference') }}"
                     class=" w3-small w3-btn w3-round w3-white w3-border w3-border-purple mb-1 mr-1 w3-hover-purple btn-menu-to-container"
                     href="">
-                    Partner Preference
+                    {{ __('Partner Preference') }}
                 </a>
 
             </li>
@@ -31,14 +31,14 @@
             <li class="nav-item">
                 <a class=" w3-small w3-btn w3-round w3-white w3-border w3-border-purple mb-1 mr-1 w3-hover-purple"
                     href="{{ route('user.userSearch', 'searchAll') }}">
-                    Search
+                    {{ __('Search') }}
                 </a>
             </li>
 
             <li class="nav-item">
                 <a class=" w3-small w3-btn w3-round w3-white w3-border w3-border-purple mb-1 mr-1 w3-hover-purple"
                     href="#my_setti" data-toggle="tab">
-                    Setting
+                    {{ __('Settings') }}
                 </a>
             </li>
 

@@ -47,6 +47,8 @@
 		<!-- Web Fonts  -->
 		<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800%7CShadows+Into+Light" rel="stylesheet" type="text/css">
 
+		<link href="https://fonts.maateen.me/kalpurush/font.css" rel="stylesheet">
+
 		<link rel="stylesheet" href="{{asset('prt/css/w3.css')}}">
 
 		<!-- Vendor CSS -->
@@ -86,6 +88,9 @@
 		<!-- Head Libs -->
 		<script src="{{asset('prt/vendor/modernizr/modernizr.min.js')}}"></script>
 		<style>
+			.kalpurush{
+				font-family: 'Kalpurush', sans-serif !important;
+			}
 			::selection {
 	color: #FFF;
 	background: #9c27b0;
@@ -6122,12 +6127,15 @@ html .slide-overlay.slide-overlay-gradient .slotholder:after {
 html.boxed .body {
 	border-top-color: #9c27b0;
 }
-
+.bg-color-custom{
+	background-color: #fef5ff !important;
+}
 		</style>
-        @stack('css')
 
+		
+        @stack('css')
 	</head>
-	<body>
+	<body oncontextmenu="return false;">
 		 <!-- Load Facebook SDK for JavaScript -->
 		<div id="fb-root"></div>
 		<script>

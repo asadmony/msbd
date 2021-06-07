@@ -70,6 +70,9 @@ class CreateUsersTable extends Migration
             $table->integer('addedby_id')->unsigned()->default(1);
             $table->integer('editedby_id')->unsigned()->nullable();
             $table->integer('package')->default(0); //package 1, 2, 3, 4
+            $table->integer('proposal_send_daily_limit')->unsigned()->nullable();
+            $table->integer('proposal_send_total_limit')->unsigned()->nullable();
+            $table->integer('contact_view_limit')->unsigned()->nullable();
             $table->timestamp('expired_at')->nullable();
             $table->timestamp('loggedin_at')->nullable();
             $table->rememberToken();

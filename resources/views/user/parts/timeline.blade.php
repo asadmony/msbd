@@ -45,6 +45,9 @@
     <div class="row">
     <div class="col-sm-9">
       @include('user.includes.cards.userProgressCard')
+      @if (!empty($inactivePayment))
+          @include('welcome.incompletePayment')
+      @endif
       @include('user.includes.timeline.newProfiles')
       @include('user.includes.timeline.myVisitors')
       @include('user.includes.timeline.myMatch')

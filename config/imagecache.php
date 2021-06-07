@@ -43,6 +43,7 @@ return array(
         public_path('storage/gallery'), # user identity image
         public_path('storage/media'), # user identity image
         public_path('storage/media/image'), # user identity image
+        public_path('storage/slider'), # user identity image
     ),
 
     /*
@@ -89,6 +90,7 @@ return array(
         'sbism' => 'App\ImageFilters\SidebarImageSmall',
         'sbixs' => 'App\ImageFilters\SidebarImageXtraSmall',
         'lh' => 'App\ImageFilters\LogoHeader',
+        'ppsmbl' => 'App\ImageFilters\ProductPicSmallBlur',
 
 
         //'original' - Send HTTP response with original image file.

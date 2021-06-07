@@ -18,6 +18,7 @@ class CreatePageItemsTable extends Migration
             $table->integer('page_id')->unsigned();
             $table->string('title')->nullable();
             $table->text('content')->nullable();
+            $table->text('content_bn')->nullable();
             $table->boolean('editor')->default(1);
             $table->boolean('active')->default(1);
             $table->integer('addedby_id')

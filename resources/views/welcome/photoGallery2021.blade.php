@@ -55,6 +55,8 @@ Photo Gallery
         background-color: #ffff;
     }
 </style>
+
+<link rel="stylesheet" href="{{ asset('css/Member.css') }}">
 @endpush
 
 @section('header')

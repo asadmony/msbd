@@ -17,6 +17,7 @@ use App\Model\Country;
 use App\Model\MenuPage;
 use App\Model\UserPhoto;
 use App\Model\BranchUser;
+use App\Model\CareerApplication;
 use App\Model\UserPayment;
 use App\Model\UserPicture;
 use App\Model\ImageGallery;
@@ -354,6 +355,154 @@ class CommonController3 extends Controller
         }
     }
 
+    public function makeUserInvoice(User $user)
+    {
+        $packages = MembershipPackage::all();
+        $payments = UserPayment::where('user_id', $user->id)->latest()->get();
+        return view('common.payments.makeInvoice', [
+            'packages' => $packages,
+            'user' => $user,
+            'payments' => $payments,
+        ]);
+    }
+
+    public function saveUserInvoice(User $user, Request $request)
+    {
+        // dd($request->all());
+        $validation = Validator::make($request->all(),
+        [
+              "package" => "required",
+              "paid_amount" => "required|numeric",
+              "paid_currency" => "required",
+              "payment_method" => "required",
+            //   "payment_details" => "required",
+              // 'admin_comment' => 'required'
+        ]);
+        if($validation->fails())
+        {
+            return redirect()->back()
+            ->withErrors($validation)
+            ->withInput()
+            ->with('error', 'Something went wrong, please try again.');
+        }
+        if(!$user)
+        {
+            abort(404);
+        }
+
+        $package = MembershipPackage::where('id', $request->package)
+        ->first();
+        if($package)
+        {
+            $payment = UserPayment::where('user_id', $user->id)
+            ->where('status', 'pending')->first();
+            if($payment)
+            {
+                return back()
+                ->with('info', 'Previous payment order of this user is pending');
+            }
+            else{
+                $inactivePayment = UserPayment::where('user_id', $user->id)
+                    ->where('status', 'inactive')->first();
+                if ($inactivePayment) {
+                    $payment = $inactivePayment;
+                }else{
+                    $payment = new UserPayment;
+                }
+                if ($request->payment_method == "Online") {
+                    $payment->status = 'inactive';
+                }else{
+                    $payment->status = 'paid';
+                }
+                $payment->membership_package_id = $package->id;
+                $payment->package_title = $package->package_title;
+                $payment->package_description = $package->package_description;
+                $payment->package_amount = $package->package_amount;
+                $payment->package_currency = $package->package_currency;
+                $payment->package_duration = $package->package_duration;
+                $payment->paid_amount = $request->paid_amount ?? '';
+                $payment->paid_currency = $request->paid_currency ?? '';
+                $payment->payment_method = $request->payment_method;
+                $payment->payment_details = $request->payment_details;
+                $payment->admin_comment = $request->admin_comment;
+                $payment->user_id = $user->id;
+                $payment->addedby_id = Auth::id();
+                $payment->editedby_id= Auth::id();
+                $payment->save();
+
+                $user->package = $payment->membership_package_id;
+                $expired_at = $user->expired_at;
+                if($expired_at > Carbon::now()){
+                    if ($inactivePayment) {
+                        $expired_at = $expired_at->subDays($inactivePayment->package->package_duration);
+                    }
+                    $user->expired_at = $expired_at->addDays($payment->package_duration);
+                }else{
+                    $user->expired_at = Carbon::now()->addDays($payment->package_duration);
+                }
+                if ($inactivePayment) {
+                    $psdl =  ($user->proposal_send_daily_limit - $inactivePayment->package->proposal_send_daily_limit)+$package->proposal_send_daily_limit;
+                    $pstl = ($user->proposal_send_total_limit - $inactivePayment->package->proposal_send_total_limit)+$package->proposal_send_total_limit;
+                    $cvl = ($user->contact_view_limit - $inactivePayment->package->contact_view_limit)+$package->contact_view_limit;
+                }else{
+                    $psdl = $user->proposal_send_daily_limit + $package->proposal_send_daily_limit;
+                    $pstl = $user->proposal_send_total_limit + $package->proposal_send_total_limit;
+                    $cvl = $user->contact_view_limit + $package->contact_view_limit;
+                }
+                $user->proposal_send_daily_limit    = $psdl;
+                $user->proposal_send_total_limit    = $pstl;
+                $user->contact_view_limit           = $cvl;
+                $user->save();
+
+                // if(!(env('APP_ENV') == 'local'))
+                // {  
+                //     Mail::send('emails.paymentAcceptedToUser', ['payment'=>$payment], function ($message) use ($payment){
+                //         $message->from('mail@taslimamarriagemedia.com', 'T M Media Payment Section');
+                //         $message->to($payment->user->email,  '')
+                //         ->subject('Payment Processing Completed at '.url('/'));
+                //     });                    
+                // }
+
+                ### sms api end here (masking & nonmasking seperate) ###
+
+                    // $masking = 'T.M. Media';
+                    // $to = '8801782006615';
+                    // $username = 'taslimamedia@gmail.com';
+                    // $pass = '01719369717';
+                    // $apiKey = '$2y$10$wj7YbbC4RjEfY5.OJIqyP.mfRbm.Da2bro5.PFsbUYUQ02agGy/eG';
+                    // $msg = 'Hello Admin, New payment details: Amount: ' . $payment->paid_amount . ' ' . $payment->paid_currency . '. Package ID: ' . $payment->membership_package_id . '. User:'. $user->email;  
+                    
+                    // $url = "http://masking.binaryquest.com/smsapi/masking?api_key={$apiKey}&smsType=text&maskingID={$masking}&mobileNo={$to}&smsContent={$msg}"; 
+
+
+                    //  $client = new Client();
+                    //  //https://stackoverflow.com/questions/46005027/handling-client-errors-exceptions-on-guzzlehttp            
+                    // try {
+                    //         $r = $client->request('GET', $url);
+                    //     } catch (\GuzzleHttp\Exception\ConnectException $e) {
+                    //         // This is will catch all connection timeouts
+                    //         // Handle accordinly
+                    //     } catch (\GuzzleHttp\Exception\ClientException $e) {
+                    //         // This will catch all 400 level errors.
+                    //         // return $e->getResponse()->getStatusCode();
+                    //     }
+                    ### sms api end here (masking & nonmasking seperate) ###
+
+                return back()->with('success', 'Payment info successfully saved.');
+            }            
+        }
+    }
+
     //user all
+
+    
+    public function careerApplications(CareerApplication $application)
+    {
+        menuSubmenu('career', 'applications');
+        $applications = $application->latest()->paginate(20);
+        return view('admin.careerApplications', [
+            'applications' => $applications,
+        ]);
+    }
 
 }

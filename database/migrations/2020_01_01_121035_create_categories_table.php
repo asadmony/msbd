@@ -18,6 +18,8 @@ class CreateCategoriesTable extends Migration
             $table->string('title')
                   ->index()
                   ->nullable();
+            $table->string('title_bn')
+                  ->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
