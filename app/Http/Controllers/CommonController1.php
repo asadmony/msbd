@@ -892,7 +892,7 @@ class CommonController1 extends Controller
         $request->session()->forget(['lsbm','lsbsm']);
         $request->session()->put(['lsbm'=>'imageGallery','lsbsm'=>'imageGalleriesAll']);
 
-        $galleries = Gallery::latest()->paginate(100);
+        $galleries = Gallery::orderBy('featured', 'DESC')->latest()->paginate(100);
 
         return view('common.gallery.imageGalleriesAll', ['galleries'=>$galleries]);
     }
@@ -943,6 +943,18 @@ class CommonController1 extends Controller
 
         return back()->with('success','Gallery Images Successfully Uploaded.');
     }
+    }
+
+
+    public function galleryFeature(Gallery $gallery)
+    {
+        if ($gallery->featured == 0) {
+            $gallery->featured = 1;
+        }else{
+            $gallery->featured = 0;
+        }
+        $gallery->save();
+        return response()->json($gallery, 200);
     }
 
 

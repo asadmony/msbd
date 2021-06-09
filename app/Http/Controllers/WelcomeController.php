@@ -85,7 +85,7 @@ class WelcomeController extends Controller
 
         // $userSettingFields = Cache::remember('userSettingFields', 518400, function () {
         //             return UserSettingField::all();
-        //         });
+        //});
 
         $userSettingFields = UserSettingField::all();
         
@@ -133,7 +133,7 @@ class WelcomeController extends Controller
                     ->orderBy('date', 'desc')->paginate(3);
         });
 
-       $branches = Cache::remember('branches', $this->minutes, function () {
+      $branches = Cache::remember('branches', $this->minutes, function () {
             return Branch::all();
         });
 
@@ -141,7 +141,7 @@ class WelcomeController extends Controller
                 return FrontSlider::all();
             });
 
-        $photos = Gallery::latest()->take(7)->get();
+        $photos = Gallery::orderBy('featured', 'DESC')->latest()->take(7)->get();
         // $featuredProfiles = User::inRandomOrder()->where('active', 1)->where('img_name', '<>', null)->take(8)->get();
    		return view('welcome.guestWelcome',[
             // 'users'=>$users,

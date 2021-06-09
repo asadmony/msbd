@@ -9,6 +9,7 @@ use Carbon\Carbon;
 use App\Model\Menu;
 use App\Model\MembershipPackage;
 use App\Model\UserSettingField;
+use App\Model\WebsiteParameter;
 
 class WelcomeMiddleware
 {
@@ -109,24 +110,24 @@ class WelcomeMiddleware
             view()->share('mPackage1', MembershipPackage::where('package_currency', 'BDT')->get());
 
             view()->share('mPackage2', MembershipPackage::where('package_currency', 'USD')->get());
-
-
-
-         }
-         else
-         {
-
-            // view()->share('userHeaderMenu', Cache::remember('userHeaderMenu', 518400, function () {
-            //     return Menu::has('pages')
-            //     ->where('menu_title', 'User Header Menu')
-            //     ->with('pages', function($qq){$qq->whereActive(true);})
-            //     ->first();
-            //     // 518400 is one year
-            // }));
+            
+            
+            
         }
-
-
-
+        else
+        {
+            
+            // view()->share('userHeaderMenu', Cache::remember('userHeaderMenu', 518400, function () {
+                //     return Menu::has('pages')
+                //     ->where('menu_title', 'User Header Menu')
+                //     ->with('pages', function($qq){$qq->whereActive(true);})
+                //     ->first();
+                //     // 518400 is one year
+                // }));
+            }
+            
+            
+            
         return $next($request);
     }
 }

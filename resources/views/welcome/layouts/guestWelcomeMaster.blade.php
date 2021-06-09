@@ -6135,7 +6135,8 @@ html.boxed .body {
 		
         @stack('css')
 	</head>
-	<body oncontextmenu="return false;">
+	{{-- <body oncontextmenu="return false;"> --}}
+	<body>
 		 <!-- Load Facebook SDK for JavaScript -->
 		<div id="fb-root"></div>
 		<script>

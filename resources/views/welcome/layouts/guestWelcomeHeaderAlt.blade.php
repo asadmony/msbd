@@ -33,19 +33,19 @@
         }
         .floatbutton2{
             position: fixed;
-            top:130px; 
-            right: 0px; 
-            z-index:1;
-        }
-        .floatbutton3{
-            position: fixed;
             background-color: #85248b;
             color: white;
             top:119px; 
             right: 0px; 
             z-index:1;
         }
-        @media only screen and (max-width: 600px) {
+        .floatbutton3{
+            position: fixed;
+            top:152px; 
+            right: 0px; 
+            z-index:1;
+        }
+        /* @media only screen and (max-width: 600px) {
             .floatbutton1{
             position: fixed;
             top:15px;
@@ -63,7 +63,7 @@
             top:17px; right: 180px; 
             z-index:1;
         }
-        }
+        } */
     </style>
 @endpush
 <div id="intro" class="">
@@ -240,7 +240,8 @@
                                                     <li> <a class="dropdown-item w3-hover-purple w3-medium w3-text-purple" href="{{route('welcome.ourBranches')}}">{{ __('Our Offices') }}</a></li> 
                                                     @foreach ($contactUs->pages as $whm)
                                                     
-                                                    <li> <a class="dropdown-item w3-hover-purple w3-medium w3-text-purple"
+                                                    <li> 
+                                                        <a class="dropdown-item w3-hover-purple w3-medium w3-text-purple"
                                                         href="{{ route('page', [$whm->id, $whm->route_name]) }}">
                                                         {{ $whm->localeTitle }}
                                                     </a>
@@ -346,9 +347,13 @@
                                 BN
                                 @endif
                             </a>
-                            <a class="floatbutton3 border- rounded- text-center m-auto py-1 social-icons-facebook w3-blue- w3-hover-white w3-hover-text-blue" style="width: 36px;" href="http://www.facebook.com/marriagebd2012" 
+                            <a class="floatbutton2 border- rounded- text-center m-auto py-1 social-icons-facebook w3-blue- w3-hover-white w3-hover-text-blue" style="width: 36px;" href="http://www.facebook.com/marriagebd2012" 
                                 title="Facebook"><i class="fab fa-facebook-f"></i>
                             </a>
+                            <a class="floatbutton3 text-center m-auto pt-1 pb-0 social-icons-whatsapp w3-purple w3-hover-white w3-hover-text-purple " style="width: 36px;" href="https://wa.me/{{ $websiteParameter->whatsapp }}" 
+                                title="Whatsapp"><i class="fab fa-2x fa-whatsapp"></i> 
+                            </a>
+
                         </div>
                     </div>
                 </div>

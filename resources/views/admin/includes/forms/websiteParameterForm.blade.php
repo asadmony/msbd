@@ -277,6 +277,17 @@
       @endif                       
     </div>
 
+    <div class="form-group {{ $errors->has('whatsapp') ? ' has-error' : '' }}">
+      <label for="whatsapp" class="  control-label">Whatsapp Number:</label>
+
+      <input type="text" name="whatsapp" class="form-control" value="{{old('whatsapp') ?: $post->whatsapp}}" id="whatsapp" placeholder="Whatsapp number" autocomplete="off">
+      @if ($errors->has('whatsapp'))
+      <span class="help-block">
+        <strong>{{ $errors->first('whatsapp') }}</strong>
+      </span>
+      @endif                       
+    </div>
+
     <div class="form-group {{ $errors->has('contact_email') ? ' has-error' : '' }}">
       <label for="contact_email" class="  control-label">Contact Email</label>
 

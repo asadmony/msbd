@@ -17,6 +17,7 @@ class CreateGalleriesTable extends Migration
             $table->id();
             $table->string('image_title')->nullable();
             $table->string('image_name')->nullable();
+            $table->boolean('featured')->nullable()->default(false);
             $table->integer('addedby_id')
                   ->unsigned()
                   ->nullable();

@@ -108,6 +108,7 @@ class AdminController extends Controller
         $post->meta_description = $request->meta_description;
         $post->slogan = $request->slogan;
         $post->footer_address = $request->footer_address;
+        $post->whatsapp = $request->whatsapp ?? '';
         $post->footer_copyright = $request->footer_copyright;
         $post->addthis_url = $request->addthis_url;
         $post->fb_page_code = $request->fb_url;

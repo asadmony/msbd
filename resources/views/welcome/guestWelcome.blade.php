@@ -257,7 +257,7 @@ class="dropdown-item"><i class="fa fa-phone fa-rotate-90 mr-2"></i>
       </p>
     </div>
     <div class="col-lg-8 col-md-12 col-sm-12">
-      <p class="right_p">
+      <p class="right_p w3-large">
         Marriage Solution BD's philosophy is to change attitudes and misconceptions about marriage media
 of Bangladesh. We trust, changing to right attitude towards marriage will change lives. We believe
 in integrity, reliability, trust and our far-reaching services to touch the hearts of millions across. We

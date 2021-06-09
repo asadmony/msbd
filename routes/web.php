@@ -691,6 +691,11 @@ Route::group(['middleware' => ['auth','role:common'] ,'prefix' => 'authority'], 
     'as' => 'common1.galleryImageAddNew'
     ]);
 
+    Route::post('gallery/{gallery}/image/feature', [
+    'uses' =>'CommonController1@galleryFeature',
+    'as' => 'common1.galleryFeature'
+    ]);
+
     Route::get('gallery/image/delete/{gallery}', [
     'uses' =>'CommonController1@galleryImageDelete',
     'as' => 'common1.galleryImageDelete'
